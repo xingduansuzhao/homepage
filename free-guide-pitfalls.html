@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI开发避坑指南｜免费｜星断肃昭</title>
+    <link rel="icon" href="assets/images/avatar.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="lazypack-page">
+
+    <!-- 顶部 Header -->
+    <header class="site-header">
+        <div class="avatar-slot">
+            <img src="assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
+        </div>
+        <div class="header-info">
+            <div class="header-title-row">
+                <h1>星断肃昭</h1>
+                <span class="header-en">从零开发模组｜AI效率工具｜环境一键启动</span>
+            </div>
+            <div class="header-actions">
+                <a href="aimod-dev.html" class="btn-back">← 返回AI模组专区</a>
+                <a href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" class="btn-taobao">
+                    <span>个人店铺</span>
+                    <img src="assets/gif/villager_nod.gif" alt="" class="btn-icon-gif">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <div class="main-wrapper lp-main-wrapper">
+        <div class="gui-outer-wrap">
+            <a href="aimod-dev.html" class="gui-outer-back">← 返回AI模组专区</a>
+            <div class="gui-container lp-gui-container">
+                <div class="lp-scroll-area">
+
+                    <!-- 页面标题 -->
+                    <div class="lp-hero">
+                        <div class="lp-hero-title-row">
+                            <h2 class="lp-hero-title">AI开发避坑指南</h2>
+                        </div>
+                        <div class="lp-hero-tags">
+                            <span class="lp-tag">🟠 免费</span>
+                            <span class="lp-tag-sep">·</span>
+                            <span class="lp-tag">经验型内容</span>
+                            <span class="lp-tag-sep">·</span>
+                            <span class="lp-tag">阅读5分钟 · 长期受用</span>
+                        </div>
+                    </div>
+
+                    <!-- 介绍 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">这篇指南帮你做什么？</h3>
+                        <div class="free-article-intro">
+                            <p>汇总AI辅助模组开发中<strong>最常见的8个坑</strong>，每个坑都给出现象、原因和修复方法。提前了解，少走弯路。</p>
+                            <div class="free-article-callout free-article-callout-blue">
+                                <strong>前置要求</strong>
+                                <p>建议先完成 <a href="free-guide-qianwen.html">千问AI接入指南</a> 和 <a href="free-prompt-first-mod.html">第一个AI模组Prompt</a>，在实际开发中对照查阅效果最佳。</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 1 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 1：AI生成的代码直接报错</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>粘贴AI代码后IDE标红，编译不通过</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>AI使用了旧版API或错误的import</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>Prompt中明确指定版本号，把报错信息完整给AI</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 2 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 2：Mixin注入不生效或崩溃</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>Mixin写了但运行没效果，或游戏崩溃</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>mixin.json未注册、注入点方法名不匹配</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>先用@Inject(at=HEAD)验证，再尝试复杂注入</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 3 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 3：注册项找不到 / NullPointer</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>运行时NullPointerException</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>DeferredRegister注册时机不对</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>确保register()在模组构造函数中调用，用Supplier延迟获取</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 4 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 4：AI对Minecraft API的"幻觉"</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>AI写出看似合理但实际不存在的API</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>AI训练数据过时，混淆了不同版本API</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>Prompt中提供已有import列表，要求AI标注不确定的API</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 5 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 5：Gradle构建失败</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>gradlew build 或 runClient 报错</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>build.gradle配置错误、Java版本不匹配</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>确认Java 21，用官方MDK模板，把完整日志给AI</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 6 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 6：资源文件路径写错</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>物品显示紫黑色方块或键名</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>模型/语言/材质文件路径不正确</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>让AI每次给出文件内容时附上完整路径</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 7 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 7：AI上下文丢失</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>AI后续代码和之前不兼容</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>对话太长，AI"忘记"之前代码</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>每5~6轮开新对话，重新提供项目上下文</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 坑 8 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">坑 8：版本混淆（Forge vs NeoForge vs Fabric）</h3>
+                        <div class="pitfall-card">
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-red">现象</span>
+                                <span>AI生成了错误加载器的代码</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-orange">原因</span>
+                                <span>AI默认生成Forge代码，NeoForge/Fabric API差异大</span>
+                            </div>
+                            <div class="pitfall-card-row">
+                                <span class="pitfall-card-tag pitfall-tag-green">修复</span>
+                                <span>每个Prompt开头写明："NeoForge 1.21（非Forge非Fabric）"</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 总结 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">总结：3条核心原则</h3>
+                        <div class="free-article-content">
+                            <div class="pitfall-summary">
+                                <div class="pitfall-summary-item">
+                                    <span class="pitfall-summary-num">1</span>
+                                    <div>
+                                        <strong>Prompt要精确</strong>
+                                        <p>每次都带上版本号、加载器类型、已有代码结构</p>
+                                    </div>
+                                </div>
+                                <div class="pitfall-summary-item">
+                                    <span class="pitfall-summary-num">2</span>
+                                    <div>
+                                        <strong>报错直接给AI</strong>
+                                        <p>完整报错信息是AI最好的修复线索</p>
+                                    </div>
+                                </div>
+                                <div class="pitfall-summary-item">
+                                    <span class="pitfall-summary-num">3</span>
+                                    <div>
+                                        <strong>小步验证</strong>
+                                        <p>每写一个功能就运行测试，不要攒一堆再跑</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 下载 -->
+                    <!-- <section class="lp-section free-article">
+                        <h3 class="lp-section-title">下载本文</h3>
+                        <div class="free-download-row">
+                            <a href="javascript:void(0)" onclick="downloadPitfallsMarkdown()" class="mc-btn free-download-btn">📄 下载 Markdown 版</a>
+                        </div>
+                        <p class="free-download-note">方便离线查阅，收藏备用</p>
+                    </section> -->
+
+                    <!-- 下一步 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">下一步</h3>
+                        <div class="free-next-steps">
+                            <a href="free-prompt-first-mod.html" class="free-next-card free-next-primary">
+                                <span class="free-next-icon">🟣</span>
+                                <div>
+                                    <strong>第一个AI模组 Prompt</strong>
+                                    <p>用完整Prompt跑出你的第一个可运行模组</p>
+                                </div>
+                                <span class="free-next-arrow">→</span>
+                            </a>
+                            <a href="aimod-dev.html#pro-tools" class="free-next-card">
+                                <span class="free-next-icon">🧰</span>
+                                <div>
+                                    <strong>效率工具包</strong>
+                                    <p>完整AI开发工作流方法论</p>
+                                </div>
+                                <span class="free-next-arrow">→</span>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- 升级提示 -->
+                    <section class="lp-section free-article free-upsell-section">
+                        <div class="free-upsell-box">
+                            <strong>想要更系统的工作流？</strong>
+                            <p>避坑指南帮你解决常见问题。想要完整的AI开发方法论？<a href="aimod-dev.html#pro-tools">效率工具包</a>给你标准化流程。</p>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制成功提示 -->
+    <div class="toast" id="toast">✅ 已复制！</div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
