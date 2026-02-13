@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI模组开发专区｜星断肃昭</title>
+    <link rel="icon" href="../assets/images/avatar.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="aimod-page">
+
+    <!-- 顶部 Header（横跨全屏） -->
+    <header class="site-header">
+        <div class="avatar-slot">
+            <img src="../assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
+        </div>
+        <div class="header-info">
+            <div class="header-title-row">
+                <h1>星断肃昭</h1>
+                <span class="header-en">从零开发模组｜AI效率工具｜环境一键启动</span>
+            </div>
+            <div class="header-actions">
+                <a href="../index.html" class="btn-back">← 返回首页</a>
+                <a href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" class="btn-taobao">
+                    <span>个人店铺</span>
+                    <img src="../assets/gif/villager_nod.gif" alt="" class="btn-icon-gif">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <div class="main-wrapper aimod-main-wrapper">
+        <div class="gui-outer-wrap">
+            <!-- 返回主页按钮 - GUI容器外部左上角 -->
+            <a href="../index.html" class="gui-outer-back">← 返回主页</a>
+            <div class="gui-container aimod-gui-container">
+            <div class="content-area">
+
+                <!-- ============================
+                     1. 首屏：结果导向 Hero
+                     ============================ -->
+                <section class="panel aimod-section aimod-hero-v2" aria-label="AI模组开发核心价值">
+                    <h2 class="aimod-hero-title-v2">用 AI 快速实现 Minecraft 模组</h2>
+                    <p class="aimod-hero-subtitle-v2">从零到可运行模组，AI全程辅助，真实项目验证</p>
+                    <div class="aimod-hero-actions-v2">
+                        <a href="#free-path" class="mc-btn-cta-free aimod-primary-cta-free aimod-hero-cta-enhanced">免费开始</a>
+                        <a href="#pro-tools" class="mc-btn-cta aimod-hero-cta-secondary">获取效率工具包 →</a>
+                    </div>
+                    <div class="aimod-hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5~10x</span>
+                            <span class="stat-label">效率提升</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">10min</span>
+                            <span class="stat-label">跑通首个模组</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">代码可运行</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     2. 免费入门入口
+                     ============================ -->
+                <section id="free-path" class="panel aimod-section aimod-free-section aimod-section-spacious" aria-label="免费入门路线">
+                    <div class="aimod-section-header">
+                        <div class="panel-title">📘 免费入门路线</div>
+                        <span class="aimod-section-tag aimod-tag-free">完全免费</span>
+                    </div>
+                    <div class="aimod-card-list aimod-card-list-spacious">
+                        <article class="aimod-card aimod-card-free">
+                            <div class="aimod-card-result">10分钟搭好AI编程环境</div>
+                            <h3>千问AI接入指南</h3>
+                            <p class="aimod-card-desc">IDE配置流程，快速完成AI编程环境接入</p>
+                            <div class="aimod-card-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👤</span>
+                                    <span>零基础新手适用</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">⏱️</span>
+                                    <span>预计5~10分钟</span>
+                                </div>
+                            </div>
+                            <div class="aimod-card-bottom">
+                                <a href="free-guide-qianwen.html" class="mc-btn-cta-free aimod-card-cta-unified">在线阅读</a>
+                            </div>
+                        </article>
+                        <article class="aimod-card aimod-card-free">
+                            <div class="aimod-card-result">20分钟跑出第一个模组</div>
+                            <h3>第一个AI模组 Prompt</h3>
+                            <p class="aimod-card-desc">可直接运行的起步模板，帮你跑通第一条链路</p>
+                            <div class="aimod-card-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👤</span>
+                                    <span>已搭好环境的开发者</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">⏱️</span>
+                                    <span>预计10~20分钟</span>
+                                </div>
+                            </div>
+                            <div class="aimod-card-bottom">
+                                <a href="free-prompt-first-mod.html" class="mc-btn-cta-free aimod-card-cta-unified">复制Prompt</a>
+                            </div>
+                        </article>
+                        <article class="aimod-card aimod-card-free">
+                            <div class="aimod-card-result">减少80%常见报错</div>
+                            <h3>AI开发避坑指南</h3>
+                            <p class="aimod-card-desc">高频错误与修复策略，避免反复返工</p>
+                            <div class="aimod-card-meta">
+                                <div class="meta-item">
+                                    <span class="meta-icon">👤</span>
+                                    <span>频繁遇到报错的人</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-icon">⏱️</span>
+                                    <span>阅读5分钟，长期受用</span>
+                                </div>
+                            </div>
+                            <div class="aimod-card-bottom">
+                                <a href="free-guide-pitfalls.html" class="mc-btn-cta-free aimod-card-cta-unified">在线阅读</a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     3. 实战效果展示
+                     ============================ -->
+                <section class="panel aimod-section aimod-showcase-section aimod-section-spacious" aria-label="实战效果展示">
+                    <div class="panel-title">🎮 真实效果 · 全部可复现</div>
+                    <div class="aimod-showcase-grid">
+                        <div class="aimod-showcase-item aimod-showcase-featured">
+                            <div class="showcase-gif-wrap">
+                                <img src="../assets/gif/mod-demo.gif" alt="模组运行实录" class="showcase-gif-img">
+                            </div>
+                            <div class="showcase-label">AI辅助开发的「制箭台」模组在游戏中实际运行效果</div>
+                        </div>
+                        <div class="aimod-showcase-side">
+                            <div class="aimod-showcase-item showcase-video-entry" onclick="openVideoModal()">
+                                <div class="showcase-placeholder showcase-placeholder-video">
+                                    <span class="showcase-icon">▶</span>
+                                    <span>观看完整开发教程</span>
+                                </div>
+                                <div class="showcase-label">点击选择平台观看</div>
+                            </div>
+                            <a href="https://github.com/xingduansuzhao/Neoforge-Lazypack" target="_blank" rel="noopener" class="aimod-showcase-item showcase-github-link">
+                                <div class="showcase-placeholder showcase-placeholder-github">
+                                    <span class="showcase-icon"><img src="../assets/images/github.png" alt="GitHub" class="showcase-platform-icon"></span>
+                                    <span>GitHub 开源代码</span>
+                                    <span class="showcase-trust-hint">可直接 clone 运行 · 真实项目代码</span>
+                                </div>
+                                <div class="showcase-label">欢迎 Star & Fork</div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 视频平台选择弹窗 -->
+                <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
+                    <div class="video-modal">
+                        <div class="video-modal-header">
+                            <span>选择观看平台</span>
+                            <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
+                        </div>
+                        <div class="video-modal-body">
+                            <a href="https://space.bilibili.com/3537121929332753" target="_blank" rel="noopener" class="video-modal-btn video-modal-bilibili">
+                                <img src="../assets/images/bilibili.png" alt="哔哩哔哩" class="video-modal-icon">
+                                <span>哔哩哔哩</span>
+                            </a>
+                            <a href="https://www.douyin.com/user/MS4wLjABAAAAZQfWj15fBLrPBch-VEHqMnedWKUx4QPXYcTV1DIiShOI3E8LlvSHZQLET2nRU_IH?from_tab_name=main" target="_blank" rel="noopener" class="video-modal-btn video-modal-douyin">
+                                <img src="../assets/images/douyin.png" alt="抖音" class="video-modal-icon">
+                                <span>抖音</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================
+                     4. 付费工具包介绍
+                     ============================ -->
+                <section id="pro-tools" class="panel aimod-section aimod-pro-section aimod-section-spacious" aria-label="AI模组开发效率工具包">
+                    <div class="aimod-section-header">
+                        <div class="panel-title">🧰 AI模组开发效率工具包</div>
+                        <span class="aimod-section-tag aimod-tag-pro">进阶提效</span>
+                    </div>
+                    <div class="aimod-pro-headline">帮你减少 80% AI 模组开发试错时间</div>
+
+                    <!-- 三类标签式内容 -->
+                    <div class="aimod-pro-tabs">
+                        <div class="pro-tab-list">
+                            <button class="pro-tab active" data-tab="prompt">Prompt模板</button>
+                            <button class="pro-tab" data-tab="workflow">AI开发流程</button>
+                            <button class="pro-tab" data-tab="tools">工具推荐方案</button>
+                        </div>
+                        <div class="pro-tab-content active" id="tab-prompt">
+                            <h4>30+ 场景 Prompt 模板库</h4>
+                            <p>覆盖事件生成、Entity逻辑、UI开发、方块交互等核心场景，直接复制使用。</p>
+                            <div class="pro-example">
+                                <span class="pro-example-label">示例</span>
+                                <code>"为NeoForge 1.21创建一个自定义方块，要求：可交互、有动画、掉落自身..."</code>
+                            </div>
+                        </div>
+                        <div class="pro-tab-content" id="tab-workflow">
+                            <h4>完整AI开发工作流方法论</h4>
+                            <p>从需求拆解到持续迭代，让AI长期稳定输出高质量代码。</p>
+                            <div class="pro-example">
+                                <span class="pro-example-label">流程</span>
+                                <code>需求拆解 → Prompt编写 → 代码审查 → 增量迭代 → 测试验证</code>
+                            </div>
+                        </div>
+                        <div class="pro-tab-content" id="tab-tools">
+                            <h4>AI工具横向评测与选型</h4>
+                            <p>按使用场景、优缺点、性价比给出可执行建议。</p>
+                            <div class="pro-example">
+                                <span class="pro-example-label">对比维度</span>
+                                <code>代码生成能力 / 上下文长度 / 价格 / 模组开发适配度</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 中部 CTA -->
+                    <div class="aimod-section-cta aimod-pro-cta-area aimod-pro-cta-mid">
+                        <a class="mc-btn-cta aimod-primary-cta" target="_blank" rel="noopener" href="https://e.tb.cn/h.7DYUEVDz9PvsG22?tk=kD2WUmqmIYz">立即获取工具包 →</a>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     5. 对比区：强化转化
+                     ============================ -->
+                <section class="panel aimod-section aimod-section-spacious" aria-label="开发效率对比">
+                    <div class="panel-title">⚡ 开发效率对比</div>
+                    <div class="compare-grid">
+                        <div class="compare-col compare-before">
+                            <div class="compare-header"><span class="compare-icon">✕</span> 传统开发痛点</div>
+                            <ul>
+                                <li>Prompt靠猜，AI输出不稳定</li>
+                                <li>复杂功能不知道怎么拆需求</li>
+                                <li>反复报错调试 2~3 小时</li>
+                                <li>不知道哪个AI工具适合模组开发</li>
+                            </ul>
+                        </div>
+                        <div class="compare-col compare-after">
+                            <div class="compare-header"><span class="compare-icon">✓</span> AI效率开发方式</div>
+                            <ul>
+                                <li>模板直接用，输出质量稳定</li>
+                                <li>标准工作流，需求清晰可拆解</li>
+                                <li>20~30 分钟完成同样功能</li>
+                                <li>工具评测对比，选型有依据</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     6. 用户反馈/案例
+                     ============================ -->
+                <section class="panel aimod-section aimod-testimonial-section aimod-section-spacious" aria-label="用户使用案例">
+                    <div class="panel-title">💬 用户真实反馈</div>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-card-header">
+                                <div class="testimonial-avatar">B</div>
+                                <div class="testimonial-meta">
+                                    <span class="testimonial-name">B站用户</span>
+                                    <span class="testimonial-src">B站 · 视频评论区</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-quote">"之前完全不会Java，跟着路线走，第一天就跑出了一个自定义方块模组，太有成就感了。"</div>
+                            <div class="testimonial-badge">零基础入门</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-card-header">
+                                <div class="testimonial-avatar">Q</div>
+                                <div class="testimonial-meta">
+                                    <span class="testimonial-name">QQ群成员</span>
+                                    <span class="testimonial-src">QQ群 · 技术交流群</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-quote">"Prompt模板库直接帮我省了大量试错时间，以前一个Entity写半天，现在30分钟搞定。"</div>
+                            <div class="testimonial-badge">工具包用户</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="testimonial-card-header">
+                                <div class="testimonial-avatar">D</div>
+                                <div class="testimonial-meta">
+                                    <span class="testimonial-name">抖音用户</span>
+                                    <span class="testimonial-src">抖音 · 视频评论区</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-quote">"避坑指南真的有用，我之前反复遇到的mixin注入报错问题，看完马上解决了。"</div>
+                            <div class="testimonial-badge">避坑指南</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     7. FAQ 常见问题
+                     ============================ -->
+                <section class="panel aimod-section aimod-faq-section aimod-section-spacious" aria-label="常见问题">
+                    <div class="panel-title">❓ 常见问题</div>
+                    <div class="faq-list faq-list-clean">
+                        <details class="faq-item faq-item-clean" open>
+                            <summary class="faq-question">购买后提供技术支持吗？</summary>
+                            <div class="faq-answer">购买后可加入专属QQ群答疑，群内有开发者互助</div>
+                        </details>
+                        <details class="faq-item faq-item-clean" open>
+                            <summary class="faq-question">完全不会Java，能学会吗？</summary>
+                            <div class="faq-answer">可以。免费路线专为零基础设计，AI帮你生成代码，跟着做即可跑出模组。</div>
+                        </details>
+                        <details class="faq-item faq-item-clean" open>
+                            <summary class="faq-question">免费内容和付费工具包有什么区别？</summary>
+                            <div class="faq-answer">免费帮你入门（环境+第一个模组+避坑），付费帮你提效（Prompt模板+工作流+工具评测）。</div>
+                        </details>
+                        <details class="faq-item faq-item-clean" open>
+                            <summary class="faq-question">内容会持续更新吗？</summary>
+                            <div class="faq-answer">会。随MC版本和AI工具迭代同步更新，购买后长期有效。</div>
+                        </details>
+                        <details class="faq-item faq-item-clean" open>
+                            <summary class="faq-question">支持哪些模组加载器？</summary>
+                            <div class="faq-answer">Forge、Fabric、NeoForge三大主流加载器均支持。</div>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- ============================
+                     8. 底部 CTA（重复出现）
+                     ============================ -->
+                
+                <!-- ============================
+                     9. 页脚：站外入口 + 社群（弱化视觉）
+                     ============================ -->
+                <footer class="aimod-footer" aria-label="底部信息">
+                    <div class="panel aimod-footer-panel" aria-label="平台入口">
+                        <div class="panel-title aimod-footer-title">📌 更多内容</div>
+                        <div class="platform-grid">
+                            <a class="platform-card" target="_blank" rel="noopener" href="https://space.bilibili.com/3537121929332753">
+                                <span class="platform-icon"><img src="../assets/images/bilibili.png" alt="哔哩哔哩"></span>
+                                <div>
+                                    <div class="platform-title">哔哩哔哩</div>
+                                    <div class="platform-desc">完整系列教程</div>
+                                </div>
+                            </a>
+                            <a class="platform-card" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAZQfWj15fBLrPBch-VEHqMnedWKUx4QPXYcTV1DIiShOI3E8LlvSHZQLET2nRU_IH?from_tab_name=main">
+                                <span class="platform-icon"><img src="../assets/images/douyin.png" alt="抖音"></span>
+                                <div>
+                                    <div class="platform-title">抖音</div>
+                                    <div class="platform-desc">手机端随时查阅</div>
+                                </div>
+                            </a>
+                            <a class="platform-card" target="_blank" rel="noopener" href="https://github.com/xingduansuzhao/">
+                                <span class="platform-icon"><img src="../assets/images/github.png" alt="GitHub"></span>
+                                <div>
+                                    <div class="platform-title">GitHub</div>
+                                    <div class="platform-desc">源码地址</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="panel aimod-footer-panel aimod-footer-qq" aria-label="QQ群">
+                        <div class="panel-title aimod-footer-title"><img src="../assets/images/qq.png" alt="QQ" class="title-icon"> 技术交流群 <span class="qq-hint">(点击复制群号)</span></div>
+                        <div class="qq-grid">
+                            <div class="qq-card" onclick="copyText('176691189')">
+                                <div class="qq-card-text">
+                                    <span class="server-name">群 1：</span>
+                                    <span class="server-number">176691189</span>
+                                </div>
+                                <div class="server-ping"></div>
+                            </div>
+                            <div class="qq-card" onclick="copyText('792419382')">
+                                <div class="qq-card-text">
+                                    <span class="server-name">群 2：</span>
+                                    <span class="server-number">792419382</span>
+                                </div>
+                                <div class="server-ping" style="background:#FFAA00"></div>
+                            </div>
+                            <div class="qq-card" onclick="copyText('750065527')">
+                                <div class="qq-card-text">
+                                    <span class="server-name">群 3：</span>
+                                    <span class="server-number">750065527</span>
+                                </div>
+                                <div class="server-ping" style="background:#55FFFF; box-shadow: 2px 0 0 #00aaaa, 4px 0 0 #005555;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制成功提示 -->
+    <div class="toast" id="toast">✅ 群号已复制！</div>
+
+    <script src="../js/main.js"></script>
+    <script>
+    /* Tab 切换逻辑 */
+    (function() {
+        var tabs = document.querySelectorAll('.pro-tab');
+        var contents = document.querySelectorAll('.pro-tab-content');
+        tabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                tabs.forEach(function(t) { t.classList.remove('active'); });
+                contents.forEach(function(c) { c.classList.remove('active'); });
+                tab.classList.add('active');
+                var target = document.getElementById('tab-' + tab.getAttribute('data-tab'));
+                if (target) target.classList.add('active');
+            });
+        });
+    })();
+
+    /* 视频平台选择弹窗 */
+    function openVideoModal() {
+        document.getElementById('videoModal').classList.add('show');
+    }
+    function closeVideoModal(e) {
+        if (e.target === document.getElementById('videoModal') || e.currentTarget.classList.contains('video-modal-close')) {
+            document.getElementById('videoModal').classList.remove('show');
+        }
+    }
+    </script>
+</body>
+</html>

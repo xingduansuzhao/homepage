@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一个AI模组Prompt｜免费｜星断肃昭</title>
+    <link rel="icon" href="../assets/images/avatar.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="lazypack-page">
+
+    <!-- 顶部 Header -->
+    <header class="site-header">
+        <div class="avatar-slot">
+            <img src="../assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
+        </div>
+        <div class="header-info">
+            <div class="header-title-row">
+                <h1>星断肃昭</h1>
+                <span class="header-en">从零开发模组｜AI效率工具｜环境一键启动</span>
+            </div>
+            <div class="header-actions">
+                <a href="aimod-dev.html" class="btn-back">← 返回AI模组专区</a>
+                <a href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" class="btn-taobao">
+                    <span>个人店铺</span>
+                    <img src="../assets/gif/villager_nod.gif" alt="" class="btn-icon-gif">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <div class="main-wrapper lp-main-wrapper">
+        <div class="gui-outer-wrap">
+            <a href="aimod-dev.html" class="gui-outer-back">← 返回AI模组专区</a>
+            <div class="gui-container lp-gui-container">
+                <div class="lp-scroll-area">
+
+                    <!-- 页面标题 -->
+                    <div class="lp-hero">
+                        <div class="lp-hero-title-row">
+                            <h2 class="lp-hero-title">第一个AI模组 Prompt</h2>
+                        </div>
+                        <div class="lp-hero-tags">
+                            <span class="lp-tag">🟣 免费</span>
+                            <span class="lp-tag-sep">·</span>
+                            <span class="lp-tag">工具型内容</span>
+                            <span class="lp-tag-sep">·</span>
+                            <span class="lp-tag">复制即用</span>
+                        </div>
+                    </div>
+
+                    <!-- 介绍 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">这个Prompt能帮你做什么？</h3>
+                        <div class="free-article-intro">
+                            <p>这是一个<strong>可以直接复制使用的完整Prompt</strong>。把它粘贴到你的AI编程工具中，AI会帮你生成一个可运行的Minecraft模组——包含自定义方块、物品和合成配方。</p>
+                            <div class="free-article-callout free-article-callout-blue">
+                                <strong>前置要求</strong>
+                                <p>你需要先完成 <a href="free-guide-qianwen.html">千问AI接入指南</a> 中的环境搭建，确保AI编程环境可用。</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Prompt 卡片 1 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">Prompt #1：创建模组基础框架</h3>
+                        <p class="prompt-usage-note">先用这个Prompt让AI生成模组的基础结构，包含主类、注册系统等。</p>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-card-label">Prompt · 基础框架</span>
+                                <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                            </div>
+                            <pre class="prompt-card-body">你是一个Minecraft模组开发专家，精通NeoForge 1.21模组开发。
+
+请帮我创建一个NeoForge 1.21模组的基础框架，模组ID为"mymod"，要求：
+
+1. 创建主类 MyMod.java，使用 @Mod 注解
+2. 创建物品注册类 ModItems.java，使用 DeferredRegister
+3. 创建方块注册类 ModBlocks.java，使用 DeferredRegister
+4. 在主类中完成所有注册的初始化
+5. 代码需要兼容 NeoForge 1.21.x
+
+请给出完整的Java代码，每个文件单独列出，并注明文件路径。
+代码中加入必要的中文注释说明每个部分的作用。</pre>
+                        </div>
+                    </section>
+
+                    <!-- Prompt 卡片 2 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">Prompt #2：添加自定义物品</h3>
+                        <p class="prompt-usage-note">框架生成后，用这个Prompt让AI添加一个自定义物品。</p>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-card-label">Prompt · 自定义物品</span>
+                                <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                            </div>
+                            <pre class="prompt-card-body">基于上面的模组框架，请帮我在 ModItems.java 中添加一个自定义物品：
+
+物品名称：magic_gem（魔法宝石）
+要求：
+1. 在 ModItems 中注册该物品
+2. 设置物品属性：最大堆叠64，在创造模式物品栏中可见
+3. 创建语言文件 en_us.json，添加物品的英文名称
+4. 创建对应的物品模型JSON文件
+5. 说明物品材质文件应该放在哪个路径
+
+请给出需要修改和新增的所有文件内容。</pre>
+                        </div>
+                    </section>
+
+                    <!-- Prompt 卡片 3 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">Prompt #3：添加自定义方块</h3>
+                        <p class="prompt-usage-note">接着添加一个自定义方块，并设置掉落物。</p>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-card-label">Prompt · 自定义方块</span>
+                                <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                            </div>
+                            <pre class="prompt-card-body">继续基于当前模组，请帮我在 ModBlocks.java 中添加一个自定义方块：
+
+方块名称：magic_ore（魔法矿石）
+要求：
+1. 在 ModBlocks 中注册该方块
+2. 同时注册对应的 BlockItem（方块物品）
+3. 设置方块属性：硬度3.0，需要铁镐以上挖掘
+4. 创建方块战利品表（loot table），挖掘时掉落1~3个 magic_gem
+5. 创建方块模型JSON和方块状态JSON
+6. 更新语言文件
+
+请给出需要修改和新增的所有文件内容及路径。</pre>
+                        </div>
+                    </section>
+
+                    <!-- Prompt 卡片 4 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">Prompt #4：添加合成配方</h3>
+                        <p class="prompt-usage-note">最后添加合成配方，让模组功能完整闭环。</p>
+
+                        <div class="prompt-card">
+                            <div class="prompt-card-header">
+                                <span class="prompt-card-label">Prompt · 合成配方</span>
+                                <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                            </div>
+                            <pre class="prompt-card-body">继续基于当前模组，请帮我添加以下合成配方：
+
+1. 有序合成：4个 magic_gem + 1个钻石 → 1个钻石剑（工作台合成）
+   布局：
+   空  宝石 空
+   宝石 钻石 宝石
+   空  宝石 空
+
+2. 熔炼配方：magic_ore → magic_gem（熔炉熔炼，经验0.7，时间200tick）
+
+请给出配方JSON文件的完整内容和正确的文件路径。
+同时说明配方数据包的目录结构。</pre>
+                        </div>
+                    </section>
+
+                    <!-- 使用说明 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">使用方法</h3>
+                        <div class="free-article-content">
+                            <ol class="free-article-steps">
+                                <li><strong>按顺序使用</strong>：从 Prompt #1 开始，每次把AI生成的代码放到项目中后，再发送下一个Prompt</li>
+                                <li><strong>保持上下文</strong>：在同一个AI对话窗口中依次发送，AI会记住之前生成的代码</li>
+                                <li><strong>检查并运行</strong>：每步完成后运行 <code>gradlew runClient</code> 检查是否报错</li>
+                                <li><strong>遇到报错？</strong>直接把报错信息粘贴给AI，让它帮你修复</li>
+                            </ol>
+                            <div class="free-article-callout free-article-callout-warn">
+                                <strong>常见问题</strong>
+                                <p>如果AI生成的代码有报错，大概率是API版本不匹配。把完整报错信息发给AI，让它根据报错修改即可。详细的常见错误可参考 <a href="free-guide-pitfalls.html">AI开发避坑指南</a>。</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 效果预览 -->
+                    <!-- <section class="lp-section free-article">
+                        <h3 class="lp-section-title">运行效果预览</h3>
+                        <div class="prompt-result-preview">
+                            <div class="prompt-result-item">
+                                <div class="prompt-result-placeholder">
+                                    <span class="showcase-icon">📸</span>
+                                    <span>替换为：游戏中自定义物品截图</span>
+                                </div>
+                                <div class="prompt-result-label">magic_gem 物品在物品栏中</div>
+                            </div>
+                            <div class="prompt-result-item">
+                                <div class="prompt-result-placeholder">
+                                    <span class="showcase-icon">📸</span>
+                                    <span>替换为：游戏中自定义方块截图</span>
+                                </div>
+                                <div class="prompt-result-label">magic_ore 方块放置在世界中</div>
+                            </div>
+                            <div class="prompt-result-item">
+                                <div class="prompt-result-placeholder">
+                                    <span class="showcase-icon">📸</span>
+                                    <span>替换为：合成界面截图</span>
+                                </div>
+                                <div class="prompt-result-label">合成配方在工作台中可用</div>
+                            </div>
+                        </div>
+                    </section> -->
+
+                    <!-- 下一步 -->
+                    <section class="lp-section free-article">
+                        <h3 class="lp-section-title">下一步</h3>
+                        <div class="free-next-steps">
+                            <a href="free-guide-pitfalls.html" class="free-next-card free-next-primary">
+                                <span class="free-next-icon">🟠</span>
+                                <div>
+                                    <strong>AI开发避坑指南</strong>
+                                    <p>遇到报错？这里有常见问题和修复方案</p>
+                                </div>
+                                <span class="free-next-arrow">→</span>
+                            </a>
+                            <a href="aimod-dev.html#pro-tools" class="free-next-card">
+                                <span class="free-next-icon">🧰</span>
+                                <div>
+                                    <strong>效率工具包（30+ Prompt模板）</strong>
+                                    <p>Entity、UI、事件系统等更多场景Prompt</p>
+                                </div>
+                                <span class="free-next-arrow">→</span>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- 升级提示 -->
+                    <section class="lp-section free-article free-upsell-section">
+                        <div class="free-upsell-box">
+                            <strong>这4个Prompt只是起步</strong>
+                            <p>效率工具包包含 <strong>30+ 场景Prompt模板</strong>，覆盖Entity、事件、UI、配置文件、数据包等完整模组开发场景。每个Prompt都经过实战验证，复制即用。</p>
+                            <a href="aimod-dev.html#pro-tools" class="mc-btn-cta" style="margin-top:10px;display:inline-block;">查看完整Prompt模板库 →</a>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 复制成功提示 -->
+    <div class="toast" id="toast">✅ 已复制！</div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

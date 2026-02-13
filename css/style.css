@@ -1,0 +1,3122 @@
+@font-face {
+    font-family: "MinecraftAE";
+    src: url("../assets/fonts/MinecraftAE.ttf") format("truetype");
+    font-display: swap;
+}
+
+:root {
+    --mc-gui-bg: #c6c6c6;
+    --mc-gui-light: #ffffff;
+    --mc-gui-shadow: #555555;
+    --mc-slot-bg: #8b8b8b;
+    --mc-text-black: #404040;
+    --mc-text-dark: #202020;
+    --mc-green: #55FF55;
+    --mc-btn-hover: #a8a8a8;
+    --mc-link-bg: #a0a0a0;
+}
+
+* { box-sizing: border-box; }
+
+/* Minecraft像素字体仅用于标题、加粗、按钮等强调元素 */
+h1, h2, h3, h4, h5, h6,
+strong, b,
+.btn-taobao,
+.btn-back,
+.gui-outer-back,
+.mc-btn,
+.mc-btn-cta,
+.mc-btn-cta-free,
+.tag,
+.lp-tag,
+.lp-tag-yellow,
+.lp-hero-title,
+.lp-section-title,
+.lp-dl-label,
+.panel-title,
+.platform-title,
+.server-name,
+.entrance-title,
+.entrance-btn,
+.pack-title,
+.aimod-title,
+.header-info h1,
+.header-en {
+    font-family: "MinecraftAE", "VT323", monospace;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    background-color: #101010;
+    background-image: url('../assets/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --------------------------
+   顶部 Header（横跨全屏宽度）
+   -------------------------- */
+.site-header {
+    background-color: var(--mc-gui-bg);
+    border-bottom: 4px solid #000;
+    box-shadow: 
+        inset 0 -4px 0px var(--mc-gui-shadow);
+    padding: 9px 20px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* --------------------------
+   主 GUI 容器 (工作台)
+   -------------------------- */
+.main-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 12px 20px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.gui-container {
+    background-color: var(--mc-gui-bg);
+    border: 4px solid #000;
+    box-shadow: 
+        inset 4px 4px 0px var(--mc-gui-light), 
+        inset -4px -4px 0px var(--mc-gui-shadow);
+    width: 100%;
+    max-width: 1200px;
+    padding: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+.avatar-slot {
+    width: 52px; /* Slightly reduced from original 56px */
+    height: 52px; /* Slightly reduced from original 56px */
+    background-color: var(--mc-slot-bg);
+    border-right: 2px solid var(--mc-gui-light);
+    border-bottom: 2px solid var(--mc-gui-light);
+    border-top: 2px solid #373737;
+    border-left: 2px solid #373737;
+    padding: 3px;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.avatar-slot img {
+    width: 100%;
+    height: 100%;
+    /* 改为自动平滑处理以消除噪点，原为 pixelated */
+    image-rendering: auto;
+    object-fit: cover;
+}
+
+.header-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+}
+
+.header-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.header-info h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--mc-text-dark);
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
+    white-space: nowrap;
+}
+
+.header-en {
+    font-size: 1rem;
+    color: var(--mc-text-black);
+    opacity: 0.85;
+    white-space: nowrap;
+}
+
+.header-subtitle {
+    font-size: 1rem;
+    color: var(--mc-text-black);
+    white-space: nowrap;
+}
+
+.header-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-left: auto;
+}
+
+/* 淘宝风格按钮 (Minecraft化) */
+.btn-taobao {
+    background-color: #ff5000;
+    color: #fff;
+    padding: 4px 12px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    /* MC 风格边框 */
+    border: 2px solid #fff;
+    border-right-color: #aa3300; /* 深橙色/暗色模拟阴影 */
+    border-bottom-color: #aa3300;
+    border-top-color: #ff884d; /* 浅橙色/高光 */
+    border-left-color: #ff884d;
+    
+    box-shadow: 2px 2px 0 #000; /* 外阴影增加立体感 */
+    position: relative;
+    transition: none; /* 像素风通常不需要平滑过渡 */
+}
+
+.btn-taobao:hover {
+    background-color: #ff6a00;
+    border-top-color: #ffaa77;
+    border-left-color: #ffaa77;
+}
+
+.btn-taobao:active {
+    border: 2px solid #aa3300;
+    border-right-color: #ff884d;
+    border-bottom-color: #ff884d;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.btn-icon-gif {
+    height: 40px; /* 进一步放大 GIF */
+    width: auto;
+    image-rendering: pixelated; /* 保持像素风清晰 */
+    display: block;
+}
+
+/* --------------------------
+   布局网格 (Dashboard)
+   -------------------------- */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.content-area > .pack-highlight {
+    flex: 1;
+}
+
+.content-area > .bottom-stack {
+    flex: 0 0 auto; 
+}
+
+/* 通用板块样式 */
+.panel {
+    background: rgba(0,0,0,0.05);
+    padding: 8px; /* Balanced from 6px */
+    border: 2px solid var(--mc-gui-shadow);
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    border-top-color: var(--mc-gui-shadow);
+    border-left-color: var(--mc-gui-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-title {
+    font-size: 1.2rem; 
+    color: var(--mc-text-dark);
+    margin-bottom: 6px; /* Balanced from 4px */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.title-icon {
+    width: 28px; /* Balanced from 24px */
+    height: 28px; 
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* --------------------------
+   懒人包专区 (优化后)
+   -------------------------- */
+.pack-highlight {
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: stretch;
+    flex: 1;
+    min-height: 0;
+    padding: 6px 10px;
+}
+
+.pack-icon-large {
+    aspect-ratio: 1 / 1;
+    height: 96%; /* Adjusted from 92% to 96% to minimize whitespace */
+    align-self: center; /* Center vertically */
+    background: #8b8b8b;
+    border: 3px solid #373737;
+    padding: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.pack-icon-large img {
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    object-fit: cover;
+}
+
+.pack-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pack-title {
+    margin: 0 0 4px 0;
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    color: var(--mc-text-dark);
+}
+
+.pack-desc {
+    margin: 4px 0 6px 0;
+    color: var(--mc-text-black);
+    font-size: 1.05rem;
+    line-height: 1.2;
+}
+
+.pack-tags {
+    display: flex;
+    gap: 10px;
+    margin: 6px 0;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #404040;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 0.9rem;
+    border: 1px solid #000;
+}
+
+.pack-links {
+    display: grid;
+    gap: 5px;
+    margin-top: 4px;
+}
+
+.mc-link {
+    display: block;
+    background: var(--mc-link-bg);
+    border: 2px solid #555;
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    border-top-color: #555;
+    border-left-color: #555;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #111;
+    font-size: 1rem;
+    line-height: 1.15;
+    transition: background 0.1s;
+}
+
+.mc-link:hover { background: #b0b0b0; }
+
+.mc-link:active {
+    transform: translateY(2px);
+    border: 2px solid var(--mc-gui-light);
+    border-bottom-color: #555;
+    border-right-color: #555;
+}
+
+.pack-note {
+    margin: 4px 0 0 0;
+    color: var(--mc-text-black);
+    font-size: 0.95rem;
+}
+
+.mc-link-inline {
+    color: #D4A017;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.mc-link-inline:hover {
+    color: #FFD700;
+}
+
+/* Minecraft 风格按钮 */
+.mc-btn {
+    background-color: var(--mc-gui-bg);
+    border: 2px solid #fff;
+    border-right-color: #555;
+    border-bottom-color: #555;
+    color: var(--mc-text-dark);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    margin-top: auto;
+    position: relative;
+}
+
+.mc-btn:active {
+    border: 2px solid #555;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+    transform: translateY(2px);
+}
+
+.mc-btn:hover { background-color: var(--mc-btn-hover); }
+
+.btn-green { color: #006400; font-weight: bold; }
+.btn-blue { color: #0000AA; font-weight: bold; }
+
+/* --------------------------
+   底部双板块
+   -------------------------- */
+.bottom-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.bottom-stack > .panel {
+    /* Removed flex: 1 and min-height to allow auto-sizing */
+}
+
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px; /* Balanced from 6px */
+    /* Removed flex: 1 to allow grid to dictate height */
+}
+
+.platform-card {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Balanced from 8px */
+    background: var(--mc-link-bg);
+    padding: 8px 10px; /* Balanced from 6px 8px */
+    border: 2px solid #555;
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    text-decoration: none;
+    color: var(--mc-text-black);
+    transition: background 0.1s;
+}
+
+.platform-card:hover { background: #b0b0b0; color: #000; }
+
+.platform-icon {
+    width: 42px; /* Balanced from 36px */
+    height: 42px; 
+    flex-shrink: 0;
+}
+
+.platform-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+.platform-title { font-weight: bold; font-size: 1rem; color: #111; }
+.platform-desc { font-size: 0.88rem; color: #333; margin-top: 2px; line-height: 1.1; }
+
+/* --------------------------
+   QQ 卡片（三列）
+   -------------------------- */
+.qq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px; /* Balanced from 6px */
+    /* Removed flex: 1 to allow grid to dictate height */
+}
+
+.qq-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px; /* Balanced from 6px 10px */
+    border: 2px solid #555;
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    background: #101010;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.qq-card:hover { border-color: #fff; background: #202020; }
+
+.qq-card-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.server-name { color: #fff; font-size: 1rem; }
+.server-number { font-size: 1rem; color: #aaa; }
+.server-ping { 
+    width: 10px; height: 14px; 
+    background: var(--mc-green); 
+    display: inline-block; 
+    margin-top: 2px;
+    box-shadow: 2px 0 0 #00aa00, 4px 0 0 #005500;
+}
+
+/* 提示 Toast */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #202020;
+    color: #ffff55;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 100;
+}
+
+.toast.show { opacity: 1; }
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    body { height: auto; min-height: 100vh; overflow: auto; background-attachment: scroll; }
+    .main-wrapper { padding: 10px; overflow: auto; }
+    .gui-container { height: auto; }
+    .site-header { flex-wrap: wrap; padding: 8px 12px; }
+    .header-info { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .header-tags { margin-left: 0; margin-top: 6px; }
+    .pack-highlight { flex-direction: column; text-align: center; align-items: center; padding: 10px; }
+    .pack-icon-large { width: 120px; height: 120px; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .qq-grid { grid-template-columns: 1fr; }
+}
+
+/* Call to Action Button */
+.mc-btn-cta {
+    display: inline-block;
+    background-color: #F5A623; /* Vitality Orange */
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    font-weight: bold;
+    border: 2px solid #fff;
+    border-right-color: #aa5500;
+    border-bottom-color: #aa5500;
+    border-top-color: #ffcc66;
+    border-left-color: #ffcc66;
+    box-shadow: 2px 2px 0 #000;
+    transition: none;
+    font-size: 1rem;
+    margin-left: 8px;
+    vertical-align: middle;
+    animation: breathe 3s infinite ease-in-out; /* Breathing animation */
+}
+
+.mc-btn-cta:hover {
+    background-color: #ffcc00;
+    border-top-color: #ffeebb;
+    border-left-color: #ffeebb;
+}
+
+.mc-btn-cta:active {
+    border: 2px solid #aa5500;
+    border-right-color: #ffcc66;
+    border-bottom-color: #ffcc66;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* --------------------------
+
+   New Styles for Optimized Pack Layout
+
+   -------------------------- */
+
+.pack-subtitle {
+
+    font-size: 1.05rem;
+
+    color: var(--mc-text-black);
+
+    margin-bottom: 12px;
+
+}
+
+
+
+.free-trial-section {
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.free-trial-header {
+
+    font-weight: bold;
+
+    color: #4A90E2; /* Bright blue for free/safe */
+
+    font-size: 1.1rem;
+
+    margin-bottom: 6px;
+
+}
+
+
+
+.pack-links-container {
+
+    background-color: #d0d0d0; /* Light gray background */
+
+    padding: 8px;
+
+    border: 1px solid #a0a0a0;
+
+    border-radius: 2px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+
+.paid-service-section {
+
+
+
+    margin-top: 18px; /* Slightly reduced from 20px */
+
+
+
+    display: flex;
+
+
+
+    flex-direction: column; /* Or row depending on space, requirement says text above or left */
+
+
+
+    gap: 8px;
+
+
+
+    align-items: flex-start;
+
+
+
+}
+
+
+
+.paid-service-text {
+
+    font-size: 1.05rem;
+
+    color: var(--mc-text-dark);
+
+}
+
+
+
+.highlight-orange {
+
+    color: #F5A623; /* Vitality Orange for paid/core */
+
+    font-weight: bold;
+
+    font-size: 1.15rem;
+
+}
+
+
+
+@keyframes breathe {
+
+    0%, 100% { transform: scale(1); }
+
+    50% { transform: scale(1.05); }
+
+}
+
+
+
+.cta-button-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px; /* Reduced gap */
+
+    margin-top: 4px;
+
+}
+
+
+
+.cta-arrow {
+
+    font-size: 1.5rem;
+
+    color: #000; /* Changed to black */
+
+    font-weight: bold;
+
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5); /* Light shadow for subtle depth on grey background */
+
+}
+
+/* --------------------------
+   入口分流页面样式
+   -------------------------- */
+.entrance-panel {
+    flex: 1;
+    min-height: 0;
+    padding: 12px 20px;
+    flex-shrink: 0;
+}
+
+.homepage-hero {
+    text-align: center;
+    padding: 12px 18px;
+    flex-shrink: 0;
+}
+
+.homepage-hero-inner {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.homepage-hero-title {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+    color: #1f1f1f;
+}
+
+.homepage-hero-subtitle {
+    margin: 0;
+    font-size: 1.05rem;
+    color: #303030;
+}
+
+.entrance-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.entrance-grid-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.entrance-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 16px;
+    text-decoration: none;
+    border: 3px solid #555;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+    border-top-color: #555;
+    border-left-color: #555;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lazypack-entrance {
+    background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+}
+
+.aimod-entrance {
+    background: linear-gradient(135deg, #9C27B0 0%, #6A1B9A 100%);
+}
+
+.rookie-entrance {
+    background: linear-gradient(135deg, #FFC107 0%, #F57F17 100%);
+}
+
+.entrance-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.entrance-card:active {
+    transform: translateY(0);
+}
+
+.entrance-icon {
+    width: 90px;
+    height: 90px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.entrance-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: auto;
+}
+
+.entrance-content {
+    text-align: center;
+    color: #fff;
+}
+
+.entrance-title {
+    margin: 0 0 6px 0;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.entrance-desc {
+    margin: 0 0 10px 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.entrance-btn {
+    display: inline-block;
+    background: #fff;
+    color: #333;
+    padding: 8px 20px;
+    border: 2px solid #fff;
+    border-right-color: #ccc;
+    border-bottom-color: #ccc;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.trust-panel {
+    padding: 10px 16px;
+    flex-shrink: 0;
+}
+
+.trust-list {
+    margin: 0;
+    padding-left: 20px;
+    color: #1f1f1f;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+/* 返回按钮 - 位于矩形外部左上角 */
+.btn-back {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    background: #666;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 1rem;
+    border: 2px solid #fff;
+    border-right-color: #444;
+    border-bottom-color: #444;
+    border-top-color: #888;
+    border-left-color: #888;
+    z-index: 10;
+    transition: none;
+}
+
+.btn-back:hover {
+    background: #777;
+    border-top-color: #aaa;
+    border-left-color: #aaa;
+}
+
+.btn-back:active {
+    border: 2px solid #444;
+    border-right-color: #888;
+    border-bottom-color: #888;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    position: relative;
+}
+
+.btn-back {
+    background: #666;
+    color: #fff;
+    padding: 6px 14px;
+    text-decoration: none;
+    font-size: 1rem;
+    border: 2px solid #fff;
+    border-right-color: #444;
+    border-bottom-color: #444;
+    border-top-color: #888;
+    border-left-color: #888;
+    transition: none;
+}
+
+.btn-back:hover {
+    background: #777;
+    border-top-color: #aaa;
+    border-left-color: #aaa;
+}
+
+.btn-back:active {
+    border: 2px solid #444;
+    border-right-color: #888;
+    border-bottom-color: #888;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* ============================================
+   GUI 外部返回按钮（通用）
+   ============================================ */
+.gui-outer-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.gui-outer-wrap > .gui-container {
+    flex: 1;
+    min-height: 0;
+    max-width: none;
+    width: 100%;
+}
+
+.gui-outer-back {
+    position: absolute;
+    left: -140px;
+    top: 0;
+    background: #555;
+    color: #fff;
+    padding: 6px 14px;
+    text-decoration: none;
+    font-size: 1rem;
+    white-space: nowrap;
+    border: 2px solid #888;
+    border-right-color: #333;
+    border-bottom-color: #333;
+    border-top-color: #888;
+    border-left-color: #888;
+    box-shadow: 2px 2px 0 #000;
+    transition: none;
+    z-index: 10;
+}
+
+.gui-outer-back:hover {
+    background: #666;
+    border-top-color: #aaa;
+    border-left-color: #aaa;
+}
+
+.gui-outer-back:active {
+    border: 2px solid #333;
+    border-right-color: #888;
+    border-bottom-color: #888;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+/* 窗口不够宽时，按钮回到上方 */
+@media (max-width: 1500px) {
+    .gui-outer-back {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: 6px;
+    }
+}
+
+/* ============================================
+   懒人包专区 - 文档式长页面布局
+   ============================================ */
+
+/* 页面级：允许滚动 */
+body.lazypack-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+body.lazypack-page .main-wrapper.lp-main-wrapper {
+    overflow: visible;
+    min-height: 0;
+    padding-bottom: 20px;
+}
+
+body.lazypack-page .gui-container.lp-gui-container {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+}
+
+body.lazypack-page .gui-outer-wrap {
+    height: auto;
+    flex: none;
+}
+
+.lp-scroll-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* ---------- 大标题区 ---------- */
+.lp-hero {
+    text-align: center;
+    padding: 24px 12px 16px;
+    border-bottom: 3px solid var(--mc-gui-shadow);
+}
+
+.lp-hero-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.lp-hero-title {
+    margin: 0;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--mc-text-dark);
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
+}
+
+.lp-hero-logo {
+    width: 64px;
+    height: 64px;
+    background: #8b8b8b;
+    border: 3px solid #373737;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.lp-hero-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+.lp-hero-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    font-size: 1rem;
+    color: #333;
+}
+
+.lp-tag {
+    color: #333;
+}
+
+.lp-tag-yellow {
+    color: #9A7B00;
+    font-weight: bold;
+}
+
+.lp-tag-sep {
+    color: #777;
+    margin: 0 2px;
+}
+
+/* ---------- 通用 Section ---------- */
+.lp-section {
+    padding: 18px 16px;
+    border-bottom: 2px solid rgba(0,0,0,0.08);
+}
+
+.lp-section:last-of-type {
+    border-bottom: none;
+}
+
+.lp-section-title {
+    margin: 0 0 12px 0;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--mc-text-dark);
+    padding-bottom: 6px;
+    border-bottom: 2px solid #b0b0b0;
+}
+
+/* ---------- 痛点列表 ---------- */
+.lp-pain-list {
+    list-style: disc;
+    padding-left: 24px;
+    margin: 0 0 12px 0;
+    color: #1a1a1a;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.lp-pain-list li {
+    margin-bottom: 2px;
+}
+
+.lp-lead-text {
+    margin: 8px 0 0 0;
+    color: #444;
+    font-size: 1.05rem;
+    font-style: italic;
+}
+
+/* ---------- Callout 信息框 ---------- */
+.lp-callout {
+    border: 2px solid;
+    padding: 14px 16px;
+    margin-top: 8px;
+    background: rgba(255,255,255,0.5);
+}
+
+.lp-callout-blue {
+    border-color: #4A90E2;
+    border-left-width: 5px;
+    background: rgba(74, 144, 226, 0.08);
+}
+
+.lp-callout-green {
+    border-color: #4CAF50;
+    border-left-width: 5px;
+    background: rgba(76, 175, 80, 0.08);
+}
+
+.lp-callout-purple {
+    border-color: #9C7CBA;
+    border-left-width: 5px;
+    background: rgba(156, 124, 186, 0.08);
+}
+
+.lp-callout-header {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+/* ---------- 下载列表 ---------- */
+.lp-download-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.lp-download-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--mc-link-bg);
+    border: 2px solid #555;
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    border-top-color: #555;
+    border-left-color: #555;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #111;
+    font-size: 1.05rem;
+    transition: background 0.1s;
+}
+
+.lp-download-item:hover {
+    background: #b0b0b0;
+}
+
+.lp-download-item:active {
+    transform: translateY(2px);
+    border: 2px solid var(--mc-gui-light);
+    border-bottom-color: #555;
+    border-right-color: #555;
+}
+
+.lp-dl-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.lp-dl-label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.lp-dl-link {
+    color: #0d5bbd;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.lp-download-item:hover .lp-dl-link {
+    color: #083d80;
+}
+
+/* ---------- 付费服务区 ---------- */
+.lp-paid-feature-icon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+}
+
+.lp-paid-features {
+    list-style: disc;
+    padding-left: 24px;
+    margin: 0 0 10px 0;
+    color: #1a1a1a;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.lp-paid-features li {
+    margin-bottom: 2px;
+}
+
+.lp-paid-price {
+    margin: 8px 0 12px 0;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.04);
+    border-left: 3px solid #F5A623;
+}
+
+.lp-price-formula {
+    font-size: 1.15rem;
+    color: #111;
+    font-weight: 500;
+}
+
+.lp-paid-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lp-cta-pointer {
+    font-size: 1.4rem;
+}
+
+/* ---------- 交流 & 互助 ---------- */
+.lp-community-intro {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.lp-inline-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    image-rendering: crisp-edges;
+    flex-shrink: 0;
+}
+
+.lp-qq-list {
+    list-style: disc;
+    padding-left: 28px;
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #1a1a1a;
+}
+
+.lp-qq-number {
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    border-bottom: 1px dashed #999;
+    transition: color 0.1s;
+}
+
+.lp-qq-number:hover {
+    color: #1a73e8;
+}
+
+/* ---------- 底部 bottom-stack 在 lazypack 的间距 ---------- */
+.lp-scroll-area > .bottom-stack {
+    margin-top: 12px;
+}
+
+/* ---------- 移动端适配 ---------- */
+@media (max-width: 768px) {
+    .lp-hero { padding: 16px 8px 12px; }
+    .lp-hero-title-row { flex-direction: column; gap: 10px; }
+    .lp-hero-logo { width: 48px; height: 48px; }
+    .lp-section { padding: 14px 10px; }
+    .lp-callout { padding: 10px 12px; }
+    .lp-download-item { flex-wrap: wrap; }
+    .lp-dl-label { white-space: normal; }
+    .lp-paid-cta { flex-wrap: wrap; }
+    .lp-community-intro { flex-wrap: wrap; }
+}
+
+/* ============================================
+   AI模组开发专区页面（v2 重构）
+   ============================================ */
+
+/* --- 通用 Section --- */
+.aimod-section {
+    padding: 20px 24px;
+}
+
+.aimod-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.aimod-section-tag {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    font-weight: bold;
+    border: 1px solid;
+}
+
+.aimod-tag-free {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-color: #81c784;
+}
+
+.aimod-tag-pro {
+    background: #fff3e0;
+    color: #e65100;
+    border-color: #ffb74d;
+}
+
+/* --- 1. 首屏 Hero v2 --- */
+.aimod-hero-v2 {
+    text-align: center;
+    padding: 44px 28px 32px;
+    background: linear-gradient(180deg, rgba(106, 27, 154, 0.06) 0%, rgba(255,255,255,0.35) 100%);
+    border-bottom: 3px solid #9C27B0;
+}
+
+.aimod-hero-badge {
+    display: inline-block;
+    background: #6A1B9A;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 3px 14px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    border: 2px solid #9C27B0;
+    border-right-color: #4A0072;
+    border-bottom-color: #4A0072;
+    letter-spacing: 1px;
+}
+
+.aimod-hero-title-v2 {
+    margin: 0 0 10px 0;
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+.aimod-hero-subtitle-v2 {
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: #555;
+    max-width: 480px;
+    line-height: 1.5;
+}
+
+.aimod-hero-actions-v2 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.aimod-primary-cta {
+    font-size: 1.2rem !important;
+    padding: 10px 32px !important;
+    margin-left: 0 !important;
+    box-shadow: 3px 3px 0 #000, 0 0 12px rgba(245, 166, 35, 0.3) !important;
+}
+
+.aimod-hero-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 2px solid rgba(0,0,0,0.06);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 28px;
+}
+
+.stat-number {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.6rem;
+    color: #6A1B9A;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 2px;
+}
+
+.stat-divider {
+    width: 2px;
+    height: 32px;
+    background: #ccc;
+    flex-shrink: 0;
+}
+
+/* --- 2. 免费区块 --- */
+.aimod-free-section {
+    padding: 20px 24px 24px;
+}
+
+.aimod-card-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.aimod-card {
+    background: #fff;
+    border: 2px solid #bbb;
+    border-bottom-color: #e8e8e8;
+    border-right-color: #e8e8e8;
+    border-top-color: #999;
+    border-left-color: #999;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.aimod-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.aimod-card-free {
+    border-top: 3px solid #4CAF50;
+}
+
+.aimod-card-pro {
+    border-top: 3px solid #F5A623;
+}
+
+/* aimod-card-top is defined below with centered buttons */
+
+.aimod-card-cta {
+    font-size: 0.85rem !important;
+    padding: 4px 12px !important;
+    margin-left: 0 !important;
+}
+
+/* 免费卡片加大按钮 */
+.aimod-card-cta-big {
+    font-size: 1rem !important;
+    padding: 6px 16px !important;
+    margin-left: 0 !important;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.15) !important;
+}
+
+/* 卡片结果导向总结 */
+.aimod-card-result {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1rem;
+    color: #2e7d32;
+    font-weight: bold;
+    margin-bottom: 4px;
+    padding: 3px 0;
+    border-bottom: 2px solid #c8e6c9;
+}
+
+.aimod-card h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+}
+
+.aimod-card-desc {
+    margin: 0 0 10px 0;
+    color: #444;
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
+.aimod-card-meta {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.meta-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.meta-icon {
+    flex-shrink: 0;
+    font-size: 0.9rem;
+}
+
+/* 免费卡片升级钩子 */
+.aimod-card-upsell {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed #d0d0d0;
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.4;
+}
+
+.aimod-card-upsell a {
+    color: #6A1B9A;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.aimod-card-upsell a:hover {
+    color: #9C27B0;
+}
+
+/* --- 3. 实战效果展示 --- */
+.aimod-showcase-section {
+    padding: 20px 24px 24px;
+}
+
+.aimod-showcase-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.aimod-showcase-item {
+    text-align: center;
+}
+
+.aimod-showcase-featured {
+    grid-row: 1;
+}
+
+.aimod-showcase-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.showcase-placeholder {
+    background: #f5f5f5;
+    border: 2px dashed #bbb;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 100px;
+    color: #777;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+}
+
+.showcase-placeholder:hover {
+    border-color: #9C27B0;
+}
+
+.showcase-placeholder-main {
+    min-height: 280px;
+    background: linear-gradient(135deg, #f3e5f5 0%, #ede7f6 100%);
+    border-color: #9C27B0;
+    border-style: solid;
+}
+
+.showcase-main-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #6A1B9A;
+}
+
+.showcase-sub-text {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* 视频封面样式 */
+.showcase-placeholder-video {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid #444;
+    border-style: solid;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+.showcase-placeholder-video .showcase-icon {
+    font-size: 2.5rem;
+    width: 48px;
+    height: 48px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.showcase-placeholder-video:hover .showcase-icon {
+    background: rgba(156, 39, 176, 0.5);
+}
+
+.showcase-placeholder-video:hover {
+    border-color: #9C27B0;
+}
+
+.showcase-video-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.showcase-placeholder-github {
+    background: #f0f7f0;
+    border-color: #66bb6a;
+}
+
+.showcase-github-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.showcase-github-link:hover .showcase-placeholder {
+    border-color: #4CAF50;
+    background: #e8f5e9;
+}
+
+.showcase-icon {
+    font-size: 2rem;
+}
+
+.showcase-label {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.aimod-showcase-note {
+    text-align: center;
+    margin: 14px 0 0;
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* --- 4. 付费工具包 --- */
+.aimod-pro-section {
+    padding: 20px 24px 24px;
+    background: linear-gradient(135deg, rgba(245, 166, 35, 0.04) 0%, rgba(255,255,255,0.6) 100%);
+    border-left: 4px solid #F5A623;
+}
+
+.aimod-pro-headline {
+    font-size: 1.1rem;
+    color: #e65100;
+    font-weight: bold;
+    padding: 10px 14px;
+    background: rgba(245, 166, 35, 0.1);
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.aimod-pro-value {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 12px 0 20px;
+}
+
+.pro-value-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #fff;
+    padding: 12px 14px;
+    border: 1px solid #e0e0e0;
+}
+
+.pro-value-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.pro-value-item strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+    font-size: 1rem;
+}
+
+.pro-value-item p {
+    margin: 0;
+    color: #444;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.aimod-pro-preview {
+    margin-bottom: 20px;
+}
+
+.pro-preview-title {
+    margin: 0 0 10px 0;
+    font-size: 1.05rem;
+    color: #1a1a1a;
+}
+
+.pro-example {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: #f7f7f7;
+    border-left: 3px solid #F5A623;
+}
+
+.pro-example-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+}
+
+.pro-example code {
+    font-size: 0.85rem;
+    color: #333;
+    display: block;
+    line-height: 1.45;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+/* 使用前后对比 */
+.aimod-pro-compare {
+    margin-bottom: 20px;
+}
+
+.pro-compare-title {
+    margin: 0 0 10px 0;
+    font-size: 1.05rem;
+    color: #1a1a1a;
+}
+
+.compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.compare-col {
+    padding: 12px 14px;
+    border: 2px solid;
+}
+
+.compare-before {
+    border-color: #c9a0a0;
+    border-left-width: 4px;
+    background: rgba(180, 100, 100, 0.06);
+}
+
+.compare-after {
+    border-color: #8cb8a0;
+    border-left-width: 4px;
+    background: rgba(100, 160, 120, 0.06);
+}
+
+.compare-header {
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    font-family: "MinecraftAE", "VT323", monospace;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.compare-icon {
+    font-size: 1.2rem;
+}
+
+.compare-col ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+.aimod-pro-cta-area {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.aimod-pro-cta-note {
+    font-size: 0.82rem;
+    color: #888;
+}
+
+/* --- 5. 用户反馈/案例 --- */
+.aimod-testimonial-section {
+    padding: 20px 24px 24px;
+}
+
+.testimonial-source-note {
+    font-size: 0.82rem;
+    color: #999;
+    margin: 2px 0 0;
+    font-style: italic;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.testimonial-card {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-bottom-color: #f0f0f0;
+    border-right-color: #f0f0f0;
+    border-top-color: #bbb;
+    border-left-color: #bbb;
+    border-left: 3px solid #9C27B0;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* 评论卡片头部（头像 + 来源） */
+.testimonial-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.testimonial-avatar {
+    width: 32px;
+    height: 32px;
+    background: #6A1B9A;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid #9C27B0;
+}
+
+.testimonial-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.testimonial-name {
+    font-size: 0.85rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.testimonial-src {
+    font-size: 0.72rem;
+    color: #888;
+    background: #f0f0f0;
+    padding: 1px 6px;
+    display: inline-block;
+}
+
+.testimonial-quote {
+    font-size: 0.92rem;
+    color: #333;
+    line-height: 1.55;
+    flex: 1;
+    font-style: italic;
+    padding-left: 2px;
+}
+
+.testimonial-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #6A1B9A;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    font-weight: bold;
+}
+
+/* --- 6. FAQ --- */
+.aimod-faq-section {
+    padding: 20px 24px 24px;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.faq-item {
+    border: 2px solid #ccc;
+    border-bottom-color: #e8e8e8;
+    border-right-color: #e8e8e8;
+    border-top-color: #999;
+    border-left-color: #999;
+    background: #fff;
+}
+
+.faq-question {
+    padding: 10px 14px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #1a1a1a;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.faq-question::before {
+    content: "▶";
+    font-size: 0.7rem;
+    color: #888;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+
+.faq-item[open] .faq-question::before {
+    transform: rotate(90deg);
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-answer {
+    padding: 0 14px 12px 30px;
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* --- 7. 页脚 --- */
+.aimod-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.aimod-footer-panel {
+    opacity: 0.75;
+}
+
+.aimod-footer-panel:hover {
+    opacity: 0.95;
+}
+
+.aimod-footer-title {
+    font-size: 1rem !important;
+}
+
+.qq-hint {
+    font-size: 0.8rem;
+    color: #888;
+    font-weight: normal;
+}
+
+.aimod-footer-qq .qq-card {
+    padding: 6px 10px;
+}
+
+/* ============================================
+   免费资源子页面样式
+   ============================================ */
+
+/* --- 文章通用 --- */
+.free-article {
+    padding: 18px 16px;
+}
+
+.free-article-intro {
+    font-size: 1.02rem;
+    color: #1a1a1a;
+    line-height: 1.7;
+}
+
+.free-article-intro p {
+    margin: 0 0 10px;
+}
+
+.free-article-content {
+    font-size: 1rem;
+    color: #1a1a1a;
+    line-height: 1.7;
+}
+
+.free-article-content p {
+    margin: 0 0 10px;
+}
+
+.free-article-content code {
+    background: #e8e8e8;
+    padding: 1px 5px;
+    font-size: 0.9rem;
+    border: 1px solid #d0d0d0;
+}
+
+.free-article-checklist {
+    list-style: none;
+    padding-left: 4px;
+    margin: 10px 0;
+}
+
+.free-article-checklist li {
+    padding: 3px 0;
+    padding-left: 24px;
+    position: relative;
+}
+
+.free-article-checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+}
+
+.free-article-steps {
+    padding-left: 20px;
+    margin: 10px 0;
+    line-height: 1.8;
+}
+
+.free-article-steps li {
+    margin-bottom: 4px;
+}
+
+/* --- 文章 Callout --- */
+.free-article-callout {
+    border: 2px solid;
+    padding: 12px 14px;
+    margin: 12px 0;
+    background: rgba(255,255,255,0.5);
+    border-left-width: 4px;
+}
+
+.free-article-callout-blue {
+    border-color: #4A90E2;
+    background: rgba(74, 144, 226, 0.06);
+}
+
+.free-article-callout-warn {
+    border-color: #F5A623;
+    background: rgba(245, 166, 35, 0.06);
+}
+
+.free-article-callout strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #1a1a1a;
+}
+
+.free-article-callout p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+/* --- Prompt 卡片 --- */
+.prompt-card {
+    border: 2px solid #6A1B9A;
+    background: #1a1a2e;
+    margin: 12px 0;
+    overflow: hidden;
+}
+
+.prompt-card-inline {
+    border-color: #999;
+    background: #f5f5f5;
+}
+
+.prompt-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: #6A1B9A;
+    color: #fff;
+}
+
+.prompt-card-inline .prompt-card-header {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.prompt-card-label {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.prompt-copy-btn {
+    background: #F5A623;
+    color: #fff;
+    border: 2px solid #fff;
+    border-right-color: #aa5500;
+    border-bottom-color: #aa5500;
+    border-top-color: #ffcc66;
+    border-left-color: #ffcc66;
+    padding: 4px 14px;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: none;
+}
+
+.prompt-copy-btn:hover {
+    background: #ffcc00;
+}
+
+.prompt-copy-btn:active {
+    border: 2px solid #aa5500;
+    border-right-color: #ffcc66;
+    border-bottom-color: #ffcc66;
+    transform: translate(1px, 1px);
+}
+
+.prompt-card-body {
+    margin: 0;
+    padding: 14px 16px;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    overflow-x: auto;
+}
+
+.prompt-card-inline .prompt-card-body {
+    color: #333;
+    background: #fafafa;
+}
+
+.prompt-usage-note {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 4px;
+}
+
+/* --- Prompt 效果预览 --- */
+.prompt-result-preview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.prompt-result-item {
+    text-align: center;
+}
+
+.prompt-result-placeholder {
+    background: #f0f0f0;
+    border: 2px dashed #bbb;
+    padding: 24px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 90px;
+    color: #777;
+    font-size: 0.88rem;
+}
+
+.prompt-result-label {
+    margin-top: 6px;
+    font-size: 0.82rem;
+    color: #555;
+}
+
+/* --- 下一步导航卡片 --- */
+.free-next-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.free-next-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-bottom-color: #e8e8e8;
+    border-right-color: #e8e8e8;
+    border-top-color: #999;
+    border-left-color: #999;
+    text-decoration: none;
+    color: #1a1a1a;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.free-next-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.free-next-primary {
+    border-left: 4px solid #6A1B9A;
+}
+
+.free-next-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.free-next-card strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.free-next-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.free-next-arrow {
+    margin-left: auto;
+    font-size: 1.3rem;
+    color: #999;
+    flex-shrink: 0;
+}
+
+/* --- 下载区 --- */
+.free-download-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.free-download-btn {
+    font-size: 1rem !important;
+}
+
+.free-download-note {
+    margin: 8px 0 0;
+    font-size: 0.82rem;
+    color: #999;
+}
+
+/* --- 升级提示 --- */
+.free-upsell-section {
+    border-bottom: none !important;
+}
+
+.free-upsell-box {
+    padding: 14px 18px;
+    background: rgba(245, 166, 35, 0.06);
+    border: 2px solid rgba(245, 166, 35, 0.25);
+    border-left-width: 4px;
+    border-left-color: #F5A623;
+}
+
+.free-upsell-box strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #e65100;
+    font-size: 1.02rem;
+}
+
+.free-upsell-box p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+.free-upsell-box a {
+    color: #6A1B9A;
+    font-weight: bold;
+}
+
+/* --- 避坑指南专用 --- */
+.pitfall-toc {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-bottom-color: #e8e8e8;
+    border-right-color: #e8e8e8;
+    border-top-color: #999;
+    border-left-color: #999;
+    padding: 12px 16px;
+}
+
+.pitfall-toc ol {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 2;
+}
+
+.pitfall-toc a {
+    color: #6A1B9A;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.pitfall-toc a:hover {
+    text-decoration: underline;
+    color: #9C27B0;
+}
+
+.pitfall-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pitfall-symptom,
+.pitfall-cause,
+.pitfall-fix {
+    padding: 10px 14px;
+    border-left: 3px solid;
+}
+
+.pitfall-symptom {
+    border-left-color: #e57373;
+    background: rgba(229, 115, 115, 0.06);
+}
+
+.pitfall-cause {
+    border-left-color: #FFB74D;
+    background: rgba(255, 183, 77, 0.06);
+}
+
+.pitfall-fix {
+    border-left-color: #81c784;
+    background: rgba(129, 199, 132, 0.06);
+}
+
+.pitfall-content strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+    color: #1a1a1a;
+}
+
+.pitfall-content p {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+.pitfall-content ul,
+.pitfall-content ol {
+    margin: 4px 0 0;
+    padding-left: 18px;
+    font-size: 0.92rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.pitfall-tip {
+    padding: 8px 12px;
+    background: rgba(74, 144, 226, 0.06);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    font-size: 0.88rem;
+    color: #333;
+}
+
+.pitfall-back-top {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: #999;
+    text-decoration: none;
+}
+
+.pitfall-back-top:hover {
+    color: #6A1B9A;
+}
+
+/* --- 免费按钮（绿色系，区分付费黄色） --- */
+.mc-btn-cta-free {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    font-weight: bold;
+    font-family: "MinecraftAE", "VT323", monospace;
+    border: 2px solid #fff;
+    border-right-color: #2E7D32;
+    border-bottom-color: #2E7D32;
+    border-top-color: #81C784;
+    border-left-color: #81C784;
+    box-shadow: 2px 2px 0 #000;
+    transition: none;
+    font-size: 1rem;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.mc-btn-cta-free:hover {
+    background-color: #66BB6A;
+    border-top-color: #A5D6A7;
+    border-left-color: #A5D6A7;
+}
+
+.mc-btn-cta-free:active {
+    border: 2px solid #2E7D32;
+    border-right-color: #81C784;
+    border-bottom-color: #81C784;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.aimod-primary-cta-free {
+    font-size: 1.2rem !important;
+    padding: 10px 32px !important;
+    margin-left: 0 !important;
+    box-shadow: 3px 3px 0 #000, 0 0 12px rgba(76, 175, 80, 0.3) !important;
+}
+
+/* --- 免费卡片按钮靠右居中 --- */
+.aimod-card-top {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+/* --- 指南步骤图片样式 --- */
+.guide-step-img {
+    margin: 12px 0;
+    border: 2px solid #bbb;
+    border-bottom-color: #e8e8e8;
+    border-right-color: #e8e8e8;
+    border-top-color: #999;
+    border-left-color: #999;
+    overflow: hidden;
+}
+
+.guide-step-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 避坑卡片紧凑样式 --- */
+.pitfall-card {
+    background: #fff;
+    border: 2px solid #bbb;
+    border-bottom-color: #e8e8e8;
+    border-right-color: #e8e8e8;
+    border-top-color: #999;
+    border-left-color: #999;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pitfall-card-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+.pitfall-card-tag {
+    flex-shrink: 0;
+    font-size: 0.78rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border: 1px solid;
+    white-space: nowrap;
+}
+
+.pitfall-tag-red {
+    background: rgba(229, 115, 115, 0.12);
+    color: #c62828;
+    border-color: #e57373;
+}
+
+.pitfall-tag-orange {
+    background: rgba(255, 183, 77, 0.12);
+    color: #e65100;
+    border-color: #FFB74D;
+}
+
+.pitfall-tag-green {
+    background: rgba(129, 199, 132, 0.12);
+    color: #2e7d32;
+    border-color: #81c784;
+}
+
+/* --- 避坑总结 --- */
+.pitfall-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pitfall-summary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-bottom-color: #f0f0f0;
+    border-right-color: #f0f0f0;
+}
+
+.pitfall-summary-num {
+    width: 32px;
+    height: 32px;
+    background: #6A1B9A;
+    color: #fff;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid #9C27B0;
+}
+
+.pitfall-summary-item strong {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 1rem;
+    color: #1a1a1a;
+}
+
+.pitfall-summary-item p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #666;
+}
+
+/* ============================================
+   AI模组页面：整页滚动（与懒人包一致）
+   ============================================ */
+body.aimod-page {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+body.aimod-page .main-wrapper.aimod-main-wrapper {
+    overflow: visible;
+    min-height: 0;
+    padding-bottom: 20px;
+}
+
+body.aimod-page .gui-container.aimod-gui-container {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+}
+
+body.aimod-page .gui-outer-wrap {
+    height: auto;
+    flex: none;
+}
+
+/* AI模组页面内容区：取消内部滚动 */
+body.aimod-page .content-area {
+    overflow: visible;
+}
+
+/* ============================================
+   AI模组页面：字体放大（匹配懒人包舒适度）
+   ============================================ */
+body.aimod-page {
+    font-size: 16px;
+}
+
+body.aimod-page .aimod-card-desc {
+    font-size: 1.05rem;
+    line-height: 1.55;
+}
+
+body.aimod-page .aimod-card h3 {
+    font-size: 1.2rem;
+}
+
+body.aimod-page .aimod-card-result {
+    font-size: 1.1rem;
+}
+
+body.aimod-page .meta-item {
+    font-size: 0.95rem;
+}
+
+body.aimod-page .panel-title {
+    font-size: 1.35rem;
+}
+
+body.aimod-page .compare-col ul {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+body.aimod-page .compare-header {
+    font-size: 1.15rem;
+}
+
+body.aimod-page .testimonial-quote {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+body.aimod-page .faq-question {
+    font-size: 1.1rem;
+}
+
+body.aimod-page .faq-answer {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+body.aimod-page .showcase-label {
+    font-size: 0.95rem;
+}
+
+body.aimod-page .pro-tab-content p {
+    font-size: 1.02rem;
+}
+
+body.aimod-page .aimod-pro-headline {
+    font-size: 1.2rem;
+}
+
+/* ============================================
+   V2 优化：增加留白 + 视觉层级
+   ============================================ */
+
+/* --- 首屏 Hero 增强 --- */
+
+/* 首屏主 CTA 增强 */
+.aimod-hero-cta-enhanced {
+    font-size: 1.4rem !important;
+    padding: 14px 48px !important;
+    box-shadow: 3px 3px 0 #000, 0 0 18px rgba(76, 175, 80, 0.35) !important;
+    transition: transform 0.15s, box-shadow 0.15s !important;
+}
+
+.aimod-hero-cta-enhanced:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 4px 4px 0 #000, 0 0 24px rgba(76, 175, 80, 0.5) !important;
+}
+
+.aimod-hero-cta-secondary {
+    font-size: 1rem !important;
+    padding: 10px 24px !important;
+    margin-left: 0 !important;
+    opacity: 0.9;
+}
+
+/* --- Section 留白增加 --- */
+.aimod-section-spacious {
+    padding: 28px 28px 32px;
+}
+
+/* --- 免费卡片间距加大 --- */
+.aimod-card-list-spacious {
+    gap: 20px;
+}
+
+/* 卡片统一高度 */
+.aimod-card-list-spacious .aimod-card {
+    min-height: 240px;
+}
+
+/* 卡片底部按钮区 */
+.aimod-card-bottom {
+    margin-top: auto;
+    padding-top: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 统一按钮风格 */
+.aimod-card-cta-unified {
+    font-size: 1rem !important;
+    padding: 8px 24px !important;
+    margin-left: 0 !important;
+    display: inline-block;
+}
+
+/* --- 对比区低饱和度头部颜色 --- */
+.compare-before .compare-header {
+    color: #9a4a4a;
+}
+
+.compare-after .compare-header {
+    color: #3a7a5a;
+}
+
+/* --- 实战区：GitHub 信任提示 --- */
+.showcase-trust-hint {
+    font-size: 0.78rem;
+    color: #66bb6a;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+/* --- 实战区：GIF 展示 --- */
+.showcase-gif-wrap {
+    border: 2px solid #9C27B0;
+    background: #111;
+    overflow: hidden;
+    line-height: 0;
+    height: 280px;
+}
+
+.showcase-gif-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: auto;
+}
+
+/* --- 实战区：平台图标 --- */
+.showcase-platform-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    image-rendering: crisp-edges;
+}
+
+/* --- 实战区：视频教程入口 (可点击) --- */
+.showcase-video-entry {
+    cursor: pointer;
+}
+
+/* --- 视频平台选择弹窗 --- */
+.video-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-modal-overlay.show {
+    display: flex;
+}
+
+.video-modal {
+    background: var(--mc-gui-bg);
+    border: 4px solid #000;
+    box-shadow:
+        inset 4px 4px 0px var(--mc-gui-light),
+        inset -4px -4px 0px var(--mc-gui-shadow);
+    width: 360px;
+    max-width: 90vw;
+}
+
+.video-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.1rem;
+    color: var(--mc-text-dark);
+    border-bottom: 2px solid var(--mc-gui-shadow);
+}
+
+.video-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #555;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.video-modal-close:hover {
+    color: #c00;
+}
+
+.video-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 20px;
+}
+
+.video-modal-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 2px solid #555;
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    border-top-color: #555;
+    border-left-color: #555;
+    transition: background 0.1s, transform 0.1s;
+}
+
+.video-modal-btn:hover {
+    transform: translateY(-1px);
+}
+
+.video-modal-btn:active {
+    transform: translateY(1px);
+    border: 2px solid var(--mc-gui-light);
+    border-bottom-color: #555;
+    border-right-color: #555;
+}
+
+.video-modal-bilibili {
+    background: #f0f4ff;
+    color: #00a1d6;
+}
+
+.video-modal-bilibili:hover {
+    background: #dde8ff;
+    color: #00a1d6;
+}
+
+.video-modal-douyin {
+    background: #fff0f0;
+    color: #111;
+}
+
+.video-modal-douyin:hover {
+    background: #ffe0e0;
+    color: #111;
+}
+
+.video-modal-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    image-rendering: crisp-edges;
+    flex-shrink: 0;
+}
+
+/* --- 付费区 Tab 切换 --- */
+.aimod-pro-tabs {
+    margin: 16px 0 20px;
+}
+
+.pro-tab-list {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 0;
+}
+
+.pro-tab {
+    background: #e8e8e8;
+    border: 2px solid #ccc;
+    border-bottom: none;
+    padding: 8px 20px;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    top: 2px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.pro-tab:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.pro-tab.active {
+    background: #fff;
+    color: #e65100;
+    border-color: #F5A623;
+    border-bottom: 2px solid #fff;
+    z-index: 1;
+}
+
+.pro-tab-content {
+    display: none;
+    background: #fff;
+    border: 2px solid #ccc;
+    border-top: none;
+    padding: 18px 20px;
+}
+
+.pro-tab-content.active {
+    display: block;
+}
+
+.pro-tab-content h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+}
+
+.pro-tab-content p {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.55;
+}
+
+/* 中部 CTA */
+.aimod-pro-cta-mid {
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+/* --- FAQ 简化边框 --- */
+.faq-item-clean {
+    border: 1px solid #ddd;
+    border-left: 3px solid #9C27B0;
+    background: #fafafa;
+}
+
+.faq-item-clean .faq-question {
+    padding: 12px 16px;
+}
+
+.faq-item-clean .faq-answer {
+    padding: 0 16px 14px 32px;
+}
+
+.faq-list-clean {
+    gap: 8px;
+}
+
+/* --- 底部重复 CTA --- */
+.aimod-bottom-cta-section {
+    text-align: center;
+    padding: 28px 20px 32px;
+    background: linear-gradient(180deg, rgba(106, 27, 154, 0.04) 0%, rgba(255,255,255,0.3) 100%);
+    border: 2px solid #9C27B0;
+    border-bottom-color: #d1c4e9;
+    border-right-color: #d1c4e9;
+}
+
+.aimod-bottom-cta-inner {
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.aimod-bottom-cta-text {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin: 0 0 16px;
+}
+
+.aimod-bottom-cta-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* --- 页脚弱化视觉权重（V2） --- */
+.aimod-footer-qq .server-name,
+.aimod-footer-qq .server-number {
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   移动端适配（包含入口卡片+AI模组专区）
+   ============================================ */
+@media (max-width: 768px) {
+    body { height: auto; min-height: 100vh; overflow: auto; background-attachment: scroll; }
+    .main-wrapper { padding: 10px; overflow: auto; }
+    .gui-container { height: auto; }
+    .site-header { flex-wrap: wrap; padding: 8px 12px; }
+    .header-info { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .header-tags { margin-left: 0; margin-top: 6px; }
+    .header-actions { margin-left: 0; margin-top: 8px; }
+    .entrance-grid { grid-template-columns: 1fr; }
+    .entrance-card { padding: 20px 15px; }
+    .entrance-title { font-size: 1.2rem; }
+    .pack-highlight { flex-direction: column; text-align: center; align-items: center; padding: 10px; }
+    .pack-icon-large { width: 120px; height: 120px; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .qq-grid { grid-template-columns: 1fr; }
+
+    /* AI模组专区移动端 */
+    .aimod-section { padding: 14px 12px; }
+    .aimod-section-spacious { padding: 18px 14px 22px; }
+    .aimod-hero-v2 { padding: 24px 14px 20px; }
+    .aimod-hero-cta-enhanced { font-size: 1.2rem !important; padding: 12px 32px !important; }
+    .aimod-hero-stats { flex-direction: column; gap: 10px; }
+    .stat-divider { width: 60px; height: 1px; }
+    .stat-item { padding: 4px 0; }
+    .aimod-card-list { grid-template-columns: 1fr; }
+    .aimod-card-list-spacious { gap: 14px; }
+    .aimod-card-list-spacious .aimod-card { min-height: auto; }
+    .aimod-showcase-grid { grid-template-columns: 1fr; }
+    .aimod-showcase-side { gap: 10px; }
+    .showcase-placeholder-main { min-height: 180px; }
+    .showcase-gif-wrap { height: 200px; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .aimod-pro-section { border-left: none; border-top: 4px solid #F5A623; }
+    .aimod-pro-headline { font-size: 0.95rem; }
+
+    /* Tab 移动端 */
+    .pro-tab-list { flex-wrap: wrap; }
+    .pro-tab { font-size: 0.85rem; padding: 6px 14px; flex: 1; text-align: center; }
+    .pro-tab-content { padding: 14px 12px; }
+
+    /* 底部 CTA 移动端 */
+    .aimod-bottom-cta-section { padding: 20px 14px 24px; }
+    .aimod-bottom-cta-text { font-size: 1.1rem; }
+    .aimod-bottom-cta-actions { flex-direction: column; gap: 10px; }
+
+    /* 免费资源子页面移动端 */
+    .prompt-result-preview { grid-template-columns: 1fr; }
+    .free-next-card { flex-wrap: wrap; }
+    .pitfall-summary-item { flex-wrap: wrap; }
+    .prompt-card-body { font-size: 0.82rem; padding: 10px 12px; }
+}
