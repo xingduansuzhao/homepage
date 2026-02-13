@@ -54,8 +54,8 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow: auto;
     display: flex;
     flex-direction: column;
 }
@@ -83,7 +83,7 @@ body {
     justify-content: center;
     padding: 12px 20px;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .gui-container {
@@ -98,7 +98,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
     min-height: 0;
 }
 
@@ -136,11 +136,12 @@ body {
     display: flex;
     align-items: baseline;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .header-info h1 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
     color: var(--mc-text-dark);
     text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
     white-space: nowrap;
@@ -150,13 +151,11 @@ body {
     font-size: 1rem;
     color: var(--mc-text-black);
     opacity: 0.85;
-    white-space: nowrap;
 }
 
 .header-subtitle {
     font-size: 1rem;
     color: var(--mc-text-black);
-    white-space: nowrap;
 }
 
 .header-tags {
@@ -221,7 +220,6 @@ body {
     gap: 10px;
     flex: 1;
     min-height: 0;
-    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -526,11 +524,10 @@ body {
 
 .toast.show { opacity: 1; }
 
-/* 移动端适配 */
+/* 移动端适配（基础） */
 @media (max-width: 768px) {
-    body { height: auto; min-height: 100vh; overflow: auto; background-attachment: scroll; }
-    .main-wrapper { padding: 10px; overflow: auto; }
-    .gui-container { height: auto; }
+    body { background-attachment: scroll; }
+    .main-wrapper { padding: 10px; }
     .site-header { flex-wrap: wrap; padding: 8px 12px; }
     .header-info { flex-direction: column; align-items: flex-start; gap: 6px; }
     .header-tags { margin-left: 0; margin-top: 6px; }
@@ -725,16 +722,14 @@ body {
    入口分流页面样式
    -------------------------- */
 .entrance-panel {
-    flex: 1;
-    min-height: 0;
+    flex: 0 0 auto;
     padding: 12px 20px;
-    flex-shrink: 0;
 }
 
 .homepage-hero {
     text-align: center;
     padding: 12px 18px;
-    flex-shrink: 0;
+    flex: 0 0 auto;
 }
 
 .homepage-hero-inner {
@@ -851,7 +846,7 @@ body {
 
 .trust-panel {
     padding: 10px 16px;
-    flex-shrink: 0;
+    flex: 0 0 auto;
 }
 
 .trust-list {
@@ -2799,7 +2794,7 @@ body.aimod-page .aimod-pro-headline {
     background: #111;
     overflow: hidden;
     line-height: 0;
-    height: 280px;
+    height: clamp(180px, 25vw, 280px);
 }
 
 .showcase-gif-img {
@@ -3066,12 +3061,140 @@ body.aimod-page .aimod-pro-headline {
 }
 
 /* ============================================
+   中等分辨率适配（平板/低分辨率桌面）
+   ============================================ */
+@media (max-width: 1024px) {
+    /* Header 适配 */
+    .header-title-row {
+        flex-wrap: wrap;
+    }
+    .header-en {
+        white-space: normal;
+        font-size: 0.9rem;
+    }
+    .header-info h1 {
+        font-size: 1.5rem;
+    }
+
+    /* 首页入口卡片：三列变两列 */
+    .entrance-grid-three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* 入口卡片第三个（制箭台模组）占满宽 */
+    .entrance-grid-three > .entrance-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .entrance-card {
+        padding: 14px 12px;
+    }
+
+    .entrance-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .entrance-title {
+        font-size: 1.15rem;
+    }
+
+    /* 平台和QQ卡片：三列变两列 */
+    .platform-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .platform-grid > .platform-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .qq-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .qq-grid > .qq-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* AI模组专区卡片：三列变两列 */
+    .aimod-card-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .aimod-card-list > .aimod-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* 用户反馈：三列变两列 */
+    .testimonial-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .testimonial-grid > .testimonial-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    /* 对比区在中等宽度可以保持两列 */
+
+    /* 主容器减小内边距 */
+    .main-wrapper {
+        padding: 10px 14px;
+    }
+
+    /* GUI 外部返回按钮回到上方 */
+    .gui-outer-back {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: 6px;
+    }
+
+    /* 实战展示区：改为单列 */
+    .aimod-showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 各区域 padding 微调 */
+    .aimod-section-spacious {
+        padding: 22px 20px 26px;
+    }
+}
+
+/* ============================================
+   小平板/大手机（中间过渡）
+   ============================================ */
+@media (max-width: 900px) {
+    /* Header: 标题和按钮换行 */
+    .header-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .header-actions {
+        margin-left: 0;
+        margin-top: 4px;
+    }
+
+    .btn-taobao {
+        margin-left: 0;
+    }
+
+    /* 三列卡片全部变单列 */
+    .entrance-grid-three {
+        grid-template-columns: 1fr;
+    }
+    .entrance-grid-three > .entrance-card:last-child {
+        grid-column: auto;
+    }
+
+    /* 对比区变单列 */
+    .compare-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
    移动端适配（包含入口卡片+AI模组专区）
    ============================================ */
 @media (max-width: 768px) {
-    body { height: auto; min-height: 100vh; overflow: auto; background-attachment: scroll; }
-    .main-wrapper { padding: 10px; overflow: auto; }
-    .gui-container { height: auto; }
+    body { background-attachment: scroll; }
+    .main-wrapper { padding: 10px; }
     .site-header { flex-wrap: wrap; padding: 8px 12px; }
     .header-info { flex-direction: column; align-items: flex-start; gap: 6px; }
     .header-tags { margin-left: 0; margin-top: 6px; }
