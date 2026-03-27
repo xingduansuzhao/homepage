@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪像素转换器｜星断肃昭</title>
+    <link rel="icon" href="assets/images/avatar.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="pixel-converter-page">
+
+    <!-- 顶部 Header（横跨全屏） -->
+    <header class="site-header">
+        <div class="avatar-slot">
+            <img src="assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
+        </div>
+        <div class="header-info">
+            <div class="header-title-row">
+                <h1>星断肃昭</h1>
+                <span class="header-en">伪像素转换器｜一键生成 16x16 图标</span>
+            </div>
+            <div class="header-actions">
+                <a href="index.html" class="btn-back">&larr; 返回首页</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区域 -->
+    <div class="main-wrapper">
+        <div class="gui-outer-wrap">
+            <a href="index.html" class="gui-outer-back">&larr; 返回主页</a>
+            <div class="gui-container pc-gui-container">
+                <div class="content-area">
+
+                    <!-- 画布区域 -->
+                    <div class="pc-canvas-wrapper">
+                        <!-- 正方形画布 -->
+                        <div class="pc-canvas" id="pcCanvas">
+                            <div class="pc-drop-zone" id="dropZone">
+                                <div class="pc-drop-plus">+</div>
+                                <div class="pc-drop-text">拖入图片</div>
+                                <div class="pc-drop-hint">支持 PNG / JPG / GIF / WEBP</div>
+                                <input type="file" id="fileInput" accept="image/*" hidden>
+                            </div>
+                            <div class="pc-preview" id="previewArea" style="display:none;">
+                                <canvas id="displayCanvas"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- 信息栏 + 操作按钮 -->
+                        <div class="pc-toolbar" id="toolbar" style="display:none;">
+                            <div class="pc-info">
+                                <span class="pc-info-label" id="sizeLabel">原始尺寸：</span>
+                                <span class="pc-info-value" id="sizeValue">-</span>
+                            </div>
+                            <div class="pc-actions">
+                                <button class="mc-btn pc-convert-btn" id="convertBtn">&#x2692; 转换为 16x16 并下载</button>
+                                <button class="mc-btn pc-reset-btn" id="resetBtn">&#x2715; 重新选择</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 隐藏的转换画布 -->
+                    <canvas id="convertCanvas" width="16" height="16" style="display:none;"></canvas>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提示 -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+    (function() {
+        var canvasEl     = document.getElementById('pcCanvas');
+        var dropZone     = document.getElementById('dropZone');
+        var fileInput    = document.getElementById('fileInput');
+        var previewArea  = document.getElementById('previewArea');
+        var displayCanvas = document.getElementById('displayCanvas');
+        var toolbar      = document.getElementById('toolbar');
+        var sizeLabel    = document.getElementById('sizeLabel');
+        var sizeValue    = document.getElementById('sizeValue');
+        var convertBtn   = document.getElementById('convertBtn');
+        var resetBtn     = document.getElementById('resetBtn');
+        var convertCanvas = document.getElementById('convertCanvas');
+
+        var currentFile = null;
+        var originalImage = null;
+        var isConverted = false;
+
+        function dragHandler(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        canvasEl.addEventListener('dragover', function(e) {
+            dragHandler(e);
+            dropZone.classList.add('pc-drag-over');
+        });
+
+        canvasEl.addEventListener('dragleave', function(e) {
+            dragHandler(e);
+            dropZone.classList.remove('pc-drag-over');
+        });
+
+        canvasEl.addEventListener('drop', function(e) {
+            dragHandler(e);
+            dropZone.classList.remove('pc-drag-over');
+            var files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].type.startsWith('image/')) {
+                loadImage(files[0]);
+            }
+        });
+
+        dropZone.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                loadImage(fileInput.files[0]);
+            }
+        });
+
+        function loadImage(file) {
+            currentFile = file;
+            isConverted = false;
+            var reader = new FileReader();
+            reader.onload = function(ev) {
+                var img = new Image();
+                img.onload = function() {
+                    originalImage = img;
+                    drawPreview(img, false);
+                    sizeLabel.textContent = '原始尺寸：';
+                    sizeValue.textContent = img.naturalWidth + ' x ' + img.naturalHeight;
+
+                    dropZone.style.display = 'none';
+                    previewArea.style.display = 'flex';
+                    toolbar.style.display = 'flex';
+                    convertBtn.style.display = '';
+                };
+                img.src = ev.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function drawPreview(img, pixelated) {
+            var maxW = canvasEl.clientWidth - 12;
+            var maxH = canvasEl.clientHeight - 12;
+
+            var srcW = img.naturalWidth || img.width;
+            var srcH = img.naturalHeight || img.height;
+            var scale = Math.min(maxW / srcW, maxH / srcH);
+            var drawW = Math.round(srcW * scale);
+            var drawH = Math.round(srcH * scale);
+
+            displayCanvas.width = drawW;
+            displayCanvas.height = drawH;
+            displayCanvas.style.imageRendering = pixelated ? 'pixelated' : 'auto';
+
+            var ctx = displayCanvas.getContext('2d');
+            ctx.imageSmoothingEnabled = !pixelated;
+            if (!pixelated) ctx.imageSmoothingQuality = 'high';
+            ctx.clearRect(0, 0, drawW, drawH);
+            ctx.drawImage(img, 0, 0, drawW, drawH);
+        }
+
+        convertBtn.addEventListener('click', function() {
+            if (!originalImage) return;
+
+            var ctx16 = convertCanvas.getContext('2d');
+            ctx16.imageSmoothingEnabled = true;
+            ctx16.imageSmoothingQuality = 'high';
+            ctx16.clearRect(0, 0, 16, 16);
+            ctx16.drawImage(originalImage, 0, 0, 16, 16);
+
+            convertCanvas.toBlob(function(blob) {
+                var fileName = currentFile.name.replace(/\.[^.]+$/, '') + '_16x16.png';
+                var url = URL.createObjectURL(blob);
+                var a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast('\u2705 ' + fileName + ' 已下载！');
+            }, 'image/png');
+
+            var resultImg = new Image();
+            resultImg.onload = function() {
+                drawPreview(resultImg, true);
+                sizeLabel.textContent = '转换结果：';
+                sizeValue.textContent = '16 x 16';
+                convertBtn.style.display = 'none';
+                isConverted = true;
+            };
+            resultImg.src = convertCanvas.toDataURL('image/png');
+        });
+
+        resetBtn.addEventListener('click', function() {
+            currentFile = null;
+            originalImage = null;
+            isConverted = false;
+            fileInput.value = '';
+
+            dropZone.style.display = 'flex';
+            previewArea.style.display = 'none';
+            toolbar.style.display = 'none';
+        });
+
+        function showToast(msg) {
+            var t = document.getElementById('toast');
+            t.innerHTML = msg;
+            t.classList.add('show');
+            setTimeout(function() { t.classList.remove('show'); }, 2000);
+        }
+    })();
+    </script>
+</body>
+</html>

@@ -3243,3 +3243,213 @@ body.aimod-page .aimod-pro-headline {
     .pitfall-summary-item { flex-wrap: wrap; }
     .prompt-card-body { font-size: 0.82rem; padding: 10px 12px; }
 }
+
+/* ============================================
+   首页四列入口网格
+   ============================================ */
+.entrance-grid-four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pixel-entrance {
+    background: linear-gradient(135deg, #2a5c2a 0%, #1a3a1a 100%);
+}
+
+.pixel-entrance .entrance-icon {
+    font-size: 3rem;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   像素图转换器页面
+   ============================================ */
+body.pixel-converter-page {
+    height: 100vh;
+    overflow: hidden;
+}
+
+body.pixel-converter-page .main-wrapper {
+    flex: 1;
+    min-height: 0;
+    padding: 6px 20px;
+}
+
+body.pixel-converter-page .gui-outer-wrap {
+    height: 100%;
+    flex: 1;
+    min-height: 0;
+}
+
+body.pixel-converter-page .content-area {
+    overflow: visible;
+    flex: 1;
+    min-height: 0;
+}
+
+.pc-gui-container {
+    max-width: 900px;
+    height: 100%;
+    min-height: 0;
+}
+
+.pc-canvas-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+    min-height: 0;
+}
+
+.pc-canvas {
+    background: #2a2a2a;
+    background-image:
+        linear-gradient(45deg, #252525 25%, transparent 25%),
+        linear-gradient(-45deg, #252525 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #252525 75%),
+        linear-gradient(-45deg, transparent 75%, #252525 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    border: 2px solid #000;
+    border-top-color: #373737;
+    border-left-color: #373737;
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.pc-drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 40px;
+    border: 3px dashed #555;
+    transition: border-color 0.15s;
+    user-select: none;
+}
+
+.pc-drop-zone:hover,
+.pc-drag-over {
+    border-color: var(--mc-green) !important;
+}
+
+.pc-drop-plus {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 4rem;
+    color: #888;
+    line-height: 1;
+}
+
+.pc-drop-zone:hover .pc-drop-plus,
+.pc-drag-over .pc-drop-plus {
+    color: var(--mc-green);
+}
+
+.pc-drop-text {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.4rem;
+    color: #aaa;
+}
+
+.pc-drop-hint {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.pc-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 6px;
+}
+
+.pc-preview canvas {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 2px solid #555;
+}
+
+.pc-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 6px 8px;
+    flex-shrink: 0;
+    background: rgba(0,0,0,0.05);
+    border: 2px solid var(--mc-gui-shadow);
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+}
+
+.pc-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pc-info-label {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.05rem;
+    color: var(--mc-text-dark);
+}
+
+.pc-info-value {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.05rem;
+    color: #006400;
+    font-weight: bold;
+}
+
+.pc-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.pc-convert-btn {
+    background-color: #4CAF50 !important;
+    color: #fff !important;
+    border-top-color: #81C784 !important;
+    border-left-color: #81C784 !important;
+    border-right-color: #2E7D32 !important;
+    border-bottom-color: #2E7D32 !important;
+}
+
+.pc-convert-btn:hover {
+    background-color: #66BB6A !important;
+}
+
+.pc-reset-btn {
+    font-size: 1rem !important;
+}
+
+/* 移动端适配 */
+@media (max-width: 900px) {
+    .entrance-grid-four {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .entrance-grid-four {
+        grid-template-columns: 1fr;
+    }
+    .pc-toolbar { flex-direction: column; align-items: stretch; }
+    .pc-actions { flex-direction: column; }
+    .pc-actions .mc-btn { text-align: center; }
+}
