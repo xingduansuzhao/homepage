@@ -3358,7 +3358,14 @@ body.pixel-converter-page .content-area {
 .pc-drop-text {
     font-family: "MinecraftAE", "VT323", monospace;
     font-size: 1.4rem;
-    color: #aaa;
+    color: #ddd;
+    letter-spacing: 0.05em;
+}
+
+.pc-highlight {
+    color: #ffcc00;
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.6), 0 0 16px rgba(255, 204, 0, 0.3);
+    font-weight: bold;
 }
 
 .pc-drop-hint {
