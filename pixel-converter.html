@@ -50,11 +50,11 @@
                         <!-- 信息栏 + 操作按钮 -->
                         <div class="pc-toolbar" id="toolbar" style="display:none;">
                             <div class="pc-info">
-                                <span class="pc-info-label" id="sizeLabel">原始尺寸：</span>
+                                <span class="pc-info-label" id="sizeLabel">原始分辨率：</span>
                                 <span class="pc-info-value" id="sizeValue">-</span>
                             </div>
                             <div class="pc-actions">
-                                <button class="mc-btn pc-convert-btn" id="convertBtn">&#x2692; 转换为 16x16 并下载</button>
+                                <button class="mc-btn pc-convert-btn" id="convertBtn">&#x2692; 降维至 16x16 并下载</button>
                                 <button class="mc-btn pc-reset-btn" id="resetBtn">&#x2715; 重新选择</button>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                 img.onload = function() {
                     originalImage = img;
                     drawPreview(img, false);
-                    sizeLabel.textContent = '原始尺寸：';
+                    sizeLabel.textContent = '原始分辨率：';
                     sizeValue.textContent = img.naturalWidth + ' x ' + img.naturalHeight;
 
                     dropZone.style.display = 'none';
@@ -191,7 +191,7 @@
             var resultImg = new Image();
             resultImg.onload = function() {
                 drawPreview(resultImg, true);
-                sizeLabel.textContent = '转换结果：';
+                sizeLabel.textContent = '结果分辨率：';
                 sizeValue.textContent = '16 x 16';
                 convertBtn.style.display = 'none';
                 isConverted = true;
