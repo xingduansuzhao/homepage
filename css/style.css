@@ -3512,6 +3512,7 @@ body.pixel-converter-page .content-area {
     max-height: 88vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .prompt-modal-header {
@@ -3545,7 +3546,9 @@ body.pixel-converter-page .content-area {
     gap: 0;
     flex: 1;
     min-height: 0;
+    min-width: 0;
     overflow: auto;
+    width: 100%;
 }
 
 .prompt-modal-col {
@@ -3554,6 +3557,7 @@ body.pixel-converter-page .content-area {
     flex-direction: column;
     padding: 14px 16px;
     min-width: 0;
+    overflow: hidden;
 }
 
 .prompt-modal-col + .prompt-modal-col {
@@ -3581,9 +3585,11 @@ body.pixel-converter-page .content-area {
     border: 2px solid #373737;
     border-bottom-color: var(--mc-gui-light);
     border-right-color: var(--mc-gui-light);
-    word-break: break-word;
+    word-break: break-all;
+    overflow-wrap: break-word;
     overflow-y: auto;
     user-select: all;
+    max-width: 100%;
 }
 
 #promptZH {
