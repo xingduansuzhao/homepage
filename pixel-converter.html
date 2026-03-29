@@ -20,16 +20,16 @@
                 <h1>星断肃昭</h1>
                 <span class="header-en">伪像素转换器｜一键生成 16x16 材质</span>
             </div>
-            <div class="header-actions">
-                <a href="index.html" class="btn-back">&larr; 返回首页</a>
-            </div>
         </div>
     </header>
 
     <!-- 主内容区域 -->
     <div class="main-wrapper">
         <div class="gui-outer-wrap">
-            <a href="index.html" class="gui-outer-back">&larr; 返回主页</a>
+            <div class="gui-outer-actions">
+                <a href="index.html" class="gui-outer-back gui-outer-back-inline">&larr; 返回主页</a>
+                <button class="gui-outer-back gui-outer-back-inline gui-prompt-btn" id="openPromptBtn">&#x270E; 前置提示词</button>
+            </div>
             <div class="gui-container pc-gui-container">
                 <div class="content-area">
 
@@ -63,6 +63,28 @@
                     <!-- 隐藏的转换画布 -->
                     <canvas id="convertCanvas" width="16" height="16" style="display:none;"></canvas>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 前置提示词弹窗 -->
+    <div class="prompt-modal-overlay" id="promptModal">
+        <div class="prompt-modal">
+            <div class="prompt-modal-header">
+                <span>&#x1F4DC; 前置提示词</span>
+                <button class="prompt-modal-close" id="closePromptBtn">&times;</button>
+            </div>
+            <div class="prompt-modal-body">
+                <div class="prompt-modal-col">
+                    <div class="prompt-modal-col-title">中文提示词</div>
+                    <div class="prompt-modal-content" id="promptZH">Minecraft Java版像素艺术物品图标，伪16x16放大图，图片必须看起来恰好是16个大方块色块宽、16个高，主体不得触及画布任何边缘，四周至少留出1个像素方块的白色空白边距，每个色彩区域至少为2x2大方块，整张图片最多使用4种纯色，零色彩渐变，零抗锯齿，零柔和边缘，每个色彩区域之间必须是硬朗清晰的边界，纯白色背景，非工具类主体正面朝前，主体形状必须清晰可辨且与所命名的物体完全一致，主体：</div>
+                    <button class="mc-btn prompt-modal-copy-btn" onclick="copyPrompt('promptZH','复制成功！')">复制</button>
+                </div>
+                <div class="prompt-modal-col">
+                    <div class="prompt-modal-col-title">English Prompt</div>
+                    <div class="prompt-modal-content" id="promptEN">Minecraft Java Edition pixel art item icon, pseudo 16x16 upscaled, image must look like exactly 16 large square color blocks wide and 16 tall, subject must not touch any edge of the canvas, leave at least 1 pixel block of empty white space on all four sides as margin, every color region must be at least 2x2 large squares, maximum 4 flat solid colors total in entire image, zero color gradients, zero anti-aliasing, zero soft edges, hard sharp borders between every color region, pure white background, non-tool subjects face forward, subject shape must be clearly recognizable and match the named object exactly, subject:</div>
+                    <button class="mc-btn prompt-modal-copy-btn" onclick="copyPrompt('promptEN','Copy Success!')">Copy</button>
                 </div>
             </div>
         </div>
@@ -238,6 +260,46 @@
             setTimeout(function() { t.classList.remove('show'); }, 2000);
         }
     })();
+
+    (function() {
+        var modal = document.getElementById('promptModal');
+        var openBtn = document.getElementById('openPromptBtn');
+        var closeBtn = document.getElementById('closePromptBtn');
+
+        openBtn.addEventListener('click', function() {
+            modal.classList.add('show');
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('show');
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) modal.classList.remove('show');
+        });
+    })();
+
+    function copyPrompt(id, msg) {
+        var text = document.getElementById(id).textContent;
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text).then(function() { showToastGlobal(msg); });
+        } else {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToastGlobal(msg);
+        }
+    }
+
+    function showToastGlobal(msg) {
+        var t = document.getElementById('toast');
+        t.innerHTML = msg;
+        t.classList.add('show');
+        setTimeout(function() { t.classList.remove('show'); }, 2000);
+    }
     </script>
 </body>
 </html>

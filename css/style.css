@@ -3460,3 +3460,165 @@ body.pixel-converter-page .content-area {
     .pc-actions { flex-direction: column; }
     .pc-actions .mc-btn { text-align: center; }
 }
+
+/* ============================================
+   GUI 外部按钮行（返回 + 前置提示词）
+   ============================================ */
+.gui-outer-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.gui-outer-back-inline {
+    position: static !important;
+}
+
+.gui-prompt-btn {
+    cursor: pointer;
+    font-family: "MinecraftAE", "VT323", monospace;
+}
+
+/* ============================================
+   前置提示词弹窗（Minecraft 风格）
+   ============================================ */
+.prompt-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 300;
+    justify-content: center;
+    align-items: center;
+}
+
+.prompt-modal-overlay.show {
+    display: flex;
+}
+
+.prompt-modal {
+    background: var(--mc-gui-bg);
+    border: 4px solid #000;
+    box-shadow:
+        inset 4px 4px 0px var(--mc-gui-light),
+        inset -4px -4px 0px var(--mc-gui-shadow),
+        0 0 40px rgba(0,0,0,0.5);
+    width: 900px;
+    max-width: 94vw;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.15rem;
+    color: var(--mc-text-dark);
+    border-bottom: 2px solid var(--mc-gui-shadow);
+    flex-shrink: 0;
+}
+
+.prompt-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #555;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.prompt-modal-close:hover {
+    color: #c00;
+}
+
+.prompt-modal-body {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+}
+
+.prompt-modal-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px;
+    min-width: 0;
+}
+
+.prompt-modal-col + .prompt-modal-col {
+    border-left: 2px solid var(--mc-gui-shadow);
+}
+
+.prompt-modal-col-title {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--mc-text-dark);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #b0b0b0;
+}
+
+.prompt-modal-content {
+    flex: 1;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    font-family: "Consolas", "Monaco", "Courier New", monospace;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    padding: 12px 14px;
+    border: 2px solid #373737;
+    border-bottom-color: var(--mc-gui-light);
+    border-right-color: var(--mc-gui-light);
+    word-break: break-word;
+    overflow-y: auto;
+    user-select: all;
+}
+
+#promptZH {
+    font-size: 1.08rem;
+}
+
+.prompt-modal-copy-btn {
+    margin-top: 10px;
+    align-self: center;
+    font-size: 1.05rem !important;
+    padding: 6px 24px !important;
+    background-color: #4CAF50 !important;
+    color: #fff !important;
+    border-top-color: #81C784 !important;
+    border-left-color: #81C784 !important;
+    border-right-color: #2E7D32 !important;
+    border-bottom-color: #2E7D32 !important;
+}
+
+.prompt-modal-copy-btn:hover {
+    background-color: #66BB6A !important;
+}
+
+@media (max-width: 768px) {
+    .prompt-modal-body {
+        flex-direction: column;
+    }
+    .prompt-modal-col + .prompt-modal-col {
+        border-left: none;
+        border-top: 2px solid var(--mc-gui-shadow);
+    }
+    .prompt-modal {
+        max-height: 92vh;
+    }
+    .gui-outer-actions {
+        flex-wrap: wrap;
+    }
+}
