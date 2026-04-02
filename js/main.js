@@ -31,22 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-/* Homepage feature flag: Pixel converter entrance */
+/* Pixel converter entrance (hardcoded flag)
+   Set to `true` to show the entrance on homepage.
+   Set to `false` to hide/disable the entrance (tool page still accessible via direct URL). */
+var ENABLE_PIXEL_CONVERTER_ENTRANCE = false;
 document.addEventListener('DOMContentLoaded', function() {
-    var env = (window.__ENV__ || {});
-    function coerceBool(value, defaultValue) {
-        if (value === undefined || value === null) return defaultValue;
-        if (value === true || value === false) return value;
-        if (typeof value === 'number') return value !== 0;
-        if (typeof value === 'string') {
-            var v = value.trim().toLowerCase();
-            if (v === 'false' || v === '0' || v === 'off' || v === 'no') return false;
-            if (v === 'true' || v === '1' || v === 'on' || v === 'yes') return true;
-        }
-        return defaultValue;
-    }
-    var enabled = coerceBool(env.ENABLE_PIXEL_CONVERTER_ENTRANCE, true);
-    if (enabled) return;
+    if (ENABLE_PIXEL_CONVERTER_ENTRANCE) return;
 
     var entrance = document.getElementById('pixelConverterEntrance');
     if (!entrance) return;
