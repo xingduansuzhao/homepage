@@ -6,7 +6,7 @@
     <title>AI模组开发</title>
     <link rel="icon" href="assets/images/avatar.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260327">
+    <link rel="stylesheet" href="css/style.css?v=20260402">
 </head>
 <body>
 
@@ -41,20 +41,20 @@
                 <!-- 第二屏：核心入口 -->
                 <section class="panel entrance-panel" aria-label="核心产品入口">
                     <div class="panel-title">🚀 选择你的开发起点</div>
-                    <div class="entrance-grid entrance-grid-four">
+                    <div class="entrance-grid entrance-grid-three">
                         <a href="lazypack.html" class="entrance-card lazypack-entrance">
                             <div class="entrance-icon">
                                 <img src="assets/images/lazypack.png" alt="懒人包">
                             </div>
                             <div class="entrance-content">
                                 <h2 class="entrance-title">快速开始模组开发</h2>
-                                <p class="entrance-desc">懒人包 | 解压即用<br>Forge / Fabric / NeoForge</p>
+                                <p class="entrance-desc">懒人包 | 解压即用 | Forge / Fabric / NeoForge</p>
                                 <span class="entrance-btn">先从这里开始</span>
                             </div>
                         </a>
                         <a href="aimod-dev.html" class="entrance-card aimod-entrance">
                             <div class="entrance-icon">
-                                <img src="assets/images/ai_workbench.png" alt="AI模组开发">
+                                <img src="assets/images/ai_workbench_new.png" alt="AI模组开发">
                             </div>
                             <div class="entrance-content">
                                 <h2 class="entrance-title">AI写模组完整方案</h2>
@@ -62,18 +62,10 @@
                                 <span class="entrance-btn">AI开发路线</span>
                             </div>
                         </a>
-                        <a href="assets/downloads/Neoforge1.21.10.jar" download="Neoforge1.21.10.jar" class="entrance-card rookie-entrance">
+                        <a href="pixel-converter.html" class="entrance-card pixel-entrance" id="pixelConverterEntrance">
                             <div class="entrance-icon">
-                                <img src="assets/images/jar.png" alt="制箭台模组">
+                                <img src="assets/images/pixel-converter-icon.png" alt="伪像素降维器">
                             </div>
-                            <div class="entrance-content">
-                                <h2 class="entrance-title">制箭台模组</h2>
-                                <p class="entrance-desc">AI辅助开发示例模组<br>可直接体验效果</p>
-                                <span class="entrance-btn">立即下载模组</span>
-                            </div>
-                        </a>
-                        <a href="pixel-converter.html" class="entrance-card pixel-entrance">
-                            <div class="entrance-icon">&#x2692;</div>
                             <div class="entrance-content">
                                 <h2 class="entrance-title">伪像素降维器</h2>
                                 <p class="entrance-desc">拖入图片一键转 16x16</p>
@@ -85,7 +77,7 @@
 
                 <!-- 第三屏：信任区 -->
                 <section class="panel trust-panel" aria-label="信任建立">
-                    <div class="panel-title">⭐ 为什么用 AI 开发模组？</div>
+                    <div class="panel-title">💡 为什么用 AI 开发模组？</div>
                     <ul class="trust-list">
                         <li>开发效率提升 5~10 倍，专注创意而非重复劳动</li>
                         <li>零基础也能入门，跟着路线就能跑出第一个可用模组</li>
@@ -125,21 +117,21 @@
                     <div class="panel" aria-label="QQ群">
                         <div class="panel-title"><img src="assets/images/qq.png" alt="QQ" class="title-icon"> QQ 技术交流群 (点击复制)</div>
                         <div class="qq-grid">
-                            <div class="qq-card" onclick="copyText('897257355')">
+                            <div class="qq-card" data-qq-group="897257355" onclick="copyText('897257355')">
                                 <div class="qq-card-text">
                                     <span class="server-name">技术交流群 1：</span>
                                     <span class="server-number">897257355</span>
                                 </div>
                                 <div class="server-ping"></div>
                             </div>
-                            <div class="qq-card" onclick="copyText('792419382')">
+                            <div class="qq-card" data-qq-group="792419382" onclick="copyText('792419382')">
                                 <div class="qq-card-text">
                                     <span class="server-name">技术交流群 2：</span>
                                     <span class="server-number">792419382</span>
                                 </div>
                                 <div class="server-ping" style="background:#FFAA00"></div>
                             </div>
-                            <div class="qq-card" onclick="copyText('750065527')">
+                            <div class="qq-card" data-qq-group="750065527" onclick="copyText('750065527')">
                                 <div class="qq-card-text">
                                     <span class="server-name">技术交流群 3：</span>
                                     <span class="server-number">750065527</span>
@@ -156,6 +148,7 @@
     <!-- 复制成功提示 -->
     <div class="toast" id="toast">✅ 群号已复制！</div>
 
+    <script src="js/env.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

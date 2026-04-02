@@ -1,3 +1,13 @@
+/* ============================================
+   QQ群状态配置
+   将群号设为 true 表示已满人，页面会自动显示"已满"标签
+   ============================================ */
+var QQ_GROUP_FULL = {
+    '897257355': false,
+    '792419382': true,
+    '750065527': true,
+};
+
 function copyText(text) {
     navigator.clipboard.writeText(text).then(() => {
         const t = document.getElementById('toast');
@@ -6,6 +16,51 @@ function copyText(text) {
         setTimeout(() => t.classList.remove('show'), 2000);
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    var cards = document.querySelectorAll('[data-qq-group]');
+    cards.forEach(function(card) {
+        var groupId = card.getAttribute('data-qq-group');
+        if (QQ_GROUP_FULL[groupId]) {
+            var badge = document.createElement('span');
+            badge.className = 'qq-full-badge';
+            badge.textContent = '已满';
+            card.querySelector('.qq-card-text').appendChild(badge);
+            card.classList.add('qq-card-full');
+        }
+    });
+});
+
+/* Homepage feature flag: Pixel converter entrance */
+document.addEventListener('DOMContentLoaded', function() {
+    var env = (window.__ENV__ || {});
+    var enabled = env.ENABLE_PIXEL_CONVERTER_ENTRANCE !== false;
+    if (enabled) return;
+
+    var entrance = document.getElementById('pixelConverterEntrance');
+    if (!entrance) return;
+
+    entrance.classList.add('entrance-disabled');
+    entrance.setAttribute('aria-disabled', 'true');
+    entrance.setAttribute('tabindex', '-1');
+    entrance.removeAttribute('href');
+
+    // Hide existing texts and replace with a single large label.
+    var content = entrance.querySelector('.entrance-content');
+    if (content) {
+        content.style.display = 'none';
+    }
+    var disabledLabel = document.createElement('div');
+    disabledLabel.className = 'entrance-disabled-label';
+    disabledLabel.innerHTML = '16<span class="entrance-mul">&times;</span>16材质AI方案';
+    entrance.appendChild(disabledLabel);
+
+    // Make the whole area non-clickable (including accidental event handlers).
+    entrance.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }, true);
+});
 
 /* Prompt 一键复制 */
 function copyPrompt(btn) {
