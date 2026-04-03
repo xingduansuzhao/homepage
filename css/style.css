@@ -424,7 +424,7 @@ body {
 
 .platform-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px; /* Balanced from 6px */
     /* Removed flex: 1 to allow grid to dictate height */
 }
@@ -440,10 +440,67 @@ body {
     border-right-color: var(--mc-gui-light);
     text-decoration: none;
     color: var(--mc-text-black);
-    transition: background 0.1s;
+    transition: background 0.1s, transform 0.12s ease, box-shadow 0.12s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .platform-card:hover { background: #b0b0b0; color: #000; }
+
+.platform-card-xhs {
+    border-color: #c44;
+    border-bottom-color: #ffb3b3;
+    border-right-color: #ffb3b3;
+    animation: xhsPulse 2.6s ease-in-out infinite;
+}
+
+.platform-card-xhs::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 65%);
+    transform: translateX(-120%);
+    animation: xhsShimmer 2.8s ease-in-out infinite;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.platform-card-xhs .platform-icon {
+    animation: xhsIconBob 1.6s ease-in-out infinite;
+}
+
+.platform-card-xhs:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 0 0 2px rgba(255, 64, 64, 0.45), 0 0 18px rgba(255, 64, 64, 0.35);
+}
+
+@keyframes xhsPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 64, 64, 0.0); transform: translateY(0); }
+    45% { box-shadow: 0 0 0 2px rgba(255, 64, 64, 0.35), 0 0 14px rgba(255, 64, 64, 0.22); }
+    55% { box-shadow: 0 0 0 2px rgba(255, 64, 64, 0.45), 0 0 18px rgba(255, 64, 64, 0.30); transform: translateY(-1px); }
+}
+
+@keyframes xhsShimmer {
+    0% { transform: translateX(-120%); opacity: 0.0; }
+    20% { opacity: 0.0; }
+    40% { opacity: 0.9; }
+    60% { opacity: 0.9; }
+    80% { opacity: 0.0; }
+    100% { transform: translateX(120%); opacity: 0.0; }
+}
+
+@keyframes xhsIconBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .platform-card-xhs,
+    .platform-card-xhs::before,
+    .platform-card-xhs .platform-icon {
+        animation: none !important;
+    }
+}
 
 .platform-icon {
     width: 42px; /* Balanced from 36px */
@@ -468,8 +525,7 @@ body {
 .qq-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px; /* Balanced from 6px */
-    /* Removed flex: 1 to allow grid to dictate height */
+    gap: 8px;
 }
 
 .qq-card {
@@ -750,14 +806,16 @@ body {
    -------------------------- */
 .entrance-panel {
     flex: 1;
-    padding: 12px 20px;
+    padding: 8px 12px;
     min-height: 0;
+    overflow: hidden;
 }
 
 .entrance-panel > .entrance-grid {
     flex: 1;
     align-content: stretch;
     grid-auto-rows: 1fr;
+    min-height: 0;
 }
 
 .homepage-hero {
@@ -797,8 +855,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    padding: 18px 16px;
+    gap: 8px;
+    padding: 12px 14px 10px;
     text-decoration: none;
     border: 3px solid #555;
     border-bottom-color: #fff;
@@ -806,6 +864,8 @@ body {
     border-top-color: #555;
     border-left-color: #555;
     transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .entrance-card.entrance-disabled {
@@ -855,10 +915,10 @@ body {
 }
 
 .entrance-icon {
-    flex: 1;
-    width: 100%;
-    max-width: 160px;
+    flex: 1 1 0;
     min-height: 0;
+    width: 100%;
+    max-width: 100%;
     aspect-ratio: 1 / 1;
     background: rgba(255,255,255,0.2);
     border-radius: 12px;
@@ -866,6 +926,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    align-self: center;
 }
 
 .entrance-icon img {
@@ -882,14 +943,14 @@ body {
 }
 
 .entrance-title {
-    margin: 0 0 6px 0;
-    font-size: 1.3rem;
+    margin: 0 0 4px 0;
+    font-size: 1.2rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .entrance-desc {
-    margin: 0 0 10px 0;
-    font-size: 0.95rem;
+    margin: 0 0 8px 0;
+    font-size: 0.9rem;
     opacity: 0.9;
 }
 
@@ -897,7 +958,7 @@ body {
     display: inline-block;
     background: #fff;
     color: #333;
-    padding: 8px 20px;
+    padding: 6px 16px;
     border: 2px solid #fff;
     border-right-color: #ccc;
     border-bottom-color: #ccc;
@@ -1511,7 +1572,7 @@ body.lazypack-page .gui-outer-wrap {
 
 .aimod-card-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
 }
 
@@ -1933,7 +1994,7 @@ body.lazypack-page .gui-outer-wrap {
 
 .testimonial-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
     margin-top: 10px;
 }
@@ -2284,7 +2345,7 @@ body.lazypack-page .gui-outer-wrap {
 /* --- Prompt 效果预览 --- */
 .prompt-result-preview {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 12px;
     margin-top: 10px;
 }
@@ -3138,42 +3199,30 @@ body.aimod-page .aimod-pro-headline {
         font-size: 1.5rem;
     }
 
-    /* 首页入口卡片：三列变两列 */
+    /* 首页入口卡片：保持三列 */
     .entrance-grid-three {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    /* 入口卡片第三个（制箭台模组）占满宽 */
-    .entrance-grid-three > .entrance-card:last-child {
-        grid-column: 1 / -1;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .entrance-card {
-        padding: 14px 12px;
+        padding: 8px 8px 6px;
     }
 
     .entrance-icon {
-        width: 70px;
-        height: 70px;
+        max-width: 100%;
     }
 
     .entrance-title {
-        font-size: 1.15rem;
+        font-size: 1rem;
     }
 
-    /* 平台和QQ卡片：三列变两列 */
+    /* 平台卡片：四列变两列 */
     .platform-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    .platform-grid > .platform-card:last-child {
-        grid-column: 1 / -1;
-    }
 
     .qq-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .qq-grid > .qq-card:last-child {
-        grid-column: 1 / -1;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     /* AI模组专区卡片：三列变两列 */
