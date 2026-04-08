@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* Pixel converter entrance (hardcoded flag)
    Set to `true` to show the entrance on homepage.
    Set to `false` to hide/disable the entrance (tool page still accessible via direct URL). */
-var ENABLE_PIXEL_CONVERTER_ENTRANCE = false;
+var ENABLE_PIXEL_CONVERTER_ENTRANCE = true;
 document.addEventListener('DOMContentLoaded', function() {
     if (ENABLE_PIXEL_CONVERTER_ENTRANCE) return;
 
