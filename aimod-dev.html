@@ -6,11 +6,11 @@
     <title>AI模组开发专区｜星断肃昭</title>
     <link rel="icon" href="assets/images/avatar.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260327">
+    <link rel="stylesheet" href="css/style.css?v=20260411">
 </head>
 <body class="aimod-page">
 
-    <!-- 顶部 Header（横跨全屏） -->
+    <!-- 顶部 Header -->
     <header class="site-header">
         <div class="avatar-slot">
             <img src="assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
@@ -33,339 +33,653 @@
     <!-- 主内容区域 -->
     <div class="main-wrapper aimod-main-wrapper">
         <div class="gui-outer-wrap">
-            <!-- 返回主页按钮 - GUI容器外部左上角 -->
             <a href="index.html" class="gui-outer-back">← 返回主页</a>
             <div class="gui-container aimod-gui-container">
-            <div class="content-area">
 
-                <!-- ============================
-                     1. 首屏：结果导向 Hero
-                     ============================ -->
-                <section class="panel aimod-section aimod-hero-v2" aria-label="AI模组开发核心价值">
-                    <h2 class="aimod-hero-title-v2">用 AI 快速实现 Minecraft 模组</h2>
-                    <p class="aimod-hero-subtitle-v2">从零到可运行模组，AI全程辅助，真实项目验证</p>
-                    <div class="aimod-hero-actions-v2">
-                        <a href="#free-path" class="mc-btn-cta-free aimod-primary-cta-free aimod-hero-cta-enhanced">免费开始</a>
-                        <a href="#pro-tools" class="mc-btn-cta aimod-hero-cta-secondary">获取效率工具包 →</a>
-                    </div>
-                    <div class="aimod-hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">5~10x</span>
-                            <span class="stat-label">效率提升</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-number">10min</span>
-                            <span class="stat-label">跑通首个模组</span>
-                        </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">代码可运行</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- ============================
-                     2. 免费入门入口
-                     ============================ -->
-                <section id="free-path" class="panel aimod-section aimod-free-section aimod-section-spacious" aria-label="免费入门路线">
-                    <div class="aimod-section-header">
-                        <div class="panel-title">📘 免费入门路线</div>
-                        <span class="aimod-section-tag aimod-tag-free">完全免费</span>
-                    </div>
-                    <div class="aimod-card-list aimod-card-list-spacious">
-                        <article class="aimod-card aimod-card-free">
-                            <div class="aimod-card-result">10分钟搭好AI编程环境</div>
-                            <h3>千问AI接入指南</h3>
-                            <p class="aimod-card-desc">IDE配置流程，快速完成AI编程环境接入</p>
-                            <div class="aimod-card-meta">
-                                <div class="meta-item">
-                                    <span class="meta-icon">👤</span>
-                                    <span>零基础新手适用</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-icon">⏱️</span>
-                                    <span>预计5~10分钟</span>
-                                </div>
-                            </div>
-                            <div class="aimod-card-bottom">
-                                <a href="free-guide-qianwen.html" class="mc-btn-cta-free aimod-card-cta-unified">在线阅读</a>
-                            </div>
-                        </article>
-                        <article class="aimod-card aimod-card-free">
-                            <div class="aimod-card-result">20分钟跑出第一个模组</div>
-                            <h3>第一个AI模组 Prompt</h3>
-                            <p class="aimod-card-desc">可直接运行的起步模板，帮你跑通第一条链路</p>
-                            <div class="aimod-card-meta">
-                                <div class="meta-item">
-                                    <span class="meta-icon">👤</span>
-                                    <span>已搭好环境的开发者</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-icon">⏱️</span>
-                                    <span>预计10~20分钟</span>
-                                </div>
-                            </div>
-                            <div class="aimod-card-bottom">
-                                <a href="free-prompt-first-mod.html" class="mc-btn-cta-free aimod-card-cta-unified">复制Prompt</a>
-                            </div>
-                        </article>
-                        <article class="aimod-card aimod-card-free">
-                            <div class="aimod-card-result">减少80%常见报错</div>
-                            <h3>AI开发避坑指南</h3>
-                            <p class="aimod-card-desc">高频错误与修复策略，避免反复返工</p>
-                            <div class="aimod-card-meta">
-                                <div class="meta-item">
-                                    <span class="meta-icon">👤</span>
-                                    <span>频繁遇到报错的人</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-icon">⏱️</span>
-                                    <span>阅读5分钟，长期受用</span>
-                                </div>
-                            </div>
-                            <div class="aimod-card-bottom">
-                                <a href="free-guide-pitfalls.html" class="mc-btn-cta-free aimod-card-cta-unified">在线阅读</a>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-
-                <!-- ============================
-                     3. 实战效果展示
-                     ============================ -->
-                <section class="panel aimod-section aimod-showcase-section aimod-section-spacious" aria-label="实战效果展示">
-                    <div class="panel-title">🎮 真实效果 · 全部可复现</div>
-                    <div class="aimod-showcase-grid">
-                        <div class="aimod-showcase-item aimod-showcase-featured">
-                            <div class="showcase-gif-wrap">
-                                <img src="assets/gif/mod-demo.gif" alt="模组运行实录" class="showcase-gif-img">
-                            </div>
-                            <div class="showcase-label">AI辅助开发的「制箭台」模组在游戏中实际运行效果</div>
-                        </div>
-                        <div class="aimod-showcase-side">
-                            <div class="aimod-showcase-item showcase-video-entry" onclick="openVideoModal()">
-                                <div class="showcase-placeholder showcase-placeholder-video">
-                                    <span class="showcase-icon">▶</span>
-                                    <span>观看完整开发教程</span>
-                                </div>
-                                <div class="showcase-label">点击选择平台观看</div>
-                            </div>
-                            <a href="https://github.com/xingduansuzhao/Neoforge-Lazypack" target="_blank" rel="noopener" class="aimod-showcase-item showcase-github-link">
-                                <div class="showcase-placeholder showcase-placeholder-github">
-                                    <span class="showcase-icon"><img src="assets/images/github.png" alt="GitHub" class="showcase-platform-icon"></span>
-                                    <span>GitHub 开源代码</span>
-                                    <span class="showcase-trust-hint">可直接 clone 运行 · 真实项目代码</span>
-                                </div>
-                                <div class="showcase-label">欢迎 Star & Fork</div>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 视频平台选择弹窗 -->
-                <div class="video-modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
-                    <div class="video-modal">
-                        <div class="video-modal-header">
-                            <span>选择观看平台</span>
-                            <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
-                        </div>
-                        <div class="video-modal-body">
-                            <a href="https://space.bilibili.com/3537121929332753" target="_blank" rel="noopener" class="video-modal-btn video-modal-bilibili">
-                                <img src="assets/images/bilibili.png" alt="哔哩哔哩" class="video-modal-icon">
-                                <span>哔哩哔哩</span>
-                            </a>
-                            <a href="https://www.douyin.com/user/MS4wLjABAAAAZQfWj15fBLrPBch-VEHqMnedWKUx4QPXYcTV1DIiShOI3E8LlvSHZQLET2nRU_IH?from_tab_name=main" target="_blank" rel="noopener" class="video-modal-btn video-modal-douyin">
-                                <img src="assets/images/douyin.png" alt="抖音" class="video-modal-icon">
-                                <span>抖音</span>
-                            </a>
-                        </div>
-                    </div>
+                <!-- 页面标题 -->
+                <div class="v3-page-hero">
+                    <h2 class="v3-page-title">AI 辅助 Minecraft 模组开发</h2>
+                    <p class="v3-page-subtitle">先跑通，再提效 —— 适合想从零开始做模组的人</p>
                 </div>
 
-                <!-- ============================
-                     4. 付费工具包介绍
-                     ============================ -->
-                <section id="pro-tools" class="panel aimod-section aimod-pro-section aimod-section-spacious" aria-label="AI模组开发效率工具包">
-                    <div class="aimod-section-header">
-                        <div class="panel-title">🧰 AI模组开发效率工具包</div>
-                        <span class="aimod-section-tag aimod-tag-pro">进阶提效</span>
-                    </div>
-                    <div class="aimod-pro-headline">帮你减少 80% AI 模组开发试错时间</div>
+                <!-- 两个大 Tab -->
+                <div class="v3-tab-bar">
+                    <button class="v3-tab active" data-major="beginner">
+                        <span class="v3-tab-icon">📘</span>
+                        <span class="v3-tab-text">入门路线</span>
+                    </button>
+                    <button class="v3-tab" data-major="advanced">
+                        <span class="v3-tab-icon">🧰</span>
+                        <span class="v3-tab-text">进阶提效</span>
+                    </button>
+                </div>
 
-                    <!-- 三类标签式内容 -->
-                    <div class="aimod-pro-tabs">
-                        <div class="pro-tab-list">
-                            <button class="pro-tab active" data-tab="prompt">Prompt模板</button>
-                            <button class="pro-tab" data-tab="workflow">AI开发流程</button>
-                            <button class="pro-tab" data-tab="tools">工具推荐方案</button>
-                        </div>
-                        <div class="pro-tab-content active" id="tab-prompt">
-                            <h4>30+ 场景 Prompt 模板库</h4>
-                            <p>覆盖事件生成、Entity逻辑、UI开发、方块交互等核心场景，直接复制使用。</p>
-                            <div class="pro-example">
-                                <span class="pro-example-label">示例</span>
-                                <code>"为NeoForge 1.21创建一个自定义方块，要求：可交互、有动画、掉落自身..."</code>
-                            </div>
-                        </div>
-                        <div class="pro-tab-content" id="tab-workflow">
-                            <h4>完整AI开发工作流方法论</h4>
-                            <p>从需求拆解到持续迭代，让AI长期稳定输出高质量代码。</p>
-                            <div class="pro-example">
-                                <span class="pro-example-label">流程</span>
-                                <code>需求拆解 → Prompt编写 → 代码审查 → 增量迭代 → 测试验证</code>
-                            </div>
-                        </div>
-                        <div class="pro-tab-content" id="tab-tools">
-                            <h4>AI工具横向评测与选型</h4>
-                            <p>按使用场景、优缺点、性价比给出可执行建议。</p>
-                            <div class="pro-example">
-                                <span class="pro-example-label">对比维度</span>
-                                <code>代码生成能力 / 上下文长度 / 价格 / 模组开发适配度</code>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Tab 内容区 -->
+                <div class="v3-tab-body">
 
-                    <!-- 中部 CTA -->
-                    <div class="aimod-section-cta aimod-pro-cta-area aimod-pro-cta-mid">
-                        <a class="mc-btn-cta aimod-primary-cta" target="_blank" rel="noopener" href="https://e.tb.cn/h.7DYUEVDz9PvsG22?tk=kD2WUmqmIYz">立即获取工具包 →</a>
-                    </div>
-                </section>
+                    <!-- ============================
+                         大Tab: 入门路线
+                         ============================ -->
+                    <div class="v3-major active" id="major-beginner">
 
-                <!-- ============================
-                     5. 对比区：强化转化
-                     ============================ -->
-                <section class="panel aimod-section aimod-section-spacious" aria-label="开发效率对比">
-                    <div class="panel-title">⚡ 开发效率对比</div>
-                    <div class="compare-grid">
-                        <div class="compare-col compare-before">
-                            <div class="compare-header"><span class="compare-icon">✕</span> 传统开发痛点</div>
-                            <ul>
-                                <li>Prompt靠猜，AI输出不稳定</li>
-                                <li>复杂功能不知道怎么拆需求</li>
-                                <li>反复报错调试 2~3 小时</li>
-                                <li>不知道哪个AI工具适合模组开发</li>
-                            </ul>
+                        <!-- 子 Tab -->
+                        <div class="v3-sub-bar">
+                            <button class="v3-sub active" data-sub="guide">学习路线</button>
+                            <button class="v3-sub" data-sub="demo">实战效果</button>
+                            <button class="v3-sub" data-sub="tips">避坑 & 反馈</button>
                         </div>
-                        <div class="compare-col compare-after">
-                            <div class="compare-header"><span class="compare-icon">✓</span> AI效率开发方式</div>
-                            <ul>
-                                <li>模板直接用，输出质量稳定</li>
-                                <li>标准工作流，需求清晰可拆解</li>
-                                <li>20~30 分钟完成同样功能</li>
-                                <li>工具评测对比，选型有依据</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
 
-                <!-- ============================
-                     6. 用户反馈/案例
-                     ============================ -->
-                <section class="panel aimod-section aimod-testimonial-section aimod-section-spacious" aria-label="用户使用案例">
-                    <div class="panel-title">💬 用户真实反馈</div>
-                    <div class="testimonial-grid">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card-header">
-                                <div class="testimonial-avatar">B</div>
-                                <div class="testimonial-meta">
-                                    <span class="testimonial-name">B站用户</span>
-                                    <span class="testimonial-src">B站 · 视频评论区</span>
+                        <!-- 子内容: 学习路线 -->
+                        <div class="v3-sub-panel active" id="sub-guide">
+                            <section class="panel aimod-section aimod-section-spacious">
+                                <div class="panel-title">📘 三步走入门路线</div>
+                                <p class="aimod-section-lead">每一步只解决一个明确问题，点击卡片展开查看，读完就能往下做。</p>
+
+                                <div class="v3-step-cards">
+
+                                    <!-- STEP 1 -->
+                                    <div class="v3-step-card" data-step="1">
+                                        <div class="v3-step-card-head">
+                                            <div class="v3-step-num">STEP 1</div>
+                                            <h3>千问AI接入指南</h3>
+                                            <p class="v3-step-meta">先把环境接起来 <span class="dot-sep">·</span> 零基础适用 <span class="dot-sep">·</span> 5~10分钟</p>
+                                            <p class="v3-step-desc">从 IDE 配置到基础使用，帮你把 AI 编程环境先接入成功，避免一开始卡在工具层。</p>
+                                            <button class="v3-step-toggle">点击展开详情 ▼</button>
+                                        </div>
+                                        <div class="v3-step-card-body" id="step-body-1">
+                                            <div class="step-inline-content">
+                                                <h4>10分钟搭好AI编程环境</h4>
+                                                <p>只需三步，即可在IDE中接入AI编程助手（通义灵码 Lingma），开始AI辅助模组开发。</p>
+
+                                                <div class="step-inline-block">
+                                                    <h5>Step 1：安装Lingma插件</h5>
+                                                    <p>打开 IntelliJ IDEA → Settings → Plugins，搜索 <strong>"Lingma"</strong>，安装通义灵码插件后重启IDE。</p>
+                                                    <div class="guide-step-img"><img src="assets/images/guide-step1.png" alt="安装Lingma插件"></div>
+                                                </div>
+
+                                                <div class="step-inline-block">
+                                                    <h5>Step 2：登录阿里云账号</h5>
+                                                    <p>在Lingma面板中点击登录，选择 <strong>"阿里云中国站账号登录"</strong>，使用支付宝或阿里云账号即可。</p>
+                                                    <div class="guide-step-img"><img src="assets/images/guide-step2.png" alt="登录阿里云账号"></div>
+                                                </div>
+
+                                                <div class="step-inline-block">
+                                                    <h5>Step 3：开始使用</h5>
+                                                    <p>登录成功后，在对话框中切换到 <strong>"智能体"</strong> 模式，输入问题即可开始AI辅助编程。</p>
+                                                    <div class="guide-step-img"><img src="assets/images/guide-step3.png" alt="开始使用"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- STEP 2 -->
+                                    <div class="v3-step-card" data-step="2">
+                                        <div class="v3-step-card-head">
+                                            <div class="v3-step-num">STEP 2</div>
+                                            <h3>第一个AI模组 Prompt</h3>
+                                            <p class="v3-step-meta">跑通第一条开发链路 <span class="dot-sep">·</span> 已搭好环境 <span class="dot-sep">·</span> 10~20分钟</p>
+                                            <p class="v3-step-desc">给你一套能直接起步的模板，让你先看到"模组真的能跑起来"，而不是反复停在理论里。</p>
+                                            <button class="v3-step-toggle">点击展开详情 ▼</button>
+                                        </div>
+                                        <div class="v3-step-card-body" id="step-body-2">
+                                            <div class="step-inline-content">
+                                                <h4>这些Prompt能帮你做什么？</h4>
+                                                <p>可以直接复制使用的完整Prompt。粘贴到你的AI编程工具中，AI会帮你生成一个可运行的Minecraft模组——包含自定义方块、物品和合成配方。</p>
+                                                <div class="free-article-callout free-article-callout-blue">
+                                                    <strong>前置要求</strong>
+                                                    <p>需要先完成上面 STEP 1 的环境搭建，确保AI编程环境可用。</p>
+                                                </div>
+
+                                                <div class="step-inline-block">
+                                                    <h5>Prompt #1：创建模组基础框架</h5>
+                                                    <p>先用这个Prompt让AI生成模组的基础结构，包含主类、注册系统等。</p>
+                                                    <div class="prompt-card">
+                                                        <div class="prompt-card-header">
+                                                            <span class="prompt-card-label">Prompt <span class="dot-sep">·</span> 基础框架</span>
+                                                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                                                        </div>
+                                                        <pre class="prompt-card-body">你是一个Minecraft模组开发专家，精通NeoForge 1.21模组开发。
+
+请帮我创建一个NeoForge 1.21模组的基础框架，模组ID为"mymod"，要求：
+
+1. 创建主类 MyMod.java，使用 @Mod 注解
+2. 创建物品注册类 ModItems.java，使用 DeferredRegister
+3. 创建方块注册类 ModBlocks.java，使用 DeferredRegister
+4. 在主类中完成所有注册的初始化
+5. 代码需要兼容 NeoForge 1.21.x
+
+请给出完整的Java代码，每个文件单独列出，并注明文件路径。
+代码中加入必要的中文注释说明每个部分的作用。</pre>
+                                                    </div>
+                                                </div>
+
+                                                <div class="step-inline-block">
+                                                    <h5>Prompt #2：添加自定义物品</h5>
+                                                    <p>框架生成后，用这个Prompt让AI添加一个自定义物品。</p>
+                                                    <div class="prompt-card">
+                                                        <div class="prompt-card-header">
+                                                            <span class="prompt-card-label">Prompt <span class="dot-sep">·</span> 自定义物品</span>
+                                                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                                                        </div>
+                                                        <pre class="prompt-card-body">基于上面的模组框架，请帮我在 ModItems.java 中添加一个自定义物品：
+
+物品名称：magic_gem（魔法宝石）
+要求：
+1. 在 ModItems 中注册该物品
+2. 设置物品属性：最大堆叠64，在创造模式物品栏中可见
+3. 创建语言文件 en_us.json，添加物品的英文名称
+4. 创建对应的物品模型JSON文件
+5. 说明物品材质文件应该放在哪个路径
+
+请给出需要修改和新增的所有文件内容。</pre>
+                                                    </div>
+                                                </div>
+
+                                                <div class="step-inline-block">
+                                                    <h5>Prompt #3：添加自定义方块</h5>
+                                                    <p>接着添加一个自定义方块，并设置掉落物。</p>
+                                                    <div class="prompt-card">
+                                                        <div class="prompt-card-header">
+                                                            <span class="prompt-card-label">Prompt <span class="dot-sep">·</span> 自定义方块</span>
+                                                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                                                        </div>
+                                                        <pre class="prompt-card-body">继续基于当前模组，请帮我在 ModBlocks.java 中添加一个自定义方块：
+
+方块名称：magic_ore（魔法矿石）
+要求：
+1. 在 ModBlocks 中注册该方块
+2. 同时注册对应的 BlockItem（方块物品）
+3. 设置方块属性：硬度3.0，需要铁镐以上挖掘
+4. 创建方块战利品表（loot table），挖掘时掉落1~3个 magic_gem
+5. 创建方块模型JSON和方块状态JSON
+6. 更新语言文件
+
+请给出需要修改和新增的所有文件内容及路径。</pre>
+                                                    </div>
+                                                </div>
+
+                                                <div class="step-inline-block">
+                                                    <h5>Prompt #4：添加合成配方</h5>
+                                                    <p>最后添加合成配方，让模组功能完整闭环。</p>
+                                                    <div class="prompt-card">
+                                                        <div class="prompt-card-header">
+                                                            <span class="prompt-card-label">Prompt <span class="dot-sep">·</span> 合成配方</span>
+                                                            <button class="prompt-copy-btn" onclick="copyPrompt(this)">📋 一键复制</button>
+                                                        </div>
+                                                        <pre class="prompt-card-body">继续基于当前模组，请帮我添加以下合成配方：
+
+1. 有序合成：4个 magic_gem + 1个钻石 → 1个钻石剑（工作台合成）
+   布局：
+   空  宝石 空
+   宝石 钻石 宝石
+   空  宝石 空
+
+2. 熔炼配方：magic_ore → magic_gem（熔炉熔炼，经验0.7，时间200tick）
+
+请给出配方JSON文件的完整内容和正确的文件路径。
+同时说明配方数据包的目录结构。</pre>
+                                                    </div>
+                                                </div>
+
+                                                <div class="step-inline-block">
+                                                    <h5>使用方法</h5>
+                                                    <ol class="free-article-steps">
+                                                        <li><strong>按顺序使用</strong>：从 Prompt #1 开始，每次把AI生成的代码放到项目中后，再发送下一个Prompt</li>
+                                                        <li><strong>保持上下文</strong>：在同一个AI对话窗口中依次发送，AI会记住之前生成的代码</li>
+                                                        <li><strong>检查并运行</strong>：每步完成后运行 <code>gradlew runClient</code> 检查是否报错</li>
+                                                        <li><strong>遇到报错？</strong>直接把报错信息粘贴给AI，让它帮你修复</li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- STEP 3 -->
+                                    <div class="v3-step-card" data-step="3">
+                                        <div class="v3-step-card-head">
+                                            <div class="v3-step-num">STEP 3</div>
+                                            <h3>AI开发避坑指南</h3>
+                                            <p class="v3-step-meta">避开高频返工点 <span class="dot-sep">·</span> 阅读5分钟 <span class="dot-sep">·</span> 长期受用</p>
+                                            <p class="v3-step-desc">整理高频错误和排查思路，让你在做复杂功能前，先知道哪些坑最容易反复踩。</p>
+                                            <button class="v3-step-toggle">点击展开详情 ▼</button>
+                                        </div>
+                                        <div class="v3-step-card-body" id="step-body-3">
+                                            <div class="step-inline-content">
+                                                <h4>AI辅助模组开发中最常见的 8 个坑</h4>
+                                                <p>每个坑都给出现象、原因和修复方法。提前了解，少走弯路。</p>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 1：AI生成的代码直接报错</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>粘贴AI代码后IDE标红，编译不通过</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>AI使用了旧版API或错误的import</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>Prompt中明确指定版本号，把报错信息完整给AI</span></div>
+                                                </div>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 2：Mixin注入不生效或崩溃</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>Mixin写了但运行没效果，或游戏崩溃</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>mixin.json未注册、注入点方法名不匹配</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>先用@Inject(at=HEAD)验证，再尝试复杂注入</span></div>
+                                                </div>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 3：注册项找不到 / NullPointer</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>运行时NullPointerException</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>DeferredRegister注册时机不对</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>确保register()在模组构造函数中调用，用Supplier延迟获取</span></div>
+                                                </div>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 4：AI对Minecraft API的"幻觉"</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>AI写出看似合理但实际不存在的API</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>AI训练数据过时，混淆了不同版本API</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>Prompt中提供已有import列表，要求AI标注不确定的API</span></div>
+                                                </div>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 5：Gradle构建失败</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>gradlew build 或 runClient 报错</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>build.gradle配置错误、Java版本不匹配</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>确认Java 21，用官方MDK模板，把完整日志给AI</span></div>
+                                                </div>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 6：资源文件路径写错</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>物品显示紫黑色方块或键名</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>模型/语言/材质文件路径不正确</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>让AI每次给出文件内容时附上完整路径</span></div>
+                                                </div>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 7：AI上下文丢失</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>AI后续代码和之前不兼容</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>对话太长，AI"忘记"之前代码</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>每5~6轮开新对话，重新提供项目上下文</span></div>
+                                                </div>
+
+                                                <div class="pitfall-card">
+                                                    <h5>坑 8：版本混淆（Forge vs NeoForge vs Fabric）</h5>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-red">现象</span><span>AI生成了错误加载器的代码</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-orange">原因</span><span>AI默认生成Forge代码，NeoForge/Fabric API差异大</span></div>
+                                                    <div class="pitfall-card-row"><span class="pitfall-card-tag pitfall-tag-green">修复</span><span>每个Prompt开头写明："NeoForge 1.21（非Forge非Fabric）"</span></div>
+                                                </div>
+
+                                                <h5>总结：3条核心原则</h5>
+                                                <div class="pitfall-summary">
+                                                    <div class="pitfall-summary-item">
+                                                        <span class="pitfall-summary-num">1</span>
+                                                        <div><strong>Prompt要精确</strong><p>每次都带上版本号、加载器类型、已有代码结构</p></div>
+                                                    </div>
+                                                    <div class="pitfall-summary-item">
+                                                        <span class="pitfall-summary-num">2</span>
+                                                        <div><strong>报错直接给AI</strong><p>完整报错信息是AI最好的修复线索</p></div>
+                                                    </div>
+                                                    <div class="pitfall-summary-item">
+                                                        <span class="pitfall-summary-num">3</span>
+                                                        <div><strong>小步验证</strong><p>每写一个功能就运行测试，不要攒一堆再跑</p></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 展开区：全宽显示在卡片行下方 -->
+                                    <div class="v3-step-expand" id="step-expand"></div>
+
                                 </div>
-                            </div>
-                            <div class="testimonial-quote">"之前完全不会Java，跟着路线走，第一天就跑出了一个自定义方块模组，太有成就感了。"</div>
-                            <div class="testimonial-badge">零基础入门</div>
+                            </section>
                         </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-card-header">
-                                <div class="testimonial-avatar">Q</div>
-                                <div class="testimonial-meta">
-                                    <span class="testimonial-name">QQ群成员</span>
-                                    <span class="testimonial-src">QQ群 · 技术交流群</span>
+
+                        <!-- 子内容: 实战效果 -->
+                        <div class="v3-sub-panel" id="sub-demo">
+                            <section class="panel aimod-section aimod-section-spacious">
+                                <div class="panel-title">🎮 真实效果 <span class="dot-sep">·</span> 全部可复现</div>
+                                <p class="aimod-section-lead">你可以直接看运行效果、完整视频和公开代码，判断这条路线适不适合你。</p>
+                                <div class="aimod-showcase-grid">
+                                    <div class="aimod-showcase-item aimod-showcase-featured">
+                                        <div class="showcase-gif-wrap">
+                                            <img src="assets/gif/mod-demo.gif" alt="模组运行实录" class="showcase-gif-img">
+                                        </div>
+                                        <div class="showcase-label">AI辅助开发的「制箭台」模组在游戏中实际运行效果</div>
+                                    </div>
+                                    <div class="aimod-showcase-side">
+                                        <a href="https://space.bilibili.com/3537121929332753" target="_blank" rel="noopener" class="aimod-showcase-item showcase-video-entry">
+                                            <div class="showcase-placeholder showcase-placeholder-video">
+                                                <img src="assets/images/bilibili.png" alt="哔哩哔哩" class="showcase-platform-icon">
+                                                <span>在哔哩哔哩观看教程</span>
+                                            </div>
+                                            <div class="showcase-label">点击直接跳转</div>
+                                        </a>
+                                        <a href="https://www.douyin.com/user/MS4wLjABAAAAZQfWj15fBLrPBch-VEHqMnedWKUx4QPXYcTV1DIiShOI3E8LlvSHZQLET2nRU_IH?from_tab_name=main" target="_blank" rel="noopener" class="aimod-showcase-item showcase-video-entry">
+                                            <div class="showcase-placeholder showcase-placeholder-video">
+                                                <img src="assets/images/douyin.png" alt="抖音" class="showcase-platform-icon">
+                                                <span>在抖音观看教程</span>
+                                            </div>
+                                            <div class="showcase-label">点击直接跳转</div>
+                                        </a>
+                                        <a href="https://github.com/xingduansuzhao/Neoforge-Lazypack" target="_blank" rel="noopener" class="aimod-showcase-item showcase-github-link">
+                                            <div class="showcase-placeholder showcase-placeholder-github">
+                                                <span class="showcase-icon"><img src="assets/images/github.png" alt="GitHub" class="showcase-platform-icon"></span>
+                                                <span>GitHub 开源代码</span>
+                                                <span class="showcase-trust-hint">可直接 clone 运行 <span class="dot-sep">·</span> 真实项目代码</span>
+                                            </div>
+                                            <div class="showcase-label">欢迎 Star &amp; Fork</div>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="testimonial-quote">"Prompt模板库直接帮我省了大量试错时间，以前一个Entity写半天，现在30分钟搞定。"</div>
-                            <div class="testimonial-badge">工具包用户</div>
+                            </section>
                         </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-card-header">
-                                <div class="testimonial-avatar">D</div>
-                                <div class="testimonial-meta">
-                                    <span class="testimonial-name">抖音用户</span>
-                                    <span class="testimonial-src">抖音 · 视频评论区</span>
+
+                        <!-- 子内容: 避坑 & 反馈 -->
+                        <div class="v3-sub-panel" id="sub-tips">
+                            <section class="panel aimod-section aimod-section-spacious">
+                                <div class="panel-title">⚡ 常见卡点 vs 更稳妥的做法</div>
+                                <p class="aimod-section-lead">这不是"传统开发不行"，而是很多人在刚开始用 AI 做模组时，确实会反复掉进下面这些坑。</p>
+                                <div class="compare-grid">
+                                    <div class="compare-col compare-before">
+                                        <div class="compare-header"><span class="compare-icon">✕</span> 容易卡住的地方</div>
+                                        <ul>
+                                            <li>没有先交代项目上下文，AI 一开始就在猜版本和环境。</li>
+                                            <li>一口气让 AI 做完整系统，结果输出散、改动乱。</li>
+                                            <li>报错后只会不断重试，不知道该贴哪些日志和代码。</li>
+                                            <li>材质和代码都临时现想，长期做下来效率不稳定。</li>
+                                        </ul>
+                                    </div>
+                                    <div class="compare-col compare-after">
+                                        <div class="compare-header"><span class="compare-icon">✓</span> 更稳妥的路径</div>
+                                        <ul>
+                                            <li>先锁 Context，再按任务类型调用对应模板或 Skill。</li>
+                                            <li>先类结构、再核心逻辑、再注册和资源，逐步推进。</li>
+                                            <li>报错时切换到 Debug 流程，优先定位 <code>Caused by</code> 和关键堆栈。</li>
+                                            <li>把高频资产整理成可复用模板，后面每次开发都更顺手。</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="testimonial-quote">"避坑指南真的有用，我之前反复遇到的mixin注入报错问题，看完马上解决了。"</div>
-                            <div class="testimonial-badge">避坑指南</div>
+                            </section>
+
+                            <section class="panel aimod-section aimod-testimonial-section aimod-section-spacious">
+                                <div class="panel-title">💬 一些实际反馈</div>
+                                <p class="aimod-section-lead">主要来自视频评论区和交流群。</p>
+                                <div class="testimonial-grid">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-card-header">
+                                            <div class="testimonial-avatar">B</div>
+                                            <div class="testimonial-meta">
+                                                <span class="testimonial-name">B站用户</span>
+                                                <span class="testimonial-src">B站 <span class="dot-sep">·</span> 视频评论区</span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">"之前完全不会 Java，跟着路线走，第一天就跑出了一个自定义方块模组，至少我第一次觉得这件事真的能学会。"</div>
+                                        <div class="testimonial-badge">零基础入门</div>
+                                    </div>
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-card-header">
+                                            <div class="testimonial-avatar">Q</div>
+                                            <div class="testimonial-meta">
+                                                <span class="testimonial-name">QQ群成员</span>
+                                                <span class="testimonial-src">QQ群 <span class="dot-sep">·</span> 技术交流群</span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">"模板库和工作流是最有用的，不是它替我写完，而是我终于知道该怎么把一个 Entity 需求拆给 AI。"</div>
+                                        <div class="testimonial-badge">工具包用户</div>
+                                    </div>
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-card-header">
+                                            <div class="testimonial-avatar">D</div>
+                                            <div class="testimonial-meta">
+                                                <span class="testimonial-name">抖音用户</span>
+                                                <span class="testimonial-src">抖音 <span class="dot-sep">·</span> 视频评论区</span>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-quote">"避坑指南真的有用，我之前反复遇到的 mixin 注入报错，看完才知道原来问题该从哪里查，不再是瞎试。"</div>
+                                        <div class="testimonial-badge">避坑指南</div>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
+
                     </div>
-                </section>
 
-                <!-- ============================
-                     7. FAQ 常见问题
-                     ============================ -->
-                <section class="panel aimod-section aimod-faq-section aimod-section-spacious" aria-label="常见问题">
-                    <div class="panel-title">❓ 常见问题</div>
-                    <div class="faq-list faq-list-clean">
-                        <details class="faq-item faq-item-clean" open>
-                            <summary class="faq-question">购买后提供技术支持吗？</summary>
-                            <div class="faq-answer">购买后可加入专属QQ群答疑，群内有开发者互助</div>
-                        </details>
-                        <details class="faq-item faq-item-clean" open>
-                            <summary class="faq-question">完全不会Java，能学会吗？</summary>
-                            <div class="faq-answer">可以。免费路线专为零基础设计，AI帮你生成代码，跟着做即可跑出模组。</div>
-                        </details>
-                        <details class="faq-item faq-item-clean" open>
-                            <summary class="faq-question">免费内容和付费工具包有什么区别？</summary>
-                            <div class="faq-answer">免费帮你入门（环境+第一个模组+避坑），付费帮你提效（Prompt模板+工作流+工具评测）。</div>
-                        </details>
-                        <details class="faq-item faq-item-clean" open>
-                            <summary class="faq-question">内容会持续更新吗？</summary>
-                            <div class="faq-answer">会。随MC版本和AI工具迭代同步更新，购买后长期有效。</div>
-                        </details>
-                        <details class="faq-item faq-item-clean" open>
-                            <summary class="faq-question">支持哪些模组加载器？</summary>
-                            <div class="faq-answer">Forge、Fabric、NeoForge三大主流加载器均支持。</div>
-                        </details>
+                    <!-- ============================
+                         大Tab: 进阶提效
+                         ============================ -->
+                    <div class="v3-major" id="major-advanced">
+
+                        <!-- 子 Tab -->
+                        <div class="v3-sub-bar">
+                            <button class="v3-sub active" data-sub="toolkit">解决什么问题</button>
+                            <button class="v3-sub" data-sub="modules">包含什么内容</button>
+                            <button class="v3-sub" data-sub="faq">常见问题</button>
+                        </div>
+
+                        <!-- 子内容: 解决什么问题 -->
+                        <div class="v3-sub-panel active" id="sub-toolkit">
+                            <section class="panel aimod-section aimod-section-spacious">
+                                <div class="panel-title">🧰 AI模组开发效率工具包</div>
+
+                                <div class="v3-pro-scene">
+                                    <p class="v3-pro-scene-intro">你已经跑通了第一个模组。但当功能开始变复杂——</p>
+                                    <div class="compare-grid">
+                                        <div class="compare-col compare-before">
+                                            <div class="compare-header"><span class="compare-icon">✕</span> 你可能遇到的问题</div>
+                                            <ul>
+                                                <li>每次开新功能都要重新写一遍上下文，AI才能理解你的项目。</li>
+                                                <li>Entity、Mixin、DataGen 这些复杂功能，不知道怎么拆给 AI。</li>
+                                                <li>AI 画的材质不是糊就是脏，16x16 像素根本控不住。</li>
+                                                <li>不确定该选什么 AI 工具，试了几个又换来换去。</li>
+                                                <li>AI 编程工具额度用着用着就没了，开发被迫中断。</li>
+                                            </ul>
+                                        </div>
+                                        <div class="compare-col compare-after">
+                                            <div class="compare-header"><span class="compare-icon">✓</span> 工具包帮你做到的</div>
+                                            <ul>
+                                                <li>每个开发场景有对应的 Skill，一键调用，不用每次重新组织。</li>
+                                                <li>12 个实战 Skill 覆盖从方块物品到世界生成的核心场景。</li>
+                                                <li>专门的材质生成方案，通过伪像素降维法解决贴图质量问题。</li>
+                                                <li>AI 工具选型矩阵，按场景标注推荐度，一张表做完决策。</li>
+                                                <li>附带额度续航方案，理论上可以实现无限续航。</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="v3-pro-overview">
+                                    <div class="v3-pro-stat-row">
+                                        <div class="v3-pro-stat">
+                                            <span class="v3-pro-stat-num">12</span>
+                                            <span class="v3-pro-stat-label">开发 Skills</span>
+                                        </div>
+                                        <div class="v3-pro-stat">
+                                            <span class="v3-pro-stat-num">6</span>
+                                            <span class="v3-pro-stat-label">参考文档</span>
+                                        </div>
+                                        <div class="v3-pro-stat">
+                                            <span class="v3-pro-stat-num">2</span>
+                                            <span class="v3-pro-stat-label">材质生成模板</span>
+                                        </div>
+                                        <div class="v3-pro-stat">
+                                            <span class="v3-pro-stat-num">1</span>
+                                            <span class="v3-pro-stat-label">一站式导览</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="aimod-section-cta aimod-pro-cta-area aimod-pro-cta-mid">
+                                    <a class="mc-btn-cta aimod-primary-cta" target="_blank" rel="noopener" href="https://e.tb.cn/h.7DYUEVDz9PvsG22?tk=kD2WUmqmIYz">查看工具包详情</a>
+                                    <div class="aimod-pro-cta-note">建议入门路线走完再考虑，不着急。</div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- 子内容: 包含什么内容 -->
+                        <div class="v3-sub-panel" id="sub-modules">
+                            <section class="panel aimod-section aimod-section-spacious">
+                                <div class="panel-title">📦 工具包包含什么</div>
+                                <p class="aimod-section-lead">两大模块覆盖「代码开发」和「材质生成」，打开导览即可按需使用。</p>
+
+                                <div class="v3-pro-highlights">
+                                    <div class="v3-pro-hl-card">
+                                        <h4>📖 一站式导览</h4>
+                                        <p>打开即用。AI 基础概念、工具选型、工作模式、实战技巧、安装指引全部整合在一个页面里。不用翻文件夹。</p>
+                                    </div>
+                                    <div class="v3-pro-hl-card">
+                                        <h4>🔧 AI 工具选型矩阵</h4>
+                                        <p>按编辑器、网页、命令行、材质四大场景整理主流 AI 工具，标注推荐度和网络要求，帮你快速做出选择。</p>
+                                    </div>
+                                    <div class="v3-pro-hl-card">
+                                        <h4>⚡ 额度续航方案</h4>
+                                        <p>多账号聚合代理的完整部署教程。理论上可以实现 AI 编程工具额度无限续航。</p>
+                                    </div>
+                                </div>
+
+                                <div class="v3-module-grid">
+                                    <div class="v3-module-card">
+                                        <div class="v3-module-header">
+                                            <h4>💻 AI 写代码</h4>
+                                            <span class="v3-module-count">12 Skills + 6 文档</span>
+                                        </div>
+                                        <p>方块与物品、实体与生物、界面与交互、事件处理、Mixin 注入、GeckoLib 动画、DataGen、网络通信、世界生成等核心场景，每个 Skill 都是独立可复用的任务模板。</p>
+                                        <p>配套参考文档：Context 模板、开发流程 SOP、Debug 排查流程、跨版本工具矩阵。</p>
+                                    </div>
+                                    <div class="v3-module-card">
+                                        <div class="v3-module-header">
+                                            <h4>🎨 AI 画材质</h4>
+                                            <span class="v3-module-count">1 Skill + 2 文档</span>
+                                        </div>
+                                        <p>通过「伪像素降维法」解决 AI 直接生成 16x16 贴图容易糊、脏、细节失控的问题：先生成伪像素大图，再缩到目标尺寸。</p>
+                                        <p>包含通用前置提示词模板和分类型材质模板，适合食物、矿石、工具、容器等常见类型。</p>
+                                    </div>
+                                </div>
+
+                                <div class="v3-skills-preview">
+                                    <h4>Skills 可适配的 AI 编辑器</h4>
+                                    <div class="aimod-pro-pill-list">
+                                        <span>Cursor</span>
+                                        <span>Codex (OpenAI)</span>
+                                        <span>Trae</span>
+                                        <span>其他支持 Skills 的工具</span>
+                                    </div>
+                                </div>
+
+                                <div class="aimod-section-cta aimod-pro-cta-area aimod-pro-cta-mid">
+                                    <a class="mc-btn-cta aimod-primary-cta" target="_blank" rel="noopener" href="https://e.tb.cn/h.7DYUEVDz9PvsG22?tk=kD2WUmqmIYz">查看工具包详情</a>
+                                </div>
+                            </section>
+                        </div>
+
+                        <!-- 子内容: 常见问题 -->
+                        <div class="v3-sub-panel" id="sub-faq">
+                            <section class="panel aimod-section aimod-faq-section aimod-section-spacious">
+                                <div class="panel-title">❓ 常见问题</div>
+                                <div class="faq-list faq-list-clean">
+                                    <details class="faq-item faq-item-clean" open>
+                                        <summary class="faq-question">购买后提供技术支持吗？</summary>
+                                        <div class="faq-answer">购买后可加入专属QQ群答疑，群内有开发者互助。</div>
+                                    </details>
+                                    <details class="faq-item faq-item-clean" open>
+                                        <summary class="faq-question">完全不会Java，能学会吗？</summary>
+                                        <div class="faq-answer">可以。入门路线专为零基础设计，AI帮你生成代码，跟着做即可跑出模组。</div>
+                                    </details>
+                                    <details class="faq-item faq-item-clean" open>
+                                        <summary class="faq-question">入门内容和效率工具包有什么区别？</summary>
+                                        <div class="faq-answer">入门内容帮你跑通第一条路线，确认这件事能做。工具包帮你建立结构化的工作体系，减少反复试错和返工。</div>
+                                    </details>
+                                    <details class="faq-item faq-item-clean" open>
+                                        <summary class="faq-question">内容会持续更新吗？</summary>
+                                        <div class="faq-answer">会。随MC版本和AI工具迭代同步更新，购买后长期有效。</div>
+                                    </details>
+                                    <details class="faq-item faq-item-clean" open>
+                                        <summary class="faq-question">支持哪些模组加载器？</summary>
+                                        <div class="faq-answer">Forge、Fabric、NeoForge三大主流加载器均支持。</div>
+                                    </details>
+                                </div>
+                            </section>
+                        </div>
+
                     </div>
-                </section>
 
+                </div>
 
-            </div>
             </div>
         </div>
     </div>
 
-    <!-- 复制成功提示 -->
+    <!-- Toast -->
     <div class="toast" id="toast">✅ 群号已复制！</div>
 
     <script src="js/main.js"></script>
     <script>
-    /* Tab 切换逻辑 */
     (function() {
-        var tabs = document.querySelectorAll('.pro-tab');
-        var contents = document.querySelectorAll('.pro-tab-content');
-        tabs.forEach(function(tab) {
+        /* 大 Tab 切换 */
+        var majorTabs = document.querySelectorAll('.v3-tab');
+        var majorPanels = document.querySelectorAll('.v3-major');
+
+        majorTabs.forEach(function(tab) {
             tab.addEventListener('click', function() {
-                tabs.forEach(function(t) { t.classList.remove('active'); });
-                contents.forEach(function(c) { c.classList.remove('active'); });
-                tab.classList.add('active');
-                var target = document.getElementById('tab-' + tab.getAttribute('data-tab'));
+                var id = this.getAttribute('data-major');
+                majorTabs.forEach(function(t) { t.classList.remove('active'); });
+                majorPanels.forEach(function(p) { p.classList.remove('active'); });
+                this.classList.add('active');
+                var target = document.getElementById('major-' + id);
                 if (target) target.classList.add('active');
+                document.querySelector('.v3-tab-body').scrollTop = 0;
+            });
+        });
+
+        /* 子 Tab 切换 */
+        document.querySelectorAll('.v3-sub-bar').forEach(function(bar) {
+            var subs = bar.querySelectorAll('.v3-sub');
+            var parent = bar.parentElement;
+            var subPanels = parent.querySelectorAll('.v3-sub-panel');
+
+            subs.forEach(function(sub) {
+                sub.addEventListener('click', function() {
+                    var id = this.getAttribute('data-sub');
+                    subs.forEach(function(s) { s.classList.remove('active'); });
+                    subPanels.forEach(function(p) { p.classList.remove('active'); });
+                    this.classList.add('active');
+                    var target = document.getElementById('sub-' + id);
+                    if (target) target.classList.add('active');
+                });
+            });
+        });
+
+        /* 步骤卡片展开/收起 —— 内容在全宽展开区显示 */
+        var expandArea = document.getElementById('step-expand');
+        var allStepCards = document.querySelectorAll('.v3-step-card');
+        allStepCards.forEach(function(card) {
+            card.addEventListener('click', function() {
+                var step = card.getAttribute('data-step');
+                var wasActive = card.classList.contains('active');
+
+                allStepCards.forEach(function(c) {
+                    c.classList.remove('active');
+                    var t = c.querySelector('.v3-step-toggle');
+                    if (t) t.textContent = '点击展开详情 ▼';
+                });
+
+                if (wasActive) {
+                    expandArea.classList.remove('open');
+                    expandArea.innerHTML = '';
+                    return;
+                }
+
+                card.classList.add('active');
+                var toggle = card.querySelector('.v3-step-toggle');
+                if (toggle) toggle.textContent = '收起详情 ▲';
+
+                var body = document.getElementById('step-body-' + step);
+                if (body) {
+                    expandArea.innerHTML = body.innerHTML;
+                    expandArea.classList.add('open');
+                    setTimeout(function() {
+                        expandArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 50);
+                }
             });
         });
     })();
 
-    /* 视频平台选择弹窗 */
-    function openVideoModal() {
-        document.getElementById('videoModal').classList.add('show');
-    }
-    function closeVideoModal(e) {
-        if (e.target === document.getElementById('videoModal') || e.currentTarget.classList.contains('video-modal-close')) {
-            document.getElementById('videoModal').classList.remove('show');
-        }
-    }
     </script>
 </body>
 </html>

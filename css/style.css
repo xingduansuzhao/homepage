@@ -18,6 +18,26 @@
 
 * { box-sizing: border-box; }
 
+/* 全局细滚动条 */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.35);
+}
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
+
 /* Minecraft像素字体仅用于标题、加粗、按钮等强调元素 */
 h1, h2, h3, h4, h5, h6,
 strong, b,
@@ -1212,6 +1232,7 @@ body.lazypack-page .gui-outer-wrap {
 .lp-tag-sep {
     color: #777;
     margin: 0 2px;
+    font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
 }
 
 /* ---------- 通用 Section ---------- */
@@ -1479,9 +1500,13 @@ body.lazypack-page .gui-outer-wrap {
 /* --- 1. 首屏 Hero v2 --- */
 .aimod-hero-v2 {
     text-align: center;
-    padding: 44px 28px 32px;
-    background: linear-gradient(180deg, rgba(106, 27, 154, 0.06) 0%, rgba(255,255,255,0.35) 100%);
-    border-bottom: 3px solid #9C27B0;
+    padding: 46px 30px 34px;
+    background:
+        radial-gradient(circle at top, rgba(90, 140, 109, 0.16) 0%, rgba(90, 140, 109, 0) 42%),
+        linear-gradient(180deg, rgba(63, 91, 69, 0.08) 0%, rgba(255,255,255,0.88) 100%);
+    border-bottom: 3px solid #5b7f5c;
+    position: relative;
+    overflow: hidden;
 }
 
 .aimod-hero-badge {
@@ -1498,34 +1523,66 @@ body.lazypack-page .gui-outer-wrap {
     letter-spacing: 1px;
 }
 
+.aimod-hero-badge-soft {
+    display: inline-block;
+    background: rgba(255,255,255,0.84);
+    color: #3f5b45;
+    font-size: 0.85rem;
+    padding: 4px 14px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    border: 2px solid #83a182;
+    border-right-color: #547253;
+    border-bottom-color: #547253;
+    letter-spacing: 1px;
+}
+
 .aimod-hero-title-v2 {
     margin: 0 0 10px 0;
-    font-size: clamp(1.6rem, 3vw, 2.3rem);
-    color: #1a1a1a;
-    line-height: 1.3;
+    font-size: clamp(1.8rem, 3.2vw, 2.65rem);
+    color: #1f2f23;
+    line-height: 1.25;
 }
 
 .aimod-hero-subtitle-v2 {
     margin: 0 auto;
     font-size: 1.05rem;
-    color: #555;
-    max-width: 480px;
-    line-height: 1.5;
+    color: #49564b;
+    max-width: 700px;
+    line-height: 1.75;
+}
+
+.aimod-hero-trust-list {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.aimod-hero-trust-list span {
+    padding: 7px 12px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(91, 127, 92, 0.32);
+    color: #49604b;
+    font-size: 0.88rem;
+    line-height: 1.4;
 }
 
 .aimod-hero-actions-v2 {
-    margin-top: 20px;
+    margin-top: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .aimod-primary-cta {
     font-size: 1.2rem !important;
     padding: 10px 32px !important;
     margin-left: 0 !important;
-    box-shadow: 3px 3px 0 #000, 0 0 12px rgba(245, 166, 35, 0.3) !important;
+    box-shadow: 3px 3px 0 #000, 0 0 12px rgba(103, 135, 115, 0.18) !important;
 }
 
 .aimod-hero-stats {
@@ -1533,9 +1590,9 @@ body.lazypack-page .gui-outer-wrap {
     justify-content: center;
     align-items: center;
     gap: 0;
-    margin-top: 24px;
+    margin-top: 26px;
     padding-top: 18px;
-    border-top: 2px solid rgba(0,0,0,0.06);
+    border-top: 2px solid rgba(63, 91, 69, 0.14);
 }
 
 .stat-item {
@@ -1547,27 +1604,36 @@ body.lazypack-page .gui-outer-wrap {
 
 .stat-number {
     font-family: "MinecraftAE", "VT323", monospace;
-    font-size: 1.6rem;
-    color: #6A1B9A;
+    font-size: 1.35rem;
+    color: #436148;
     font-weight: bold;
+    letter-spacing: 0.5px;
 }
 
 .stat-label {
     font-size: 0.85rem;
-    color: #555;
-    margin-top: 2px;
+    color: #59675b;
+    margin-top: 4px;
 }
 
 .stat-divider {
     width: 2px;
     height: 32px;
-    background: #ccc;
+    background: rgba(91, 127, 92, 0.34);
     flex-shrink: 0;
 }
 
 /* --- 2. 免费区块 --- */
 .aimod-free-section {
     padding: 20px 24px 24px;
+}
+
+.aimod-section-lead {
+    margin: 8px 0 0;
+    color: #57635a;
+    font-size: 0.96rem;
+    line-height: 1.7;
+    max-width: 780px;
 }
 
 .aimod-card-list {
@@ -1577,22 +1643,23 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 .aimod-card {
-    background: #fff;
-    border: 2px solid #bbb;
-    border-bottom-color: #e8e8e8;
-    border-right-color: #e8e8e8;
-    border-top-color: #999;
-    border-left-color: #999;
-    padding: 14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(249,250,248,0.98) 100%);
+    border: 2px solid #b9c0b8;
+    border-bottom-color: #edf0ec;
+    border-right-color: #edf0ec;
+    border-top-color: #98a396;
+    border-left-color: #98a396;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     position: relative;
-    transition: transform 0.15s, box-shadow 0.15s;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    min-height: 100%;
 }
 
 .aimod-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.09);
 }
 
 .aimod-card-free {
@@ -1625,9 +1692,9 @@ body.lazypack-page .gui-outer-wrap {
     font-size: 1rem;
     color: #2e7d32;
     font-weight: bold;
-    margin-bottom: 4px;
-    padding: 3px 0;
-    border-bottom: 2px solid #c8e6c9;
+    margin-bottom: 8px;
+    padding: 4px 0 7px;
+    border-bottom: 2px solid #d6e5d3;
 }
 
 .aimod-card h3 {
@@ -1700,6 +1767,9 @@ body.lazypack-page .gui-outer-wrap {
 
 .aimod-showcase-item {
     text-align: center;
+    background: rgba(255,255,255,0.66);
+    border: 1px solid rgba(146, 158, 146, 0.28);
+    padding: 12px;
 }
 
 .aimod-showcase-featured {
@@ -1713,8 +1783,8 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 .showcase-placeholder {
-    background: #f5f5f5;
-    border: 2px dashed #bbb;
+    background: #f8f8f6;
+    border: 2px dashed #b6bdb4;
     padding: 24px 16px;
     display: flex;
     flex-direction: column;
@@ -1728,7 +1798,7 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 .showcase-placeholder:hover {
-    border-color: #9C27B0;
+    border-color: #5b7f5c;
 }
 
 .showcase-placeholder-main {
@@ -1772,11 +1842,11 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 .showcase-placeholder-video:hover .showcase-icon {
-    background: rgba(156, 39, 176, 0.5);
+    background: rgba(91, 127, 92, 0.5);
 }
 
 .showcase-placeholder-video:hover {
-    border-color: #9C27B0;
+    border-color: #83a182;
 }
 
 .showcase-video-link {
@@ -1806,10 +1876,46 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 .showcase-label {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 0.85rem;
     color: #555;
     line-height: 1.4;
+}
+
+.aimod-bridge-section {
+    padding: 20px 24px 24px;
+    background: linear-gradient(180deg, rgba(91, 127, 92, 0.04) 0%, rgba(255,255,255,0.9) 100%);
+}
+
+.aimod-bridge-grid {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.aimod-bridge-card {
+    background: rgba(255,255,255,0.94);
+    border: 2px solid #c5cac3;
+    padding: 16px 18px;
+}
+
+.aimod-bridge-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.08rem;
+    color: #253028;
+}
+
+.aimod-bridge-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #4f5a50;
+}
+
+.aimod-bridge-card-accent {
+    border-color: #a5b49f;
+    background: linear-gradient(180deg, rgba(241, 246, 239, 0.98) 0%, rgba(255,255,255,0.96) 100%);
 }
 
 .aimod-showcase-note {
@@ -1823,19 +1929,45 @@ body.lazypack-page .gui-outer-wrap {
 /* --- 4. 付费工具包 --- */
 .aimod-pro-section {
     padding: 20px 24px 24px;
-    background: linear-gradient(135deg, rgba(245, 166, 35, 0.04) 0%, rgba(255,255,255,0.6) 100%);
-    border-left: 4px solid #F5A623;
+    background: linear-gradient(135deg, rgba(109, 131, 112, 0.08) 0%, rgba(255,255,255,0.76) 100%);
+    border-left: 4px solid #6d8370;
 }
 
 .aimod-pro-headline {
-    font-size: 1.1rem;
-    color: #e65100;
+    font-size: 1rem;
+    color: #415245;
     font-weight: bold;
-    padding: 10px 14px;
-    background: rgba(245, 166, 35, 0.1);
-    border: 1px solid rgba(245, 166, 35, 0.3);
-    margin-bottom: 4px;
-    text-align: center;
+    padding: 12px 14px;
+    background: rgba(109, 131, 112, 0.12);
+    border: 1px solid rgba(109, 131, 112, 0.28);
+    margin-bottom: 12px;
+    text-align: left;
+    line-height: 1.7;
+}
+
+.aimod-pro-summary {
+    margin-bottom: 16px;
+}
+
+.aimod-pro-summary p {
+    margin: 0 0 12px;
+    color: #4d594f;
+    font-size: 0.96rem;
+    line-height: 1.7;
+}
+
+.aimod-pro-pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.aimod-pro-pill-list span {
+    padding: 7px 12px;
+    background: rgba(255,255,255,0.82);
+    border: 1px solid rgba(109, 131, 112, 0.28);
+    color: #3f5143;
+    font-size: 0.88rem;
 }
 
 .aimod-pro-value {
@@ -1888,7 +2020,7 @@ body.lazypack-page .gui-outer-wrap {
     margin-top: 10px;
     padding: 8px 10px;
     background: #f7f7f7;
-    border-left: 3px solid #F5A623;
+    border-left: 3px solid #6d8370;
 }
 
 .pro-example-label {
@@ -1933,13 +2065,13 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 .compare-before {
-    border-color: #c9a0a0;
+    border-color: #c8ae9f;
     border-left-width: 4px;
-    background: rgba(180, 100, 100, 0.06);
+    background: rgba(180, 130, 100, 0.06);
 }
 
 .compare-after {
-    border-color: #8cb8a0;
+    border-color: #8eaf90;
     border-left-width: 4px;
     background: rgba(100, 160, 120, 0.06);
 }
@@ -1980,6 +2112,27 @@ body.lazypack-page .gui-outer-wrap {
     color: #888;
 }
 
+.aimod-fit-box {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.9);
+    border: 2px solid #bcc6bb;
+    padding: 16px 18px;
+}
+
+.aimod-fit-box h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #223026;
+}
+
+.aimod-fit-box ul {
+    margin: 0;
+    padding-left: 18px;
+    color: #49564b;
+    font-size: 0.93rem;
+    line-height: 1.8;
+}
+
 /* --- 5. 用户反馈/案例 --- */
 .aimod-testimonial-section {
     padding: 20px 24px 24px;
@@ -1994,19 +2147,19 @@ body.lazypack-page .gui-outer-wrap {
 
 .testimonial-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
     margin-top: 10px;
 }
 
 .testimonial-card {
-    background: #fff;
-    border: 2px solid #ddd;
-    border-bottom-color: #f0f0f0;
-    border-right-color: #f0f0f0;
-    border-top-color: #bbb;
-    border-left-color: #bbb;
-    border-left: 3px solid #9C27B0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,250,249,0.98) 100%);
+    border: 2px solid #d4d7d2;
+    border-bottom-color: #f3f4f2;
+    border-right-color: #f3f4f2;
+    border-top-color: #b6bcb3;
+    border-left-color: #b6bcb3;
+    border-left: 3px solid #6d8370;
     padding: 14px;
     display: flex;
     flex-direction: column;
@@ -2056,9 +2209,9 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 .testimonial-quote {
-    font-size: 0.92rem;
-    color: #333;
-    line-height: 1.55;
+    font-size: 0.94rem;
+    color: #4a514c;
+    line-height: 1.8;
     flex: 1;
     font-style: italic;
     padding-left: 2px;
@@ -2741,7 +2894,7 @@ body.lazypack-page .gui-outer-wrap {
 }
 
 /* ============================================
-   AI模组页面：整页滚动（与懒人包一致）
+   AI模组页面：Tab式布局，GUI容器内滚动
    ============================================ */
 body.aimod-page {
     height: auto;
@@ -2769,16 +2922,16 @@ body.aimod-page .gui-outer-wrap {
     flex: none;
 }
 
-/* AI模组页面内容区：取消内部滚动 */
-body.aimod-page .content-area {
-    overflow: visible;
-}
-
 /* ============================================
    AI模组页面：字体放大（匹配懒人包舒适度）
    ============================================ */
 body.aimod-page {
     font-size: 16px;
+    font-family: "MinecraftAE", "VT323", "Microsoft YaHei", "PingFang SC", monospace;
+}
+
+.dot-sep {
+    font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
 }
 
 body.aimod-page .aimod-card-desc {
@@ -3067,11 +3220,12 @@ body.aimod-page .aimod-pro-headline {
     gap: 0;
     border-bottom: 2px solid #ccc;
     margin-bottom: 0;
+    flex-wrap: wrap;
 }
 
 .pro-tab {
-    background: #e8e8e8;
-    border: 2px solid #ccc;
+    background: #e7ebe6;
+    border: 2px solid #c6ccc4;
     border-bottom: none;
     padding: 8px 20px;
     font-family: "MinecraftAE", "VT323", monospace;
@@ -3091,8 +3245,8 @@ body.aimod-page .aimod-pro-headline {
 
 .pro-tab.active {
     background: #fff;
-    color: #e65100;
-    border-color: #F5A623;
+    color: #47604b;
+    border-color: #6d8370;
     border-bottom: 2px solid #fff;
     z-index: 1;
 }
@@ -3100,7 +3254,7 @@ body.aimod-page .aimod-pro-headline {
 .pro-tab-content {
     display: none;
     background: #fff;
-    border: 2px solid #ccc;
+    border: 2px solid #c6ccc4;
     border-top: none;
     padding: 18px 20px;
 }
@@ -3131,7 +3285,7 @@ body.aimod-page .aimod-pro-headline {
 /* --- FAQ 简化边框 --- */
 .faq-item-clean {
     border: 1px solid #ddd;
-    border-left: 3px solid #9C27B0;
+    border-left: 3px solid #6d8370;
     background: #fafafa;
 }
 
@@ -3298,6 +3452,10 @@ body.aimod-page .aimod-pro-headline {
     .compare-grid {
         grid-template-columns: 1fr;
     }
+
+    .aimod-bridge-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ============================================
@@ -3323,6 +3481,8 @@ body.aimod-page .aimod-pro-headline {
     .aimod-section-spacious { padding: 18px 14px 22px; }
     .aimod-hero-v2 { padding: 24px 14px 20px; }
     .aimod-hero-cta-enhanced { font-size: 1.2rem !important; padding: 12px 32px !important; }
+    .aimod-hero-trust-list { gap: 8px; }
+    .aimod-hero-trust-list span { width: 100%; }
     .aimod-hero-stats { flex-direction: column; gap: 10px; }
     .stat-divider { width: 60px; height: 1px; }
     .stat-item { padding: 4px 0; }
@@ -3333,9 +3493,10 @@ body.aimod-page .aimod-pro-headline {
     .aimod-showcase-side { gap: 10px; }
     .showcase-placeholder-main { min-height: 180px; }
     .showcase-gif-wrap { height: 200px; }
+    .aimod-bridge-grid { grid-template-columns: 1fr; }
     .compare-grid { grid-template-columns: 1fr; }
     .testimonial-grid { grid-template-columns: 1fr; }
-    .aimod-pro-section { border-left: none; border-top: 4px solid #F5A623; }
+    .aimod-pro-section { border-left: none; border-top: 4px solid #6d8370; }
     .aimod-pro-headline { font-size: 0.95rem; }
 
     /* Tab 移动端 */
@@ -3763,5 +3924,571 @@ body.pixel-converter-page .content-area {
     }
     .gui-outer-actions {
         flex-wrap: wrap;
+    }
+}
+
+/* ============================================
+   AI模组开发专区 V3：双大Tab + 子Tab 布局
+   ============================================ */
+
+/* --- 页面标题区 --- */
+.v3-page-hero {
+    text-align: center;
+    padding: 18px 16px 14px;
+    border-bottom: 3px solid var(--mc-gui-shadow);
+}
+
+.v3-page-title {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    color: var(--mc-text-dark);
+    text-shadow: 2px 2px 0px rgba(255,255,255,0.4);
+}
+
+.v3-page-subtitle {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    color: var(--mc-text-black);
+    opacity: 0.8;
+}
+
+/* --- 两个大 Tab --- */
+.v3-tab-bar {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    border-bottom: 3px solid var(--mc-gui-shadow);
+}
+
+.v3-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 16px;
+    background: #a0a0a0;
+    border: none;
+    border-right: 2px solid var(--mc-gui-shadow);
+    color: #555;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.15rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.1s, color 0.1s;
+}
+
+.v3-tab:last-child {
+    border-right: none;
+}
+
+.v3-tab:hover {
+    background: #b0b0b0;
+    color: #333;
+}
+
+.v3-tab.active {
+    background: var(--mc-gui-bg);
+    color: var(--mc-text-dark);
+    border-bottom: 3px solid var(--mc-gui-bg);
+    margin-bottom: -3px;
+    z-index: 1;
+}
+
+.v3-tab-body {
+    overflow: visible;
+}
+
+.v3-tab-icon {
+    font-size: 1.2rem;
+}
+
+.v3-tab-text {
+    white-space: nowrap;
+}
+
+.v3-tab-badge {
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.v3-badge-green {
+    background: #2E7D32;
+    color: #C8E6C9;
+    border: 1px solid #4CAF50;
+}
+
+.v3-badge-orange {
+    background: #5d3a00;
+    color: #FFE0B2;
+    border: 1px solid #F5A623;
+}
+
+/* --- Tab 内容区 --- */
+
+/* --- 大面板切换 --- */
+.v3-major {
+    display: none;
+}
+
+.v3-major.active {
+    display: block;
+}
+
+/* --- 子 Tab 栏 --- */
+.v3-sub-bar {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    border-bottom: 2px solid #b0b0b0;
+    background: rgba(0,0,0,0.03);
+}
+
+.v3-sub {
+    padding: 9px 18px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 0.95rem;
+    color: #777;
+    cursor: pointer;
+    transition: color 0.1s, border-color 0.1s;
+    font-weight: bold;
+}
+
+.v3-sub:hover {
+    color: #444;
+    background: rgba(0,0,0,0.03);
+}
+
+.v3-sub.active {
+    color: var(--mc-text-dark);
+    border-bottom-color: #4a6f4d;
+}
+
+/* --- 子面板切换 --- */
+.v3-sub-panel {
+    display: none;
+}
+
+.v3-sub-panel.active {
+    display: block;
+}
+
+/* 子面板内 section 间距 */
+.v3-sub-panel > .panel + .panel {
+    margin-top: 0;
+    border-top: 2px solid rgba(0,0,0,0.06);
+}
+
+/* 免费卡片在新布局下默认 3 列 */
+.v3-sub-panel .aimod-card-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* --- 步骤卡片（横向排列，展开区在卡片行下方全宽） --- */
+.v3-step-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.v3-step-card {
+    border: 2px solid #b9c0b8;
+    border-bottom-color: #edf0ec;
+    border-right-color: #edf0ec;
+    border-top-color: #98a396;
+    border-left-color: #98a396;
+    background: #fff;
+    cursor: pointer;
+    transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.v3-step-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.v3-step-card.active {
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76,175,80,0.15);
+}
+
+.v3-step-card-head {
+    padding: 20px 22px;
+    border-top: 3px solid #4CAF50;
+}
+
+.v3-step-num {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 0.85rem;
+    color: #4CAF50;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.v3-step-card-head h3 {
+    margin: 0 0 6px;
+    font-size: 1.15rem;
+    color: #1a2b1e;
+}
+
+.v3-step-meta {
+    font-size: 0.82rem;
+    color: #999;
+    margin: 0 0 10px;
+}
+
+.v3-step-desc {
+    font-size: 0.93rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 14px;
+}
+
+.v3-step-toggle {
+    display: inline-block;
+    background: none;
+    border: 2px solid #c5cec4;
+    border-bottom-color: #edf0ec;
+    border-right-color: #edf0ec;
+    border-top-color: #98a396;
+    border-left-color: #98a396;
+    padding: 8px 18px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: #4a6f4d;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+}
+
+.v3-step-toggle:hover {
+    background: rgba(76,175,80,0.08);
+    color: #2e7d32;
+}
+
+.v3-step-card.active .v3-step-toggle {
+    background: #4CAF50;
+    color: #fff;
+    border-color: #388E3C;
+}
+
+/* 卡片行内的 body 隐藏，展开区由全宽容器渲染 */
+.v3-step-card-body {
+    display: none;
+}
+
+/* 展开区 —— 在卡片行下方，全宽显示 */
+.v3-step-expand {
+    display: none;
+    margin-top: 16px;
+    grid-column: 1 / -1;
+    border: 2px solid #4CAF50;
+    background: #fff;
+}
+
+.v3-step-expand.open {
+    display: block;
+}
+
+.step-inline-content {
+    padding: 24px 26px 28px;
+}
+
+.step-inline-content h4 {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+    color: #1a2b1e;
+}
+
+.step-inline-content > p {
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.65;
+}
+
+.step-inline-block {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.step-inline-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.step-inline-block h5 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #2e5733;
+}
+
+.step-inline-block p {
+    margin: 0 0 12px;
+    font-size: 0.93rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.step-inline-block .guide-step-img {
+    margin-top: 10px;
+}
+
+.step-inline-block .guide-step-img img {
+    max-width: 100%;
+    border: 1px solid #ddd;
+}
+
+.step-inline-content .prompt-card {
+    margin-bottom: 8px;
+}
+
+.step-inline-content .pitfall-card {
+    margin-bottom: 14px;
+}
+
+.step-inline-content .pitfall-card h5 {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.step-inline-content .pitfall-summary {
+    margin-top: 16px;
+}
+
+/* --- V3 进阶场景 --- */
+.v3-pro-scene {
+    margin-bottom: 24px;
+}
+
+.v3-pro-scene-intro {
+    font-size: 1.05rem;
+    color: #444;
+    margin: 0 0 16px;
+    line-height: 1.65;
+}
+
+/* --- V3 进阶总览统计 --- */
+.v3-pro-overview {
+    margin-bottom: 20px;
+}
+
+.v3-pro-stat-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    border: 2px solid #b9c0b8;
+    border-bottom-color: #edf0ec;
+    border-right-color: #edf0ec;
+    border-top-color: #98a396;
+    border-left-color: #98a396;
+}
+
+.v3-pro-stat {
+    flex: 1;
+    text-align: center;
+    padding: 14px 8px;
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+}
+
+.v3-pro-stat:last-child {
+    border-right: none;
+}
+
+.v3-pro-stat-num {
+    display: block;
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 1.6rem;
+    color: #4a6f4d;
+    font-weight: bold;
+}
+
+.v3-pro-stat-label {
+    display: block;
+    font-size: 0.78rem;
+    color: #777;
+    margin-top: 2px;
+}
+
+.v3-pro-desc {
+    font-size: 0.95rem;
+    color: #4d594f;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* --- 亮点卡片 --- */
+.v3-pro-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.v3-pro-hl-card {
+    background: #fff;
+    border: 2px solid #c5cec4;
+    border-bottom-color: #edf0ec;
+    border-right-color: #edf0ec;
+    border-top-color: #98a396;
+    border-left-color: #98a396;
+    padding: 16px;
+}
+
+.v3-pro-hl-card h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: #1a2b1e;
+}
+
+.v3-pro-hl-card p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- 双模块卡片 --- */
+.v3-module-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.v3-module-card {
+    background: #fff;
+    border: 2px solid #b9c0b8;
+    border-bottom-color: #edf0ec;
+    border-right-color: #edf0ec;
+    border-top-color: #98a396;
+    border-left-color: #98a396;
+    padding: 18px;
+}
+
+.v3-module-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e0e5df;
+}
+
+.v3-module-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #1a1a1a;
+}
+
+.v3-module-count {
+    font-family: "MinecraftAE", "VT323", monospace;
+    font-size: 0.8rem;
+    color: #6d8370;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.v3-module-card p {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.v3-module-card p:last-child {
+    margin-bottom: 0;
+}
+
+.v3-skills-preview {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: rgba(0,0,0,0.03);
+    border: 1px solid #d0d5ce;
+}
+
+.v3-skills-preview h4 {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* --- V3 移动端适配 --- */
+@media (max-width: 768px) {
+    .v3-tab {
+        font-size: 0.95rem;
+        padding: 10px 8px;
+        gap: 5px;
+    }
+
+    .v3-tab-badge {
+        display: none;
+    }
+
+    .v3-sub {
+        font-size: 0.82rem;
+        padding: 7px 12px;
+        flex: 1;
+        text-align: center;
+    }
+
+    .v3-sub-panel .aimod-card-list {
+        grid-template-columns: 1fr;
+    }
+
+    .v3-pro-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .v3-module-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .v3-pro-stat-row {
+        flex-wrap: wrap;
+    }
+
+    .v3-pro-stat {
+        flex: 1 1 45%;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .v3-step-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .v3-step-card-head {
+        padding: 16px;
+    }
+
+    .step-inline-content {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .v3-sub-panel .aimod-card-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .v3-sub-panel .aimod-card-list > .aimod-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .v3-pro-highlights {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .v3-pro-highlights > .v3-pro-hl-card:last-child {
+        grid-column: 1 / -1;
     }
 }
