@@ -1,6 +1,0 @@
-{
-  "name": "AI Minecraft Texture Studio",
-  "description": "Convert AI-generated high-res pixel art into crisp 16x16 Minecraft textures and 2048x2048 display images using center-sampling technology.",
-  "requestFramePermissions": [],
-  "majorCapabilities": []
-}

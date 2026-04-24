@@ -510,10 +510,31 @@
                 var detectedBaseGrid = findFundamentalSize();
                 var gridW = Math.min(16, Math.max(1, Math.round(subjectW / detectedBaseGrid)));
                 var gridH = Math.min(16, Math.max(1, Math.round(subjectH / detectedBaseGrid)));
+
+                var rawGridW = subjectW / detectedBaseGrid;
+                var rawGridH = subjectH / detectedBaseGrid;
+                if (gridW === 16 && rawGridW < 15.7) gridW = Math.max(1, Math.floor(rawGridW + 0.3));
+                if (gridH === 16 && rawGridH < 15.7) gridH = Math.max(1, Math.floor(rawGridH + 0.3));
+
                 var cellW = subjectW / gridW;
                 var cellH = subjectH / gridH;
-                var offsetX = Math.floor((16 - gridW) / 2);
-                var offsetY = 16 - gridH;
+
+                var originOffsetX = Math.round(minX / detectedBaseGrid);
+                var originOffsetY = Math.round(minY / detectedBaseGrid);
+                var totalGridW = Math.round(width / detectedBaseGrid);
+                var totalGridH = Math.round(height / detectedBaseGrid);
+
+                var offsetX, offsetY;
+                if (totalGridW >= 14 && totalGridW <= 18) {
+                    offsetX = Math.max(0, Math.min(16 - gridW, Math.round((16 - totalGridW) / 2) + originOffsetX));
+                } else {
+                    offsetX = Math.floor((16 - gridW) / 2);
+                }
+                if (totalGridH >= 14 && totalGridH <= 18) {
+                    offsetY = Math.max(0, Math.min(16 - gridH, Math.round((16 - totalGridH) / 2) + originOffsetY));
+                } else {
+                    offsetY = Math.floor((16 - gridH) / 2);
+                }
 
                 var canvas16 = document.createElement('canvas');
                 canvas16.width = 16;
