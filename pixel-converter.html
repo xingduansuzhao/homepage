@@ -28,13 +28,8 @@
     <div class="main-wrapper">
         <div class="gui-outer-wrap">
             <div class="gui-outer-actions">
-                <div class="gui-outer-actions-left">
-                    <a href="index.html" class="gui-outer-back gui-outer-back-inline">&larr; 返回主页</a>
-                    <button class="gui-outer-back gui-outer-back-inline gui-prompt-btn" id="openPromptBtn">&#x270E; 前置提示词</button>
-                </div>
-                <div class="gui-outer-actions-right">
-                    <button class="gui-outer-back gui-outer-back-inline gui-guide-btn" id="openGuideBtn">&#x1F5BC; 使用指南</button>
-                </div>
+                <a href="index.html" class="gui-outer-back gui-outer-back-inline">&larr; 返回主页</a>
+                <button class="gui-outer-back gui-outer-back-inline gui-prompt-btn" id="openPromptBtn">&#x270E; 前置提示词</button>
             </div>
             <div class="gui-container pc-gui-container">
                 <div class="content-area">
@@ -45,12 +40,7 @@
                         <div class="pc-canvas" id="pcCanvas">
                             <div class="pc-drop-zone" id="dropZone">
                                 <div class="pc-drop-plus">+</div>
-                                <div class="pc-drop-text">拖入待处理图片<br><span class="pc-drop-hint">支持批量拖入，下载时自动输出 16x16</span></div>
-                                <div class="pc-feature-badges" aria-hidden="true">
-                                    <span class="pc-feature-badge">智能抠除背景</span>
-                                    <span class="pc-feature-badge">自动裁剪图片</span>
-                                    <span class="pc-feature-badge">像素色彩还原</span>
-                                </div>
+                                <div class="pc-drop-text">拖入1:1<span class="pc-highlight">【标准伪像素】</span>图片<br><span class="pc-drop-hint">支持批量拖入多张</span></div>
                                 <input type="file" id="fileInput" accept="image/*" multiple hidden>
                             </div>
                             <div class="pc-preview" id="previewArea" style="display:none;">
@@ -74,11 +64,15 @@
                                 <span class="pc-info-label pc-page-info" id="pageInfo" style="display:none;"></span>
                             </div>
                             <div class="pc-actions">
-                                <button class="mc-btn pc-convert-btn" id="downloadBtn">下载 16x16</button>
+                                <button class="mc-btn pc-convert-btn" id="convertBtn">降维至 16x16</button>
+                                <button class="mc-btn pc-convert-btn" id="downloadBtn" style="display:none;">下载图片</button>
                                 <button class="mc-btn pc-reset-btn" id="resetBtn">重置</button>
                             </div>
                         </div>
                     </div>
+
+                    <!-- 隐藏的转换画布 -->
+                    <canvas id="convertCanvas" width="16" height="16" style="display:none;"></canvas>
 
                 </div>
             </div>
@@ -107,26 +101,6 @@
         </div>
     </div>
 
-    <div class="guide-modal-overlay" id="guideModal">
-        <div class="guide-modal">
-            <div class="guide-modal-header">
-                <span>&#x1F5BC; 使用指南</span>
-                <button class="guide-modal-close" id="closeGuideBtn">&times;</button>
-            </div>
-            <div class="guide-modal-body">
-                <img
-                    id="guideImage"
-                    class="guide-modal-image"
-                    src="assets/images/pixel-converter-guide.png"
-                    alt="伪像素降维器使用指南"
-                >
-                <div class="guide-modal-tip" id="guideModalTip" style="display:none;">
-                    请将指南图片放到 <code>assets/images/pixel-converter-guide.png</code>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- 提示 -->
     <div class="toast" id="toast"></div>
 
@@ -141,8 +115,10 @@
         var sizeLabel     = document.getElementById('sizeLabel');
         var sizeValue     = document.getElementById('sizeValue');
         var pageInfo      = document.getElementById('pageInfo');
+        var convertBtn    = document.getElementById('convertBtn');
         var downloadBtn   = document.getElementById('downloadBtn');
         var resetBtn      = document.getElementById('resetBtn');
+        var convertCanvas = document.getElementById('convertCanvas');
         var navLeft       = document.getElementById('navLeft');
         var navRight      = document.getElementById('navRight');
         var navLeftCount  = document.getElementById('navLeftCount');
@@ -151,8 +127,7 @@
         var files = [];
         var images = [];
         var currentIndex = 0;
-        var processedResults = [];
-        var isProcessing = false;
+        var isConverted = false;
 
         function dragHandler(e) { e.preventDefault(); e.stopPropagation(); }
 
@@ -189,7 +164,7 @@
         function loadImages(fileList) {
             files = fileList;
             images = [];
-            processedResults = [];
+            isConverted = false;
             currentIndex = 0;
             var loaded = 0;
 
@@ -214,8 +189,13 @@
             dropZone.style.display = 'none';
             previewArea.style.display = 'flex';
             toolbar.style.display = 'flex';
-            downloadBtn.disabled = false;
-            downloadBtn.textContent = files.length > 1 ? '打包下载 16x16 (' + files.length + '张)' : '下载 16x16';
+            convertBtn.style.display = '';
+            downloadBtn.style.display = 'none';
+            if (files.length > 1) {
+                convertBtn.textContent = '批量降维 (' + files.length + '张)';
+            } else {
+                convertBtn.textContent = '降维至 16x16';
+            }
             displayCurrentImage();
         }
 
@@ -260,7 +240,7 @@
         navLeft.addEventListener('click', function() {
             if (currentIndex > 0) {
                 currentIndex--;
-                if (processedResults[currentIndex]) {
+                if (isConverted) {
                     displayConvertedImage();
                 } else {
                     displayCurrentImage();
@@ -271,7 +251,7 @@
         navRight.addEventListener('click', function() {
             if (currentIndex < files.length - 1) {
                 currentIndex++;
-                if (processedResults[currentIndex]) {
+                if (isConverted) {
                     displayConvertedImage();
                 } else {
                     displayCurrentImage();
@@ -319,309 +299,58 @@
             }
         }
 
-        function loadImageFromUrl(url) {
-            return new Promise(function(resolve, reject) {
-                var img = new Image();
-                img.onload = function() { resolve(img); };
-                img.onerror = reject;
-                img.src = url;
-            });
+        function convertSingle(img) {
+            var ctx16 = convertCanvas.getContext('2d');
+            ctx16.imageSmoothingEnabled = true;
+            ctx16.imageSmoothingQuality = 'high';
+            ctx16.clearRect(0, 0, 16, 16);
+            ctx16.drawImage(img, 0, 0, 16, 16);
+            return convertCanvas.toDataURL('image/png');
         }
 
-        function processAiTexture(blob) {
-            return loadImageFromBlob(blob).then(function(img) {
-                var canvas = document.createElement('canvas');
-                var ctx = canvas.getContext('2d', { willReadFrequently: true });
-                if (!ctx) throw new Error('无法初始化画布');
+        var convertedDataUrls = [];
 
-                canvas.width = img.width;
-                canvas.height = img.height;
-                ctx.drawImage(img, 0, 0);
+        convertBtn.addEventListener('click', function() {
+            if (images.length === 0) return;
+            convertedDataUrls = [];
 
-                var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                var data = imageData.data;
-                var width = canvas.width;
-                var height = canvas.height;
-
-                var mask = new Uint8Array(width * height);
-                var visited = new Uint8Array(width * height);
-                var queue = [];
-                var cornerIdxs = [0, (width - 1) * 4, (height - 1) * width * 4, (height * width - 1) * 4];
-                var bgR = 0, bgG = 0, bgB = 0;
-
-                cornerIdxs.forEach(function(idx) {
-                    bgR += data[idx];
-                    bgG += data[idx + 1];
-                    bgB += data[idx + 2];
-                });
-                bgR /= 4;
-                bgG /= 4;
-                bgB /= 4;
-
-                [[0, 0], [width - 1, 0], [0, height - 1], [width - 1, height - 1]].forEach(function(seed) {
-                    var sx = seed[0];
-                    var sy = seed[1];
-                    queue.push([sx, sy]);
-                    visited[sy * width + sx] = 1;
-                });
-
-                while (queue.length > 0) {
-                    var current = queue.shift();
-                    var currX = current[0];
-                    var currY = current[1];
-                    var idx = (currY * width + currX) * 4;
-                    var diff = Math.abs(data[idx] - bgR) + Math.abs(data[idx + 1] - bgG) + Math.abs(data[idx + 2] - bgB);
-
-                    if (diff < 70) {
-                        mask[currY * width + currX] = 1;
-                        [[currX + 1, currY], [currX - 1, currY], [currX, currY + 1], [currX, currY - 1]].forEach(function(point) {
-                            var nx = point[0];
-                            var ny = point[1];
-                            if (nx >= 0 && nx < width && ny >= 0 && ny < height && !visited[ny * width + nx]) {
-                                visited[ny * width + nx] = 1;
-                                queue.push([nx, ny]);
-                            }
-                        });
-                    }
-                }
-
-                var minX = width, minY = height, maxX = 0, maxY = 0;
-                var rawHasContent = false;
-                var x, y;
-                for (y = 0; y < height; y++) {
-                    for (x = 0; x < width; x++) {
-                        if (mask[y * width + x] === 0) {
-                            rawHasContent = true;
-                            if (x < minX) minX = x;
-                            if (x > maxX) maxX = x;
-                            if (y < minY) minY = y;
-                            if (y > maxY) maxY = y;
-                        }
-                    }
-                }
-
-                if (!rawHasContent) throw new Error('未检测到主体内容，请换一张背景更干净的图片试试。');
-
-                function getDensity(dim, pos) {
-                    var count = 0;
-                    if (dim === 'y') {
-                        for (x = minX; x <= maxX; x++) {
-                            if (mask[pos * width + x] === 0) count++;
-                        }
-                        return count / (maxX - minX + 1);
-                    }
-                    for (y = minY; y <= maxY; y++) {
-                        if (mask[y * width + pos] === 0) count++;
-                    }
-                    return count / (maxY - minY + 1);
-                }
-
-                var TRIM_THRESHOLD = 0.08;
-                while (minY < maxY && getDensity('y', minY) < TRIM_THRESHOLD) minY++;
-                while (maxY > minY && getDensity('y', maxY) < TRIM_THRESHOLD) maxY--;
-                while (minX < maxX && getDensity('x', minX) < TRIM_THRESHOLD) minX++;
-                while (maxX > minX && getDensity('x', maxX) < TRIM_THRESHOLD) maxX--;
-
-                var subjectW = maxX - minX + 1;
-                var subjectH = maxY - minY + 1;
-
-                function findFundamentalSize() {
-                    var counts = {};
-                    var samples = 40;
-                    var i;
-
-                    for (i = 0; i < samples; i++) {
-                        var sy = Math.floor(minY + subjectH * (0.1 + 0.8 * (i / samples)));
-                        var len = 0;
-                        var lastColorIdx = -1;
-                        for (x = minX; x <= maxX; x++) {
-                            var idx = (sy * width + x) * 4;
-                            if (mask[sy * width + x] === 1) {
-                                if (len > 3) counts[len] = (counts[len] || 0) + 1;
-                                len = 0;
-                                continue;
-                            }
-                            if (lastColorIdx === -1) {
-                                lastColorIdx = idx;
-                                len = 1;
-                            } else {
-                                var diff = Math.abs(data[idx] - data[lastColorIdx]) + Math.abs(data[idx + 1] - data[lastColorIdx + 1]) + Math.abs(data[idx + 2] - data[lastColorIdx + 2]);
-                                if (diff < 30) {
-                                    len++;
-                                } else {
-                                    if (len > 3) counts[len] = (counts[len] || 0) + 1;
-                                    len = 1;
-                                    lastColorIdx = idx;
-                                }
-                            }
-                        }
-                        if (len > 3) counts[len] = (counts[len] || 0) + 1;
-                    }
-
-                    for (i = 0; i < samples; i++) {
-                        var sx = Math.floor(minX + subjectW * (0.1 + 0.8 * (i / samples)));
-                        var verticalLen = 0;
-                        var lastVerticalColorIdx = -1;
-                        for (y = minY; y <= maxY; y++) {
-                            var verticalIdx = (y * width + sx) * 4;
-                            if (mask[y * width + sx] === 1) {
-                                if (verticalLen > 3) counts[verticalLen] = (counts[verticalLen] || 0) + 1;
-                                verticalLen = 0;
-                                continue;
-                            }
-                            if (lastVerticalColorIdx === -1) {
-                                lastVerticalColorIdx = verticalIdx;
-                                verticalLen = 1;
-                            } else {
-                                var verticalDiff = Math.abs(data[verticalIdx] - data[lastVerticalColorIdx]) + Math.abs(data[verticalIdx + 1] - data[lastVerticalColorIdx + 1]) + Math.abs(data[verticalIdx + 2] - data[lastVerticalColorIdx + 2]);
-                                if (verticalDiff < 30) {
-                                    verticalLen++;
-                                } else {
-                                    if (verticalLen > 3) counts[verticalLen] = (counts[verticalLen] || 0) + 1;
-                                    verticalLen = 1;
-                                    lastVerticalColorIdx = verticalIdx;
-                                }
-                            }
-                        }
-                        if (verticalLen > 3) counts[verticalLen] = (counts[verticalLen] || 0) + 1;
-                    }
-
-                    var fuzzyCounts = {};
-                    Object.keys(counts).forEach(function(sizeStr) {
-                        var size = Number(sizeStr);
-                        var count = counts[size];
-                        for (var offset = -2; offset <= 2; offset++) {
-                            var target = size + offset;
-                            fuzzyCounts[target] = (fuzzyCounts[target] || 0) + count * (3 - Math.abs(offset));
-                        }
-                    });
-
-                    var bestSize = Math.max(subjectW, subjectH) / 16;
-                    var maxValue = 0;
-                    Object.keys(fuzzyCounts).forEach(function(sizeKey) {
-                        if (fuzzyCounts[sizeKey] > maxValue) {
-                            maxValue = fuzzyCounts[sizeKey];
-                            bestSize = Number(sizeKey);
-                        }
-                    });
-                    return bestSize;
-                }
-
-                var detectedBaseGrid = findFundamentalSize();
-                var gridW = Math.min(16, Math.max(1, Math.round(subjectW / detectedBaseGrid)));
-                var gridH = Math.min(16, Math.max(1, Math.round(subjectH / detectedBaseGrid)));
-
-                var rawGridW = subjectW / detectedBaseGrid;
-                var rawGridH = subjectH / detectedBaseGrid;
-                if (gridW === 16 && rawGridW < 15.7) gridW = Math.max(1, Math.floor(rawGridW + 0.3));
-                if (gridH === 16 && rawGridH < 15.7) gridH = Math.max(1, Math.floor(rawGridH + 0.3));
-
-                var cellW = subjectW / gridW;
-                var cellH = subjectH / gridH;
-
-                var originOffsetX = Math.round(minX / detectedBaseGrid);
-                var originOffsetY = Math.round(minY / detectedBaseGrid);
-                var totalGridW = Math.round(width / detectedBaseGrid);
-                var totalGridH = Math.round(height / detectedBaseGrid);
-
-                var offsetX, offsetY;
-                if (totalGridW >= 14 && totalGridW <= 18) {
-                    offsetX = Math.max(0, Math.min(16 - gridW, Math.round((16 - totalGridW) / 2) + originOffsetX));
-                } else {
-                    offsetX = Math.floor((16 - gridW) / 2);
-                }
-                if (totalGridH >= 14 && totalGridH <= 18) {
-                    offsetY = Math.max(0, Math.min(16 - gridH, Math.round((16 - totalGridH) / 2) + originOffsetY));
-                } else {
-                    offsetY = Math.floor((16 - gridH) / 2);
-                }
-
-                var canvas16 = document.createElement('canvas');
-                canvas16.width = 16;
-                canvas16.height = 16;
-                var ctx16 = canvas16.getContext('2d', { alpha: true });
-                ctx16.clearRect(0, 0, 16, 16);
-
-                for (var gy = 0; gy < gridH; gy++) {
-                    for (var gx = 0; gx < gridW; gx++) {
-                        var targetX = gx + offsetX;
-                        var targetY = gy + offsetY;
-                        if (targetX < 0 || targetX >= 16 || targetY < 0 || targetY >= 16) continue;
-
-                        var centerX = minX + (gx + 0.5) * cellW;
-                        var centerY = minY + (gy + 0.5) * cellH;
-                        var rTotal = 0, gTotal = 0, bTotal = 0, aTotal = 0, count = 0;
-                        var radius = Math.max(1, Math.floor(Math.min(cellW, cellH) * 0.1));
-
-                        for (var dy = -radius; dy <= radius; dy++) {
-                            for (var dx = -radius; dx <= radius; dx++) {
-                                var sx = Math.floor(centerX + dx);
-                                var sy2 = Math.floor(centerY + dy);
-                                if (sx < 0 || sx >= width || sy2 < 0 || sy2 >= height) continue;
-                                if (mask[sy2 * width + sx] === 1) continue;
-
-                                var sampleIdx = (sy2 * width + sx) * 4;
-                                var alpha = data[sampleIdx + 3];
-                                if (alpha < 80) continue;
-
-                                rTotal += data[sampleIdx];
-                                gTotal += data[sampleIdx + 1];
-                                bTotal += data[sampleIdx + 2];
-                                aTotal += alpha;
-                                count++;
-                            }
-                        }
-
-                        if (count > 0 && aTotal / count > 80) {
-                            var finalR = Math.round(rTotal / count);
-                            var finalG = Math.round(gTotal / count);
-                            var finalB = Math.round(bTotal / count);
-                            ctx16.fillStyle = 'rgb(' + finalR + ', ' + finalG + ', ' + finalB + ')';
-                            ctx16.fillRect(targetX, targetY, 1, 1);
-                        }
-                    }
-                }
-
-                return {
-                    base64_16: canvas16.toDataURL('image/png'),
-                    gridSize: detectedBaseGrid,
-                    detectedDimensions: { w: gridW, h: gridH }
+            if (files.length === 1) {
+                var dataUrl = convertSingle(images[0]);
+                convertedDataUrls.push(dataUrl);
+                doSingleDownload(dataUrl, files[0].name);
+                var resultImg = new Image();
+                resultImg.onload = function() {
+                    drawPreview(resultImg, true);
+                    sizeLabel.textContent = '结果分辨率：';
+                    sizeValue.textContent = '16 x 16';
+                    convertBtn.style.display = 'none';
+                    downloadBtn.style.display = '';
+                    downloadBtn.textContent = '下载图片';
+                    isConverted = true;
                 };
-            });
-        }
+                resultImg.src = dataUrl;
+                return;
+            }
 
-        function loadImageFromBlob(blob) {
-            return new Promise(function(resolve, reject) {
-                var img = new Image();
-                var objectUrl = URL.createObjectURL(blob);
-                img.onload = function() {
-                    URL.revokeObjectURL(objectUrl);
-                    resolve(img);
-                };
-                img.onerror = function(err) {
-                    URL.revokeObjectURL(objectUrl);
-                    reject(err);
-                };
-                img.src = objectUrl;
-            });
-        }
+            for (var i = 0; i < images.length; i++) {
+                convertedDataUrls.push(convertSingle(images[i]));
+            }
+            isConverted = true;
+            currentIndex = 0;
+            displayConvertedImage();
 
-        function ensureProcessed(index) {
-            if (processedResults[index]) return Promise.resolve(processedResults[index]);
-            return processAiTexture(files[index]).then(function(result) {
-                processedResults[index] = result;
-                return result;
-            });
-        }
+            convertBtn.style.display = 'none';
+            downloadBtn.style.display = '';
+            downloadBtn.textContent = '打包下载 (' + files.length + '张)';
 
-        function processAllImages() {
-            return Promise.all(files.map(function(_, index) {
-                return ensureProcessed(index);
-            }));
-        }
+            showToast('已完成 ' + files.length + ' 张降维');
+            // 批量降维完成后，立即触发浏览器下载（同时保留“打包下载”按钮可重复下载）
+            doBatchZipDownload();
+        });
 
         function displayConvertedImage() {
-            loadImageFromUrl(processedResults[currentIndex].base64_16).then(function(resultImg) {
+            var resultImg = new Image();
+            resultImg.onload = function() {
                 drawPreview(resultImg, true);
                 sizeLabel.textContent = '结果分辨率：';
                 sizeValue.textContent = '16 x 16';
@@ -630,7 +359,8 @@
                     pageInfo.textContent = (currentIndex + 1) + ' / ' + files.length;
                 }
                 updateNav();
-            });
+            };
+            resultImg.src = convertedDataUrls[currentIndex];
         }
 
         function doSingleDownload(dataUrl, originalName) {
@@ -650,10 +380,10 @@
             downloadBtn.disabled = true;
 
             var zip = new JSZip();
-            for (var i = 0; i < processedResults.length; i++) {
+            for (var i = 0; i < convertedDataUrls.length; i++) {
                 (function(idx) {
                     var fileName = files[idx].name.replace(/\.[^.]+$/, '') + '_16x16.png';
-                    var base64 = processedResults[idx].base64_16.split(',')[1];
+                    var base64 = convertedDataUrls[idx].split(',')[1];
                     zip.file(fileName, base64, { base64: true });
                 })(i);
             }
@@ -667,63 +397,36 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                downloadBtn.textContent = '\u6253\u5305\u4e0b\u8f7d 16x16 (' + files.length + '\u5f20)';
+                downloadBtn.textContent = '\u6253\u5305\u4e0b\u8f7d (' + files.length + '\u5f20)';
                 downloadBtn.disabled = false;
                 showToast('\u2705 ' + files.length + ' \u5f20\u56fe\u7247\u5df2\u6253\u5305\u4e0b\u8f7d\uff01');
             }).catch(function() {
-                downloadBtn.textContent = '\u6253\u5305\u4e0b\u8f7d 16x16 (' + files.length + '\u5f20)';
+                downloadBtn.textContent = '\u6253\u5305\u4e0b\u8f7d (' + files.length + '\u5f20)';
                 downloadBtn.disabled = false;
                 showToast('\u274c \u6253\u5305\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5');
             });
         }
 
-        downloadBtn.addEventListener('click', async function() {
-            if (files.length === 0 || isProcessing) return;
-
-            isProcessing = true;
-            downloadBtn.disabled = true;
-            downloadBtn.textContent = files.length > 1 ? '智能处理中...' : '处理中...';
-
-            try {
-                if (files.length === 1) {
-                    var result = await ensureProcessed(0);
-                    doSingleDownload(result.base64_16, files[0].name);
-                    displayConvertedImage();
-                    showToast('已完成智能处理并下载 16x16');
-                } else {
-                    await processAllImages();
-                    currentIndex = 0;
-                    displayConvertedImage();
-                    doBatchZipDownload();
-                    showToast('已完成 ' + files.length + ' 张图片的智能处理');
-                }
-            } catch (err) {
-                console.error(err);
-                showToast((err && err.message) ? err.message : '处理失败，请更换图片重试');
-                downloadBtn.textContent = files.length > 1 ? '打包下载 16x16 (' + files.length + '张)' : '下载 16x16';
-                downloadBtn.disabled = false;
-            } finally {
-                isProcessing = false;
-                if (files.length === 1 && processedResults[0]) {
-                    downloadBtn.textContent = '重新下载 16x16';
-                    downloadBtn.disabled = false;
-                }
+        downloadBtn.addEventListener('click', function() {
+            if (files.length === 1) {
+                doSingleDownload(convertedDataUrls[0], files[0].name);
+                return;
             }
+            doBatchZipDownload();
         });
 
         resetBtn.addEventListener('click', function() {
             files = [];
             images = [];
-            processedResults = [];
+            convertedDataUrls = [];
             currentIndex = 0;
-            isProcessing = false;
+            isConverted = false;
             fileInput.value = '';
 
             dropZone.style.display = 'flex';
             previewArea.style.display = 'none';
             toolbar.style.display = 'none';
-            downloadBtn.disabled = false;
-            downloadBtn.textContent = '下载 16x16';
+            downloadBtn.style.display = 'none';
             navLeft.style.display = 'none';
             navRight.style.display = 'none';
             pageInfo.style.display = 'none';
@@ -752,36 +455,6 @@
 
         modal.addEventListener('click', function(e) {
             if (e.target === modal) modal.classList.remove('show');
-        });
-    })();
-
-    (function() {
-        var modal = document.getElementById('guideModal');
-        var openBtn = document.getElementById('openGuideBtn');
-        var closeBtn = document.getElementById('closeGuideBtn');
-        var guideImage = document.getElementById('guideImage');
-        var guideTip = document.getElementById('guideModalTip');
-
-        openBtn.addEventListener('click', function() {
-            modal.classList.add('show');
-        });
-
-        closeBtn.addEventListener('click', function() {
-            modal.classList.remove('show');
-        });
-
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) modal.classList.remove('show');
-        });
-
-        guideImage.addEventListener('error', function() {
-            guideImage.style.display = 'none';
-            guideTip.style.display = 'block';
-        });
-
-        guideImage.addEventListener('load', function() {
-            guideImage.style.display = 'block';
-            guideTip.style.display = 'none';
         });
     })();
 
