@@ -31,7 +31,7 @@ const HOMEPAGE_CONFIG = {
             primaryButtonText: "进入懒人包板块",
             primaryButtonUrl: "lazypack.html",
             secondaryButtonText: "观看代表视频",
-            secondaryButtonUrl: "https://space.bilibili.com/3537121929332753"
+            secondaryButtonUrl: "https://b23.tv/TM9HBtI"
         },
         {
             id: "code",
@@ -44,7 +44,7 @@ const HOMEPAGE_CONFIG = {
             primaryButtonText: "进入代码模块",
             primaryButtonUrl: "aimod-dev.html",
             secondaryButtonText: "观看代表视频",
-            secondaryButtonUrl: "https://space.bilibili.com/3537121929332753"
+            secondaryButtonUrl: "https://b23.tv/W9ow807"
         },
         {
             id: "texture",
@@ -57,13 +57,13 @@ const HOMEPAGE_CONFIG = {
             primaryButtonText: "进入材质模块",
             primaryButtonUrl: "texture.html",
             secondaryButtonText: "观看代表视频",
-            secondaryButtonUrl: "https://space.bilibili.com/3537121929332753"
+            secondaryButtonUrl: "https://b23.tv/BV1A5DqBKEyn"
         },
         {
             id: "model",
             name: "模型",
             eyebrow: "AI 制作模型",
-            heroImage: "assets/images/homepage-hero-reference.png",
+            heroImage: "assets/images/homepage-hero-workshop.png",
             thumbImage: "assets/images/homepage-hero-workshop.png",
             title: "把实体做成形",
             description: "从 Blockbench 建模到展示效果，梳理实体、道具和动画的制作路径。先掌握流程，再去打磨细节。",
@@ -166,9 +166,9 @@ const HOMEPAGE_CONFIG = {
         }
     ],
     qqGroups: [
-        { title: "QQ 群 1", number: "897257355" },
-        { title: "QQ 群 2", number: "792419382" },
-        { title: "QQ 群 3", number: "750065527" }
+        { title: "QQ 群 1", number: "792419382", disabled: true },
+        { title: "QQ 群 2", number: "750065527", disabled: true },
+        { title: "QQ 群 3", number: "897257355" }
     ]
 };
 
@@ -182,6 +182,7 @@ const HOMEPAGE_I18N = {
         "nav.model": "模型",
         "menu.platforms": "内容平台",
         "menu.taobao": "淘宝个人店铺",
+        "menu.advanced": "进阶教程",
         "menu.qq": "加入 QQ 群",
         "platforms.heading": "关注星断肃昭",
         "platforms.subtitle": "在你常用的平台找到我，一起学习与创造。",
@@ -201,6 +202,7 @@ const HOMEPAGE_I18N = {
         "nav.model": "模型",
         "menu.platforms": "內容平台",
         "menu.taobao": "淘寶個人店鋪",
+        "menu.advanced": "進階教程",
         "menu.qq": "加入 QQ 群",
         "platforms.heading": "關注星斷肅昭",
         "platforms.subtitle": "在你常用的平台找到我，一起學習與創造。",
@@ -220,6 +222,7 @@ const HOMEPAGE_I18N = {
         "nav.model": "Models",
         "menu.platforms": "Platforms",
         "menu.taobao": "Taobao Store",
+        "menu.advanced": "Advanced Tutorials",
         "menu.qq": "Join QQ",
         "platforms.heading": "Follow Xingduan Suzhao",
         "platforms.subtitle": "Find my updates on the platforms you already use.",
@@ -427,14 +430,16 @@ function renderQQGroups() {
 
     HOMEPAGE_CONFIG.qqGroups.forEach((group) => {
         const card = document.createElement("div");
-        card.className = "qq-card";
+        card.className = "qq-card" + (group.disabled ? " qq-card--disabled" : "");
+        const btnText = group.disabled ? "群满人" : "点击复制";
+        const btnDisabled = group.disabled ? " disabled" : "";
         card.innerHTML = `
             <img class="qq-card__icon" src="assets/images/qq.png" alt="QQ">
             <div class="qq-card__content">
                 <h3 class="qq-card__title">${group.title}</h3>
                 <p class="qq-card__number">${group.number}</p>
             </div>
-            <button class="qq-card__copy" type="button" data-copy="${group.number}">点击复制</button>
+            <button class="qq-card__copy" type="button" data-copy="${group.number}"${btnDisabled}>${btnText}</button>
         `;
         grid.appendChild(card);
     });

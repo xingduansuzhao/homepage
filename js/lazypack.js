@@ -8,13 +8,14 @@ const LAZYPACK_I18N = {
         "nav.model": "模型",
         "menu.platforms": "内容平台",
         "menu.taobao": "淘宝个人店铺",
+        "menu.advanced": "进阶教程",
         "menu.qq": "加入 QQ 群",
         "hero.eyebrow": "环境配置入口",
-        "hero.title": "别把热情耗在 Gradle 上",
+        "hero.title": "别把热情耗在<br>环境构建上",
         "hero.desc": "懒人包把 Java、Gradle、加载器模板和启动流程提前整理好。你要做的是打开工程、确认能跑，然后把注意力放回模组创意。",
         "hero.primary": "查看完整说明",
         "hero.secondary": "指定版本入口",
-        "hero.modules": "返回四大模块",
+        "hero.modules": "返回首页",
         "hero.quickEyebrow": "直接开始",
         "hero.quickTitle": "选择你的 1.21.10 加载器",
         "hero.download": "打开下载链接",
@@ -69,9 +70,10 @@ const LAZYPACK_I18N = {
         "nav.model": "模型",
         "menu.platforms": "內容平台",
         "menu.taobao": "淘寶個人店鋪",
+        "menu.advanced": "進階教程",
         "menu.qq": "加入 QQ 群",
         "hero.eyebrow": "環境配置入口",
-        "hero.title": "別把熱情耗在 Gradle 上",
+        "hero.title": "別把熱情耗在<br>Gradle 上",
         "hero.desc": "懶人包把 Java、Gradle、載入器模板和啟動流程提前整理好。你要做的是打開工程、確認能跑，然後把注意力放回模組創意。",
         "hero.primary": "查看完整說明",
         "hero.secondary": "指定版本入口",
@@ -130,9 +132,10 @@ const LAZYPACK_I18N = {
         "nav.model": "Models",
         "menu.platforms": "Platforms",
         "menu.taobao": "Taobao Store",
+        "menu.advanced": "Advanced Tutorials",
         "menu.qq": "Join QQ",
         "hero.eyebrow": "Environment Setup",
-        "hero.title": "Do not spend your energy fighting Gradle",
+        "hero.title": "Do not spend your energy<br>fighting Gradle",
         "hero.desc": "The lazy pack pre-arranges Java, Gradle, loader templates, and launch flow. Open the project, make sure it runs, then put your attention back on mod ideas.",
         "hero.primary": "Read full guide",
         "hero.secondary": "Specific version path",
@@ -205,6 +208,11 @@ function applyLanguage(lang) {
     document.querySelectorAll("[data-i18n]").forEach((node) => {
         const key = node.dataset.i18n;
         if (dict[key]) node.textContent = dict[key];
+    });
+
+    document.querySelectorAll("[data-i18n-html]").forEach((node) => {
+        const key = node.dataset.i18nHtml;
+        if (dict[key]) node.innerHTML = dict[key];
     });
 
     document.querySelectorAll(".language-tabs__button").forEach((button) => {

@@ -288,6 +288,8 @@ select {
     display: block;
     width: 100%;
     height: auto;
+    aspect-ratio: 1916 / 821;
+    object-fit: cover;
     transition: opacity 0.18s ease, transform 0.22s ease;
 }
 
@@ -837,6 +839,17 @@ select {
 .qq-card__copy:hover {
     background: rgba(183, 213, 58, 0.22);
     border-color: rgba(183, 213, 58, 0.6);
+}
+
+.qq-card__copy:disabled {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: not-allowed;
+}
+
+.qq-card--disabled {
+    opacity: 0.6;
 }
 
 .homepage-footer {
