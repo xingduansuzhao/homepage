@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">AI 做模型｜星断肃昭</title>
+    <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
+    <link rel="stylesheet" href="css/homepage.css?v=20260515">
+    <link rel="stylesheet" href="css/model.css?v=20260516e">
+</head>
+<body class="model-body">
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
+
+            <nav class="main-nav" aria-label="主导航">
+                <a class="main-nav__link" href="index.html" data-i18n="nav.home">首页</a>
+                <a class="main-nav__link" href="lazypack.html" data-i18n="nav.lazypack">懒人包</a>
+                <a class="main-nav__link" href="aimod-dev.html" data-i18n="nav.code">代码</a>
+                <a class="main-nav__link" href="texture.html" data-i18n="nav.texture">材质</a>
+                <a class="main-nav__link main-nav__link--active" href="model.html" data-i18n="nav.model">模型</a>
+            </nav>
+
+            <div class="topbar-tools">
+                <button class="language-cycle" id="languageCycle" type="button" aria-label="切换语言">简</button>
+
+                <div class="profile-menu" id="profileMenu">
+                    <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                        <span class="profile-menu__name">星断肃昭</span>
+                        <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="profile-menu__panel" id="profilePanel" hidden>
+                        <a class="profile-menu__item" href="index.html#platforms" data-i18n="menu.platforms">内容平台</a>
+                        <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
+                        <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
+                        <a class="profile-menu__item" href="index.html#qq" data-i18n="menu.qq">加入 QQ 群</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="model-main">
+        <section class="model-hero" aria-label="AI 做模型首屏">
+            <div class="model-hero__inner">
+                <div class="model-hero__panel">
+                    <span class="model-kicker" data-i18n="hero.eyebrow">AI 做模型</span>
+                    <h1 class="model-hero__title" data-i18n="hero.title">先把 Blockbench MCP 连上</h1>
+                    <p class="model-hero__desc" data-i18n="hero.desc">本页先抓最关键的一步：让 AI 能访问你的 Blockbench。连接跑通后，再让 AI 放一个方块验证，不要一上来就让它做复杂生物。</p>
+                    <div class="model-hero__actions">
+                        <a class="mc-action mc-action--primary" href="#mcp-steps" data-i18n="hero.primary">开始配置 MCP</a>
+                        <a class="mc-action mc-action--secondary" href="#snail" data-i18n="hero.secondary">看蜗牛预览</a>
+                    </div>
+                </div>
+
+                <div class="model-route-board" aria-label="模型页路线">
+                    <div class="model-route-board__head">
+                        <span data-i18n="route.kicker">本页路线</span>
+                        <strong data-i18n="route.title">先连接，再验证，最后再做模型</strong>
+                    </div>
+                    <div class="model-route-board__grid">
+                        <article>
+                            <span>01</span>
+                            <h3 data-i18n="route.one.title">装 Blockbench 插件</h3>
+                            <p data-i18n="route.one.desc">用原作者插件，让 Blockbench 开出本地 MCP 服务。</p>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <h3 data-i18n="route.two.title">让 Trae 连过去</h3>
+                            <p data-i18n="route.two.desc">Node、npm、npx 和 mcp-remote 是连接链路。</p>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <h3 data-i18n="route.three.title">先放一个方块</h3>
+                            <p data-i18n="route.three.desc">方块能出现，才说明 AI 真的连上了 Blockbench。</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="model-content">
+            <section class="content-section model-section" id="mcp">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title" data-i18n="mcp.title">MCP 是什么</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle" data-i18n="mcp.subtitle">你不需要研究原理，只要记住：MCP 就是 AI 和 Blockbench 之间的连接线。</p>
+
+                <div class="truth-grid">
+                    <article class="truth-card truth-card--blue">
+                        <span>01</span>
+                        <h3 data-i18n="mcp.card1.title">Blockbench 开门</h3>
+                        <p data-i18n="mcp.card1.desc">插件会在本机开启一个地址：localhost:3000/bb-mcp。</p>
+                    </article>
+                    <article class="truth-card truth-card--green">
+                        <span>02</span>
+                        <h3 data-i18n="mcp.card2.title">Trae 走这条线</h3>
+                        <p data-i18n="mcp.card2.desc">Trae 通过 npx mcp-remote 连到这个地址。</p>
+                    </article>
+                    <article class="truth-card truth-card--amber">
+                        <span>03</span>
+                        <h3 data-i18n="mcp.card3.title">强 AI 更重要</h3>
+                        <p data-i18n="mcp.card3.desc">MCP 只是手。模型做得好不好，主要看 AI 会不会拆结构、控比例、安排骨骼。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-section model-section" id="links">
+                <div class="model-split">
+                    <div class="model-split__copy">
+                        <span class="model-kicker" data-i18n="links.kicker">准备入口</span>
+                        <h2 class="model-title" data-i18n="links.title">先把这些页面打开</h2>
+                        <p class="model-lead" data-i18n="links.lead">下面是配置会用到的入口。原作者项目放在这里，安装说明也能从项目页找到。</p>
+                    </div>
+                    <div class="link-grid">
+                        <a class="resource-card" href="https://github.com/jasonjgardner/blockbench-mcp-plugin/" target="_blank" rel="noopener">
+                            <span>GitHub</span>
+                            <h3 data-i18n="links.github.title">原作者 MCP 项目</h3>
+                            <p>github.com/jasonjgardner/blockbench-mcp-plugin</p>
+                        </a>
+                        <article class="resource-card resource-card--actions">
+                            <span>Trae</span>
+                            <h3 data-i18n="links.trae.title">Trae 下载入口</h3>
+                            <p data-i18n="links.trae.desc">优先下载国际版；不方便就用国内版 trae.cn/ide/download。</p>
+                            <div class="resource-card__actions">
+                                <a href="https://www.trae.ai/" target="_blank" rel="noopener" data-i18n="links.trae.global">国际版</a>
+                                <a href="https://www.trae.cn/ide/download" target="_blank" rel="noopener" data-i18n="links.trae.cn">国内版</a>
+                            </div>
+                        </article>
+                        <a class="resource-card" href="https://nodejs.org/en/download" target="_blank" rel="noopener">
+                            <span>Node.js</span>
+                            <h3 data-i18n="links.node.title">下载 Node.js</h3>
+                            <p>nodejs.org/en/download</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section model-section" id="mcp-steps">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title" data-i18n="steps.title">MCP 配置步骤</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle" data-i18n="steps.subtitle">步骤多，但不要跳。每张图点开都能看清大图。</p>
+
+                <div class="step-grid" aria-label="MCP 配置步骤图">
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-0.jpg" data-preview-title="01 加载 Blockbench 插件" data-preview-copy-target="copyStepPlugin">
+                            <img src="assets/images/model-mcp/step-0.jpg" alt="加载 Blockbench MCP 插件">
+                        </button>
+                        <span>01</span>
+                        <h3 data-i18n="steps.one.title">从 URL 加载插件</h3>
+                        <p data-i18n="steps.one.desc">Blockbench 里打开 Plugins，粘贴原作者提供的插件 URL。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-1.jpg" data-preview-title="02 确认插件启动">
+                            <img src="assets/images/model-mcp/step-1.jpg" alt="Blockbench MCP 插件状态">
+                        </button>
+                        <span>02</span>
+                        <h3 data-i18n="steps.two.title">看到 MCP 状态</h3>
+                        <p data-i18n="steps.two.desc">插件加载后，Blockbench 底部会出现 MCP 状态。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-2.jpg" data-preview-title="03 下载 Node.js">
+                            <img src="assets/images/model-mcp/step-2.jpg" alt="Node.js 下载页面">
+                        </button>
+                        <span>03</span>
+                        <h3 data-i18n="steps.three.title">下载安装 Node.js</h3>
+                        <p data-i18n="steps.three.desc">选择 Windows Installer，不要选需要手动配置的压缩包。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-2-5.jpg" data-preview-title="04 下载 Trae">
+                            <img src="assets/images/model-mcp/step-2-5.jpg" alt="Trae 下载页面">
+                        </button>
+                        <span>04</span>
+                        <h3 data-i18n="steps.four.title">下载安装 Trae</h3>
+                        <p data-i18n="steps.four.desc">优先国际版；不方便就用国内版下载入口。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-3.jpg" data-preview-title="05 验证 node npm npx" data-preview-copy-target="copyStepNode">
+                            <img src="assets/images/model-mcp/step-3.jpg" alt="验证 node npm npx 命令">
+                        </button>
+                        <span>05</span>
+                        <h3 data-i18n="steps.five.title">验证三个命令</h3>
+                        <p data-i18n="steps.five.desc">三个都有版本号，才说明 Node 安装成功。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-4.jpg" data-preview-title="06 打开 Trae MCP 设置">
+                            <img src="assets/images/model-mcp/step-4.jpg" alt="Trae MCP 设置入口">
+                        </button>
+                        <span>06</span>
+                        <h3 data-i18n="steps.six.title">打开 Trae MCP 设置</h3>
+                        <p data-i18n="steps.six.desc">进入设置里的 MCP Servers 区域。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-5.jpg" data-preview-title="07 进入手动配置">
+                            <img src="assets/images/model-mcp/step-5.jpg" alt="Trae MCP 手动配置">
+                        </button>
+                        <span>07</span>
+                        <h3 data-i18n="steps.seven.title">选择手动配置</h3>
+                        <p data-i18n="steps.seven.desc">不要乱填，后面直接粘贴配置文件。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-6.jpg" data-preview-title="08 粘贴 MCP 配置" data-preview-copy-target="copyStepMcp">
+                            <img src="assets/images/model-mcp/step-6.jpg" alt="粘贴 MCP JSON 配置">
+                        </button>
+                        <span>08</span>
+                        <h3 data-i18n="steps.eight.title">粘贴配置并确认</h3>
+                        <p data-i18n="steps.eight.desc">点开这张图后，直接复制配置内容。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-7.png" data-preview-title="09 让 Trae 访问 Blockbench" data-preview-copy-target="copyStepVerify">
+                            <img src="assets/images/model-mcp/step-7.png" alt="让 Trae 验证访问 Blockbench">
+                        </button>
+                        <span>09</span>
+                        <h3 data-i18n="steps.nine.title">验证连接</h3>
+                        <p data-i18n="steps.nine.desc">先让它放一个方块，不要直接做复杂模型。</p>
+                    </article>
+                    <article class="step-card">
+                        <button type="button" data-preview-src="assets/images/model-mcp/step-8.jpg" data-preview-title="10 方块出现在 Blockbench">
+                            <img src="assets/images/model-mcp/step-8.jpg" alt="Blockbench 出现方块">
+                        </button>
+                        <span>10</span>
+                        <h3 data-i18n="steps.ten.title">方块出现就成功</h3>
+                        <p data-i18n="steps.ten.desc">看到方块后，再开始让 AI 做你的模型。</p>
+                    </article>
+                </div>
+
+                <div class="verify-card">
+                    <div>
+                        <span class="model-kicker" data-i18n="verify.kicker">连接验证</span>
+                        <h3 data-i18n="verify.title">验证 AI 是否连上 Blockbench</h3>
+                        <p data-i18n="verify.desc">方块能被放进 Blockbench，说明连接链路是通的。</p>
+                    </div>
+                    <div class="verify-card__prompt">
+                        <pre id="verifyPrompt">请问你可以通过MCP访问到我的Blockbench吗，如果可以，请在里面放置一个方块</pre>
+                        <button class="mc-action mc-action--primary" type="button" data-copy-target="verifyPrompt" data-i18n="verify.copy">复制连接验证指令</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section model-section" id="prompt">
+                <div class="prompt-panel">
+                    <div class="prompt-panel__copy">
+                        <span class="model-kicker" data-i18n="prompt.kicker">前置指令</span>
+                        <h2 class="model-title" data-i18n="prompt.title">先锁定 Minecraft 方块模型标准</h2>
+                        <p class="model-lead" data-i18n="prompt.lead">推荐复制英文版。看不懂没关系，复制后在末尾写中文需求，例如“做一个小蜗牛”。</p>
+                        <div class="prompt-tabs" role="tablist" aria-label="模型前置指令语言">
+                            <button class="prompt-tabs__button is-active" type="button" data-prompt-tab="en" role="tab" aria-selected="true">English</button>
+                            <button class="prompt-tabs__button" type="button" data-prompt-tab="zh" role="tab" aria-selected="false">中文</button>
+                        </div>
+                    </div>
+                    <div class="prompt-choice" data-prompt-panel="en">
+                        <div class="prompt-choice__head">
+                            <span data-i18n="prompt.enLabel">推荐：英文版</span>
+                            <button class="mc-action mc-action--primary" type="button" data-copy-target="modelPromptEN" data-i18n="prompt.copyEn">复制英文指令</button>
+                        </div>
+                        <pre class="prompt-box" id="modelPromptEN">Role: Expert Minecraft model planning assistant for authentic vanilla-style Blockbench creation.
+Objective: Plan and guide low-spec voxel models that strictly follow Minecraft's blocky aesthetic. Reject realism, smooth curves, high-detail surfaces, and modern polished shapes.
+1. GEOMETRY AND SHAPE:
+Build only with cuboids, blocks, flat planes, and chunky stair-step approximations. No spheres, cylinders, smooth curves, thin slants, or overly dense details. The object must be readable through simple block masses.
+2. SCALE AND STRUCTURE:
+Keep the model compact, low-spec, and easy to rebuild in Blockbench. Separate major parts into clear bones when needed, such as body, head, limbs, shell, tail, or accessories.
+3. TEXTURE STYLE:
+Use a restricted Minecraft-like palette. Prefer crisp pixel blocks, hard borders, and simple color regions. Avoid gradients, soft shading, blur, noise, and high-resolution texture details.
+4. OUTPUT STANDARD:
+Before making the final model, describe the main cuboids, their rough proportions, the bone hierarchy, and the simple animation idea if the model is a creature.
+Subject:</pre>
+                    </div>
+                    <div class="prompt-choice" data-prompt-panel="zh" hidden>
+                        <div class="prompt-choice__head">
+                            <span data-i18n="prompt.zhLabel">可选：中文版</span>
+                            <button class="mc-action mc-action--secondary" type="button" data-copy-target="modelPromptZH" data-i18n="prompt.copyZh">复制中文指令</button>
+                        </div>
+                        <pre class="prompt-box" id="modelPromptZH">角色：专业的 Minecraft 原版风格模型规划助手，用于指导 Blockbench 制作低精度方块模型。
+目标：规划和指导符合 Minecraft 方块美学的低精度体素模型。拒绝写实、光滑曲线、高细节表面和过度精致的现代造型。
+1. 几何与形状：
+只允许使用长方体、方块、平面和粗颗粒阶梯式近似形状。不要球体、圆柱体、光滑曲线、细斜面或过密细节。模型必须通过简单方块体块就能看懂。
+2. 比例与结构：
+模型要紧凑、低规格、方便在 Blockbench 里复现。必要时把主要部位拆成清晰骨骼，例如身体、头、四肢、外壳、尾巴或装饰。
+3. 材质风格：
+使用接近 Minecraft 的有限调色板。优先硬边界、清晰像素块和简单色块。避免渐变、柔光、模糊、噪点和高清材质细节。
+4. 输出标准：
+制作最终模型前，先说明主要长方体、粗略比例、骨骼层级；如果是生物，再给出一个简单动画想法。
+需求：</pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section model-section" id="snail">
+                <div class="snail-showcase">
+                    <div class="snail-showcase__copy">
+                        <span class="model-kicker" data-i18n="snail.kicker">工具包案例</span>
+                        <h2 class="model-title" data-i18n="snail.title">工具包做出的蜗牛模型</h2>
+                        <p class="model-lead" data-i18n="snail.lead">右侧就是视频里的蜗牛模型，已经接入网页 3D 预览。拖动后可以直接看结构、比例和材质效果。</p>
+                        <div class="model-format-note">
+                            <span data-i18n="snail.format1">当前展示：GLTF 蜗牛模型</span>
+                            <span data-i18n="snail.format2">后续换成 GLB，也能继续使用这个预览区。</span>
+                        </div>
+                    </div>
+                    <div class="snail-viewer" aria-label="蜗牛模型 3D 预览">
+                        <canvas id="snailCanvas" data-model-src="assets/models/snail.gltf"></canvas>
+                        <div class="snail-viewer__hud">
+                            <span data-i18n="snail.hud">拖动旋转 · 滚轮缩放</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section model-section" id="toolkit">
+                <div class="toolkit-model">
+                    <div class="toolkit-model__copy">
+                        <span class="model-kicker" data-i18n="toolkit.kicker">更省事的路线</span>
+                        <h2 class="model-title" data-i18n="toolkit.title">连上 MCP 之后，差距在稳定和成品</h2>
+                        <p class="model-lead" data-i18n="toolkit.lead">你可以先按本页把原作者 MCP 跑通。工具包模型板块处理的是后面的麻烦：更稳的连接、更强的任务约束、更少手动导出。</p>
+                        <div class="toolkit-points">
+                            <span data-i18n="toolkit.point1">更强的模型前置指令框架，不用自己反复试长模板</span>
+                            <span data-i18n="toolkit.point2">独家的模型材质处理方案，模型不会一进游戏就廉价</span>
+                            <span data-i18n="toolkit.point3">增强 MCP：连接更稳，适配更多 AI 工具</span>
+                            <span data-i18n="toolkit.point4">支持 AI 自动导出模型文件、材质、动画，少做手工收尾</span>
+                        </div>
+                        <a class="mc-action mc-action--primary" href="https://e.tb.cn/h.7DYUEVDz9PvsG22?tk=kD2WUmqmIYz" target="_blank" rel="noopener" data-i18n="toolkit.cta">查看工具包详情</a>
+                    </div>
+                    <div class="toolkit-model__panel">
+                        <article>
+                            <span>01</span>
+                            <h3 data-i18n="toolkit.panel1.title">原版 MCP</h3>
+                            <p data-i18n="toolkit.panel1.desc">适合入门验证，但可能会遇到连接不稳、断开重连、导出仍要自己处理。</p>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <h3 data-i18n="toolkit.panel2.title">工具包路线</h3>
+                            <p data-i18n="toolkit.panel2.desc">适合直接追成品，把连接、材质、导出这些烦人的步骤压到更短。</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="homepage-footer">
+        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · Minecraft 模组开发入口</p>
+        <p class="homepage-footer__desc" data-i18n="footer.desc">整理懒人包、代码、材质、模型相关内容，方便按阶段进入。</p>
+    </footer>
+
+    <div class="copy-sources" hidden>
+        <pre id="copyStepPlugin">https://jasonjgardner.github.io/blockbench-mcp-plugin/mcp.js</pre>
+        <pre id="copyStepNode">node -v
+npm -v
+npx -v</pre>
+        <pre id="copyStepMcp">{
+  "mcpServers": {
+    "blockbench": {
+      "command": "npx",
+      "args": ["mcp-remote", "http://localhost:3000/bb-mcp"]
+    }
+  }
+}</pre>
+        <pre id="copyStepVerify">请问你可以通过MCP访问到我的Blockbench吗，如果可以，请在里面放置一个方块</pre>
+    </div>
+
+    <div class="image-preview" id="imagePreview" hidden>
+        <button class="image-preview__backdrop" type="button" data-preview-close aria-label="关闭预览"></button>
+        <div class="image-preview__dialog" role="dialog" aria-modal="true" aria-labelledby="imagePreviewTitle">
+            <div class="image-preview__bar">
+                <span id="imagePreviewTitle"></span>
+                <button class="image-preview__copy" type="button" data-preview-copy hidden data-i18n="preview.copy">复制本步骤信息</button>
+                <button type="button" data-preview-close aria-label="关闭">×</button>
+            </div>
+            <button class="image-preview__nav image-preview__nav--prev" type="button" data-preview-prev aria-label="上一张">‹</button>
+            <img id="imagePreviewImg" src="" alt="">
+            <button class="image-preview__nav image-preview__nav--next" type="button" data-preview-next aria-label="下一张">›</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="js/snail-gltf.js?v=20260516d"></script>
+    <script src="js/model.js?v=20260516e"></script>
+</body>
+</html>

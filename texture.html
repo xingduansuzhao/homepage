@@ -22,11 +22,7 @@
             </nav>
 
             <div class="topbar-tools">
-                <div class="language-tabs" aria-label="语言切换">
-                    <button class="language-tabs__button is-active" type="button" data-lang="zh-CN">简</button>
-                    <button class="language-tabs__button" type="button" data-lang="zh-TW">繁</button>
-                    <button class="language-tabs__button" type="button" data-lang="en">EN</button>
-                </div>
+                <button class="language-cycle" id="languageCycle" type="button" aria-label="切换语言">简</button>
 
                 <div class="profile-menu" id="profileMenu">
                     <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
@@ -35,7 +31,6 @@
                         <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
                     </button>
                     <div class="profile-menu__panel" id="profilePanel" hidden>
-                        <a class="profile-menu__item" href="index.html#author" data-i18n="menu.author">作者介绍</a>
                         <a class="profile-menu__item" href="index.html#platforms" data-i18n="menu.platforms">内容平台</a>
                         <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
                         <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
@@ -52,7 +47,7 @@
                 <div class="texture-hero__panel">
                     <div class="texture-kicker" data-i18n="hero.eyebrow">AI 画材质</div>
                     <h1 class="texture-hero__title" data-i18n="hero.title">先做伪像素图，再降到 16*16</h1>
-                    <p class="texture-hero__desc" data-i18n="hero.desc">公开方法只做一件事：让 AI 先画出大色块、硬边缘、少颜色的伪像素图。生成后去降维器处理，才能变成 Minecraft Java 能用的物品材质。</p>
+                    <p class="texture-hero__desc" data-i18n="hero.desc">这套方法只做一件事：让 AI 先画出大色块、硬边缘、少颜色的伪像素图。生成后去降维器处理，才能变成 Minecraft Java 能用的物品材质。</p>
                     <div class="texture-hero__actions">
                         <a class="mc-action mc-action--primary" href="#workflow" data-i18n="hero.primary">看制作步骤</a>
                         <a class="mc-action mc-action--secondary" href="pixel-converter.html" data-i18n="hero.secondary">打开降维器</a>
@@ -177,15 +172,19 @@
                         <h3 data-i18n="prompt.title">推荐复制英文版</h3>
                         <p data-i18n="prompt.desc">复制后，在最后加中文需求：一个番茄、一个芒果、一把铜剑。</p>
                     </div>
+                    <div class="texture-prompt-tabs" role="tablist" aria-label="材质前置提示词语言">
+                        <button class="texture-prompt-tabs__button is-active" type="button" data-prompt-tab="en" role="tab" aria-selected="true">English</button>
+                        <button class="texture-prompt-tabs__button" type="button" data-prompt-tab="zh" role="tab" aria-selected="false">中文</button>
+                    </div>
                     <div class="prompt-choice-grid">
-                        <article class="prompt-choice prompt-choice--recommended">
+                        <article class="prompt-choice prompt-choice--recommended" data-prompt-panel="en">
                             <div class="prompt-choice__head">
                                 <span data-i18n="prompt.enLabel">推荐：英文版</span>
                                 <button class="mc-action mc-action--primary" type="button" data-copy-prompt="en" data-i18n="prompt.copyEn">复制英文提示词</button>
                             </div>
                             <pre class="prompt-box" id="texturePromptEN">Minecraft Java Edition pixel art item icon, pseudo 16x16 upscaled, image must look like exactly 16 large square color blocks wide and 16 tall, subject must not touch any edge of the canvas, leave at least 1 pixel block of empty white space on all four sides as margin, every color region must be at least 2x2 large squares, maximum 4 flat solid colors total in entire image, zero color gradients, zero anti-aliasing, zero soft edges, hard sharp borders between every color region, pure white background, non-tool subjects face forward, subject shape must be clearly recognizable and match the named object exactly, subject:</pre>
                         </article>
-                        <article class="prompt-choice">
+                        <article class="prompt-choice" data-prompt-panel="zh" hidden>
                             <div class="prompt-choice__head">
                                 <span data-i18n="prompt.zhLabel">可选：中文版</span>
                                 <button class="mc-action mc-action--secondary" type="button" data-copy-prompt="zh" data-i18n="prompt.copyZh">复制中文提示词</button>
@@ -240,7 +239,7 @@
                                 <img src="assets/images/texture-mango-basic.png" alt="Nano Banana2 芒果材质">
                             </button>
                             <span data-i18n="toolkit.basic">Nano Banana2 芒果材质</span>
-                            <p data-i18n="toolkit.basicDesc">使用本页公开方案生成。能看出是芒果，但边缘、体积和 MC 材质感都比较弱。</p>
+                            <p data-i18n="toolkit.basicDesc">使用本页方案生成。能看出是芒果，但边缘、体积和 MC 材质感都比较弱。</p>
                         </article>
                         <article>
                             <button type="button" data-preview-src="assets/images/texture-mango-toolkit.png" data-preview-title="工具包的芒果材质">
@@ -256,8 +255,8 @@
     </main>
 
     <footer class="homepage-footer">
-        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · 模组开发教育站</p>
-        <p class="homepage-footer__desc" data-i18n="footer.desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · Minecraft 模组开发入口</p>
+        <p class="homepage-footer__desc" data-i18n="footer.desc">整理懒人包、代码、材质、模型相关内容，方便按阶段进入。</p>
     </footer>
 
     <div class="image-preview" id="imagePreview" hidden>

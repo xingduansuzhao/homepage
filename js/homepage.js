@@ -1,9 +1,8 @@
 // 首页可编辑配置：
 // 1. 修改首屏模块切换：heroStates
 // 2. 修改四大入口文案：entries
-// 3. 修改作者介绍：author
-// 4. 修改平台链接：platforms
-// 5. 修改 QQ 群号：qqGroups
+// 3. 修改平台链接：platforms
+// 4. 修改 QQ 群号：qqGroups
 const HOMEPAGE_CONFIG = {
     profileName: "星断肃昭",
     taobaoUrl: "https://m.tb.cn/h.7rYrnwT3m2rNXjD",
@@ -83,6 +82,7 @@ const HOMEPAGE_CONFIG = {
             cta: "进入懒人包",
             href: "lazypack.html",
             tone: "green",
+            icon: "assets/images/module-icons/lazypack.png",
             posterTitle: "LAZY PACK",
             posterMeta: "Forge / Fabric"
         },
@@ -94,6 +94,7 @@ const HOMEPAGE_CONFIG = {
             cta: "进入代码模块",
             href: "aimod-dev.html",
             tone: "blue",
+            icon: "assets/images/module-icons/code.png",
             posterTitle: "CODE",
             posterMeta: "Prompt / API / Java"
         },
@@ -105,6 +106,7 @@ const HOMEPAGE_CONFIG = {
             cta: "进入材质模块",
             href: "texture.html",
             tone: "amber",
+            icon: "assets/images/module-icons/texture.png",
             posterTitle: "PIXEL",
             posterMeta: "Texture / Palette"
         },
@@ -116,14 +118,11 @@ const HOMEPAGE_CONFIG = {
             cta: "进入模型模块",
             href: "model.html",
             tone: "stone",
+            icon: "assets/images/module-icons/model.png",
             posterTitle: "MODEL",
             posterMeta: "Blockbench / Rig"
         }
     ],
-    author: {
-        name: "星断肃昭",
-        text: "我是一名专注于 Minecraft 模组开发教学的创作者，主要分享懒人包、AI 写代码、AI 画材质和 AI 做模型相关内容。这个首页不是商店目录，而是把不同学习路径整理成清晰入口，方便你按自己现在的阶段直接进入。"
-    },
     platforms: [
         {
             eyebrow: "教程平台",
@@ -172,6 +171,106 @@ const HOMEPAGE_CONFIG = {
         { title: "QQ 群 3", number: "750065527" }
     ]
 };
+
+const HOMEPAGE_I18N = {
+    "zh-CN": {
+        "meta.title": "星断肃昭的模组开发入口",
+        "nav.home": "首页",
+        "nav.lazypack": "懒人包",
+        "nav.code": "代码",
+        "nav.texture": "材质",
+        "nav.model": "模型",
+        "menu.platforms": "内容平台",
+        "menu.taobao": "淘宝个人店铺",
+        "menu.qq": "加入 QQ 群",
+        "platforms.heading": "关注星断肃昭",
+        "platforms.subtitle": "在你常用的平台找到我，一起学习与创造。",
+        "qq.heading": "加入 QQ 群",
+        "qq.subtitle": "与更多开发者交流，一起解决问题。",
+        "footer.meta": "© 星断肃昭 · Minecraft 模组开发入口",
+        "footer.desc": "整理懒人包、代码、材质、模型相关内容，方便按阶段进入。",
+        "toast.copyPrefix": "已复制群号 ",
+        "toast.copyFail": "复制失败，请手动复制"
+    },
+    "zh-TW": {
+        "meta.title": "星斷肅昭的模組開發入口",
+        "nav.home": "首頁",
+        "nav.lazypack": "懶人包",
+        "nav.code": "程式碼",
+        "nav.texture": "材質",
+        "nav.model": "模型",
+        "menu.platforms": "內容平台",
+        "menu.taobao": "淘寶個人店鋪",
+        "menu.qq": "加入 QQ 群",
+        "platforms.heading": "關注星斷肅昭",
+        "platforms.subtitle": "在你常用的平台找到我，一起學習與創造。",
+        "qq.heading": "加入 QQ 群",
+        "qq.subtitle": "與更多開發者交流，一起解決問題。",
+        "footer.meta": "© 星斷肅昭 · Minecraft 模組開發入口",
+        "footer.desc": "整理懶人包、程式碼、材質、模型相關內容，方便按階段進入。",
+        "toast.copyPrefix": "已複製群號 ",
+        "toast.copyFail": "複製失敗，請手動複製"
+    },
+    en: {
+        "meta.title": "Xingduan Suzhao's Mod Development Hub",
+        "nav.home": "Home",
+        "nav.lazypack": "Lazy Pack",
+        "nav.code": "Code",
+        "nav.texture": "Textures",
+        "nav.model": "Models",
+        "menu.platforms": "Platforms",
+        "menu.taobao": "Taobao Store",
+        "menu.qq": "Join QQ",
+        "platforms.heading": "Follow Xingduan Suzhao",
+        "platforms.subtitle": "Find my updates on the platforms you already use.",
+        "qq.heading": "Join QQ Groups",
+        "qq.subtitle": "Talk with more creators and solve problems together.",
+        "footer.meta": "© Xingduan Suzhao · Minecraft Mod Development Hub",
+        "footer.desc": "Organized entry points for lazy packs, code, textures, and models.",
+        "toast.copyPrefix": "Copied QQ group ",
+        "toast.copyFail": "Copy failed. Please copy it manually."
+    }
+};
+
+const DEFAULT_LANG = "zh-CN";
+const LANG_ORDER = ["zh-CN", "zh-TW", "en"];
+const LANG_LABEL = {
+    "zh-CN": "简",
+    "zh-TW": "繁",
+    en: "EN"
+};
+
+function getInitialLanguage() {
+    const saved = window.localStorage.getItem("site-lang");
+    return saved && HOMEPAGE_I18N[saved] ? saved : DEFAULT_LANG;
+}
+
+function getCurrentDict() {
+    return HOMEPAGE_I18N[getInitialLanguage()] || HOMEPAGE_I18N[DEFAULT_LANG];
+}
+
+function applyLanguage(lang) {
+    const dict = HOMEPAGE_I18N[lang] || HOMEPAGE_I18N[DEFAULT_LANG];
+    const cycle = document.getElementById("languageCycle");
+    document.documentElement.lang = lang;
+    document.title = dict["meta.title"];
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const key = node.dataset.i18n;
+        if (dict[key]) node.textContent = dict[key];
+    });
+    if (cycle) cycle.textContent = LANG_LABEL[lang] || LANG_LABEL[DEFAULT_LANG];
+    window.localStorage.setItem("site-lang", lang);
+}
+
+function setupLanguageCycle() {
+    const cycle = document.getElementById("languageCycle");
+    if (!cycle) return;
+    cycle.addEventListener("click", () => {
+        const current = getInitialLanguage();
+        const next = LANG_ORDER[(LANG_ORDER.indexOf(current) + 1) % LANG_ORDER.length] || DEFAULT_LANG;
+        applyLanguage(next);
+    });
+}
 
 function isExternalUrl(url) {
     return /^https?:\/\//.test(url);
@@ -267,12 +366,12 @@ function renderEntries() {
         const card = document.createElement("a");
         card.className = `entry-card entry-card--${entry.tone}`;
         card.href = entry.href;
+        const posterMarkup = entry.icon
+            ? `<div class="entry-card__poster entry-card__poster--image"><img class="entry-card__icon" src="${entry.icon}" alt="${entry.title}"></div>`
+            : `<div class="entry-card__poster"><div class="entry-card__poster-meta">${entry.posterMeta}</div><div class="entry-card__poster-title">${entry.posterTitle}</div></div>`;
         card.innerHTML = `
             <div class="entry-card__media">
-                <div class="entry-card__poster">
-                    <div class="entry-card__poster-meta">${entry.posterMeta}</div>
-                    <div class="entry-card__poster-title">${entry.posterTitle}</div>
-                </div>
+                ${posterMarkup}
             </div>
             <div class="entry-card__body">
                 <div class="entry-card__eyebrow">${entry.eyebrow}</div>
@@ -292,9 +391,8 @@ function renderEntries() {
 }
 
 function renderAuthor() {
-    document.getElementById("profileName").textContent = HOMEPAGE_CONFIG.profileName;
-    document.getElementById("authorName").textContent = HOMEPAGE_CONFIG.author.name;
-    document.getElementById("authorText").textContent = HOMEPAGE_CONFIG.author.text;
+    const profileName = document.getElementById("profileName");
+    if (profileName) profileName.textContent = HOMEPAGE_CONFIG.profileName;
 }
 
 function renderPlatforms() {
@@ -363,9 +461,9 @@ function setupCopyButtons() {
         const text = button.getAttribute("data-copy");
         try {
             await navigator.clipboard.writeText(text);
-            showToast(`已复制群号 ${text}`);
+            showToast(`${getCurrentDict()["toast.copyPrefix"]}${text}`);
         } catch (error) {
-            showToast("复制失败，请手动复制");
+            showToast(getCurrentDict()["toast.copyFail"]);
         }
     });
 }
@@ -420,6 +518,7 @@ function applyStaticLinks() {
 
 document.addEventListener("DOMContentLoaded", () => {
     applyStaticLinks();
+    setupLanguageCycle();
     renderHeroSwitcher();
     renderEntries();
     renderAuthor();
@@ -427,4 +526,5 @@ document.addEventListener("DOMContentLoaded", () => {
     renderQQGroups();
     setupProfileMenu();
     setupCopyButtons();
+    applyLanguage(getInitialLanguage());
 });

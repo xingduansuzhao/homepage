@@ -6,7 +6,6 @@ const CODE_I18N = {
         "nav.code": "代码",
         "nav.texture": "材质",
         "nav.model": "模型",
-        "menu.author": "作者介绍",
         "menu.platforms": "内容平台",
         "menu.taobao": "淘宝个人店铺",
         "menu.qq": "加入 QQ 群",
@@ -76,8 +75,8 @@ const CODE_I18N = {
         "toolkit.point3.title": "更多现成代码流程",
         "toolkit.point3.desc": "方块、物品、实体、界面等常见开发方向，不用每次从空白开始组织。",
         "toolkit.cta": "查看工具包详情",
-        "footer.meta": "© 星断肃昭 · 模组开发教育站",
-        "footer.desc": "Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。",
+        "footer.meta": "© 星断肃昭 · Minecraft 模组开发入口",
+        "footer.desc": "整理懒人包、代码、材质、模型相关内容，方便按阶段进入。",
         "toast.copy": "提问模板已复制"
     },
     "zh-TW": {
@@ -87,7 +86,6 @@ const CODE_I18N = {
         "nav.code": "程式碼",
         "nav.texture": "材質",
         "nav.model": "模型",
-        "menu.author": "作者介紹",
         "menu.platforms": "內容平台",
         "menu.taobao": "淘寶個人店鋪",
         "menu.qq": "加入 QQ 群",
@@ -157,8 +155,8 @@ const CODE_I18N = {
         "toolkit.point3.title": "更多現成程式碼流程",
         "toolkit.point3.desc": "方塊、物品、實體、介面等常見開發方向，不用每次從空白開始組織。",
         "toolkit.cta": "查看工具包詳情",
-        "footer.meta": "© 星斷肅昭 · 模組開發教育站",
-        "footer.desc": "Minecraft 是 Mojang Studios 的商標，本站與 Mojang Studios 無關。",
+        "footer.meta": "© 星斷肅昭 · Minecraft 模組開發入口",
+        "footer.desc": "整理懶人包、程式碼、材質、模型相關內容，方便按階段進入。",
         "toast.copy": "提問模板已複製"
     },
     en: {
@@ -168,7 +166,6 @@ const CODE_I18N = {
         "nav.code": "Code",
         "nav.texture": "Textures",
         "nav.model": "Models",
-        "menu.author": "About",
         "menu.platforms": "Platforms",
         "menu.taobao": "Taobao Store",
         "menu.qq": "Join QQ",
@@ -238,16 +235,22 @@ const CODE_I18N = {
         "toolkit.point3.title": "More ready coding flows",
         "toolkit.point3.desc": "Blocks, items, entities, screens, and other common directions do not need to start from a blank page every time.",
         "toolkit.cta": "View toolkit details",
-        "footer.meta": "© Xingduan Suzhao · Mod Development Learning Site",
-        "footer.desc": "Minecraft is a trademark of Mojang Studios. This site is not affiliated with Mojang Studios.",
+        "footer.meta": "© Xingduan Suzhao · Minecraft Mod Development Hub",
+        "footer.desc": "Organized entry points for lazy packs, code, textures, and models.",
         "toast.copy": "Prompt template copied"
     }
 };
 
 const DEFAULT_LANG = "zh-CN";
+const LANG_ORDER = ["zh-CN", "zh-TW", "en"];
+const LANG_LABEL = {
+    "zh-CN": "简",
+    "zh-TW": "繁",
+    en: "EN"
+};
 
 function getInitialLanguage() {
-    const saved = window.localStorage.getItem("code-lang");
+    const saved = window.localStorage.getItem("site-lang") || window.localStorage.getItem("code-lang");
     if (saved && CODE_I18N[saved]) return saved;
     return DEFAULT_LANG;
 }
@@ -265,7 +268,10 @@ function applyLanguage(lang) {
         button.classList.toggle("is-active", button.dataset.lang === lang);
     });
 
+    const cycle = document.getElementById("languageCycle");
+    if (cycle) cycle.textContent = LANG_LABEL[lang] || LANG_LABEL[DEFAULT_LANG];
     document.title = dict["meta.title"];
+    window.localStorage.setItem("site-lang", lang);
     window.localStorage.setItem("code-lang", lang);
 }
 
@@ -298,13 +304,25 @@ function setupProfileMenu() {
     });
 }
 
+function setupLanguageCycle() {
+    const cycle = document.getElementById("languageCycle");
+    if (!cycle) return;
+
+    cycle.addEventListener("click", () => {
+        const current = getInitialLanguage();
+        const index = LANG_ORDER.indexOf(current);
+        const next = LANG_ORDER[(index + 1) % LANG_ORDER.length] || DEFAULT_LANG;
+        applyLanguage(next);
+    });
+}
+
 function setupPromptCopy() {
     const button = document.querySelector("[data-copy-prompt]");
     const prompt = document.getElementById("starterPrompt");
     if (!button || !prompt) return;
 
     button.addEventListener("click", async () => {
-        const lang = window.localStorage.getItem("code-lang") || DEFAULT_LANG;
+        const lang = window.localStorage.getItem("site-lang") || window.localStorage.getItem("code-lang") || DEFAULT_LANG;
         const dict = CODE_I18N[lang] || CODE_I18N[DEFAULT_LANG];
         const text = prompt.textContent.trim();
 
@@ -349,6 +367,7 @@ function setupImagePreview() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    setupLanguageCycle();
     setupProfileMenu();
     setupPromptCopy();
     setupImagePreview();

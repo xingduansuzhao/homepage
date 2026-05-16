@@ -81,7 +81,7 @@ function copyPrompt(btn) {
 /* 千问AI接入指南 Markdown 下载 */
 function downloadGuideMarkdown() {
     var content = '# 千问AI接入指南\n\n';
-    content += '> 🟢 免费 · 只需3步 · 10分钟完成\n\n';
+    content += '> 🟢 基础资料 · 只需3步 · 10分钟完成\n\n';
     content += '## 10分钟搭好AI编程环境\n\n';
     content += '只需三步，即可在IDE中接入AI编程助手（通义灵码 Lingma），开始AI辅助模组开发。\n\n';
     content += '---\n\n';
@@ -104,7 +104,7 @@ function downloadGuideMarkdown() {
 /* AI开发避坑指南 Markdown 下载 */
 function downloadPitfallsMarkdown() {
     var content = '# AI开发避坑指南\n\n';
-    content += '> 🟠 免费 · 经验型内容 · 阅读5分钟 · 长期受用\n\n';
+    content += '> 🟠 基础资料 · 经验型内容 · 阅读5分钟 · 长期受用\n\n';
     content += 'AI辅助模组开发中最常见的8个坑，每个坑都给出现象、原因和修复方法。\n\n';
     content += '---\n\n';
     content += '## 坑 1：AI生成的代码直接报错\n';

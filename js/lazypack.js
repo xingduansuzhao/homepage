@@ -6,7 +6,6 @@ const LAZYPACK_I18N = {
         "nav.code": "代码",
         "nav.texture": "材质",
         "nav.model": "模型",
-        "menu.author": "作者介绍",
         "menu.platforms": "内容平台",
         "menu.taobao": "淘宝个人店铺",
         "menu.qq": "加入 QQ 群",
@@ -57,8 +56,8 @@ const LAZYPACK_I18N = {
         "qq.title": "加入 QQ 群",
         "qq.subtitle": "环境跑起来后，把报错、版本号、加载器和截图一起发出来，沟通效率会高很多。",
         "qq.copy": "复制",
-        "footer.meta": "© 星断肃昭 · 模组开发教育站",
-        "footer.desc": "Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。",
+        "footer.meta": "© 星断肃昭 · Minecraft 模组开发入口",
+        "footer.desc": "整理懒人包、代码、材质、模型相关内容，方便按阶段进入。",
         "toast.copy": "群号 {value} 已复制"
     },
     "zh-TW": {
@@ -68,7 +67,6 @@ const LAZYPACK_I18N = {
         "nav.code": "程式碼",
         "nav.texture": "材質",
         "nav.model": "模型",
-        "menu.author": "作者介紹",
         "menu.platforms": "內容平台",
         "menu.taobao": "淘寶個人店鋪",
         "menu.qq": "加入 QQ 群",
@@ -119,8 +117,8 @@ const LAZYPACK_I18N = {
         "qq.title": "加入 QQ 群",
         "qq.subtitle": "環境跑起來後，把報錯、版本號、載入器和截圖一起發出來，溝通效率會高很多。",
         "qq.copy": "複製",
-        "footer.meta": "© 星斷肅昭 · 模組開發教育站",
-        "footer.desc": "Minecraft 是 Mojang Studios 的商標，本站與 Mojang Studios 無關。",
+        "footer.meta": "© 星斷肅昭 · Minecraft 模組開發入口",
+        "footer.desc": "整理懶人包、程式碼、材質、模型相關內容，方便按階段進入。",
         "toast.copy": "群號 {value} 已複製"
     },
     en: {
@@ -130,7 +128,6 @@ const LAZYPACK_I18N = {
         "nav.code": "Code",
         "nav.texture": "Textures",
         "nav.model": "Models",
-        "menu.author": "About",
         "menu.platforms": "Platforms",
         "menu.taobao": "Taobao Store",
         "menu.qq": "Join QQ",
@@ -181,16 +178,22 @@ const LAZYPACK_I18N = {
         "qq.title": "Join QQ Groups",
         "qq.subtitle": "After the environment runs, share errors, version number, loader, and screenshots together. That makes troubleshooting much faster.",
         "qq.copy": "Copy",
-        "footer.meta": "© Xingduan Suzhao · Mod Development Learning Site",
-        "footer.desc": "Minecraft is a trademark of Mojang Studios. This site is not affiliated with Mojang Studios.",
+        "footer.meta": "© Xingduan Suzhao · Minecraft Mod Development Hub",
+        "footer.desc": "Organized entry points for lazy packs, code, textures, and models.",
         "toast.copy": "QQ group {value} copied"
     }
 };
 
 const DEFAULT_LANG = "zh-CN";
+const LANG_ORDER = ["zh-CN", "zh-TW", "en"];
+const LANG_LABEL = {
+    "zh-CN": "简",
+    "zh-TW": "繁",
+    en: "EN"
+};
 
 function getInitialLanguage() {
-    const saved = window.localStorage.getItem("lazypack-lang");
+    const saved = window.localStorage.getItem("site-lang") || window.localStorage.getItem("lazypack-lang");
     if (saved && LAZYPACK_I18N[saved]) return saved;
     return DEFAULT_LANG;
 }
@@ -208,7 +211,10 @@ function applyLanguage(lang) {
         button.classList.toggle("is-active", button.dataset.lang === lang);
     });
 
+    const cycle = document.getElementById("languageCycle");
+    if (cycle) cycle.textContent = LANG_LABEL[lang] || LANG_LABEL[DEFAULT_LANG];
     document.title = dict["meta.title"];
+    window.localStorage.setItem("site-lang", lang);
     window.localStorage.setItem("lazypack-lang", lang);
 }
 
@@ -241,11 +247,23 @@ function setupProfileMenu() {
     });
 }
 
+function setupLanguageCycle() {
+    const cycle = document.getElementById("languageCycle");
+    if (!cycle) return;
+
+    cycle.addEventListener("click", () => {
+        const current = getInitialLanguage();
+        const index = LANG_ORDER.indexOf(current);
+        const next = LANG_ORDER[(index + 1) % LANG_ORDER.length] || DEFAULT_LANG;
+        applyLanguage(next);
+    });
+}
+
 function setupCopyButtons() {
     document.querySelectorAll("[data-copy]").forEach((button) => {
         button.addEventListener("click", async () => {
             const value = button.dataset.copy;
-            const lang = window.localStorage.getItem("lazypack-lang") || DEFAULT_LANG;
+            const lang = window.localStorage.getItem("site-lang") || window.localStorage.getItem("lazypack-lang") || DEFAULT_LANG;
             const dict = LAZYPACK_I18N[lang] || LAZYPACK_I18N[DEFAULT_LANG];
 
             try {
@@ -259,6 +277,7 @@ function setupCopyButtons() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    setupLanguageCycle();
     setupProfileMenu();
     setupCopyButtons();
 

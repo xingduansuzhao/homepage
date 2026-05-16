@@ -137,9 +137,34 @@ select {
     border-radius: 999px;
 }
 
+.topbar-tools {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    justify-self: end;
+}
+
+.language-cycle {
+    width: 48px;
+    min-width: 48px;
+    height: 44px;
+    border: 1px solid rgba(183, 213, 58, 0.55);
+    background: #4f9337;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "MinecraftAE", "Microsoft YaHei", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.language-cycle:hover {
+    background: #5ca645;
+}
+
 .profile-menu {
     position: relative;
-    justify-self: end;
 }
 
 .profile-menu__trigger {
@@ -517,6 +542,22 @@ select {
     justify-content: space-between;
 }
 
+.entry-card__poster--image {
+    aspect-ratio: 1 / 1.08;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.entry-card__icon {
+    display: block;
+    width: min(100%, 124px);
+    height: auto;
+    max-height: 124px;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.28));
+}
+
 .entry-card__poster-meta,
 .entry-card__eyebrow {
     display: inline-flex;
@@ -848,8 +889,9 @@ select {
         padding-left: 2px;
     }
 
-    .profile-menu {
+    .topbar-tools {
         grid-area: profile;
+        justify-self: end;
     }
 
     .hero-info {

@@ -22,11 +22,7 @@
             </nav>
 
             <div class="topbar-tools">
-                <div class="language-tabs" aria-label="语言切换">
-                    <button class="language-tabs__button is-active" type="button" data-lang="zh-CN">简</button>
-                    <button class="language-tabs__button" type="button" data-lang="zh-TW">繁</button>
-                    <button class="language-tabs__button" type="button" data-lang="en">EN</button>
-                </div>
+                <button class="language-cycle" id="languageCycle" type="button" aria-label="切换语言">简</button>
 
                 <div class="profile-menu" id="profileMenu">
                     <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
@@ -35,7 +31,6 @@
                         <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
                     </button>
                     <div class="profile-menu__panel" id="profilePanel" hidden>
-                        <a class="profile-menu__item" href="index.html#author" data-i18n="menu.author">作者介绍</a>
                         <a class="profile-menu__item" href="index.html#platforms" data-i18n="menu.platforms">内容平台</a>
                         <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
                         <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
@@ -266,8 +261,8 @@
     </main>
 
     <footer class="homepage-footer">
-        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · 模组开发教育站</p>
-        <p class="homepage-footer__desc" data-i18n="footer.desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · Minecraft 模组开发入口</p>
+        <p class="homepage-footer__desc" data-i18n="footer.desc">整理懒人包、代码、材质、模型相关内容，方便按阶段进入。</p>
     </footer>
 
     <div class="toast" id="toast" aria-live="polite"></div>

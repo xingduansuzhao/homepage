@@ -6,13 +6,12 @@ const TEXTURE_I18N = {
         "nav.code": "代码",
         "nav.texture": "材质",
         "nav.model": "模型",
-        "menu.author": "作者介绍",
         "menu.platforms": "内容平台",
         "menu.taobao": "淘宝个人店铺",
         "menu.qq": "加入 QQ 群",
         "hero.eyebrow": "AI 画材质",
         "hero.title": "先做伪像素图，再降到 16*16",
-        "hero.desc": "公开方法只做一件事：让 AI 先画出大色块、硬边缘、少颜色的伪像素图。生成后去降维器处理，才能变成 Minecraft Java 能用的物品材质。",
+        "hero.desc": "这套方法只做一件事：让 AI 先画出大色块、硬边缘、少颜色的伪像素图。生成后去降维器处理，才能变成 Minecraft Java 能用的物品材质。",
         "hero.primary": "看制作步骤",
         "hero.secondary": "打开降维器",
         "route.kicker": "本页路线",
@@ -71,10 +70,10 @@ const TEXTURE_I18N = {
         "toolkit.cta": "查看工具包详情",
         "toolkit.basic": "Nano Banana2 芒果材质",
         "toolkit.pro": "工具包的芒果材质",
-        "toolkit.basicDesc": "使用本页公开方案生成。能看出是芒果，但边缘、体积和 MC 材质感都比较弱。",
+        "toolkit.basicDesc": "使用本页方案生成。能看出是芒果，但边缘、体积和 MC 材质感都比较弱。",
         "toolkit.proDesc": "使用工具包方案生成。轮廓、配色和像素块更接近能放进 MC 的物品材质。",
-        "footer.meta": "© 星断肃昭 · 模组开发教育站",
-        "footer.desc": "Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。",
+        "footer.meta": "© 星断肃昭 · Minecraft 模组开发入口",
+        "footer.desc": "整理懒人包、代码、材质、模型相关内容，方便按阶段进入。",
         "toast.copy": "提示词已复制"
     },
     "zh-TW": {
@@ -84,7 +83,6 @@ const TEXTURE_I18N = {
         "nav.code": "程式碼",
         "nav.texture": "材質",
         "nav.model": "模型",
-        "menu.author": "作者介紹",
         "menu.platforms": "內容平台",
         "menu.taobao": "淘寶個人店鋪",
         "menu.qq": "加入 QQ 群",
@@ -151,8 +149,8 @@ const TEXTURE_I18N = {
         "toolkit.pro": "工具包的芒果材質",
         "toolkit.basicDesc": "使用本頁公開方案生成。能看出是芒果，但邊緣、體積和 MC 材質感都比較弱。",
         "toolkit.proDesc": "使用工具包方案生成。輪廓、配色和像素塊更接近能放進 MC 的物品材質。",
-        "footer.meta": "© 星斷肅昭 · 模組開發教育站",
-        "footer.desc": "Minecraft 是 Mojang Studios 的商標，本站與 Mojang Studios 無關。",
+        "footer.meta": "© 星斷肅昭 · Minecraft 模組開發入口",
+        "footer.desc": "整理懶人包、程式碼、材質、模型相關內容，方便按階段進入。",
         "toast.copy": "提示詞已複製"
     },
     en: {
@@ -162,7 +160,6 @@ const TEXTURE_I18N = {
         "nav.code": "Code",
         "nav.texture": "Textures",
         "nav.model": "Models",
-        "menu.author": "About",
         "menu.platforms": "Platforms",
         "menu.taobao": "Taobao Store",
         "menu.qq": "Join QQ",
@@ -229,16 +226,22 @@ const TEXTURE_I18N = {
         "toolkit.pro": "Toolkit mango texture",
         "toolkit.basicDesc": "Generated with the public method on this page. It reads as mango, but the edge, volume, and MC texture feel are weaker.",
         "toolkit.proDesc": "Generated with the toolkit method. The silhouette, palette, and pixel blocks are closer to a usable MC item texture.",
-        "footer.meta": "© Xingduan Suzhao · Mod Development Learning Site",
-        "footer.desc": "Minecraft is a trademark of Mojang Studios. This site is not affiliated with Mojang Studios.",
+        "footer.meta": "© Xingduan Suzhao · Minecraft Mod Development Hub",
+        "footer.desc": "Organized entry points for lazy packs, code, textures, and models.",
         "toast.copy": "Prompt copied"
     }
 };
 
 const DEFAULT_LANG = "zh-CN";
+const LANG_ORDER = ["zh-CN", "zh-TW", "en"];
+const LANG_LABEL = {
+    "zh-CN": "简",
+    "zh-TW": "繁",
+    en: "EN"
+};
 
 function getInitialLanguage() {
-    const saved = window.localStorage.getItem("texture-lang");
+    const saved = window.localStorage.getItem("site-lang") || window.localStorage.getItem("texture-lang");
     if (saved && TEXTURE_I18N[saved]) return saved;
     return DEFAULT_LANG;
 }
@@ -256,7 +259,10 @@ function applyLanguage(lang) {
         button.classList.toggle("is-active", button.dataset.lang === lang);
     });
 
+    const cycle = document.getElementById("languageCycle");
+    if (cycle) cycle.textContent = LANG_LABEL[lang] || LANG_LABEL[DEFAULT_LANG];
     document.title = dict["meta.title"];
+    window.localStorage.setItem("site-lang", lang);
     window.localStorage.setItem("texture-lang", lang);
 }
 
@@ -308,6 +314,38 @@ function setupPromptCopy() {
     });
 }
 
+function setupLanguageCycle() {
+    const cycle = document.getElementById("languageCycle");
+    if (!cycle) return;
+
+    cycle.addEventListener("click", () => {
+        const current = getInitialLanguage();
+        const index = LANG_ORDER.indexOf(current);
+        const next = LANG_ORDER[(index + 1) % LANG_ORDER.length] || DEFAULT_LANG;
+        applyLanguage(next);
+    });
+}
+
+function setupPromptTabs() {
+    const tabs = document.querySelectorAll("[data-prompt-tab]");
+    const panels = document.querySelectorAll("[data-prompt-panel]");
+    if (!tabs.length || !panels.length) return;
+
+    tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const lang = tab.dataset.promptTab;
+            tabs.forEach((item) => {
+                const active = item === tab;
+                item.classList.toggle("is-active", active);
+                item.setAttribute("aria-selected", String(active));
+            });
+            panels.forEach((panel) => {
+                panel.hidden = panel.dataset.promptPanel !== lang;
+            });
+        });
+    });
+}
+
 function setupImagePreview() {
     const preview = document.getElementById("imagePreview");
     const image = document.getElementById("imagePreviewImg");
@@ -340,8 +378,10 @@ function setupImagePreview() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    setupLanguageCycle();
     setupProfileMenu();
     setupPromptCopy();
+    setupPromptTabs();
     setupImagePreview();
 
     document.querySelectorAll(".language-tabs__button").forEach((button) => {

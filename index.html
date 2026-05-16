@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星断肃昭的模组开发入口</title>
+    <title data-i18n="meta.title">星断肃昭的模组开发入口</title>
     <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
     <link rel="stylesheet" href="css/homepage.css?v=20260515">
 </head>
@@ -13,25 +13,28 @@
             <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
 
             <nav class="main-nav" aria-label="主导航">
-                <a class="main-nav__link main-nav__link--active" href="index.html">首页</a>
-                <a class="main-nav__link" href="lazypack.html">懒人包</a>
-                <a class="main-nav__link" href="aimod-dev.html">代码</a>
-                <a class="main-nav__link" href="texture.html">材质</a>
-                <a class="main-nav__link" href="model.html">模型</a>
+                <a class="main-nav__link main-nav__link--active" href="index.html" data-i18n="nav.home">首页</a>
+                <a class="main-nav__link" href="lazypack.html" data-i18n="nav.lazypack">懒人包</a>
+                <a class="main-nav__link" href="aimod-dev.html" data-i18n="nav.code">代码</a>
+                <a class="main-nav__link" href="texture.html" data-i18n="nav.texture">材质</a>
+                <a class="main-nav__link" href="model.html" data-i18n="nav.model">模型</a>
             </nav>
 
-            <div class="profile-menu" id="profileMenu">
-                <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
-                    <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
-                    <span class="profile-menu__name" id="profileName">星断肃昭</span>
-                    <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
-                </button>
-                <div class="profile-menu__panel" id="profilePanel" hidden>
-                    <a class="profile-menu__item" href="#author">作者介绍</a>
-                    <a class="profile-menu__item" href="#platforms">内容平台</a>
-                    <a class="profile-menu__item" id="menuTaobao" href="#" target="_blank" rel="noopener">淘宝个人店铺</a>
-                    <a class="profile-menu__item" id="menuGithub" href="#" target="_blank" rel="noopener">GitHub</a>
-                    <a class="profile-menu__item" href="#qq">加入 QQ 群</a>
+            <div class="topbar-tools">
+                <button class="language-cycle" id="languageCycle" type="button" aria-label="切换语言">简</button>
+
+                <div class="profile-menu" id="profileMenu">
+                    <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                        <span class="profile-menu__name" id="profileName">星断肃昭</span>
+                        <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="profile-menu__panel" id="profilePanel" hidden>
+                        <a class="profile-menu__item" href="#platforms" data-i18n="menu.platforms">内容平台</a>
+                        <a class="profile-menu__item" id="menuTaobao" href="#" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
+                        <a class="profile-menu__item" id="menuGithub" href="#" target="_blank" rel="noopener">GitHub</a>
+                        <a class="profile-menu__item" href="#qq" data-i18n="menu.qq">加入 QQ 群</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,48 +61,31 @@
                 <div class="entry-grid" id="entryGrid"></div>
             </section>
 
-            <section class="content-section content-section--author" id="author">
-                <div class="section-heading">
-                    <span class="section-heading__line"></span>
-                    <h2 class="section-heading__title">作者介绍</h2>
-                    <span class="section-heading__line"></span>
-                </div>
-                <div class="author-card">
-                    <div class="author-card__avatar-wrap">
-                        <img class="author-card__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
-                    </div>
-                    <div class="author-card__content">
-                        <h3 class="author-card__name" id="authorName"></h3>
-                        <p class="author-card__text" id="authorText"></p>
-                    </div>
-                </div>
-            </section>
-
             <section class="content-section" id="platforms">
                 <div class="section-heading">
                     <span class="section-heading__line"></span>
-                    <h2 class="section-heading__title">关注星断肃昭</h2>
+                    <h2 class="section-heading__title" data-i18n="platforms.heading">关注星断肃昭</h2>
                     <span class="section-heading__line"></span>
                 </div>
-                <p class="section-subtitle">在你常用的平台找到我，一起学习与创造。</p>
+                <p class="section-subtitle" data-i18n="platforms.subtitle">在你常用的平台找到我，一起学习与创造。</p>
                 <div class="platform-grid" id="platformGrid"></div>
             </section>
 
             <section class="content-section content-section--qq" id="qq">
                 <div class="section-heading">
                     <span class="section-heading__line"></span>
-                    <h2 class="section-heading__title">加入 QQ 群</h2>
+                    <h2 class="section-heading__title" data-i18n="qq.heading">加入 QQ 群</h2>
                     <span class="section-heading__line"></span>
                 </div>
-                <p class="section-subtitle">与更多开发者交流，一起解决问题。</p>
+                <p class="section-subtitle" data-i18n="qq.subtitle">与更多开发者交流，一起解决问题。</p>
                 <div class="qq-grid" id="qqGrid"></div>
             </section>
         </div>
     </main>
 
     <footer class="homepage-footer">
-        <p class="homepage-footer__meta">© 星断肃昭 · 模组开发教育站</p>
-        <p class="homepage-footer__desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · Minecraft 模组开发入口</p>
+        <p class="homepage-footer__desc" data-i18n="footer.desc">整理懒人包、代码、材质、模型相关内容，方便按阶段进入。</p>
     </footer>
 
     <div class="toast" id="toast" aria-live="polite"></div>

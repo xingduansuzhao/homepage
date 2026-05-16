@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伪像素降维器｜星断肃昭</title>
+    <title data-i18n="meta.title">伪像素降维器｜星断肃昭</title>
     <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
     <link rel="stylesheet" href="css/homepage.css?v=20260515">
     <link rel="stylesheet" href="css/pixel-converter.css?v=20260516">
@@ -15,25 +15,28 @@
             <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
 
             <nav class="main-nav" aria-label="主导航">
-                <a class="main-nav__link" href="index.html">首页</a>
-                <a class="main-nav__link" href="lazypack.html">懒人包</a>
-                <a class="main-nav__link" href="aimod-dev.html">代码</a>
-                <a class="main-nav__link main-nav__link--active" href="texture.html">材质</a>
-                <a class="main-nav__link" href="model.html">模型</a>
+                <a class="main-nav__link" href="index.html" data-i18n="nav.home">首页</a>
+                <a class="main-nav__link" href="lazypack.html" data-i18n="nav.lazypack">懒人包</a>
+                <a class="main-nav__link" href="aimod-dev.html" data-i18n="nav.code">代码</a>
+                <a class="main-nav__link main-nav__link--active" href="texture.html" data-i18n="nav.texture">材质</a>
+                <a class="main-nav__link" href="model.html" data-i18n="nav.model">模型</a>
             </nav>
 
-            <div class="profile-menu" id="profileMenu">
-                <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
-                    <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
-                    <span class="profile-menu__name">星断肃昭</span>
-                    <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
-                </button>
-                <div class="profile-menu__panel" id="profilePanel" hidden>
-                    <a class="profile-menu__item" href="index.html#author">作者介绍</a>
-                    <a class="profile-menu__item" href="index.html#platforms">内容平台</a>
-                    <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener">淘宝个人店铺</a>
-                    <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
-                    <a class="profile-menu__item" href="index.html#qq">加入 QQ 群</a>
+            <div class="topbar-tools">
+                <button class="language-cycle" id="languageCycle" type="button" aria-label="切换语言">简</button>
+
+                <div class="profile-menu" id="profileMenu">
+                    <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                        <span class="profile-menu__name">星断肃昭</span>
+                        <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="profile-menu__panel" id="profilePanel" hidden>
+                        <a class="profile-menu__item" href="index.html#platforms" data-i18n="menu.platforms">内容平台</a>
+                        <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
+                        <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
+                        <a class="profile-menu__item" href="index.html#qq" data-i18n="menu.qq">加入 QQ 群</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -43,28 +46,28 @@
         <section class="pixel-tool-hero">
             <div class="pixel-tool-hero__inner">
                 <div class="pixel-tool-hero__panel">
-                    <div class="pixel-kicker">伪像素降维器</div>
-                    <h1>把伪像素图压成 16*16</h1>
-                    <p>这个工具只负责最后一步：上传 1:1 的标准伪像素图片，导出 Minecraft Java 可用的 16*16 PNG。提示词和教程回到材质页面看。</p>
+                    <div class="pixel-kicker" data-i18n="hero.eyebrow">伪像素降维器</div>
+                    <h1 data-i18n="hero.title">把伪像素图压成 16*16</h1>
+                    <p data-i18n="hero.desc">这个工具只负责最后一步：上传 1:1 的标准伪像素图片，导出 Minecraft Java 可用的 16*16 PNG。提示词和教程回到材质页面看。</p>
                     <div class="pixel-tool-hero__actions">
-                        <a class="mc-action mc-action--secondary" href="texture.html#workflow">返回材质教程</a>
+                        <a class="mc-action mc-action--secondary" href="texture.html#workflow" data-i18n="hero.back">返回材质教程</a>
                     </div>
                 </div>
                 <div class="pixel-tool-hero__rules">
                     <article>
                         <span>01</span>
-                        <strong>先用伪像素图</strong>
-                        <p>大色块、硬边缘、少颜色，效果更稳。</p>
+                        <strong data-i18n="rules.one.title">先用伪像素图</strong>
+                        <p data-i18n="rules.one.desc">大色块、硬边缘、少颜色，效果更稳。</p>
                     </article>
                     <article>
                         <span>02</span>
-                        <strong>支持批量</strong>
-                        <p>多张图片会打包下载。</p>
+                        <strong data-i18n="rules.two.title">支持批量</strong>
+                        <p data-i18n="rules.two.desc">多张图片会打包下载。</p>
                     </article>
                     <article>
                         <span>03</span>
-                        <strong>输出 16*16</strong>
-                        <p>下载后放进模组资源目录。</p>
+                        <strong data-i18n="rules.three.title">输出 16*16</strong>
+                        <p data-i18n="rules.three.desc">下载后放进模组资源目录。</p>
                     </article>
                 </div>
             </div>
@@ -74,17 +77,17 @@
             <div class="pixel-tool-shell">
                 <div class="pixel-tool-shell__head">
                     <div>
-                        <span class="pixel-kicker">上传图片</span>
-                        <h2>拖入图片，点击降维</h2>
+                        <span class="pixel-kicker" data-i18n="tool.eyebrow">上传图片</span>
+                        <h2 data-i18n="tool.title">拖入图片，点击降维</h2>
                     </div>
-                    <a href="texture.html" class="pixel-tool-shell__link">材质教程</a>
+                    <a href="texture.html" class="pixel-tool-shell__link" data-i18n="tool.tutorial">材质教程</a>
                 </div>
 
                 <div class="pc-canvas-wrapper">
                     <div class="pc-canvas" id="pcCanvas">
                         <div class="pc-drop-zone" id="dropZone">
                             <div class="pc-drop-plus">+</div>
-                            <div class="pc-drop-text">拖入 1:1 标准伪像素图片<br><span class="pc-drop-hint">支持批量拖入多张</span></div>
+                            <div class="pc-drop-text" data-i18n-html="tool.drop">拖入 1:1 标准伪像素图片<br><span class="pc-drop-hint">支持批量拖入多张</span></div>
                             <input type="file" id="fileInput" accept="image/*" multiple hidden>
                         </div>
                         <div class="pc-preview" id="previewArea" style="display:none;">
@@ -102,14 +105,14 @@
 
                     <div class="pc-toolbar" id="toolbar" style="display:none;">
                         <div class="pc-info">
-                            <span class="pc-info-label" id="sizeLabel">原始分辨率：</span>
+                            <span class="pc-info-label" id="sizeLabel" data-label-key="original">原始分辨率：</span>
                             <span class="pc-info-value" id="sizeValue">-</span>
                             <span class="pc-info-label pc-page-info" id="pageInfo" style="display:none;"></span>
                         </div>
                         <div class="pc-actions">
-                            <button class="mc-action mc-action--primary" id="convertBtn" type="button">降维至 16*16</button>
-                            <button class="mc-action mc-action--primary" id="downloadBtn" type="button" style="display:none;">下载图片</button>
-                            <button class="mc-action mc-action--secondary" id="resetBtn" type="button">重置</button>
+                            <button class="mc-action mc-action--primary" id="convertBtn" type="button" data-i18n="tool.convert">降维至 16*16</button>
+                            <button class="mc-action mc-action--primary" id="downloadBtn" type="button" style="display:none;" data-i18n="tool.download">下载图片</button>
+                            <button class="mc-action mc-action--secondary" id="resetBtn" type="button" data-i18n="tool.reset">重置</button>
                         </div>
                     </div>
                 </div>
@@ -120,13 +123,175 @@
     </main>
 
     <footer class="homepage-footer">
-        <p class="homepage-footer__meta">© 星断肃昭 · 模组开发教育站</p>
-        <p class="homepage-footer__desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · Minecraft 模组开发入口</p>
+        <p class="homepage-footer__desc" data-i18n="footer.desc">整理懒人包、代码、材质、模型相关内容，方便按阶段进入。</p>
     </footer>
 
     <div class="toast" id="toast" aria-live="polite"></div>
 
     <script>
+    var PIXEL_I18N = {
+        'zh-CN': {
+            'meta.title': '伪像素降维器｜星断肃昭',
+            'nav.home': '首页',
+            'nav.lazypack': '懒人包',
+            'nav.code': '代码',
+            'nav.texture': '材质',
+            'nav.model': '模型',
+            'menu.platforms': '内容平台',
+            'menu.taobao': '淘宝个人店铺',
+            'menu.qq': '加入 QQ 群',
+            'hero.eyebrow': '伪像素降维器',
+            'hero.title': '把伪像素图压成 16*16',
+            'hero.desc': '这个工具只负责最后一步：上传 1:1 的标准伪像素图片，导出 Minecraft Java 可用的 16*16 PNG。提示词和教程回到材质页面看。',
+            'hero.back': '返回材质教程',
+            'rules.one.title': '先用伪像素图',
+            'rules.one.desc': '大色块、硬边缘、少颜色，效果更稳。',
+            'rules.two.title': '支持批量',
+            'rules.two.desc': '多张图片会打包下载。',
+            'rules.three.title': '输出 16*16',
+            'rules.three.desc': '下载后放进模组资源目录。',
+            'tool.eyebrow': '上传图片',
+            'tool.title': '拖入图片，点击降维',
+            'tool.tutorial': '材质教程',
+            'tool.drop': '拖入 1:1 标准伪像素图片<br><span class="pc-drop-hint">支持批量拖入多张</span>',
+            'tool.original': '原始分辨率：',
+            'tool.result': '结果分辨率：',
+            'tool.convert': '降维至 16*16',
+            'tool.batchConvert': '批量降维 {count} 张',
+            'tool.download': '下载图片',
+            'tool.batchDownload': '打包下载 {count} 张',
+            'tool.packing': '打包中...',
+            'tool.reset': '重置',
+            'footer.meta': '© 星断肃昭 · Minecraft 模组开发入口',
+            'footer.desc': '整理懒人包、代码、材质、模型相关内容，方便按阶段进入。',
+            'toast.downloaded': '{name} 已下载',
+            'toast.batch': '{count} 张图片已打包下载',
+            'toast.zipFail': '打包失败，请重试'
+        },
+        'zh-TW': {
+            'meta.title': '偽像素降維器｜星斷肅昭',
+            'nav.home': '首頁',
+            'nav.lazypack': '懶人包',
+            'nav.code': '程式碼',
+            'nav.texture': '材質',
+            'nav.model': '模型',
+            'menu.platforms': '內容平台',
+            'menu.taobao': '淘寶個人店鋪',
+            'menu.qq': '加入 QQ 群',
+            'hero.eyebrow': '偽像素降維器',
+            'hero.title': '把偽像素圖壓成 16*16',
+            'hero.desc': '這個工具只負責最後一步：上傳 1:1 的標準偽像素圖片，導出 Minecraft Java 可用的 16*16 PNG。提示詞和教程回到材質頁面看。',
+            'hero.back': '返回材質教程',
+            'rules.one.title': '先用偽像素圖',
+            'rules.one.desc': '大色塊、硬邊緣、少顏色，效果更穩。',
+            'rules.two.title': '支持批量',
+            'rules.two.desc': '多張圖片會打包下載。',
+            'rules.three.title': '輸出 16*16',
+            'rules.three.desc': '下載後放進模組資源目錄。',
+            'tool.eyebrow': '上傳圖片',
+            'tool.title': '拖入圖片，點擊降維',
+            'tool.tutorial': '材質教程',
+            'tool.drop': '拖入 1:1 標準偽像素圖片<br><span class="pc-drop-hint">支持批量拖入多張</span>',
+            'tool.original': '原始解析度：',
+            'tool.result': '結果解析度：',
+            'tool.convert': '降維至 16*16',
+            'tool.batchConvert': '批量降維 {count} 張',
+            'tool.download': '下載圖片',
+            'tool.batchDownload': '打包下載 {count} 張',
+            'tool.packing': '打包中...',
+            'tool.reset': '重置',
+            'footer.meta': '© 星斷肅昭 · Minecraft 模組開發入口',
+            'footer.desc': '整理懶人包、程式碼、材質、模型相關內容，方便按階段進入。',
+            'toast.downloaded': '{name} 已下載',
+            'toast.batch': '{count} 張圖片已打包下載',
+            'toast.zipFail': '打包失敗，請重試'
+        },
+        en: {
+            'meta.title': 'Pseudo Pixel Converter | Xingduan Suzhao',
+            'nav.home': 'Home',
+            'nav.lazypack': 'Lazy Pack',
+            'nav.code': 'Code',
+            'nav.texture': 'Textures',
+            'nav.model': 'Models',
+            'menu.platforms': 'Platforms',
+            'menu.taobao': 'Taobao Store',
+            'menu.qq': 'Join QQ',
+            'hero.eyebrow': 'Pseudo Pixel Converter',
+            'hero.title': 'Compress pseudo-pixels to 16*16',
+            'hero.desc': 'This tool handles the final step only: upload a 1:1 pseudo-pixel image and export a Minecraft Java-ready 16*16 PNG. Prompts and tutorial stay on the texture page.',
+            'hero.back': 'Back to texture tutorial',
+            'rules.one.title': 'Use pseudo-pixels first',
+            'rules.one.desc': 'Large color blocks, hard edges, and fewer colors work better.',
+            'rules.two.title': 'Batch supported',
+            'rules.two.desc': 'Multiple images are downloaded as one package.',
+            'rules.three.title': 'Output 16*16',
+            'rules.three.desc': 'Put the PNG into your mod resource folder after download.',
+            'tool.eyebrow': 'Upload Image',
+            'tool.title': 'Drop image, then convert',
+            'tool.tutorial': 'Texture tutorial',
+            'tool.drop': 'Drop a 1:1 pseudo-pixel image<br><span class="pc-drop-hint">Batch upload supported</span>',
+            'tool.original': 'Original size: ',
+            'tool.result': 'Result size: ',
+            'tool.convert': 'Convert to 16*16',
+            'tool.batchConvert': 'Convert {count} images',
+            'tool.download': 'Download image',
+            'tool.batchDownload': 'Download {count} images',
+            'tool.packing': 'Packaging...',
+            'tool.reset': 'Reset',
+            'footer.meta': '© Xingduan Suzhao · Minecraft Mod Development Hub',
+            'footer.desc': 'Organized entry points for lazy packs, code, textures, and models.',
+            'toast.downloaded': '{name} downloaded',
+            'toast.batch': '{count} images packaged',
+            'toast.zipFail': 'Package failed. Try again.'
+        }
+    };
+    var PIXEL_DEFAULT_LANG = 'zh-CN';
+    var PIXEL_LANG_ORDER = ['zh-CN', 'zh-TW', 'en'];
+    var PIXEL_LANG_LABEL = { 'zh-CN': '简', 'zh-TW': '繁', en: 'EN' };
+
+    function getPixelLang() {
+        var saved = window.localStorage.getItem('site-lang') || window.localStorage.getItem('pixel-lang');
+        return PIXEL_I18N[saved] ? saved : PIXEL_DEFAULT_LANG;
+    }
+
+    function pixelText(key) {
+        var dict = PIXEL_I18N[getPixelLang()] || PIXEL_I18N[PIXEL_DEFAULT_LANG];
+        return dict[key] || key;
+    }
+
+    function applyPixelLanguage(lang) {
+        var dict = PIXEL_I18N[lang] || PIXEL_I18N[PIXEL_DEFAULT_LANG];
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(function(node) {
+            var key = node.getAttribute('data-i18n');
+            if (dict[key]) node.textContent = dict[key];
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(function(node) {
+            var key = node.getAttribute('data-i18n-html');
+            if (dict[key]) node.innerHTML = dict[key];
+        });
+        document.title = dict['meta.title'];
+        var cycle = document.getElementById('languageCycle');
+        if (cycle) cycle.textContent = PIXEL_LANG_LABEL[lang] || PIXEL_LANG_LABEL[PIXEL_DEFAULT_LANG];
+        window.localStorage.setItem('site-lang', lang);
+        window.localStorage.setItem('pixel-lang', lang);
+    }
+
+    function setupPixelLanguageCycle() {
+        var cycle = document.getElementById('languageCycle');
+        if (!cycle) return;
+        cycle.addEventListener('click', function() {
+            var current = getPixelLang();
+            var index = PIXEL_LANG_ORDER.indexOf(current);
+            var next = PIXEL_LANG_ORDER[(index + 1) % PIXEL_LANG_ORDER.length] || PIXEL_DEFAULT_LANG;
+            applyPixelLanguage(next);
+        });
+        applyPixelLanguage(getPixelLang());
+    }
+
+    setupPixelLanguageCycle();
+
     (function() {
         var menu = document.getElementById('profileMenu');
         var trigger = document.getElementById('profileTrigger');
@@ -237,7 +402,7 @@
             toolbar.style.display = 'flex';
             convertBtn.style.display = '';
             downloadBtn.style.display = 'none';
-            convertBtn.textContent = files.length > 1 ? '批量降维 ' + files.length + ' 张' : '降维至 16*16';
+            convertBtn.textContent = files.length > 1 ? pixelText('tool.batchConvert').replace('{count}', files.length) : pixelText('tool.convert');
             displayCurrentImage();
         }
 
@@ -246,7 +411,7 @@
             if (!img) return;
 
             drawPreview(img, false);
-            sizeLabel.textContent = '原始分辨率：';
+            sizeLabel.textContent = pixelText('tool.original');
             sizeValue.textContent = img.naturalWidth + ' × ' + img.naturalHeight;
 
             if (files.length > 1) {
@@ -346,7 +511,7 @@
 
             convertBtn.style.display = 'none';
             downloadBtn.style.display = '';
-            downloadBtn.textContent = files.length > 1 ? '打包下载 ' + files.length + ' 张' : '下载图片';
+            downloadBtn.textContent = files.length > 1 ? pixelText('tool.batchDownload').replace('{count}', files.length) : pixelText('tool.download');
 
             if (files.length === 1) {
                 doSingleDownload(convertedDataUrls[0], files[0].name);
@@ -359,7 +524,7 @@
             var resultImg = new Image();
             resultImg.onload = function() {
                 drawPreview(resultImg, true);
-                sizeLabel.textContent = '结果分辨率：';
+                sizeLabel.textContent = pixelText('tool.result');
                 sizeValue.textContent = '16 × 16';
                 if (files.length > 1) {
                     pageInfo.style.display = '';
@@ -378,12 +543,12 @@
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            showToast(fileName + ' 已下载');
+            showToast(pixelText('toast.downloaded').replace('{name}', fileName));
         }
 
         function doBatchZipDownload() {
             if (files.length <= 1) return;
-            downloadBtn.textContent = '打包中...';
+            downloadBtn.textContent = pixelText('tool.packing');
             downloadBtn.disabled = true;
 
             var zip = new JSZip();
@@ -402,13 +567,13 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                downloadBtn.textContent = '打包下载 ' + files.length + ' 张';
+                downloadBtn.textContent = pixelText('tool.batchDownload').replace('{count}', files.length);
                 downloadBtn.disabled = false;
-                showToast(files.length + ' 张图片已打包下载');
+                showToast(pixelText('toast.batch').replace('{count}', files.length));
             }).catch(function() {
-                downloadBtn.textContent = '打包下载 ' + files.length + ' 张';
+                downloadBtn.textContent = pixelText('tool.batchDownload').replace('{count}', files.length);
                 downloadBtn.disabled = false;
-                showToast('打包失败，请重试');
+                showToast(pixelText('toast.zipFail'));
             });
         }
 
