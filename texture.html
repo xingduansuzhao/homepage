@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.title">AI 画材质｜星断肃昭</title>
+    <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
+    <link rel="stylesheet" href="css/homepage.css?v=20260515">
+    <link rel="stylesheet" href="css/texture.css?v=20260516">
+</head>
+<body class="texture-body">
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
+
+            <nav class="main-nav" aria-label="主导航">
+                <a class="main-nav__link" href="index.html" data-i18n="nav.home">首页</a>
+                <a class="main-nav__link" href="lazypack.html" data-i18n="nav.lazypack">懒人包</a>
+                <a class="main-nav__link" href="aimod-dev.html" data-i18n="nav.code">代码</a>
+                <a class="main-nav__link main-nav__link--active" href="texture.html" data-i18n="nav.texture">材质</a>
+                <a class="main-nav__link" href="model.html" data-i18n="nav.model">模型</a>
+            </nav>
+
+            <div class="topbar-tools">
+                <div class="language-tabs" aria-label="语言切换">
+                    <button class="language-tabs__button is-active" type="button" data-lang="zh-CN">简</button>
+                    <button class="language-tabs__button" type="button" data-lang="zh-TW">繁</button>
+                    <button class="language-tabs__button" type="button" data-lang="en">EN</button>
+                </div>
+
+                <div class="profile-menu" id="profileMenu">
+                    <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                        <span class="profile-menu__name">星断肃昭</span>
+                        <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="profile-menu__panel" id="profilePanel" hidden>
+                        <a class="profile-menu__item" href="index.html#author" data-i18n="menu.author">作者介绍</a>
+                        <a class="profile-menu__item" href="index.html#platforms" data-i18n="menu.platforms">内容平台</a>
+                        <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
+                        <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
+                        <a class="profile-menu__item" href="index.html#qq" data-i18n="menu.qq">加入 QQ 群</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="texture-main">
+        <section class="texture-hero" aria-label="AI 画材质首屏">
+            <div class="texture-hero__inner">
+                <div class="texture-hero__panel">
+                    <div class="texture-kicker" data-i18n="hero.eyebrow">AI 画材质</div>
+                    <h1 class="texture-hero__title" data-i18n="hero.title">先做伪像素图，再降到 16*16</h1>
+                    <p class="texture-hero__desc" data-i18n="hero.desc">公开方法只做一件事：让 AI 先画出大色块、硬边缘、少颜色的伪像素图。生成后去降维器处理，才能变成 Minecraft Java 能用的物品材质。</p>
+                    <div class="texture-hero__actions">
+                        <a class="mc-action mc-action--primary" href="#workflow" data-i18n="hero.primary">看制作步骤</a>
+                        <a class="mc-action mc-action--secondary" href="pixel-converter.html" data-i18n="hero.secondary">打开降维器</a>
+                    </div>
+                </div>
+
+                <div class="texture-route-board" aria-label="材质制作流程">
+                    <div class="texture-route-board__head">
+                        <span data-i18n="route.kicker">本页路线</span>
+                        <strong data-i18n="route.title">复制提示词，写需求，下载图片，去降维</strong>
+                    </div>
+                    <div class="texture-route-board__grid">
+                        <article>
+                            <span>01</span>
+                            <h3 data-i18n="route.one.title">复制英文提示词</h3>
+                            <p data-i18n="route.one.desc">优先复制英文版，末尾补中文需求。</p>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <h3 data-i18n="route.two.title">末尾写一个番茄</h3>
+                            <p data-i18n="route.two.desc">比如：一个番茄、一个芒果、一把铜剑。</p>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <h3 data-i18n="route.three.title">去降维器处理</h3>
+                            <p data-i18n="route.three.desc">降维器只在单独工具页使用。</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="texture-content">
+            <section class="content-section texture-section" id="truth">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title" data-i18n="truth.title">先把坑说清楚</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle" data-i18n="truth.subtitle">AI 给你的通常是大图。直接缩到 16*16，颜色会糊，边缘会脏，所以要先把图限制成伪像素。</p>
+
+                <div class="truth-grid">
+                    <article class="truth-card truth-card--blue">
+                        <span>01</span>
+                        <h3 data-i18n="truth.one.title">别追求大图好看</h3>
+                        <p data-i18n="truth.one.desc">光影、柔边、渐变都会在缩小后变成脏像素。</p>
+                    </article>
+                    <article class="truth-card truth-card--green">
+                        <span>02</span>
+                        <h3 data-i18n="truth.two.title">先控制成大色块</h3>
+                        <p data-i18n="truth.two.desc">看起来像 16*16 放大图，后面才有机会干净降维。</p>
+                    </article>
+                    <article class="truth-card truth-card--amber">
+                        <span>03</span>
+                        <h3 data-i18n="truth.three.title">降维器单独使用</h3>
+                        <p data-i18n="truth.three.desc">生成图片后跳到工具页上传，不在教程页里嵌工具。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-section texture-section" id="tools">
+                <div class="texture-split">
+                    <div class="texture-split__copy">
+                        <span class="texture-kicker" data-i18n="tools.kicker">绘图入口</span>
+                        <h2 class="texture-title" data-i18n="tools.title">HolopixAI V2 本质上就是 Gemini Nano Banana</h2>
+                        <p class="texture-lead" data-i18n="tools.lead">两个入口都能用。做法一样：粘贴前置提示词，然后在末尾写你要的材质，比如“一个番茄”。</p>
+                    </div>
+                    <div class="tool-grid">
+                        <article class="tool-card">
+                            <button class="tool-card__media" type="button" data-preview-src="assets/images/texture-holopixai.jpg" data-preview-title="HolopixAI 自由画布示例">
+                                <img src="assets/images/texture-holopixai.jpg" alt="HolopixAI 自由画布示例">
+                            </button>
+                            <div class="tool-card__body">
+                                <h3>HolopixAI</h3>
+                                <p data-i18n="tools.holopix.desc">自由画布，模型选 V2，比例 1:1。粘贴前置提示词，末尾补“一个番茄”这类需求。</p>
+                                <a href="https://holopix.cn/board/all" target="_blank" rel="noopener" data-i18n="tools.holopix.cta">打开 HolopixAI</a>
+                            </div>
+                        </article>
+                        <article class="tool-card">
+                            <button class="tool-card__media" type="button" data-preview-src="assets/images/texture-gemini.jpg" data-preview-title="Gemini 绘图示例">
+                                <img src="assets/images/texture-gemini.jpg" alt="Gemini 绘图示例">
+                            </button>
+                            <div class="tool-card__body">
+                                <h3>Gemini</h3>
+                                <p data-i18n="tools.gemini.desc">打开网页，粘贴前置提示词，末尾补“一个芒果”这类需求。</p>
+                                <a href="https://gemini.google.com/app" target="_blank" rel="noopener" data-i18n="tools.gemini.cta">打开 Gemini</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section texture-section" id="workflow">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title" data-i18n="workflow.title">三步做出可用材质</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle" data-i18n="workflow.subtitle">别自己发挥。按顺序做，卡住就回到这三步。</p>
+
+                <div class="workflow-grid">
+                    <article class="workflow-card">
+                        <span>STEP 1</span>
+                        <h3 data-i18n="workflow.one.title">复制前置提示词</h3>
+                        <p data-i18n="workflow.one.desc">推荐英文版。看不懂没关系，直接复制就行。</p>
+                    </article>
+                    <article class="workflow-card">
+                        <span>STEP 2</span>
+                        <h3 data-i18n="workflow.two.title">末尾写中文需求</h3>
+                        <p data-i18n="workflow.two.desc">例如：一个番茄、一个芒果、一块蓝宝石。不要一次写一堆东西。</p>
+                    </article>
+                    <article class="workflow-card">
+                        <span>STEP 3</span>
+                        <h3 data-i18n="workflow.three.title">下载后去降维器</h3>
+                        <p data-i18n="workflow.three.desc">如果需要透明背景，先抠图，再上传到 /pixel-converter。</p>
+                    </article>
+                </div>
+
+                <div class="prompt-panel prompt-panel--dual">
+                    <div class="prompt-panel__copy">
+                        <span class="texture-kicker" data-i18n="prompt.kicker">前置提示词</span>
+                        <h3 data-i18n="prompt.title">推荐复制英文版</h3>
+                        <p data-i18n="prompt.desc">复制后，在最后加中文需求：一个番茄、一个芒果、一把铜剑。</p>
+                    </div>
+                    <div class="prompt-choice-grid">
+                        <article class="prompt-choice prompt-choice--recommended">
+                            <div class="prompt-choice__head">
+                                <span data-i18n="prompt.enLabel">推荐：英文版</span>
+                                <button class="mc-action mc-action--primary" type="button" data-copy-prompt="en" data-i18n="prompt.copyEn">复制英文提示词</button>
+                            </div>
+                            <pre class="prompt-box" id="texturePromptEN">Minecraft Java Edition pixel art item icon, pseudo 16x16 upscaled, image must look like exactly 16 large square color blocks wide and 16 tall, subject must not touch any edge of the canvas, leave at least 1 pixel block of empty white space on all four sides as margin, every color region must be at least 2x2 large squares, maximum 4 flat solid colors total in entire image, zero color gradients, zero anti-aliasing, zero soft edges, hard sharp borders between every color region, pure white background, non-tool subjects face forward, subject shape must be clearly recognizable and match the named object exactly, subject:</pre>
+                        </article>
+                        <article class="prompt-choice">
+                            <div class="prompt-choice__head">
+                                <span data-i18n="prompt.zhLabel">可选：中文版</span>
+                                <button class="mc-action mc-action--secondary" type="button" data-copy-prompt="zh" data-i18n="prompt.copyZh">复制中文提示词</button>
+                            </div>
+                            <pre class="prompt-box" id="texturePromptZH">Minecraft Java版像素艺术物品图标，伪16x16放大图，图片必须看起来恰好是16个大方块色块宽、16格高，主体不得触及画布任何边缘，四周至少留出1个像素方块的白色空白边距，每个色彩区域至少为2x2大方块，整张图片最多使用4种纯色，零色彩渐变，零抗锯齿，零柔和边缘，每个色彩区域之间必须是硬朗清晰的边界，纯白色背景，非工具类主体正面朝前，主体形状必须清晰可辨且与所命名的物体完全一致，主体：</pre>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section texture-section" id="converter">
+                <div class="converter-link-card">
+                    <div>
+                        <span class="texture-kicker" data-i18n="converter.kicker">下一步</span>
+                        <h2 class="texture-title" data-i18n="converter.title">生成图片后，去降维器上传</h2>
+                        <p class="texture-lead" data-i18n="converter.lead">降维器只在 /pixel-converter 页面使用。这页负责教程，不把工具塞进来。</p>
+                    </div>
+                    <a class="mc-action mc-action--primary" href="pixel-converter.html" data-i18n="converter.open">打开降维器</a>
+                </div>
+            </section>
+
+            <section class="content-section texture-section" id="works">
+                <div class="works-strip">
+                    <div>
+                        <span class="texture-kicker" data-i18n="works.kicker">作品与定制</span>
+                        <h2 data-i18n="works.title">想看成品去红书，想省事走定制</h2>
+                        <p data-i18n="works.lead">自己试提示词会花时间。只想要一组统一风格材质，就别在这里硬磨。</p>
+                    </div>
+                    <div class="works-strip__actions">
+                        <a class="mc-action mc-action--primary" href="https://xhslink.com/m/60Vb7ahz7JE" target="_blank" rel="noopener" data-i18n="works.red">去红书看作品</a>
+                        <a class="mc-action mc-action--secondary" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="works.custom">咨询定制材质</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section texture-section" id="toolkit">
+                <div class="toolkit-texture">
+                    <div class="toolkit-texture__copy">
+                        <span class="texture-kicker" data-i18n="toolkit.kicker">更省事的路线</span>
+                        <h2 class="texture-title" data-i18n="toolkit.title">不想背提示词，就用工具包路线</h2>
+                        <p class="texture-lead" data-i18n="toolkit.lead">本页方法要复制长提示词、抠背景、再降维。工具包材质板块主打更短流程：一句话生成材质，升级版降维器自动处理背景、裁剪和像素色彩还原。</p>
+                        <div class="toolkit-points">
+                            <span data-i18n="toolkit.point1">一句话生成材质，不用记长提示词</span>
+                            <span data-i18n="toolkit.point2">自动抠除背景、自动裁剪主体</span>
+                            <span data-i18n="toolkit.point3">图片不够标准，也能处理成可用 16*16</span>
+                        </div>
+                        <a class="mc-action mc-action--primary" href="https://e.tb.cn/h.7DYUEVDz9PvsG22?tk=kD2WUmqmIYz" target="_blank" rel="noopener" data-i18n="toolkit.cta">查看工具包详情</a>
+                    </div>
+                    <div class="mango-compare" aria-label="芒果材质效果对比">
+                        <article>
+                            <button type="button" data-preview-src="assets/images/texture-mango-basic.png" data-preview-title="Nano Banana2 芒果材质">
+                                <img src="assets/images/texture-mango-basic.png" alt="Nano Banana2 芒果材质">
+                            </button>
+                            <span data-i18n="toolkit.basic">Nano Banana2 芒果材质</span>
+                            <p data-i18n="toolkit.basicDesc">使用本页公开方案生成。能看出是芒果，但边缘、体积和 MC 材质感都比较弱。</p>
+                        </article>
+                        <article>
+                            <button type="button" data-preview-src="assets/images/texture-mango-toolkit.png" data-preview-title="工具包的芒果材质">
+                                <img src="assets/images/texture-mango-toolkit.png" alt="工具包的芒果材质">
+                            </button>
+                            <span data-i18n="toolkit.pro">工具包的芒果材质</span>
+                            <p data-i18n="toolkit.proDesc">使用工具包方案生成。轮廓、配色和像素块更接近能放进 MC 的物品材质。</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="homepage-footer">
+        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · 模组开发教育站</p>
+        <p class="homepage-footer__desc" data-i18n="footer.desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+    </footer>
+
+    <div class="image-preview" id="imagePreview" hidden>
+        <button class="image-preview__backdrop" type="button" data-preview-close aria-label="关闭预览"></button>
+        <div class="image-preview__dialog" role="dialog" aria-modal="true" aria-labelledby="imagePreviewTitle">
+            <div class="image-preview__bar">
+                <span id="imagePreviewTitle"></span>
+                <button type="button" data-preview-close aria-label="关闭">×</button>
+            </div>
+            <img id="imagePreviewImg" src="" alt="">
+        </div>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="js/texture.js"></script>
+</body>
+</html>

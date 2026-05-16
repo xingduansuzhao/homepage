@@ -3,157 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI模组开发</title>
-    <link rel="icon" href="assets/images/avatar.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260402">
+    <title>星断肃昭的模组开发入口</title>
+    <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
+    <link rel="stylesheet" href="css/homepage.css?v=20260515">
 </head>
-<body>
+<body class="homepage-body">
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
 
-    <!-- 顶部 Header（横跨全屏） -->
-    <header class="site-header">
-        <div class="avatar-slot">
-            <img src="assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
-        </div>
-        <div class="header-info">
-            <div class="header-title-row">
-                <h1>星断肃昭</h1>
-                <span class="header-en">从零开发模组｜AI效率工具｜环境一键启动</span>
+            <nav class="main-nav" aria-label="主导航">
+                <a class="main-nav__link main-nav__link--active" href="index.html">首页</a>
+                <a class="main-nav__link" href="lazypack.html">懒人包</a>
+                <a class="main-nav__link" href="aimod-dev.html">代码</a>
+                <a class="main-nav__link" href="texture.html">材质</a>
+                <a class="main-nav__link" href="model.html">模型</a>
+            </nav>
+
+            <div class="profile-menu" id="profileMenu">
+                <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+                    <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                    <span class="profile-menu__name" id="profileName">星断肃昭</span>
+                    <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
+                </button>
+                <div class="profile-menu__panel" id="profilePanel" hidden>
+                    <a class="profile-menu__item" href="#author">作者介绍</a>
+                    <a class="profile-menu__item" href="#platforms">内容平台</a>
+                    <a class="profile-menu__item" id="menuTaobao" href="#" target="_blank" rel="noopener">淘宝个人店铺</a>
+                    <a class="profile-menu__item" id="menuGithub" href="#" target="_blank" rel="noopener">GitHub</a>
+                    <a class="profile-menu__item" href="#qq">加入 QQ 群</a>
+                </div>
             </div>
-            <a href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" class="btn-taobao">
-                <span>个人店铺</span>
-                <img src="assets/gif/villager_nod.gif" alt="" class="btn-icon-gif">
-            </a>
         </div>
     </header>
 
-    <!-- 主内容区域 -->
-    <div class="main-wrapper">
-        <div class="gui-container">
-            <div class="content-area">
-                <!-- 第一屏：定位锚点 -->
-                <section class="panel homepage-hero" aria-label="页面定位">
-                    <div class="homepage-hero-inner">
-                        <h2 class="homepage-hero-title">星断肃昭的模组开发指南</h2>
-                    </div>
-                </section>
-
-                <!-- 第二屏：核心入口 -->
-                <section class="panel entrance-panel" aria-label="核心产品入口">
-                    <div class="entrance-grid entrance-grid-three">
-                        <a href="lazypack.html" class="entrance-card lazypack-entrance">
-                            <div class="entrance-icon">
-                                <img src="assets/images/lazypack.png" alt="懒人包">
-                            </div>
-                            <div class="entrance-content">
-                                <h2 class="entrance-title">模组开发懒人包</h2>
-                                <p class="entrance-desc">免构建 | 解压即用 | Forge / Fabric / NeoForge</p>
-                                <span class="entrance-btn">先从这里开始</span>
-                            </div>
-                        </a>
-                        <a href="aimod-dev.html" class="entrance-card aimod-entrance">
-                            <div class="entrance-icon">
-                                <img src="assets/images/ai_workbench_new.png" alt="AI模组开发">
-                            </div>
-                            <div class="entrance-content">
-                                <h2 class="entrance-title">AI效率工具包</h2>
-                                <p class="entrance-desc">免费入门路线 + 进阶效率工具</p>
-                                <span class="entrance-btn">AI开发路线</span>
-                            </div>
-                        </a>
-                        <a href="pixel-converter.html" class="entrance-card pixel-entrance" id="pixelConverterEntrance">
-                            <div class="entrance-icon">
-                                <img src="assets/images/pixel-converter-icon.png" alt="伪像素降维器">
-                            </div>
-                            <div class="entrance-content">
-                                <h2 class="entrance-title">伪像素降维器</h2>
-                                <p class="entrance-desc">拖入图片一键转 16x16</p>
-                                <span class="entrance-btn">打开工具</span>
-                            </div>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- 第三屏：信任区 -->
-                <section class="panel trust-panel" aria-label="信任建立">
-                    <div class="panel-title">💡 为什么用 AI 开发模组？</div>
-                    <ul class="trust-list">
-                        <li>开发效率提升 5~10 倍，专注创意而非重复劳动</li>
-                        <li>零基础也能入门，跟着路线就能跑出第一个可用模组</li>
-                        <li>真实项目实战验证，教程、案例、代码全链路可复用</li>
-                    </ul>
-                </section>
-
-                <!-- 站外入口 + QQ群 -->
-                <section class="bottom-stack" aria-label="底部信息">
-                    <div class="panel" aria-label="平台入口">
-                        <div class="panel-title">📌 站外入口</div>
-                        <div class="platform-grid">
-                            <a class="platform-card" target="_blank" rel="noopener" href="https://space.bilibili.com/3537121929332753">
-                                <span class="platform-icon"><img src="assets/images/bilibili.png" alt="哔哩哔哩"></span>
-                                <div>
-                                    <div class="platform-title">哔哩哔哩</div>
-                                    <div class="platform-desc">收录完整系列教程</div>
-                                </div>
-                            </a>
-                            <a class="platform-card" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAAZQfWj15fBLrPBch-VEHqMnedWKUx4QPXYcTV1DIiShOI3E8LlvSHZQLET2nRU_IH?from_tab_name=main">
-                                <span class="platform-icon"><img src="assets/images/douyin.png" alt="抖音"></span>
-                                <div>
-                                    <div class="platform-title">抖音</div>
-                                    <div class="platform-desc">内容与B站完全一致</div>
-                                </div>
-                            </a>
-                            <a class="platform-card" target="_blank" rel="noopener" href="https://github.com/xingduansuzhao/">
-                                <span class="platform-icon"><img src="assets/images/github.png" alt="GitHub"></span>
-                                <div>
-                                    <div class="platform-title">GitHub</div>
-                                    <div class="platform-desc">教程对应源码地址</div>
-                                </div>
-                            </a>
-                            <a class="platform-card platform-card-xhs" target="_blank" rel="noopener" href="https://xhslink.com/m/60Vb7ahz7JE">
-                                <span class="platform-icon"><img src="assets/images/xiaohongshu.png" alt="小红书"></span>
-                                <div>
-                                    <div class="platform-title">小红书</div>
-                                    <div class="platform-desc">分享有趣的材质/头像/壁纸</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="panel" aria-label="QQ群">
-                        <div class="panel-title"><img src="assets/images/qq.png" alt="QQ" class="title-icon"> QQ 技术交流群 (点击复制)</div>
-                        <div class="qq-grid">
-                            <div class="qq-card" data-qq-group="897257355" onclick="copyText('897257355')">
-                                <div class="qq-card-text">
-                                    <span class="server-name">技术交流群 1：</span>
-                                    <span class="server-number">897257355</span>
-                                </div>
-                                <div class="server-ping"></div>
-                            </div>
-                            <div class="qq-card" data-qq-group="792419382" onclick="copyText('792419382')">
-                                <div class="qq-card-text">
-                                    <span class="server-name">技术交流群 2：</span>
-                                    <span class="server-number">792419382</span>
-                                </div>
-                                <div class="server-ping" style="background:#FFAA00"></div>
-                            </div>
-                            <div class="qq-card" data-qq-group="750065527" onclick="copyText('750065527')">
-                                <div class="qq-card-text">
-                                    <span class="server-name">技术交流群 3：</span>
-                                    <span class="server-number">750065527</span>
-                                </div>
-                                <div class="server-ping" style="background:#55FFFF; box-shadow: 2px 0 0 #00aaaa, 4px 0 0 #005555;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    <main class="homepage-main">
+        <section class="hero-switcher" aria-label="首页学习路径切换区">
+            <div class="hero-switcher__stage">
+                <img class="hero-switcher__image" id="heroStateImage" src="assets/images/homepage-hero-overview.png" alt="星断肃昭的模组开发入口横幅图">
+                <div class="hero-switcher__shade" aria-hidden="true"></div>
             </div>
+
+            <div class="hero-info" id="heroStateInfo">
+                <h1 class="hero-info__title" id="heroStateTitle"></h1>
+                <p class="hero-info__desc" id="heroStateDesc"></p>
+                <div class="hero-info__actions" id="heroStateActions"></div>
+            </div>
+
+            <div class="module-strip" id="moduleStrip" aria-label="四大模块切换"></div>
+        </section>
+
+        <div class="homepage-content">
+            <section class="entry-section" id="modules-overview" aria-label="四大入口">
+                <div class="entry-grid" id="entryGrid"></div>
+            </section>
+
+            <section class="content-section content-section--author" id="author">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title">作者介绍</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <div class="author-card">
+                    <div class="author-card__avatar-wrap">
+                        <img class="author-card__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                    </div>
+                    <div class="author-card__content">
+                        <h3 class="author-card__name" id="authorName"></h3>
+                        <p class="author-card__text" id="authorText"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section" id="platforms">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title">关注星断肃昭</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle">在你常用的平台找到我，一起学习与创造。</p>
+                <div class="platform-grid" id="platformGrid"></div>
+            </section>
+
+            <section class="content-section content-section--qq" id="qq">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title">加入 QQ 群</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle">与更多开发者交流，一起解决问题。</p>
+                <div class="qq-grid" id="qqGrid"></div>
+            </section>
         </div>
-    </div>
+    </main>
 
-    <!-- 复制成功提示 -->
-    <div class="toast" id="toast">✅ 群号已复制！</div>
+    <footer class="homepage-footer">
+        <p class="homepage-footer__meta">© 星断肃昭 · 模组开发教育站</p>
+        <p class="homepage-footer__desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+    </footer>
 
-    <script src="js/main.js"></script>
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="js/homepage.js"></script>
 </body>
 </html>

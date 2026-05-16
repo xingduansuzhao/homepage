@@ -3,108 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伪像素转换器｜星断肃昭</title>
-    <link rel="icon" href="assets/images/avatar.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260402">
+    <title>伪像素降维器｜星断肃昭</title>
+    <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
+    <link rel="stylesheet" href="css/homepage.css?v=20260515">
+    <link rel="stylesheet" href="css/pixel-converter.css?v=20260516">
     <script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
 </head>
-<body class="pixel-converter-page">
+<body class="pixel-tool-body">
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
 
-    <!-- 顶部 Header（横跨全屏） -->
-    <header class="site-header">
-        <div class="avatar-slot">
-            <img src="assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
-        </div>
-        <div class="header-info">
-            <div class="header-title-row">
-                <h1>星断肃昭</h1>
-                <span class="header-en">伪像素转换器｜一键生成 16x16 材质</span>
+            <nav class="main-nav" aria-label="主导航">
+                <a class="main-nav__link" href="index.html">首页</a>
+                <a class="main-nav__link" href="lazypack.html">懒人包</a>
+                <a class="main-nav__link" href="aimod-dev.html">代码</a>
+                <a class="main-nav__link main-nav__link--active" href="texture.html">材质</a>
+                <a class="main-nav__link" href="model.html">模型</a>
+            </nav>
+
+            <div class="profile-menu" id="profileMenu">
+                <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+                    <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                    <span class="profile-menu__name">星断肃昭</span>
+                    <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
+                </button>
+                <div class="profile-menu__panel" id="profilePanel" hidden>
+                    <a class="profile-menu__item" href="index.html#author">作者介绍</a>
+                    <a class="profile-menu__item" href="index.html#platforms">内容平台</a>
+                    <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener">淘宝个人店铺</a>
+                    <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
+                    <a class="profile-menu__item" href="index.html#qq">加入 QQ 群</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- 主内容区域 -->
-    <div class="main-wrapper">
-        <div class="gui-outer-wrap">
-            <div class="gui-outer-actions">
-                <a href="index.html" class="gui-outer-back gui-outer-back-inline">&larr; 返回主页</a>
-                <button class="gui-outer-back gui-outer-back-inline gui-prompt-btn" id="openPromptBtn">&#x270E; 前置提示词</button>
+    <main class="pixel-tool-main">
+        <section class="pixel-tool-hero">
+            <div class="pixel-tool-hero__inner">
+                <div class="pixel-tool-hero__panel">
+                    <div class="pixel-kicker">伪像素降维器</div>
+                    <h1>把伪像素图压成 16*16</h1>
+                    <p>这个工具只负责最后一步：上传 1:1 的标准伪像素图片，导出 Minecraft Java 可用的 16*16 PNG。提示词和教程回到材质页面看。</p>
+                    <div class="pixel-tool-hero__actions">
+                        <a class="mc-action mc-action--secondary" href="texture.html#workflow">返回材质教程</a>
+                    </div>
+                </div>
+                <div class="pixel-tool-hero__rules">
+                    <article>
+                        <span>01</span>
+                        <strong>先用伪像素图</strong>
+                        <p>大色块、硬边缘、少颜色，效果更稳。</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <strong>支持批量</strong>
+                        <p>多张图片会打包下载。</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <strong>输出 16*16</strong>
+                        <p>下载后放进模组资源目录。</p>
+                    </article>
+                </div>
             </div>
-            <div class="gui-container pc-gui-container">
-                <div class="content-area">
+        </section>
 
-                    <!-- 画布区域 -->
-                    <div class="pc-canvas-wrapper">
-                        <!-- 正方形画布 -->
-                        <div class="pc-canvas" id="pcCanvas">
-                            <div class="pc-drop-zone" id="dropZone">
-                                <div class="pc-drop-plus">+</div>
-                                <div class="pc-drop-text">拖入1:1<span class="pc-highlight">【标准伪像素】</span>图片<br><span class="pc-drop-hint">支持批量拖入多张</span></div>
-                                <input type="file" id="fileInput" accept="image/*" multiple hidden>
-                            </div>
-                            <div class="pc-preview" id="previewArea" style="display:none;">
-                                <button class="pc-nav-btn pc-nav-left" id="navLeft" style="display:none;">
-                                    <span class="pc-nav-arrow">&larr;</span>
-                                    <span class="pc-nav-count" id="navLeftCount"></span>
-                                </button>
-                                <canvas id="displayCanvas"></canvas>
-                                <button class="pc-nav-btn pc-nav-right" id="navRight" style="display:none;">
-                                    <span class="pc-nav-count" id="navRightCount"></span>
-                                    <span class="pc-nav-arrow">&rarr;</span>
-                                </button>
-                            </div>
+        <section class="pixel-tool-section">
+            <div class="pixel-tool-shell">
+                <div class="pixel-tool-shell__head">
+                    <div>
+                        <span class="pixel-kicker">上传图片</span>
+                        <h2>拖入图片，点击降维</h2>
+                    </div>
+                    <a href="texture.html" class="pixel-tool-shell__link">材质教程</a>
+                </div>
+
+                <div class="pc-canvas-wrapper">
+                    <div class="pc-canvas" id="pcCanvas">
+                        <div class="pc-drop-zone" id="dropZone">
+                            <div class="pc-drop-plus">+</div>
+                            <div class="pc-drop-text">拖入 1:1 标准伪像素图片<br><span class="pc-drop-hint">支持批量拖入多张</span></div>
+                            <input type="file" id="fileInput" accept="image/*" multiple hidden>
                         </div>
-
-                        <!-- 信息栏 + 操作按钮 -->
-                        <div class="pc-toolbar" id="toolbar" style="display:none;">
-                            <div class="pc-info">
-                                <span class="pc-info-label" id="sizeLabel">原始分辨率：</span>
-                                <span class="pc-info-value" id="sizeValue">-</span>
-                                <span class="pc-info-label pc-page-info" id="pageInfo" style="display:none;"></span>
-                            </div>
-                            <div class="pc-actions">
-                                <button class="mc-btn pc-convert-btn" id="convertBtn">降维至 16x16</button>
-                                <button class="mc-btn pc-convert-btn" id="downloadBtn" style="display:none;">下载图片</button>
-                                <button class="mc-btn pc-reset-btn" id="resetBtn">重置</button>
-                            </div>
+                        <div class="pc-preview" id="previewArea" style="display:none;">
+                            <button class="pc-nav-btn pc-nav-left" id="navLeft" style="display:none;">
+                                <span class="pc-nav-arrow">←</span>
+                                <span class="pc-nav-count" id="navLeftCount"></span>
+                            </button>
+                            <canvas id="displayCanvas"></canvas>
+                            <button class="pc-nav-btn pc-nav-right" id="navRight" style="display:none;">
+                                <span class="pc-nav-count" id="navRightCount"></span>
+                                <span class="pc-nav-arrow">→</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- 隐藏的转换画布 -->
-                    <canvas id="convertCanvas" width="16" height="16" style="display:none;"></canvas>
-
+                    <div class="pc-toolbar" id="toolbar" style="display:none;">
+                        <div class="pc-info">
+                            <span class="pc-info-label" id="sizeLabel">原始分辨率：</span>
+                            <span class="pc-info-value" id="sizeValue">-</span>
+                            <span class="pc-info-label pc-page-info" id="pageInfo" style="display:none;"></span>
+                        </div>
+                        <div class="pc-actions">
+                            <button class="mc-action mc-action--primary" id="convertBtn" type="button">降维至 16*16</button>
+                            <button class="mc-action mc-action--primary" id="downloadBtn" type="button" style="display:none;">下载图片</button>
+                            <button class="mc-action mc-action--secondary" id="resetBtn" type="button">重置</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- 前置提示词弹窗 -->
-    <div class="prompt-modal-overlay" id="promptModal">
-        <div class="prompt-modal">
-            <div class="prompt-modal-header">
-                <span>&#x1F4DC; 前置提示词</span>
-                <button class="prompt-modal-close" id="closePromptBtn">&times;</button>
+                <canvas id="convertCanvas" width="16" height="16" style="display:none;"></canvas>
             </div>
-            <div class="prompt-modal-body">
-                <div class="prompt-modal-col">
-                    <div class="prompt-modal-col-title">中文提示词</div>
-                    <div class="prompt-modal-content" id="promptZH">Minecraft Java版像素艺术物品图标，伪16x16放大图，图片必须看起来恰好是16个大方块色块宽、16格高，主体不得触及画布任何边缘，四周至少留出1个像素方块的白色空白边距，每个色彩区域至少为2x2大方块，整张图片最多使用4种纯色，零色彩渐变，零抗锯齿，零柔和边缘，每个色彩区域之间必须是硬朗清晰的边界，纯白色背景，非工具类主体正面朝前，主体形状必须清晰可辨且与所命名的物体完全一致，主体：</div>
-                    <button class="mc-btn prompt-modal-copy-btn" onclick="copyPrompt('promptZH','复制成功！')">复制</button>
-                </div>
-                <div class="prompt-modal-col">
-                    <div class="prompt-modal-col-title">English Prompt</div>
-                    <div class="prompt-modal-content" id="promptEN">Minecraft Java Edition pixel art item icon, pseudo 16x16 upscaled, image must look like exactly 16 large square color blocks wide and 16 tall, subject must not touch any edge of the canvas, leave at least 1 pixel block of empty white space on all four sides as margin, every color region must be at least 2x2 large squares, maximum 4 flat solid colors total in entire image, zero color gradients, zero anti-aliasing, zero soft edges, hard sharp borders between every color region, pure white background, non-tool subjects face forward, subject shape must be clearly recognizable and match the named object exactly, subject:</div>
-                    <button class="mc-btn prompt-modal-copy-btn" onclick="copyPrompt('promptEN','Copy Success!')">Copy</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <!-- 提示 -->
-    <div class="toast" id="toast"></div>
+    <footer class="homepage-footer">
+        <p class="homepage-footer__meta">© 星断肃昭 · 模组开发教育站</p>
+        <p class="homepage-footer__desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+    </footer>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
 
     <script>
+    (function() {
+        var menu = document.getElementById('profileMenu');
+        var trigger = document.getElementById('profileTrigger');
+        var panel = document.getElementById('profilePanel');
+        if (menu && trigger && panel) {
+            trigger.addEventListener('click', function() {
+                var open = menu.classList.toggle('is-open');
+                trigger.setAttribute('aria-expanded', String(open));
+                panel.hidden = !open;
+            });
+            document.addEventListener('click', function(event) {
+                if (menu.contains(event.target)) return;
+                menu.classList.remove('is-open');
+                trigger.setAttribute('aria-expanded', 'false');
+                panel.hidden = true;
+            });
+        }
+    })();
+
     (function() {
         var canvasEl      = document.getElementById('pcCanvas');
         var dropZone      = document.getElementById('dropZone');
@@ -128,8 +169,12 @@
         var images = [];
         var currentIndex = 0;
         var isConverted = false;
+        var convertedDataUrls = [];
 
-        function dragHandler(e) { e.preventDefault(); e.stopPropagation(); }
+        function dragHandler(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
 
         canvasEl.addEventListener('dragover', function(e) {
             dragHandler(e);
@@ -151,7 +196,9 @@
             if (dropped.length > 0) loadImages(dropped);
         });
 
-        dropZone.addEventListener('click', function() { fileInput.click(); });
+        dropZone.addEventListener('click', function() {
+            fileInput.click();
+        });
 
         fileInput.addEventListener('change', function() {
             var selected = [];
@@ -164,6 +211,7 @@
         function loadImages(fileList) {
             files = fileList;
             images = [];
+            convertedDataUrls = [];
             isConverted = false;
             currentIndex = 0;
             var loaded = 0;
@@ -175,9 +223,7 @@
                     img.onload = function() {
                         images[idx] = img;
                         loaded++;
-                        if (loaded === files.length) {
-                            showPreview();
-                        }
+                        if (loaded === files.length) showPreview();
                     };
                     img.src = ev.target.result;
                 };
@@ -191,11 +237,7 @@
             toolbar.style.display = 'flex';
             convertBtn.style.display = '';
             downloadBtn.style.display = 'none';
-            if (files.length > 1) {
-                convertBtn.textContent = '批量降维 (' + files.length + '张)';
-            } else {
-                convertBtn.textContent = '降维至 16x16';
-            }
+            convertBtn.textContent = files.length > 1 ? '批量降维 ' + files.length + ' 张' : '降维至 16*16';
             displayCurrentImage();
         }
 
@@ -205,7 +247,7 @@
 
             drawPreview(img, false);
             sizeLabel.textContent = '原始分辨率：';
-            sizeValue.textContent = img.naturalWidth + ' x ' + img.naturalHeight;
+            sizeValue.textContent = img.naturalWidth + ' × ' + img.naturalHeight;
 
             if (files.length > 1) {
                 pageInfo.style.display = '';
@@ -223,51 +265,32 @@
                 navRight.style.display = 'none';
                 return;
             }
-            if (currentIndex > 0) {
-                navLeft.style.display = '';
-                navLeftCount.textContent = currentIndex;
-            } else {
-                navLeft.style.display = 'none';
-            }
-            if (currentIndex < files.length - 1) {
-                navRight.style.display = '';
-                navRightCount.textContent = files.length - 1 - currentIndex;
-            } else {
-                navRight.style.display = 'none';
-            }
+            navLeft.style.display = currentIndex > 0 ? '' : 'none';
+            navRight.style.display = currentIndex < files.length - 1 ? '' : 'none';
+            if (currentIndex > 0) navLeftCount.textContent = currentIndex;
+            if (currentIndex < files.length - 1) navRightCount.textContent = files.length - 1 - currentIndex;
         }
 
         navLeft.addEventListener('click', function() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                if (isConverted) {
-                    displayConvertedImage();
-                } else {
-                    displayCurrentImage();
-                }
-            }
+            if (currentIndex <= 0) return;
+            currentIndex--;
+            isConverted ? displayConvertedImage() : displayCurrentImage();
         });
 
         navRight.addEventListener('click', function() {
-            if (currentIndex < files.length - 1) {
-                currentIndex++;
-                if (isConverted) {
-                    displayConvertedImage();
-                } else {
-                    displayCurrentImage();
-                }
-            }
+            if (currentIndex >= files.length - 1) return;
+            currentIndex++;
+            isConverted ? displayConvertedImage() : displayCurrentImage();
         });
 
         function drawPreview(img, pixelated) {
-            var maxW = canvasEl.clientWidth - 80;
-            var maxH = canvasEl.clientHeight - 12;
-
+            var maxW = Math.max(220, canvasEl.clientWidth - 72);
+            var maxH = Math.max(220, canvasEl.clientHeight - 24);
             var srcW = img.naturalWidth || img.width;
             var srcH = img.naturalHeight || img.height;
             var scale = Math.min(maxW / srcW, maxH / srcH);
-            var drawW = Math.round(srcW * scale);
-            var drawH = Math.round(srcH * scale);
+            var drawW = Math.max(1, Math.round(srcW * scale));
+            var drawH = Math.max(1, Math.round(srcH * scale));
 
             displayCanvas.width = drawW;
             displayCanvas.height = drawH;
@@ -288,11 +311,13 @@
                 ctx.beginPath();
                 for (var x = 1; x < srcW; x++) {
                     var px = Math.round(x * cellW) + 0.5;
-                    ctx.moveTo(px, 0); ctx.lineTo(px, drawH);
+                    ctx.moveTo(px, 0);
+                    ctx.lineTo(px, drawH);
                 }
                 for (var y = 1; y < srcH; y++) {
                     var py = Math.round(y * cellH) + 0.5;
-                    ctx.moveTo(0, py); ctx.lineTo(drawW, py);
+                    ctx.moveTo(0, py);
+                    ctx.lineTo(drawW, py);
                 }
                 ctx.stroke();
                 ctx.restore();
@@ -308,29 +333,9 @@
             return convertCanvas.toDataURL('image/png');
         }
 
-        var convertedDataUrls = [];
-
         convertBtn.addEventListener('click', function() {
             if (images.length === 0) return;
             convertedDataUrls = [];
-
-            if (files.length === 1) {
-                var dataUrl = convertSingle(images[0]);
-                convertedDataUrls.push(dataUrl);
-                doSingleDownload(dataUrl, files[0].name);
-                var resultImg = new Image();
-                resultImg.onload = function() {
-                    drawPreview(resultImg, true);
-                    sizeLabel.textContent = '结果分辨率：';
-                    sizeValue.textContent = '16 x 16';
-                    convertBtn.style.display = 'none';
-                    downloadBtn.style.display = '';
-                    downloadBtn.textContent = '下载图片';
-                    isConverted = true;
-                };
-                resultImg.src = dataUrl;
-                return;
-            }
 
             for (var i = 0; i < images.length; i++) {
                 convertedDataUrls.push(convertSingle(images[i]));
@@ -341,11 +346,13 @@
 
             convertBtn.style.display = 'none';
             downloadBtn.style.display = '';
-            downloadBtn.textContent = '打包下载 (' + files.length + '张)';
+            downloadBtn.textContent = files.length > 1 ? '打包下载 ' + files.length + ' 张' : '下载图片';
 
-            showToast('已完成 ' + files.length + ' 张降维');
-            // 批量降维完成后，立即触发浏览器下载（同时保留“打包下载”按钮可重复下载）
-            doBatchZipDownload();
+            if (files.length === 1) {
+                doSingleDownload(convertedDataUrls[0], files[0].name);
+            } else {
+                doBatchZipDownload();
+            }
         });
 
         function displayConvertedImage() {
@@ -353,7 +360,7 @@
             resultImg.onload = function() {
                 drawPreview(resultImg, true);
                 sizeLabel.textContent = '结果分辨率：';
-                sizeValue.textContent = '16 x 16';
+                sizeValue.textContent = '16 × 16';
                 if (files.length > 1) {
                     pageInfo.style.display = '';
                     pageInfo.textContent = (currentIndex + 1) + ' / ' + files.length;
@@ -371,7 +378,7 @@
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            showToast('\u2705 ' + fileName + ' \u5df2\u4e0b\u8f7d\uff01');
+            showToast(fileName + ' 已下载');
         }
 
         function doBatchZipDownload() {
@@ -381,11 +388,9 @@
 
             var zip = new JSZip();
             for (var i = 0; i < convertedDataUrls.length; i++) {
-                (function(idx) {
-                    var fileName = files[idx].name.replace(/\.[^.]+$/, '') + '_16x16.png';
-                    var base64 = convertedDataUrls[idx].split(',')[1];
-                    zip.file(fileName, base64, { base64: true });
-                })(i);
+                var fileName = files[i].name.replace(/\.[^.]+$/, '') + '_16x16.png';
+                var base64 = convertedDataUrls[i].split(',')[1];
+                zip.file(fileName, base64, { base64: true });
             }
 
             zip.generateAsync({ type: 'blob' }).then(function(blob) {
@@ -397,13 +402,13 @@
                 a.click();
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
-                downloadBtn.textContent = '\u6253\u5305\u4e0b\u8f7d (' + files.length + '\u5f20)';
+                downloadBtn.textContent = '打包下载 ' + files.length + ' 张';
                 downloadBtn.disabled = false;
-                showToast('\u2705 ' + files.length + ' \u5f20\u56fe\u7247\u5df2\u6253\u5305\u4e0b\u8f7d\uff01');
+                showToast(files.length + ' 张图片已打包下载');
             }).catch(function() {
-                downloadBtn.textContent = '\u6253\u5305\u4e0b\u8f7d (' + files.length + '\u5f20)';
+                downloadBtn.textContent = '打包下载 ' + files.length + ' 张';
                 downloadBtn.disabled = false;
-                showToast('\u274c \u6253\u5305\u5931\u8d25\uff0c\u8bf7\u91cd\u8bd5');
+                showToast('打包失败，请重试');
             });
         }
 
@@ -422,63 +427,26 @@
             currentIndex = 0;
             isConverted = false;
             fileInput.value = '';
-
             dropZone.style.display = 'flex';
             previewArea.style.display = 'none';
             toolbar.style.display = 'none';
             downloadBtn.style.display = 'none';
+            downloadBtn.disabled = false;
             navLeft.style.display = 'none';
             navRight.style.display = 'none';
             pageInfo.style.display = 'none';
         });
 
         function showToast(msg) {
-            var t = document.getElementById('toast');
-            t.innerHTML = msg;
-            t.classList.add('show');
-            setTimeout(function() { t.classList.remove('show'); }, 2000);
+            var toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('is-visible');
+            window.clearTimeout(showToast.timer);
+            showToast.timer = window.setTimeout(function() {
+                toast.classList.remove('is-visible');
+            }, 1800);
         }
     })();
-
-    (function() {
-        var modal = document.getElementById('promptModal');
-        var openBtn = document.getElementById('openPromptBtn');
-        var closeBtn = document.getElementById('closePromptBtn');
-
-        openBtn.addEventListener('click', function() {
-            modal.classList.add('show');
-        });
-
-        closeBtn.addEventListener('click', function() {
-            modal.classList.remove('show');
-        });
-
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) modal.classList.remove('show');
-        });
-    })();
-
-    function copyPrompt(id, msg) {
-        var text = document.getElementById(id).textContent;
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).then(function() { showToastGlobal(msg); });
-        } else {
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            showToastGlobal(msg);
-        }
-    }
-
-    function showToastGlobal(msg) {
-        var t = document.getElementById('toast');
-        t.innerHTML = msg;
-        t.classList.add('show');
-        setTimeout(function() { t.classList.remove('show'); }, 2000);
-    }
     </script>
 </body>
 </html>

@@ -3,124 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>懒人包专区｜星断肃昭</title>
-    <link rel="icon" href="assets/images/avatar.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20260327">
+    <title data-i18n="meta.title">懒人包专区｜星断肃昭</title>
+    <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
+    <link rel="stylesheet" href="css/homepage.css?v=20260515">
+    <link rel="stylesheet" href="css/lazypack.css?v=20260516">
 </head>
-<body class="lazypack-page">
+<body class="lazypack-body">
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
 
-    <!-- 顶部 Header（横跨全屏） -->
-    <header class="site-header">
-        <div class="avatar-slot">
-            <img src="assets/images/avatar.png" onerror="this.src='https://assets.codepen.io/1948355/steve.png'">
-        </div>
-        <div class="header-info">
-            <div class="header-title-row">
-                <h1>星断肃昭</h1>
-                <span class="header-en">从零开发模组｜AI效率工具｜环境一键启动</span>
-            </div>
-            <div class="header-actions">
-                <a href="index.html" class="btn-back">← 返回首页</a>
-                <a href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" class="btn-taobao">
-                    <span>个人店铺</span>
-                    <img src="assets/gif/villager_nod.gif" alt="" class="btn-icon-gif">
-                </a>
+            <nav class="main-nav" aria-label="主导航">
+                <a class="main-nav__link" href="index.html" data-i18n="nav.home">首页</a>
+                <a class="main-nav__link main-nav__link--active" href="lazypack.html" data-i18n="nav.lazypack">懒人包</a>
+                <a class="main-nav__link" href="aimod-dev.html" data-i18n="nav.code">代码</a>
+                <a class="main-nav__link" href="texture.html" data-i18n="nav.texture">材质</a>
+                <a class="main-nav__link" href="model.html" data-i18n="nav.model">模型</a>
+            </nav>
+
+            <div class="topbar-tools">
+                <div class="language-tabs" aria-label="语言切换">
+                    <button class="language-tabs__button is-active" type="button" data-lang="zh-CN">简</button>
+                    <button class="language-tabs__button" type="button" data-lang="zh-TW">繁</button>
+                    <button class="language-tabs__button" type="button" data-lang="en">EN</button>
+                </div>
+
+                <div class="profile-menu" id="profileMenu">
+                    <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
+                        <span class="profile-menu__name">星断肃昭</span>
+                        <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
+                    </button>
+                    <div class="profile-menu__panel" id="profilePanel" hidden>
+                        <a class="profile-menu__item" href="index.html#author" data-i18n="menu.author">作者介绍</a>
+                        <a class="profile-menu__item" href="index.html#platforms" data-i18n="menu.platforms">内容平台</a>
+                        <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
+                        <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
+                        <a class="profile-menu__item" href="#qq" data-i18n="menu.qq">加入 QQ 群</a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- 主内容区域 -->
-    <div class="main-wrapper lp-main-wrapper">
-        <div class="gui-outer-wrap">
-            <!-- 返回主页按钮 - GUI容器外部左上角 -->
-            <a href="index.html" class="gui-outer-back">← 返回主页</a>
-            <div class="gui-container lp-gui-container">
-                <div class="lp-scroll-area">
-
-                <!-- ====== 页面大标题 ====== -->
-                <div class="lp-hero">
-                    <div class="lp-hero-title-row">
-                        <h2 class="lp-hero-title">10分钟启动你的第一个模组工程</h2>
-                        <div class="lp-hero-logo">
-                            <img src="assets/images/lazypack.png" alt="懒人包">
-                        </div>
-                    </div>
-                    <div class="lp-hero-tags">
-                        <span class="lp-tag lp-tag-yellow">⚡ Forge / Fabric / NeoForge 解压即用</span>
-                        <span class="lp-tag-sep">｜</span>
-                        <span class="lp-tag">无需机场</span>
-                        <span class="lp-tag-sep">｜</span>
-                        <span class="lp-tag">新手可跑</span>
+    <main class="lazypack-main">
+        <section class="lazypack-hero" aria-label="懒人包首屏">
+            <div class="lazypack-hero__inner">
+                <div class="lazypack-hero__panel">
+                    <div class="lazypack-hero__eyebrow" data-i18n="hero.eyebrow">环境配置入口</div>
+                    <h1 class="lazypack-hero__title" data-i18n="hero.title">别把热情耗在 Gradle 上</h1>
+                    <p class="lazypack-hero__desc" data-i18n="hero.desc">懒人包把 Java、Gradle、加载器模板和启动流程提前整理好。你要做的是打开工程、确认能跑，然后把注意力放回模组创意。</p>
+                    <div class="lazypack-hero__actions">
+                        <a class="mc-action mc-action--secondary" href="#baseline" data-i18n="hero.primary">查看完整说明</a>
+                        <a class="mc-action mc-action--secondary" href="index.html#modules-overview" data-i18n="hero.modules">返回四大模块</a>
                     </div>
                 </div>
 
-                <!-- ====== 痛点引导 ====== -->
-                <section class="lp-section">
-                    <h3 class="lp-section-title">第一次写模组最崩溃的事情</h3>
-                    <ul class="lp-pain-list">
-                        <li>环境装一天，项目还是跑不起来</li>
-                        <li>Gradle 一直卡住，进度条像静止一样</li>
-                        <li>版本冲突一堆报错，不知道该改哪里</li>
-                        <li>教程看了很多，依然迈不出第一步</li>
-                    </ul>
-                    <p class="lp-lead-text">你该花时间写玩法和创意，而不是把热情耗在环境问题上。</p>
-                </section>
-
-                <!-- ====== 免费试用区 ====== -->
-                <section class="lp-section">
-                    <h3 class="lp-section-title">先免费试试（教学专用版本）</h3>
-                    <div class="lp-callout lp-callout-blue">
-                        <p class="lp-callout-header">🛡 免费版仅提供 1.21.10 固定版本，适合体验 / 测试环境是否能跑</p>
+                <div class="hero-version-board" aria-label="快速获取懒人包">
+                    <div class="hero-version-board__header">
+                        <span data-i18n="hero.quickEyebrow">直接开始</span>
+                        <strong data-i18n="hero.quickTitle">选择你的 1.21.10 加载器</strong>
                     </div>
-                    <div class="lp-download-list">
-                        <a class="lp-download-item" target="_blank" rel="noopener" href="https://pan.baidu.com/s/131nNtgg1OP5atPrpmhTxqA?pwd=xdsz">
-                            <span class="lp-dl-icon">📦</span>
-                            <span class="lp-dl-label">1.21.10 Forge 懒人包：</span>
-                            <span class="lp-dl-link">点击下载 Forge 懒人包</span>
+                    <div class="hero-version-board__grid">
+                        <a class="hero-version-board__item" target="_blank" rel="noopener" href="https://pan.baidu.com/s/131nNtgg1OP5atPrpmhTxqA?pwd=xdsz">
+                            <span class="hero-version-board__label">Forge</span>
+                            <span class="hero-version-board__value">1.21.10</span>
+                            <span class="hero-version-board__cta" data-i18n="hero.download">打开下载链接</span>
                         </a>
-                        <a class="lp-download-item" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1M0zvS0djgFTAeYHkC3jFfQ?pwd=xdsz">
-                            <span class="lp-dl-icon">📦</span>
-                            <span class="lp-dl-label">1.21.10 Fabric 懒人包：</span>
-                            <span class="lp-dl-link">点击下载 Fabric 懒人包</span>
+                        <a class="hero-version-board__item" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1M0zvS0djgFTAeYHkC3jFfQ?pwd=xdsz">
+                            <span class="hero-version-board__label">Fabric</span>
+                            <span class="hero-version-board__value">1.21.10</span>
+                            <span class="hero-version-board__cta" data-i18n="hero.download">打开下载链接</span>
                         </a>
-                        <a class="lp-download-item" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RkFE1l7dcwYnVsoS1yhbjw?pwd=xdsz">
-                            <span class="lp-dl-icon">📦</span>
-                            <span class="lp-dl-label">1.21.10 NeoForge 懒人包：</span>
-                            <span class="lp-dl-link">点击下载 NeoForge 懒人包</span>
+                        <a class="hero-version-board__item" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RkFE1l7dcwYnVsoS1yhbjw?pwd=xdsz">
+                            <span class="hero-version-board__label">NeoForge</span>
+                            <span class="hero-version-board__value">1.21.10</span>
+                            <span class="hero-version-board__cta" data-i18n="hero.download">打开下载链接</span>
+                        </a>
+                        <a class="hero-version-board__item hero-version-board__item--custom" href="https://e.tb.cn/h.7KIa0gTL1NjzJ51?tk=3VgMUhjNSHr" target="_blank" rel="noopener">
+                            <span class="hero-version-board__label" data-i18n="hero.customLabel">其他版本</span>
+                            <span class="hero-version-board__value" data-i18n="hero.customValue">指定版本</span>
+                            <span class="hero-version-board__cta" data-i18n="hero.customCta">进入店铺</span>
                         </a>
                     </div>
-                </section>
-
-                <!-- ====== 付费服务区 ====== -->
-                <section class="lp-section">
-                    <h3 class="lp-section-title">如果你不想再被环境拖住</h3>
-                    <div class="lp-callout lp-callout-green">
-                        <div class="lp-paid-feature-icon">🧩</div>
-                        <ul class="lp-paid-features">
-                            <li>支持 <strong>指定</strong> Forge / Fabric / NeoForge 版本</li>
-                            <li>已完整构建，打开懒人包即可运行</li>
-                            <li>适合：想认真学模组 / 跟教程做项目的人</li>
-                            <li>保姆级构建，小白也能秒变开发者</li>
-                        </ul>
-                        <div class="lp-paid-price">
-                            <span class="lp-price-formula">把环境问题直接跳过，直接进入模组开发。</span>
-                        </div>
-                        <div class="lp-paid-cta">
-                            <span class="lp-cta-pointer">👉</span>
-                            <a class="mc-btn-cta" target="_blank" rel="noopener" href="https://e.tb.cn/h.7KIa0gTL1NjzJ51?tk=3VgMUhjNSHr">去淘宝获取指定版本懒人包</a>
-                        </div>
-                    </div>
-                </section>
-
                 </div>
             </div>
+        </section>
+
+        <div class="lazypack-content">
+            <section class="content-section lazy-section lazy-section--intro" aria-label="懒人包说明">
+                <div class="lazy-intro">
+                    <div class="lazy-intro__copy">
+                        <div class="section-kicker" data-i18n="intro.kicker">它解决的问题很单一</div>
+                        <h2 class="lazy-title" data-i18n="intro.title">先得到一个能跑的模组工程</h2>
+                        <p class="lazy-lead" data-i18n="intro.lead">第一次做 Minecraft 模组，最容易劝退人的不是 Java，而是环境构建。版本、依赖、网络和 Gradle 卡在一起时，新手很难判断问题在哪。懒人包把这一步压缩成可执行流程。</p>
+                    </div>
+                    <div class="lazy-intro__poster" aria-hidden="true">
+                        <img src="assets/images/lazypack.png" alt="">
+                    </div>
+                </div>
+
+                <div class="problem-grid">
+                    <article class="problem-card">
+                        <span class="problem-card__index">01</span>
+                        <h3 data-i18n="problem.one.title">少装一堆东西</h3>
+                        <p data-i18n="problem.one.desc">Java、Gradle、加载器工程结构已经整理好，减少从零配置时的反复试错。</p>
+                    </article>
+                    <article class="problem-card">
+                        <span class="problem-card__index">02</span>
+                        <h3 data-i18n="problem.two.title">少看一堆报错</h3>
+                        <p data-i18n="problem.two.desc">把容易卡住的依赖和启动流程提前处理，先确认工程可以进入客户端。</p>
+                    </article>
+                    <article class="problem-card">
+                        <span class="problem-card__index">03</span>
+                        <h3 data-i18n="problem.three.title">少绕一段弯路</h3>
+                        <p data-i18n="problem.three.desc">你可以直接跟着后续代码、材质、模型教程推进，不必先被环境问题消耗掉。</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="content-section lazy-section" id="baseline" aria-label="教学基准包">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title" data-i18n="baseline.title">1.21.10 教学基准包</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle" data-i18n="baseline.subtitle">当前站内提供 Forge / Fabric / NeoForge 三个 1.21.10 版本，适合先把环境跑通，再进入后续教程。</p>
+
+                <div class="download-grid">
+                    <a class="download-card download-card--forge" target="_blank" rel="noopener" href="https://pan.baidu.com/s/131nNtgg1OP5atPrpmhTxqA?pwd=xdsz">
+                        <div class="download-card__media">
+                            <span class="download-card__cube"></span>
+                        </div>
+                        <div class="download-card__body">
+                            <div class="download-card__eyebrow">Forge</div>
+                            <h3 class="download-card__title">Forge 1.21.10</h3>
+                            <p class="download-card__desc" data-i18n="download.forge">适合跟随 Forge 教程构建第一个可运行工程。</p>
+                            <span class="download-card__code" data-i18n="download.code">网盘提取码：xdsz</span>
+                        </div>
+                        <span class="download-card__cta" data-i18n="download.cta">打开下载链接</span>
+                    </a>
+
+                    <a class="download-card download-card--fabric" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1M0zvS0djgFTAeYHkC3jFfQ?pwd=xdsz">
+                        <div class="download-card__media">
+                            <span class="download-card__cube"></span>
+                        </div>
+                        <div class="download-card__body">
+                            <div class="download-card__eyebrow">Fabric</div>
+                            <h3 class="download-card__title">Fabric 1.21.10</h3>
+                            <p class="download-card__desc" data-i18n="download.fabric">适合轻量加载器方向，先确认客户端启动和示例模组加载。</p>
+                            <span class="download-card__code" data-i18n="download.code">网盘提取码：xdsz</span>
+                        </div>
+                        <span class="download-card__cta" data-i18n="download.cta">打开下载链接</span>
+                    </a>
+
+                    <a class="download-card download-card--neoforge" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RkFE1l7dcwYnVsoS1yhbjw?pwd=xdsz">
+                        <div class="download-card__media">
+                            <span class="download-card__cube"></span>
+                        </div>
+                        <div class="download-card__body">
+                            <div class="download-card__eyebrow">NeoForge</div>
+                            <h3 class="download-card__title">NeoForge 1.21.10</h3>
+                            <p class="download-card__desc" data-i18n="download.neoforge">适合新版 NeoForge 路线，把版本差异先从环境层面隔离开。</p>
+                            <span class="download-card__code" data-i18n="download.code">网盘提取码：xdsz</span>
+                        </div>
+                        <span class="download-card__cta" data-i18n="download.cta">打开下载链接</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="content-section lazy-section" aria-label="使用流程">
+                <div class="craft-flow">
+                    <div class="craft-flow__copy">
+                        <div class="section-kicker" data-i18n="flow.kicker">使用路径</div>
+                        <h2 class="lazy-title" data-i18n="flow.title">从压缩包到第一个模组</h2>
+                        <p class="lazy-lead" data-i18n="flow.lead">它不是替你做模组，而是把最磨人的起步环节清掉。工程跑起来以后，你仍然要命名、写功能、放材质、打包，并在启动器里验证结果。</p>
+                    </div>
+                    <div class="step-grid">
+                        <article class="step-card">
+                            <span class="step-card__num">1</span>
+                            <h3 data-i18n="step.one.title">解压工程</h3>
+                            <p data-i18n="step.one.desc">把对应加载器的懒人包放到一个干净目录，先不要混进旧项目文件。</p>
+                        </article>
+                        <article class="step-card">
+                            <span class="step-card__num">2</span>
+                            <h3 data-i18n="step.two.title">双击构建</h3>
+                            <p data-i18n="step.two.desc">按包内流程执行，等待 Gradle 和工程依赖完成初始化。</p>
+                        </article>
+                        <article class="step-card">
+                            <span class="step-card__num">3</span>
+                            <h3 data-i18n="step.three.title">启动客户端</h3>
+                            <p data-i18n="step.three.desc">确认 runClient 能进入游戏，先验证环境，再开始改功能。</p>
+                        </article>
+                        <article class="step-card">
+                            <span class="step-card__num">4</span>
+                            <h3 data-i18n="step.four.title">改名打包</h3>
+                            <p data-i18n="step.four.desc">修改模组名称、描述和 Logo，再输出属于自己的模组文件。</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section lazy-section custom-section" aria-label="指定版本">
+                <div class="custom-panel">
+                    <div class="custom-panel__image" aria-hidden="true"></div>
+                    <div class="custom-panel__content">
+                        <div class="section-kicker" data-i18n="custom.kicker">你的版本不在 1.21.10？</div>
+                        <h2 class="lazy-title" data-i18n="custom.title">把版本号和加载器说清楚</h2>
+                        <p class="lazy-lead" data-i18n="custom.lead">Minecraft 版本很多，Forge、Fabric、NeoForge 的工程结构也不同。如果你要跟自己的目标版本走，直接按版本号和加载器进入对应懒人包路径。</p>
+                        <div class="custom-tags" aria-label="可说明的信息">
+                            <span>MC 1.20.1</span>
+                            <span>MC 1.19.2</span>
+                            <span>Forge</span>
+                            <span>Fabric</span>
+                            <span>NeoForge</span>
+                        </div>
+                        <div class="custom-panel__actions">
+                            <a class="mc-action mc-action--primary" href="https://e.tb.cn/h.7KIa0gTL1NjzJ51?tk=3VgMUhjNSHr" target="_blank" rel="noopener" data-i18n="custom.cta">进入淘宝店铺</a>
+                            <a class="mc-action mc-action--secondary" href="index.html#modules-overview" data-i18n="custom.back">返回四大模块</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section lazy-section content-section--qq" id="qq">
+                <div class="section-heading">
+                    <span class="section-heading__line"></span>
+                    <h2 class="section-heading__title" data-i18n="qq.title">加入 QQ 群</h2>
+                    <span class="section-heading__line"></span>
+                </div>
+                <p class="section-subtitle" data-i18n="qq.subtitle">环境跑起来后，把报错、版本号、加载器和截图一起发出来，沟通效率会高很多。</p>
+                <div class="qq-grid lazy-qq-grid">
+                    <article class="qq-card">
+                        <img class="qq-card__icon" src="assets/images/qq.png" alt="">
+                        <div>
+                            <h3 class="qq-card__title">QQ 群 1</h3>
+                            <p class="qq-card__number">897257355</p>
+                        </div>
+                        <button class="qq-card__copy" type="button" data-copy="897257355" data-i18n="qq.copy">复制</button>
+                    </article>
+                    <article class="qq-card">
+                        <img class="qq-card__icon" src="assets/images/qq.png" alt="">
+                        <div>
+                            <h3 class="qq-card__title">QQ 群 2</h3>
+                            <p class="qq-card__number">792419382</p>
+                        </div>
+                        <button class="qq-card__copy" type="button" data-copy="792419382" data-i18n="qq.copy">复制</button>
+                    </article>
+                    <article class="qq-card">
+                        <img class="qq-card__icon" src="assets/images/qq.png" alt="">
+                        <div>
+                            <h3 class="qq-card__title">QQ 群 3</h3>
+                            <p class="qq-card__number">750065527</p>
+                        </div>
+                        <button class="qq-card__copy" type="button" data-copy="750065527" data-i18n="qq.copy">复制</button>
+                    </article>
+                </div>
+            </section>
         </div>
-    </div>
+    </main>
 
-    <!-- 复制成功提示 -->
-    <div class="toast" id="toast">✅ 群号已复制！</div>
+    <footer class="homepage-footer">
+        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · 模组开发教育站</p>
+        <p class="homepage-footer__desc" data-i18n="footer.desc">Minecraft 是 Mojang Studios 的商标，本站与 Mojang Studios 无关。</p>
+    </footer>
 
-    <script src="js/main.js"></script>
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="js/lazypack.js?v=20260516"></script>
 </body>
 </html>
