@@ -59,7 +59,7 @@
 
 .texture-hero {
     position: relative;
-    min-height: 560px;
+    min-height: calc(100vh - 86px);
     overflow: hidden;
     background:
         linear-gradient(90deg, rgba(13, 13, 13, 0.96) 0%, rgba(13, 13, 13, 0.86) 48%, rgba(13, 13, 13, 0.68) 100%),
@@ -85,7 +85,7 @@
     position: relative;
     z-index: 1;
     width: min(1440px, calc(100% - 104px));
-    min-height: 560px;
+    min-height: calc(100vh - 86px);
     margin: 0 auto;
     padding: 58px 0 52px;
     display: grid;
@@ -235,6 +235,13 @@
     box-shadow: 0 16px 26px rgba(0, 0, 0, 0.22);
 }
 
+.texture-showcase--hero {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .texture-showcase__head span,
 .texture-showcase__head strong,
 .texture-route-board__head span,
@@ -255,6 +262,12 @@
     font-size: clamp(1.28rem, 2.1vw, 1.86rem);
     line-height: 1.12;
     font-weight: 400;
+}
+
+.texture-showcase__head p {
+    margin: 12px 0 0;
+    color: rgba(250, 244, 232, 0.9);
+    line-height: 1.62;
 }
 
 .texture-showcase__grid,
@@ -345,6 +358,68 @@
     display: block;
     margin-top: 12px;
     color: #fff4dd;
+}
+
+.texture-gallery {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.texture-gallery__tile {
+    position: relative;
+    margin: 0;
+    padding: 12px;
+    aspect-ratio: 1;
+    border: 1px solid rgba(255, 235, 205, 0.18);
+    color: inherit;
+    cursor: zoom-in;
+    font: inherit;
+    background:
+        linear-gradient(135deg, rgba(183, 213, 58, 0.12), rgba(79, 158, 58, 0.04)),
+        rgba(10, 10, 10, 0.24);
+    overflow: hidden;
+}
+
+.texture-gallery__tile:disabled {
+    cursor: default;
+}
+
+.texture-gallery__tile::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    background:
+        linear-gradient(45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.04) 75%);
+    background-size: 18px 18px;
+    background-position: 0 0, 0 9px, 9px -9px, -9px 0;
+    opacity: 0.72;
+}
+
+.texture-gallery__tile img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.texture-gallery__tile span {
+    position: absolute;
+    left: 12px;
+    bottom: 10px;
+    z-index: 2;
+    color: #fff4dd;
+    font-family: "MinecraftAE", "Microsoft YaHei", sans-serif;
+    font-size: 0.84rem;
+    opacity: 0.78;
 }
 
 .texture-content {

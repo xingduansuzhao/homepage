@@ -6,7 +6,7 @@
     <title data-i18n="meta.title">AI 做模型｜星断肃昭</title>
     <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
     <link rel="stylesheet" href="css/homepage.css?v=20260515">
-    <link rel="stylesheet" href="css/model.css?v=20260516e">
+    <link rel="stylesheet" href="css/model.css?v=20260516g">
 </head>
 <body class="model-body">
     <header class="topbar">
@@ -50,31 +50,21 @@
                     <p class="model-hero__desc" data-i18n="hero.desc">本页先抓最关键的一步：让 AI 能访问你的 Blockbench。连接跑通后，再让 AI 放一个方块验证，不要一上来就让它做复杂生物。</p>
                     <div class="model-hero__actions">
                         <a class="mc-action mc-action--primary" href="#mcp-steps" data-i18n="hero.primary">开始配置 MCP</a>
-                        <a class="mc-action mc-action--secondary mc-action--down" href="#snail" data-i18n="hero.secondary">预览蜗牛模型</a>
+                        <a class="mc-action mc-action--secondary mc-action--down" href="#mcp" data-i18n="hero.secondary">MCP 是什么</a>
                     </div>
                 </div>
 
-                <div class="model-route-board" aria-label="模型页路线">
-                    <div class="model-route-board__head">
-                        <span data-i18n="route.kicker">本页路线</span>
-                        <strong data-i18n="route.title">先连接，再验证，最后再做模型</strong>
+                <div class="model-hero-preview" id="snail" aria-label="蜗牛模型 3D 预览">
+                    <div class="model-hero-preview__head">
+                        <span class="model-kicker" data-i18n="snail.kicker">工具包案例</span>
+                        <strong data-i18n="snail.title">工具包做出的蜗牛模型</strong>
+                        <p data-i18n="snail.lead">右侧就是视频里的蜗牛模型，已经接入网页 3D 预览。拖动后可以直接看结构、比例和材质效果。</p>
                     </div>
-                    <div class="model-route-board__grid">
-                        <article>
-                            <span>01</span>
-                            <h3 data-i18n="route.one.title">装插件</h3>
-                            <p data-i18n="route.one.desc">给 Blockbench 装上 MCP 插件。</p>
-                        </article>
-                        <article>
-                            <span>02</span>
-                            <h3 data-i18n="route.two.title">连 AI</h3>
-                            <p data-i18n="route.two.desc">让 Trae 通过 MCP 连上 Blockbench。</p>
-                        </article>
-                        <article>
-                            <span>03</span>
-                            <h3 data-i18n="route.three.title">放方块</h3>
-                            <p data-i18n="route.three.desc">方块出现 = 连接成功。</p>
-                        </article>
+                    <div class="snail-viewer">
+                        <canvas id="snailCanvas" data-model-src="assets/models/snail.gltf"></canvas>
+                        <div class="snail-viewer__hud">
+                            <span data-i18n="snail.hud">拖动旋转 · 滚轮缩放</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,26 +281,6 @@ Subject:</pre>
                 </div>
             </section>
 
-            <section class="content-section model-section" id="snail">
-                <div class="snail-showcase">
-                    <div class="snail-showcase__copy">
-                        <span class="model-kicker" data-i18n="snail.kicker">工具包案例</span>
-                        <h2 class="model-title" data-i18n="snail.title">工具包做出的蜗牛模型</h2>
-                        <p class="model-lead" data-i18n="snail.lead">右侧就是视频里的蜗牛模型，已经接入网页 3D 预览。拖动后可以直接看结构、比例和材质效果。</p>
-                        <div class="model-format-note">
-                            <span data-i18n="snail.format1">当前展示：GLTF 蜗牛模型</span>
-                            <span data-i18n="snail.format2">后续换成 GLB，也能继续使用这个预览区。</span>
-                        </div>
-                    </div>
-                    <div class="snail-viewer" aria-label="蜗牛模型 3D 预览">
-                        <canvas id="snailCanvas" data-model-src="assets/models/snail.gltf"></canvas>
-                        <div class="snail-viewer__hud">
-                            <span data-i18n="snail.hud">拖动旋转 · 滚轮缩放</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section class="content-section model-section" id="toolkit">
                 <div class="toolkit-model">
                     <div class="toolkit-model__copy">
@@ -380,6 +350,6 @@ npx -v</pre>
     <div class="toast" id="toast" aria-live="polite"></div>
 
     <script src="js/snail-gltf.js?v=20260516d"></script>
-    <script src="js/model.js?v=20260516e"></script>
+    <script src="js/model.js?v=20260516g"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@
 
 .model-hero {
     position: relative;
-    min-height: 560px;
+    min-height: calc(100vh - 86px);
     overflow: hidden;
     background:
         linear-gradient(90deg, rgba(13, 13, 13, 0.96) 0%, rgba(13, 13, 13, 0.86) 48%, rgba(13, 13, 13, 0.68) 100%),
@@ -59,7 +59,7 @@
     position: relative;
     z-index: 1;
     width: min(1440px, calc(100% - 104px));
-    min-height: 560px;
+    min-height: calc(100vh - 86px);
     margin: 0 auto;
     padding: 58px 0 52px;
     display: grid;
@@ -70,6 +70,7 @@
 
 .model-hero__panel,
 .model-route-board,
+.model-hero-preview,
 .truth-card,
 .resource-card,
 .step-card,
@@ -217,6 +218,38 @@
     background: rgba(18, 18, 18, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.12);
     box-shadow: 0 16px 26px rgba(0, 0, 0, 0.22);
+}
+
+.model-hero-preview {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    color: #f4ead9;
+    background: rgba(18, 18, 18, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 26px rgba(0, 0, 0, 0.22);
+}
+
+.model-hero-preview__head {
+    margin-bottom: 18px;
+}
+
+.model-hero-preview__head strong {
+    display: block;
+    margin-top: 12px;
+    color: #fff4dd;
+    font-family: "MinecraftAE", "Microsoft YaHei", sans-serif;
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+    line-height: 1.08;
+    font-weight: 400;
+}
+
+.model-hero-preview__head p {
+    margin: 12px 0 0;
+    color: rgba(250, 244, 232, 0.9);
+    line-height: 1.65;
 }
 
 .model-route-board__head span,
@@ -666,14 +699,13 @@
 .snail-viewer {
     position: relative;
     min-height: 430px;
-    background-color: #2a2a2a;
+    background-color: #141414;
     background-image:
-        linear-gradient(45deg, #222 25%, transparent 25%),
-        linear-gradient(-45deg, #222 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, #222 75%),
-        linear-gradient(-45deg, transparent 75%, #222 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+        linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        radial-gradient(circle at center, rgba(79, 158, 58, 0.12), transparent 62%);
+    background-size: 28px 28px, 28px 28px, 100% 100%;
+    background-position: center;
     border: 1px solid rgba(255, 235, 205, 0.14);
     overflow: hidden;
 }
@@ -683,6 +715,14 @@
     width: 100%;
     height: 430px;
     cursor: grab;
+}
+
+.model-hero-preview .snail-viewer {
+    min-height: 370px;
+}
+
+.model-hero-preview .snail-viewer canvas {
+    height: 370px;
 }
 
 .snail-viewer canvas:active {

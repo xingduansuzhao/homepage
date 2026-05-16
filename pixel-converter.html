@@ -6,83 +6,14 @@
     <title data-i18n="meta.title">伪像素降维器｜星断肃昭</title>
     <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
     <link rel="stylesheet" href="css/homepage.css?v=20260515">
-    <link rel="stylesheet" href="css/pixel-converter.css?v=20260516">
+    <link rel="stylesheet" href="css/pixel-converter.css?v=20260516b">
     <script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js"></script>
 </head>
 <body class="pixel-tool-body">
-    <header class="topbar">
-        <div class="topbar__inner">
-            <a class="brand" href="https://xingduansuzhao.com/" aria-label="星断肃昭官网"><img class="brand__logo" src="assets/images/minecraft-logo.png" alt="Minecraft"></a>
-
-            <nav class="main-nav" aria-label="主导航">
-                <a class="main-nav__link" href="index.html" data-i18n="nav.home">首页</a>
-                <a class="main-nav__link" href="lazypack.html" data-i18n="nav.lazypack">懒人包</a>
-                <a class="main-nav__link" href="aimod-dev.html" data-i18n="nav.code">代码</a>
-                <a class="main-nav__link main-nav__link--active" href="texture.html" data-i18n="nav.texture">材质</a>
-                <a class="main-nav__link" href="model.html" data-i18n="nav.model">模型</a>
-            </nav>
-
-            <div class="topbar-tools">
-                <button class="language-cycle" id="languageCycle" type="button" aria-label="切换语言">简</button>
-
-                <div class="profile-menu" id="profileMenu">
-                    <button class="profile-menu__trigger" id="profileTrigger" type="button" aria-haspopup="true" aria-expanded="false">
-                        <img class="profile-menu__avatar" src="assets/images/homepage-avatar.png" alt="星断肃昭头像">
-                        <span class="profile-menu__name">星断肃昭</span>
-                        <span class="profile-menu__arrow" aria-hidden="true">⌄</span>
-                    </button>
-                    <div class="profile-menu__panel" id="profilePanel" hidden>
-                        <a class="profile-menu__item" href="index.html#platforms" data-i18n="menu.platforms">内容平台</a>
-                        <a class="profile-menu__item" href="https://m.tb.cn/h.7rYrnwT3m2rNXjD" target="_blank" rel="noopener" data-i18n="menu.taobao">淘宝个人店铺</a>
-                        <a class="profile-menu__item" href="https://github.com/xingduansuzhao/" target="_blank" rel="noopener">GitHub</a>
-                        <a class="profile-menu__item" href="index.html#qq" data-i18n="menu.qq">加入 QQ 群</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <main class="pixel-tool-main">
-        <section class="pixel-tool-hero">
-            <div class="pixel-tool-hero__inner">
-                <div class="pixel-tool-hero__panel">
-                    <div class="pixel-kicker" data-i18n="hero.eyebrow">伪像素降维器</div>
-                    <h1 data-i18n="hero.title">把伪像素图压成 16*16</h1>
-                    <p data-i18n="hero.desc">这个工具只负责最后一步：上传 1:1 的标准伪像素图片，导出 Minecraft Java 可用的 16*16 PNG。提示词和教程回到材质页面看。</p>
-                    <div class="pixel-tool-hero__actions">
-                        <a class="mc-action mc-action--secondary" href="texture.html#workflow" data-i18n="hero.back">返回材质教程</a>
-                    </div>
-                </div>
-                <div class="pixel-tool-hero__rules">
-                    <article>
-                        <span>01</span>
-                        <strong data-i18n="rules.one.title">先用伪像素图</strong>
-                        <p data-i18n="rules.one.desc">大色块、硬边缘、少颜色，效果更稳。</p>
-                    </article>
-                    <article>
-                        <span>02</span>
-                        <strong data-i18n="rules.two.title">支持批量</strong>
-                        <p data-i18n="rules.two.desc">多张图片会打包下载。</p>
-                    </article>
-                    <article>
-                        <span>03</span>
-                        <strong data-i18n="rules.three.title">输出 16*16</strong>
-                        <p data-i18n="rules.three.desc">下载后放进模组资源目录。</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="pixel-tool-section">
+        <a class="pixel-back" href="texture.html" data-i18n="hero.back">返回</a>
+        <section class="pixel-tool-section" aria-label="伪像素降维器">
             <div class="pixel-tool-shell">
-                <div class="pixel-tool-shell__head">
-                    <div>
-                        <span class="pixel-kicker" data-i18n="tool.eyebrow">上传图片</span>
-                        <h2 data-i18n="tool.title">拖入图片，点击降维</h2>
-                    </div>
-                    <a href="texture.html" class="pixel-tool-shell__link" data-i18n="tool.tutorial">材质教程</a>
-                </div>
-
                 <div class="pc-canvas-wrapper">
                     <div class="pc-canvas" id="pcCanvas">
                         <div class="pc-drop-zone" id="dropZone">
@@ -122,11 +53,6 @@
         </section>
     </main>
 
-    <footer class="homepage-footer">
-        <p class="homepage-footer__meta" data-i18n="footer.meta">© 星断肃昭 · Minecraft 模组开发入口</p>
-        <p class="homepage-footer__desc" data-i18n="footer.desc">整理懒人包、代码、材质、模型相关内容，方便按阶段进入。</p>
-    </footer>
-
     <div class="toast" id="toast" aria-live="polite"></div>
 
     <script>
@@ -144,7 +70,7 @@
             'hero.eyebrow': '伪像素降维器',
             'hero.title': '把伪像素图压成 16*16',
             'hero.desc': '这个工具只负责最后一步：上传 1:1 的标准伪像素图片，导出 Minecraft Java 可用的 16*16 PNG。提示词和教程回到材质页面看。',
-            'hero.back': '返回材质教程',
+            'hero.back': '返回',
             'rules.one.title': '先用伪像素图',
             'rules.one.desc': '大色块、硬边缘、少颜色，效果更稳。',
             'rules.two.title': '支持批量',
@@ -152,8 +78,6 @@
             'rules.three.title': '输出 16*16',
             'rules.three.desc': '下载后放进模组资源目录。',
             'tool.eyebrow': '上传图片',
-            'tool.title': '拖入图片，点击降维',
-            'tool.tutorial': '材质教程',
             'tool.drop': '拖入 1:1 标准伪像素图片<br><span class="pc-drop-hint">支持批量拖入多张</span>',
             'tool.original': '原始分辨率：',
             'tool.result': '结果分辨率：',
@@ -182,7 +106,7 @@
             'hero.eyebrow': '偽像素降維器',
             'hero.title': '把偽像素圖壓成 16*16',
             'hero.desc': '這個工具只負責最後一步：上傳 1:1 的標準偽像素圖片，導出 Minecraft Java 可用的 16*16 PNG。提示詞和教程回到材質頁面看。',
-            'hero.back': '返回材質教程',
+            'hero.back': '返回',
             'rules.one.title': '先用偽像素圖',
             'rules.one.desc': '大色塊、硬邊緣、少顏色，效果更穩。',
             'rules.two.title': '支持批量',
@@ -190,8 +114,6 @@
             'rules.three.title': '輸出 16*16',
             'rules.three.desc': '下載後放進模組資源目錄。',
             'tool.eyebrow': '上傳圖片',
-            'tool.title': '拖入圖片，點擊降維',
-            'tool.tutorial': '材質教程',
             'tool.drop': '拖入 1:1 標準偽像素圖片<br><span class="pc-drop-hint">支持批量拖入多張</span>',
             'tool.original': '原始解析度：',
             'tool.result': '結果解析度：',
@@ -220,7 +142,7 @@
             'hero.eyebrow': 'Pseudo Pixel Converter',
             'hero.title': 'Compress pseudo-pixels to 16*16',
             'hero.desc': 'This tool handles the final step only: upload a 1:1 pseudo-pixel image and export a Minecraft Java-ready 16*16 PNG. Prompts and tutorial stay on the texture page.',
-            'hero.back': 'Back to texture tutorial',
+            'hero.back': 'Back',
             'rules.one.title': 'Use pseudo-pixels first',
             'rules.one.desc': 'Large color blocks, hard edges, and fewer colors work better.',
             'rules.two.title': 'Batch supported',
@@ -228,8 +150,6 @@
             'rules.three.title': 'Output 16*16',
             'rules.three.desc': 'Put the PNG into your mod resource folder after download.',
             'tool.eyebrow': 'Upload Image',
-            'tool.title': 'Drop image, then convert',
-            'tool.tutorial': 'Texture tutorial',
             'tool.drop': 'Drop a 1:1 pseudo-pixel image<br><span class="pc-drop-hint">Batch upload supported</span>',
             'tool.original': 'Original size: ',
             'tool.result': 'Result size: ',

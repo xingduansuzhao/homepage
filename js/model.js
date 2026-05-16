@@ -13,7 +13,7 @@ const MODEL_I18N = {
         "hero.title": "先把 Blockbench MCP 连上",
         "hero.desc": "本页先抓最关键的一步：让 AI 能访问你的 Blockbench。连接跑通后，再让 AI 放一个方块验证，不要一上来就让它做复杂生物。",
         "hero.primary": "开始配置 MCP",
-        "hero.secondary": "看蜗牛预览",
+        "hero.secondary": "MCP 是什么",
         "route.kicker": "本页路线",
         "route.title": "先连接，再验证，最后再做模型",
         "route.one.title": "装 Blockbench 插件",
@@ -113,7 +113,7 @@ const MODEL_I18N = {
         "hero.title": "先把 Blockbench MCP 連上",
         "hero.desc": "本頁先抓最關鍵的一步：讓 AI 能訪問你的 Blockbench。連接跑通後，再讓 AI 放一個方塊驗證，不要一上來就讓它做複雜生物。",
         "hero.primary": "開始配置 MCP",
-        "hero.secondary": "看蝸牛預覽",
+        "hero.secondary": "MCP 是什麼",
         "route.kicker": "本頁路線",
         "route.title": "先連接，再驗證，最後再做模型",
         "route.one.title": "裝 Blockbench 插件",
@@ -213,7 +213,7 @@ const MODEL_I18N = {
         "hero.title": "Connect Blockbench MCP first",
         "hero.desc": "This page focuses on one key step: let AI access your Blockbench. After the connection works, ask it to place one cube first instead of starting with a complex creature.",
         "hero.primary": "Configure MCP",
-        "hero.secondary": "View snail preview",
+        "hero.secondary": "What MCP means",
         "route.kicker": "Page Route",
         "route.title": "Connect, verify, then build",
         "route.one.title": "Install Blockbench plugin",
@@ -526,7 +526,7 @@ async function initSnailViewer() {
     renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0b2736);
+    scene.background = null;
 
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
     let distance = 5.8;
@@ -536,6 +536,10 @@ async function initSnailViewer() {
     const directional = new THREE.DirectionalLight(0xffffff, 1.3);
     directional.position.set(4, 6, 3);
     scene.add(ambient, directional);
+
+    const grid = new THREE.GridHelper(7.5, 15, 0x5f5f5f, 0x343434);
+    grid.position.y = -0.05;
+    scene.add(grid);
 
     const group = new THREE.Group();
     scene.add(group);
@@ -625,8 +629,8 @@ async function initSnailViewer() {
     const hasModel = await loadExternalSnail();
     if (!hasModel) buildFallbackSnail();
 
-    let targetRotX = -0.16;
-    let targetRotY = -0.55;
+    let targetRotX = -0.14;
+    let targetRotY = 2.6;
     let dragging = false;
     let lastX = 0;
     let lastY = 0;
