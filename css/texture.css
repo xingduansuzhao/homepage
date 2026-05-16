@@ -584,7 +584,10 @@
 }
 
 .toolkit-texture {
-    background: linear-gradient(135deg, #21360f 0%, #3e611d 52%, #2b4512 100%);
+    background:
+        linear-gradient(90deg, rgba(33, 54, 15, 0.98), rgba(62, 97, 29, 0.92)),
+        url("../assets/images/homepage-hero-workshop.png") center / cover no-repeat;
+    border: 2px solid rgba(183, 213, 58, 0.38);
 }
 
 .toolkit-points {

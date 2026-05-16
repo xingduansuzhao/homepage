@@ -28,7 +28,7 @@ const HOMEPAGE_CONFIG = {
             thumbImage: "assets/images/homepage-hero-workshop.png",
             title: "先把环境跑起来",
             description: "解决新手最容易卡住的版本、依赖和启动问题。你不需要先和配置搏斗，先让开发环境能稳定打开。",
-            primaryButtonText: "进入懒人包",
+            primaryButtonText: "进入懒人包板块",
             primaryButtonUrl: "lazypack.html",
             secondaryButtonText: "观看代表视频",
             secondaryButtonUrl: "https://space.bilibili.com/3537121929332753"
@@ -79,7 +79,7 @@ const HOMEPAGE_CONFIG = {
             eyebrow: "环境配置",
             description: "一键启动开发环境，优先解决新手最容易卡住的安装、版本和依赖问题。",
             tags: ["整合包", "启动器", "环境搭建"],
-            cta: "进入懒人包",
+            cta: "进入懒人包板块",
             href: "lazypack.html",
             tone: "green",
             icon: "assets/images/module-icons/lazypack.png",

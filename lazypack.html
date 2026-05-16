@@ -6,12 +6,12 @@
     <title data-i18n="meta.title">懒人包专区｜星断肃昭</title>
     <link rel="icon" href="assets/images/homepage-avatar.png" type="image/png">
     <link rel="stylesheet" href="css/homepage.css?v=20260515">
-    <link rel="stylesheet" href="css/lazypack.css?v=20260516">
+    <link rel="stylesheet" href="css/lazypack.css?v=20260517">
 </head>
 <body class="lazypack-body">
     <header class="topbar">
         <div class="topbar__inner">
-            <a class="brand" href="index.html" aria-label="返回首页">MINECRAFT</a>
+            <a class="brand" href="https://xingduansuzhao.com/" aria-label="星断肃昭官网"><img class="brand__logo" src="assets/images/minecraft-logo.png" alt="Minecraft"></a>
 
             <nav class="main-nav" aria-label="主导航">
                 <a class="main-nav__link" href="index.html" data-i18n="nav.home">首页</a>
@@ -50,7 +50,7 @@
                     <p class="lazypack-hero__desc" data-i18n="hero.desc">懒人包把 Java、Gradle、加载器模板和启动流程提前整理好。你要做的是打开工程、确认能跑，然后把注意力放回模组创意。</p>
                     <div class="lazypack-hero__actions">
                         <a class="mc-action mc-action--secondary" href="#baseline" data-i18n="hero.primary">查看完整说明</a>
-                        <a class="mc-action mc-action--secondary" href="index.html#modules-overview" data-i18n="hero.modules">返回四大模块</a>
+                        <a class="mc-action mc-action--secondary" href="index.html" data-i18n="hero.modules">返回首页</a>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
                         <h2 class="lazy-title" data-i18n="intro.title">先得到一个能跑的模组工程</h2>
                         <p class="lazy-lead" data-i18n="intro.lead">第一次做 Minecraft 模组，最容易劝退人的不是 Java，而是环境构建。版本、依赖、网络和 Gradle 卡在一起时，新手很难判断问题在哪。懒人包把这一步压缩成可执行流程。</p>
                     </div>
-                    <div class="lazy-intro__poster" aria-hidden="true">
+                    <div class="lazy-intro__bg-art" aria-hidden="true">
                         <img src="assets/images/lazypack.png" alt="">
                     </div>
                 </div>
@@ -128,39 +128,36 @@
                 <div class="download-grid">
                     <a class="download-card download-card--forge" target="_blank" rel="noopener" href="https://pan.baidu.com/s/131nNtgg1OP5atPrpmhTxqA?pwd=xdsz">
                         <div class="download-card__media">
-                            <span class="download-card__cube"></span>
+                            <img class="download-card__logo" src="assets/images/loader-forge.png" alt="Forge">
                         </div>
                         <div class="download-card__body">
                             <div class="download-card__eyebrow">Forge</div>
                             <h3 class="download-card__title">Forge 1.21.10</h3>
                             <p class="download-card__desc" data-i18n="download.forge">适合跟随 Forge 教程构建第一个可运行工程。</p>
-                            <span class="download-card__code" data-i18n="download.code">网盘提取码：xdsz</span>
                         </div>
                         <span class="download-card__cta" data-i18n="download.cta">打开下载链接</span>
                     </a>
 
                     <a class="download-card download-card--fabric" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1M0zvS0djgFTAeYHkC3jFfQ?pwd=xdsz">
                         <div class="download-card__media">
-                            <span class="download-card__cube"></span>
+                            <img class="download-card__logo" src="assets/images/loader-fabric.png" alt="Fabric">
                         </div>
                         <div class="download-card__body">
                             <div class="download-card__eyebrow">Fabric</div>
                             <h3 class="download-card__title">Fabric 1.21.10</h3>
                             <p class="download-card__desc" data-i18n="download.fabric">适合轻量加载器方向，先确认客户端启动和示例模组加载。</p>
-                            <span class="download-card__code" data-i18n="download.code">网盘提取码：xdsz</span>
                         </div>
                         <span class="download-card__cta" data-i18n="download.cta">打开下载链接</span>
                     </a>
 
                     <a class="download-card download-card--neoforge" target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RkFE1l7dcwYnVsoS1yhbjw?pwd=xdsz">
                         <div class="download-card__media">
-                            <span class="download-card__cube"></span>
+                            <img class="download-card__logo" src="assets/images/loader-neoforge.png" alt="NeoForge">
                         </div>
                         <div class="download-card__body">
                             <div class="download-card__eyebrow">NeoForge</div>
                             <h3 class="download-card__title">NeoForge 1.21.10</h3>
                             <p class="download-card__desc" data-i18n="download.neoforge">适合新版 NeoForge 路线，把版本差异先从环境层面隔离开。</p>
-                            <span class="download-card__code" data-i18n="download.code">网盘提取码：xdsz</span>
                         </div>
                         <span class="download-card__cta" data-i18n="download.cta">打开下载链接</span>
                     </a>
@@ -176,22 +173,22 @@
                     </div>
                     <div class="step-grid">
                         <article class="step-card">
-                            <span class="step-card__num">1</span>
+                            <img class="step-card__icon" src="assets/images/lazypack-hero.png" alt="">
                             <h3 data-i18n="step.one.title">解压工程</h3>
                             <p data-i18n="step.one.desc">把对应加载器的懒人包放到一个干净目录，先不要混进旧项目文件。</p>
                         </article>
                         <article class="step-card">
-                            <span class="step-card__num">2</span>
+                            <img class="step-card__icon" src="assets/images/step-build.ico" alt="">
                             <h3 data-i18n="step.two.title">双击构建</h3>
                             <p data-i18n="step.two.desc">按包内流程执行，等待 Gradle 和工程依赖完成初始化。</p>
                         </article>
                         <article class="step-card">
-                            <span class="step-card__num">3</span>
+                            <img class="step-card__icon" src="assets/images/step-run.ico" alt="">
                             <h3 data-i18n="step.three.title">启动客户端</h3>
                             <p data-i18n="step.three.desc">确认 runClient 能进入游戏，先验证环境，再开始改功能。</p>
                         </article>
                         <article class="step-card">
-                            <span class="step-card__num">4</span>
+                            <img class="step-card__icon" src="assets/images/step-pack.ico" alt="">
                             <h3 data-i18n="step.four.title">改名打包</h3>
                             <p data-i18n="step.four.desc">修改模组名称、描述和 Logo，再输出属于自己的模组文件。</p>
                         </article>
@@ -201,7 +198,9 @@
 
             <section class="content-section lazy-section custom-section" aria-label="指定版本">
                 <div class="custom-panel">
-                    <div class="custom-panel__image" aria-hidden="true"></div>
+                    <div class="custom-panel__image" aria-hidden="true">
+                        <img src="assets/images/lazypack-other-versions.png" alt="">
+                    </div>
                     <div class="custom-panel__content">
                         <div class="section-kicker" data-i18n="custom.kicker">你的版本不在 1.21.10？</div>
                         <h2 class="lazy-title" data-i18n="custom.title">把版本号和加载器说清楚</h2>
@@ -215,46 +214,12 @@
                         </div>
                         <div class="custom-panel__actions">
                             <a class="mc-action mc-action--primary" href="https://e.tb.cn/h.7KIa0gTL1NjzJ51?tk=3VgMUhjNSHr" target="_blank" rel="noopener" data-i18n="custom.cta">进入淘宝店铺</a>
-                            <a class="mc-action mc-action--secondary" href="index.html#modules-overview" data-i18n="custom.back">返回四大模块</a>
+                            <a class="mc-action mc-action--secondary" href="index.html" data-i18n="custom.back">返回首页</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="content-section lazy-section content-section--qq" id="qq">
-                <div class="section-heading">
-                    <span class="section-heading__line"></span>
-                    <h2 class="section-heading__title" data-i18n="qq.title">加入 QQ 群</h2>
-                    <span class="section-heading__line"></span>
-                </div>
-                <p class="section-subtitle" data-i18n="qq.subtitle">环境跑起来后，把报错、版本号、加载器和截图一起发出来，沟通效率会高很多。</p>
-                <div class="qq-grid lazy-qq-grid">
-                    <article class="qq-card">
-                        <img class="qq-card__icon" src="assets/images/qq.png" alt="">
-                        <div>
-                            <h3 class="qq-card__title">QQ 群 1</h3>
-                            <p class="qq-card__number">897257355</p>
-                        </div>
-                        <button class="qq-card__copy" type="button" data-copy="897257355" data-i18n="qq.copy">复制</button>
-                    </article>
-                    <article class="qq-card">
-                        <img class="qq-card__icon" src="assets/images/qq.png" alt="">
-                        <div>
-                            <h3 class="qq-card__title">QQ 群 2</h3>
-                            <p class="qq-card__number">792419382</p>
-                        </div>
-                        <button class="qq-card__copy" type="button" data-copy="792419382" data-i18n="qq.copy">复制</button>
-                    </article>
-                    <article class="qq-card">
-                        <img class="qq-card__icon" src="assets/images/qq.png" alt="">
-                        <div>
-                            <h3 class="qq-card__title">QQ 群 3</h3>
-                            <p class="qq-card__number">750065527</p>
-                        </div>
-                        <button class="qq-card__copy" type="button" data-copy="750065527" data-i18n="qq.copy">复制</button>
-                    </article>
-                </div>
-            </section>
         </div>
     </main>
 

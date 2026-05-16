@@ -94,11 +94,18 @@ select {
 }
 
 .brand {
-    color: #f2f2f2;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    font-size: clamp(1.5rem, 2.2vw, 2rem);
-    letter-spacing: 0.06em;
-    text-shadow: 0 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.brand__logo {
+    width: 180px;
+    height: auto;
+    max-height: 48px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.4));
 }
 
 .main-nav {
@@ -479,7 +486,7 @@ select {
     min-height: 336px;
     padding: 26px 28px;
     display: grid;
-    grid-template-columns: 148px 1fr;
+    grid-template-columns: 180px 1fr;
     gap: 22px;
     color: #f4ead9;
     text-decoration: none;
@@ -551,9 +558,9 @@ select {
 
 .entry-card__icon {
     display: block;
-    width: min(100%, 124px);
+    width: min(100%, 160px);
     height: auto;
-    max-height: 124px;
+    max-height: 160px;
     object-fit: contain;
     filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.28));
 }
@@ -712,12 +719,9 @@ select {
 
 .platform-card {
     min-height: 192px;
-    padding: 16px 16px 18px;
-    background:
-        linear-gradient(180deg, rgba(158, 118, 64, 0.16), rgba(117, 79, 35, 0.16)),
-        var(--paper);
-    border: 12px solid transparent;
-    border-image: linear-gradient(180deg, #9a6d38, #6f461a) 1;
+    padding: 20px 16px 22px;
+    background: rgba(31, 30, 27, 0.92);
+    border: 1px solid rgba(255, 235, 205, 0.14);
     text-decoration: none;
     box-shadow: var(--wood-shadow);
     display: flex;
@@ -725,38 +729,40 @@ select {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
+    transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.platform-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(183, 213, 58, 0.55);
 }
 
 .platform-card--stone {
-    border-image: linear-gradient(180deg, #797979, #4d4d4d) 1;
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .platform-card__eyebrow {
-    color: #fff8ee;
-    background: rgba(74, 47, 17, 0.85);
+    color: rgba(255, 241, 217, 0.88);
+    background: rgba(255, 255, 255, 0.08);
     padding: 4px 12px;
-    font-size: 0.9rem;
-}
-
-.platform-card--stone .platform-card__eyebrow {
-    background: rgba(54, 54, 54, 0.92);
+    font-size: 0.82rem;
 }
 
 .platform-card__icon-wrap {
-    width: 96px;
-    height: 96px;
+    width: 80px;
+    height: 80px;
     margin-top: 18px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.76);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.92);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
 .platform-card__icon {
-    width: 72px;
-    height: 72px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
 }
 
@@ -764,18 +770,19 @@ select {
     background: linear-gradient(180deg, #ffab38, #ea7d09);
     color: #fff;
     font-family: "MinecraftAE", "Microsoft YaHei", sans-serif;
-    font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 .platform-card__title {
-    margin-top: 18px;
-    font-size: 1.12rem;
+    margin-top: 16px;
+    font-size: 1.08rem;
+    color: #fff4dd;
 }
 
 .platform-card__desc {
     margin-top: 8px;
-    font-size: 0.95rem;
-    color: var(--ink-soft);
+    font-size: 0.92rem;
+    color: rgba(250, 244, 232, 0.72);
     line-height: 1.55;
 }
 
@@ -787,46 +794,49 @@ select {
 }
 
 .qq-card {
-    background: rgba(250, 245, 235, 0.96);
-    border: 1px solid rgba(128, 99, 65, 0.3);
-    box-shadow: 0 12px 24px rgba(70, 44, 15, 0.1);
+    background: rgba(31, 30, 27, 0.92);
+    border: 1px solid rgba(255, 235, 205, 0.14);
+    box-shadow: var(--wood-shadow);
     min-height: 104px;
     display: grid;
-    grid-template-columns: 72px 1fr auto;
+    grid-template-columns: 56px 1fr auto;
     align-items: center;
-    gap: 18px;
-    padding: 16px 18px;
+    gap: 16px;
+    padding: 18px 20px;
 }
 
 .qq-card__icon {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
     object-fit: contain;
 }
 
 .qq-card__title {
     margin: 0 0 6px;
     font-size: 1rem;
+    color: #fff4dd;
 }
 
 .qq-card__number {
     margin: 0;
-    font-size: 1.05rem;
-    color: var(--ink-soft);
+    font-size: 1.02rem;
+    color: rgba(250, 244, 232, 0.72);
     letter-spacing: 0.03em;
 }
 
 .qq-card__copy {
-    border: 1px solid rgba(104, 78, 45, 0.28);
-    background: #fff;
-    color: #3b2819;
+    border: 1px solid rgba(183, 213, 58, 0.42);
+    background: rgba(183, 213, 58, 0.12);
+    color: #d7f36d;
     min-height: 42px;
     padding: 0 16px;
     cursor: pointer;
+    font-family: "MinecraftAE", "Microsoft YaHei", sans-serif;
 }
 
 .qq-card__copy:hover {
-    background: #f5ebd7;
+    background: rgba(183, 213, 58, 0.22);
+    border-color: rgba(183, 213, 58, 0.6);
 }
 
 .homepage-footer {
@@ -986,8 +996,8 @@ select {
         gap: 12px;
     }
 
-    .brand {
-        font-size: 1rem;
+    .brand__logo {
+        width: 120px;
     }
 
     .main-nav {
