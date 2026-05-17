@@ -161,10 +161,10 @@
 }
 
 .texture-hero__title {
-    margin: 18px 0 0;
+    margin: 22px 0 4px;
     color: #fff;
     font-size: clamp(2.1rem, 4.3vw, 4rem);
-    line-height: 1;
+    line-height: 1.15;
     letter-spacing: 0;
     font-weight: 400;
 }
@@ -610,14 +610,18 @@
 
 .works-strip {
     grid-template-columns: minmax(0, 1fr) auto;
-    padding: 24px 28px;
+    gap: 16px;
+    padding: 14px 22px;
+    background: rgba(31, 30, 27, 0.72);
+    border: 1px solid rgba(255, 235, 205, 0.08);
+    box-shadow: none;
 }
 
 .works-strip h2 {
-    margin: 14px 0 0;
-    color: #fff4dd;
+    margin: 0;
+    color: rgba(255, 244, 221, 0.78);
     font-family: "MinecraftAE", "Microsoft YaHei", sans-serif;
-    font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
     line-height: 1;
     font-weight: 400;
 }
@@ -629,10 +633,16 @@
 }
 
 .works-strip__actions {
-    display: grid;
-    gap: 12px;
-    align-content: center;
-    min-width: 220px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.works-strip__actions .mc-action {
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 0.9rem;
 }
 
 .works-gallery {
@@ -783,7 +793,7 @@
     gap: 24px;
     padding: 28px;
     color: #f4ead9;
-    background: linear-gradient(135deg, #0b2736 0%, #114963 52%, #0b2d3d 100%);
+    background: rgba(31, 30, 27, 0.92);
     border: 1px solid rgba(255, 235, 205, 0.14);
     box-shadow: var(--wood-shadow);
 }

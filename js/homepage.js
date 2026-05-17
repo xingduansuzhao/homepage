@@ -70,7 +70,7 @@ const HOMEPAGE_CONFIG = {
             primaryButtonText: "进入模型模块",
             primaryButtonUrl: "model.html",
             secondaryButtonText: "观看代表视频",
-            secondaryButtonUrl: "https://space.bilibili.com/3537121929332753"
+            secondaryButtonUrl: "https://b23.tv/BV1YkLj6kEDw"
         }
     ],
     entries: [

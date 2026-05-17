@@ -2,6 +2,7 @@
     font-family: "MinecraftAE";
     src: url("../assets/fonts/MinecraftAE.ttf") format("truetype");
     font-display: swap;
+    unicode-range: U+0000-00B6, U+00B8-FFFF;
 }
 
 :root {
