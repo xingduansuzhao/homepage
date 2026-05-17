@@ -195,8 +195,8 @@ select {
 .profile-menu__avatar {
     width: 40px;
     height: 40px;
-    border: 2px solid #7a653d;
-    object-fit: cover;
+    border: none;
+    object-fit: contain;
     image-rendering: auto;
     flex-shrink: 0;
 }

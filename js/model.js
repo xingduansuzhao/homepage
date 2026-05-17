@@ -540,7 +540,7 @@ async function initSnailViewer() {
     directional.position.set(4, 6, 3);
     scene.add(ambient, directional);
 
-    const grid = new THREE.GridHelper(7.5, 15, 0x5f5f5f, 0x343434);
+    const grid = new THREE.GridHelper(16, 16, 0x3a3a3a, 0x2a2a2a);
     grid.position.y = -0.05;
     scene.add(grid);
 
